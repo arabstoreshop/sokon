@@ -458,20 +458,11 @@
         iframe.style.display = "none";
         document.body.appendChild(iframe);
       }
-      var form = document.createElement("form");
-      form.method = "POST";
-      form.action = CONFIG.sheetWebhook;
-      form.target = "gsFrame";
+      var qs = new URLSearchParams();
       Object.keys(payload).forEach(function (key) {
-        var input = document.createElement("input");
-        input.type = "hidden";
-        input.name = key;
-        input.value = payload[key] == null ? "" : String(payload[key]);
-        form.appendChild(input);
+        qs.set(key, payload[key] == null ? "" : String(payload[key]));
       });
-      document.body.appendChild(form);
-      form.submit();
-      setTimeout(function () { form.remove(); }, 2500);
+      iframe.src = CONFIG.sheetWebhook + "?" + qs.toString();
     }
 
     function sendOrder(e) {
@@ -499,7 +490,7 @@
       postToSheet(payload);
       setTimeout(function () {
         window.location.href = "./thank-you.html?name=" + encodeURIComponent(payload.name);
-      }, 700);
+      }, 900);
       return false;
     }
 
