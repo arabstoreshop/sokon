@@ -4,10 +4,20 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>سُكون | تصحى للفجر. البيت ما يحس.</title>
-  <meta name="description" content="سُكون — سوار اهتزاز صامت يوقظك لصلاة الفجر بدون ما يوقظ أحد. بدون جوال. الدفع عند الاستلام داخل السعودية." />
+  <meta name="description" content="سُكون — سوار اهتزاز صامت لصلاة الفجر. تتوضأ فيه، والبيت ما يحس. الدفع عند الاستلام داخل السعودية." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;1,400&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq("init", "1102428529130490");
+    fbq("track", "PageView");
+  </script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1102428529130490&ev=PageView&noscript=1" alt="" /></noscript>
   <style>
     :root {
       --ink: #070b12;
@@ -38,15 +48,27 @@
     .brand { display: flex; gap: 10px; align-items: center; font-weight: 800; letter-spacing: .02em; }
     .mark {
       width: 36px; height: 36px; border-radius: 50%;
-      background: radial-gradient(circle at 30% 30%, #fff, var(--gold));
-      color: var(--ink); display: grid; place-items: center; font-weight: 900;
+      background: transparent;
+      display: grid; place-items: center;
     }
+    .mark svg { width: 36px; height: 36px; display: block; }
     .brand small { display: block; font-size: 9px; letter-spacing: .28em; color: var(--gold); font-weight: 500; }
     .btn {
       display: inline-flex; align-items: center; justify-content: center;
       background: var(--gold); color: var(--ink); font-weight: 800;
       border-radius: 999px; padding: 12px 22px; border: 0; cursor: pointer;
     }
+    .btn-cta {
+      flex-direction: column; gap: 2px; padding: 16px 28px; font-size: 18px;
+      box-shadow: 0 10px 32px rgba(226,192,138,.45);
+      animation: ctaPulse 2.4s ease-in-out infinite;
+    }
+    .btn-cta small { font-size: 12px; font-weight: 700; opacity: .75; }
+    @keyframes ctaPulse {
+      0%, 100% { transform: translateY(0); box-shadow: 0 10px 32px rgba(226,192,138,.4); }
+      50% { transform: translateY(-2px); box-shadow: 0 16px 40px rgba(226,192,138,.55); }
+    }
+    .btn-order { width: 100%; padding: 18px 16px; font-size: 18px; margin-top: 18px; }
     .btn-ghost { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,.2); }
     .hero {
       position: relative; min-height: 92vh; color: #fff;
@@ -134,11 +156,36 @@
     summary { font-weight: 800; cursor: pointer; }
     details p { margin-top: 8px; color: var(--mute); }
     .sticky {
-      position: fixed; bottom: 0; left: 0; right: 0; padding: 12px;
-      background: #fff; box-shadow: 0 -8px 30px rgba(0,0,0,.08); z-index: 40;
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 40;
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+      background: #0b0f16;
+      border-top: 1px solid var(--gold);
+      box-shadow: 0 -16px 40px rgba(0,0,0,.35);
     }
-    @media (min-width: 800px) { .sticky { display: none; } }
-    footer { background: var(--ink); color: rgba(255,255,255,.5); text-align: center; padding: 40px 16px 110px; }
+    .sticky-copy { color: #fff; min-width: 0; }
+    .sticky-copy p { font-size: 13px; font-weight: 800; line-height: 1.3; }
+    .sticky-copy span { display: block; margin-top: 3px; font-size: 12px; color: rgba(255,255,255,.55); font-weight: 700; }
+    .sticky-copy strong { color: var(--gold); font-weight: 900; }
+    .sticky-btn {
+      flex-shrink: 0;
+      border: 0; cursor: pointer;
+      background: linear-gradient(180deg, #f0d7a4 0%, #e2c08a 42%, #c9a46a 100%);
+      color: #070b12; font: 800 14px Tajawal, sans-serif;
+      border-radius: 999px; padding: 13px 18px;
+      box-shadow: 0 6px 20px rgba(226,192,138,.4), inset 0 1px 0 rgba(255,255,255,.45);
+      animation: stickyShake 2.8s ease-in-out infinite;
+    }
+    @keyframes stickyShake {
+      0%, 78%, 100% { transform: rotate(0) translateX(0); }
+      82% { transform: rotate(-3deg) translateX(-2px); }
+      86% { transform: rotate(3deg) translateX(2px); }
+      90% { transform: rotate(-2deg) translateX(-1px); }
+      94% { transform: rotate(1.5deg) translateX(1px); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .sticky-btn { animation: none; }
+    }
     .pic { border-radius: 32px; overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,.25); }
     .offers { background: #f3efe6; }
     .offer {
@@ -180,72 +227,186 @@
       opacity: 0; pointer-events: none; transition: .25s;
     }
     .sheet-bg.show { opacity: 1; pointer-events: auto; }
-    .sheet {
-      position: fixed; left: 0; right: 0; bottom: 0; z-index: 90;
-      background: #f7f3ea; border-radius: 28px 28px 0 0;
-      max-height: 92vh; overflow: auto; transform: translateY(110%);
-      transition: .35s cubic-bezier(.2,.8,.2,1); padding: 12px 16px 28px;
-    }
-    .sheet.show { transform: translateY(0); }
     .handle { width: 48px; height: 5px; background: #d9d1c3; border-radius: 99px; margin: 6px auto 10px; }
     .sheet-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
     .sheet-head h3 { font-size: 22px; font-weight: 800; }
     .x { width: 36px; height: 36px; border: 0; border-radius: 50%; background: #efe9dd; font-size: 20px; cursor: pointer; }
     .sheet-hero { width: 100%; height: 120px; object-fit: cover; border-radius: 18px; margin-bottom: 8px; }
+    .hadiths { display: grid; gap: 14px; margin-top: 28px; }
+    @media (min-width: 800px) { .hadiths { grid-template-columns: 1fr 1fr; } }
+    .hadith {
+      background: #fff; border-radius: 24px; padding: 22px 22px 18px;
+      border: 1px solid rgba(226,192,138,.35);
+    }
+    .hadith q { font-family: Amiri, serif; font-size: 20px; line-height: 1.9; display: block; }
+    .hadith span { display: block; margin-top: 8px; color: var(--gold-2); font-size: 13px; font-weight: 800; }
+    .gallery figcaption { margin-top: 8px; font-size: 13px; font-weight: 800; color: var(--mute); text-align: center; }
+    .review h3 { font-size: 18px; margin: 6px 0 10px; }
+    .review .stars-inline { color: var(--gold-2); letter-spacing: .08em; }
+    .journey { display: grid; gap: 14px; margin-top: 28px; }
+    @media (min-width: 800px) { .journey { grid-template-columns: repeat(3, 1fr); } }
+    .journey article { background: #fff; border-radius: 24px; padding: 24px; }
+    .journey b { color: var(--gold-2); font-size: 13px; letter-spacing: .12em; }
+    .box-list { margin-top: 22px; background: #fff; border-radius: 24px; padding: 22px 24px; }
+    .box-list li { margin: 8px 0; font-weight: 700; }
+    footer {
+      background: var(--ink); color: rgba(255,255,255,.62);
+      padding: 56px 16px 120px; text-align: right;
+    }
+    .foot {
+      display: grid; gap: 28px; max-width: 1120px; margin: 0 auto;
+    }
+    @media (min-width: 800px) { .foot { grid-template-columns: 1.2fr 1fr 1fr; } }
+    .foot h4 { color: var(--gold); font-size: 14px; margin-bottom: 10px; letter-spacing: .12em; }
+    .foot p, .foot li { font-size: 13px; line-height: 1.8; }
+    .foot ul { list-style: none; }
+    .foot-brand { font-size: 28px; font-weight: 900; color: var(--gold); }
+    .foot-copy { margin-top: 36px; text-align: center; font-size: 12px; color: rgba(255,255,255,.38); }
+    .sheet {
+      position: fixed; left: 0; right: 0; bottom: 0; z-index: 90;
+      background: #f7f3ea; border-radius: 22px 22px 0 0;
+      height: 100dvh; max-height: 100dvh; overflow-y: auto;
+      transform: translateY(110%);
+      transition: .35s cubic-bezier(.2,.8,.2,1); padding: 8px 12px 12px;
+      display: flex; flex-direction: column;
+    }
+    .sheet.show { transform: translateY(0); }
+    .sheet-head h3 { font-size: 17px; font-weight: 800; }
+    .sheet-hero { display: none; }
+    #sheetOffers { flex: 0 0 auto; }
+    .sheet .offer {
+      grid-template-columns: 56px 1fr; padding: 7px 8px; margin-top: 6px;
+      gap: 8px; border-radius: 14px;
+    }
+    .sheet .offer img { width: 56px; height: 48px; border-radius: 10px; }
+    .sheet .offer h3 { font-size: 13px; margin: 0; }
+    .sheet .offer p { display: none; }
+    .sheet .gold-price { font-size: 15px; }
+    .sheet .save, .sheet .old { font-size: 10px; }
+    .sheet .badge, .sheet .disc { font-size: 9px; padding: 2px 6px; top: 6px; }
+    .sheet .check { width: 16px; height: 16px; bottom: 8px; left: 8px; }
+    .sheet form {
+      padding: 10px 12px; gap: 5px; border-radius: 16px; margin-top: 8px;
+      flex: 1; min-height: 0;
+    }
+    .sheet form label { font-size: 11px; font-weight: 800; }
+    .sheet input { padding: 10px 12px; border-radius: 12px; font-size: 15px; }
+    .sheet .btn-order { margin-top: 8px; padding: 12px; font-size: 15px; }
+    .sheet .trust { font-size: 11px; gap: 8px; margin-top: 6px; }
+    .cta-block { text-align: center; padding: 72px 0; background: #f3efe6; }
+    .wudu {
+      display: grid; gap: 12px; margin-top: 22px;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 700px) { .wudu { grid-template-columns: repeat(3, 1fr); } }
+    .wudu div { background: rgba(226,192,138,.1); border-radius: 20px; padding: 18px; }
+    .exit {
+      position: fixed; inset: 0; z-index: 120; background: rgba(7,11,18,.62);
+      display: none; place-items: center; padding: 20px;
+    }
+    .exit.show { display: grid; }
+    .exit-card {
+      width: min(420px, 100%); background: #fff; border-radius: 28px;
+      padding: 28px 22px; text-align: center; box-shadow: 0 30px 80px rgba(0,0,0,.25);
+    }
+    .exit-card b { display: block; font-size: 28px; color: #b8893e; margin: 8px 0 12px; }
+    .exit-skip { margin-top: 12px; background: transparent; border: 0; color: #8b8378; cursor: pointer; font: inherit; }
+    .chip { display: inline-block; background: rgba(226,192,138,.18); color: var(--gold-2); font-size: 12px; font-weight: 800; border-radius: 999px; padding: 4px 10px; margin-bottom: 10px; }
+    .stars { margin-top: 18px; font-size: 14px; color: var(--gold); font-weight: 800; }
+    .stars span { color: rgba(255,255,255,.7); font-weight: 600; }
+    .trust-bar {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+      padding: 22px 16px; background: #fff;
+    }
+    @media (min-width: 800px) { .trust-bar { grid-template-columns: repeat(4, 1fr); } }
+    .trust-bar div { text-align: center; font-size: 13px; font-weight: 800; }
+    .trust-bar small { display: block; color: var(--mute); font-weight: 600; margin-top: 4px; }
+    .gallery { display: grid; gap: 14px 10px; margin-top: 28px; grid-template-columns: 1fr 1fr; }
+    @media (min-width: 800px) { .gallery { grid-template-columns: repeat(3, 1fr); } }
+    .gallery figure { margin: 0; }
+    .gallery img { width: 100%; height: 220px; object-fit: cover; border-radius: 22px; }
+    .specs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 28px; }
+    @media (min-width: 800px) { .specs { grid-template-columns: repeat(4, 1fr); } }
+    .specs div { background: #fff; border-radius: 20px; padding: 18px; text-align: center; }
+    .specs b { display: block; color: var(--gold-2); font-size: 20px; }
+    .reviews { display: grid; gap: 14px; margin-top: 28px; }
+    @media (min-width: 800px) { .reviews { grid-template-columns: 1fr 1fr; } }
+    .review { background: #fff; border-radius: 24px; padding: 22px; box-shadow: 0 10px 30px rgba(7,11,18,.05); }
+    .review .who { margin-top: 14px; font-size: 13px; color: var(--mute); font-weight: 800; }
+    .review .who b { color: var(--ink); }
+    .feat { max-width: 720px; margin: 40px auto 0; background: #fff; border-radius: 28px; padding: 28px; }
+    .feat p { font-size: 17px; line-height: 1.85; }
   </style>
 </head>
 <body>
   <header class="nav">
     <a class="brand" href="#top">
-      <span class="mark">س</span>
+      <span class="mark" aria-hidden="true">
+        <svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="23" stroke="#e2c08a" stroke-width="2.15" stroke-linecap="round" stroke-dasharray="122 22" transform="rotate(-90 32 32)"/><path fill="#e2c08a" d="M36.2 19.8c7.4 2.2 12.4 9.2 12.4 17.2 0 10-8.1 18.1-18.1 18.1-4.4 0-8.4-1.6-11.5-4.2 3.8 3.6 9 5.8 14.6 5.8 11.2 0 20.3-9.1 20.3-20.3 0-8.4-5.1-15.6-12.4-18.6-.8 0-3.4.4-5.3 2z"/><circle cx="46.2" cy="17.8" r="2.15" fill="#f4eee4"/></svg>
+      </span>
       <span>سُكون<small>SUKOON</small></span>
     </a>
-    <a class="btn" href="#order" onclick="openSheet(); return false;">اطلب الآن</a>
+    <a class="btn" href="#order" onclick="openSheet(); return false;">من 195 ر.س</a>
   </header>
 
   <section class="hero" id="top">
     <img class="bg" src="./hero-wrist.jpg" alt="" />
     <div class="wrap hero-inner">
-      <p class="kicker">SILENT FAJR COMPANION</p>
+      <p class="kicker">رفيق صلاة الفجر · داخل السعودية</p>
       <h1>تصحى للفجر.<br /><span>البيت ما يحس.</span></h1>
       <p class="lead">
-        مو سوار رياضي متنكّر. سُكون جهاز تنبيه صامت على المعصم —
-        يوقظ الجهاز العصبي، ما يوقظ الغرفة. نوم ثقيل؟ زوجة نايمة؟ أطفال؟
-        الاهتزاز لك. السكون لهم.
+        سُكون مو منبه يصرخ. سوار اهتزاز صامت يوقظك لصلاة الفجر وأنت ثقيل النوم —
+        وتتوضأ فيه، والجوال يبقى برا الغرفة. الأجر لله. إحنا بس نسهّل تقوم في الوقت.
       </p>
       <div class="hero-cta">
-        <a class="btn" href="#order">اطلب سُكون — الدفع عند الباب</a>
-        <button class="btn btn-ghost" type="button" onclick="openSheet()">اختر باقتك</button>
+        <button class="btn btn-cta" type="button" onclick="openSheet()">
+          اطلب سُكون — من 195 ر.س
+          <small>الدفع عند الاستلام · شحن مجاني داخل المملكة</small>
+        </button>
       </div>
       <div class="stats">
         <div><b>0 صوت</b><span>رنة صفر في الغرفة</span></div>
         <div><b>3 منبهات</b><span>فجر · دوام · قيلولة</span></div>
         <div><b>5–7 أيام</b><span>شحنة واحدة</span></div>
       </div>
+      <p class="stars">★★★★★ <span>4.8 · تقييمات من الرياض وجدة والدمام · الدفع عند الاستلام</span></p>
     </div>
   </section>
 
   <div class="marquee" aria-hidden="true">
-    <p>اهتزاز صامت — بدون جوال — تتوضأ فيه — نوم ثقيل ينكسر — الدفع عند الاستلام — شحن داخل السعودية — اهتزاز صامت — بدون جوال — تتوضأ فيه — نوم ثقيل ينكسر — الدفع عند الاستلام — شحن داخل السعودية —</p>
+    <p>تتوضأ فيه — اهتزاز صامت للفجر — بركة أول اليوم — الجوال برا الغرفة — الدفع عند الاستلام داخل السعودية — تتوضأ فيه — اهتزاز صامت للفجر — بركة أول اليوم — الجوال برا الغرفة — الدفع عند الاستلام داخل السعودية —</p>
+  </div>
+
+  <div class="trust-bar">
+    <div>شحن مجاني<small>على كل الطلبات</small></div>
+    <div>الدفع عند الباب<small>معاينة قبل الدفع</small></div>
+    <div>1–3 أيام<small>داخل السعودية</small></div>
+    <div>رضا أو استرجاع<small>بدون مخاطرة</small></div>
   </div>
 
   <section id="diff">
     <div class="wrap">
-      <p class="kicker" style="color:var(--gold-2)">ليش سُكون أقوى</p>
-      <h2>Belzena تبيع سوار فجر.<br />إحنا نبيع عادة ما تنكسر.</h2>
-      <p class="sub">نفس فئة المنتج، زاوية أحدّ: المشكلة الحقيقية هي إن منبه الجوال يخونك مرتين — ما يوقظك، ويوقظ البيت.</p>
+      <p class="kicker" style="color:var(--gold-2)">ليش الناس يفوتون الفجر</p>
+      <h2>النية موجودة.<br />الوسيلة هي اللي تخونك.</h2>
+      <p class="sub">تنام وأنت ناوي تقوم، وتصحى والشمس طالعة. الجوال يصرخ فيوقظ أهلك، أو تخفضه فما تسمعه. سُكون يقلب المعادلة: التنبيه على معصمك، وأنت وحدك تصحى على السجادة.</p>
       <table class="compare">
         <thead>
-          <tr><th></th><th>الجوال</th><th>سوار عام / بلزينا</th><th>سُكون</th></tr>
+          <tr><th></th><th>منبه الجوال</th><th>سوار عام</th><th>سُكون</th></tr>
         </thead>
         <tbody>
           <tr><td>يوقظك وأنت ثقيل النوم</td><td class="bad">غالباً لا</td><td>متوسط</td><td class="good">اهتزاز على الجلد</td></tr>
-          <tr><td>يوقظ الزوجة/الأطفال</td><td class="bad">نعم</td><td class="good">لا</td><td class="good">لا</td></tr>
+          <tr><td>يوقظ الزوجة والأطفال</td><td class="bad">نعم</td><td class="good">لا</td><td class="good">لا</td></tr>
+          <tr><td>تتوضأ فيه</td><td class="bad">لا</td><td>أحياناً</td><td class="good">نعم — مقاوم للماء</td></tr>
           <tr><td>تحتاج تطبيق</td><td class="bad">دائماً</td><td>أحياناً</td><td class="good">لا — مستقل</td></tr>
-          <tr><td>البراند</td><td>—</td><td class="bad">اسم عام</td><td class="good">سُكون = الوعد</td></tr>
-          <tr><td>الدفع</td><td>—</td><td>COD</td><td class="good">COD + معاينة</td></tr>
+          <tr><td>الدفع داخل السعودية</td><td>—</td><td>COD</td><td class="good">عند الباب بعد المعاينة</td></tr>
         </tbody>
       </table>
+      <div class="feat">
+        <p class="kicker" style="color:var(--gold-2);margin:0">مشتري من مكة</p>
+        <p>كنت أحط الجوال تحت المخدة عشان أقوم للفجر، وأصحى على أذان المسجد وأنا كسرت النية. من لبست سُكون، الاهتزاز يجي على يدي قبل الأذان بدقايق. أقوم أتوضأ والبيت ما درى. هذا اللي كنت أحتاجه.</p>
+        <p class="who" style="margin-top:12px;font-weight:800">فهد م. — مكة · مشترٍ موثّق</p>
+        <button class="btn" style="margin-top:16px" type="button" onclick="openSheet()">كن مثله — اطلب من 195 ر.س</button>
+      </div>
     </div>
   </section>
 
@@ -253,9 +414,9 @@
     <div class="wrap split">
       <div class="pic"><img src="./dawn-room.jpg" alt="غرفة هادئة قبل الفجر" /></div>
       <div>
-        <p class="kicker">المشهد</p>
+        <p class="kicker">المشهد قبل الأذان</p>
         <h2>الغرفة تبقى ليل.<br />أنت تصير فجر.</h2>
-        <p class="sub">الناس ما يشترون سوار. يشترون الصباح اللي ما فيه صراخ منبه، وما فيه إحراج إنك فاتت الصلاة، وما فيه زوجة صاحية بسببك.</p>
+        <p class="sub">ما تشتري سوار. تشتري إنك تكون في الصف الأول وأنت ما أزعج أحد. الفجر أول امتحان يومك، والبركة تجي من أوله.</p>
         <div class="steps">
           <div class="step"><b>01</b><h3>حدد الفجر من السوار</h3><p class="sub">بدون بلوتوث. بدون ما تفتح شاشة.</p></div>
           <div class="step"><b>02</b><h3>نام فيه</h3><p class="sub">خفيف، سيليكون، تقاوم الماء.</p></div>
@@ -269,78 +430,162 @@
     <div class="wrap split">
       <div>
         <p class="kicker" style="color:var(--gold-2)">المنتج</p>
-        <h2>شكل رياضي.<br />وظيفة روحية.</h2>
-        <p class="sub">نفس فئة الأساور الذكية: خطوات، سعرات، نوم، شحن سريع. الفرق إن سُكون ما يفتتح الإعلان بـ«3D Sports Bracelet». يفتتح بوعد الفجر.</p>
-        <div class="card-grid" style="grid-template-columns:1fr 1fr">
-          <div class="card"><h3>صامت</h3><p>صفر ديسibel في الغرفة</p></div>
-          <div class="card"><h3>مستقل</h3><p>الجوال يقدر يبقى في الصالة</p></div>
-          <div class="card"><h3>وضوء</h3><p>ما تشيله وأنت تغسل</p></div>
-          <div class="card"><h3>بطارية</h3><p>أيام، مو ساعات</p></div>
+        <h2>تتوضأ فيه.<br />تنام فيه.<br />يقومك للفجر.</h2>
+        <p class="sub">مقاوم للماء. خفيف تنساه في معصمك إلى أن يهتز. بدون جوال وبدون تطبيق. حدد منبه الفجر من السوار نفسه.</p>
+        <div class="wudu">
+          <div><h3>وضوء</h3><p class="sub" style="margin:0">ما تشيله وأنت تغسل. معيار مقاومة الماء يكفي الوضوء ورذاذ الماء.</p></div>
+          <div><h3>صامت</h3><p class="sub" style="margin:0">صفر رنة في الغرفة. الاهتزاز لك، السكون لأهلك.</p></div>
+          <div><h3>مستقل</h3><p class="sub" style="margin:0">الجوال في الصالة. أول ما تفتح عينك ما تفتح شاشة.</p></div>
         </div>
       </div>
       <div class="pic"><img src="./product-studio.jpg" alt="سوار سُكون" /></div>
     </div>
   </section>
 
-  <section>
+  <section class="night">
     <div class="wrap">
-      <p class="quote">«من صلّى البَرْدَين دخل الجنة»</p>
-      <p class="sub" style="text-align:center;margin-inline:auto">السوار ما يشتري لك الأجر. يسهّل إنك تكون حاضر في الوقت. الباقي نيتك.</p>
+      <p class="kicker">الأجر والبركة</p>
+      <h2>سهّلها على نفسك…<br />ولا تفوّت أجر الفجر</h2>
+      <p class="sub">السوار ما يشتري لك الجنة. يسهّل إنك تكون حاضر في الوقت. الباقي نيتك وصدقك مع ربّك.</p>
+      <div class="hadiths">
+        <div class="hadith"><q>«من صلّى البَرْدَين دخل الجنة»</q><span>متفق عليه — البردان: الفجر والعصر</span></div>
+        <div class="hadith"><q>«من دلّ على خير فله مثل أجر فاعله»</q><span>رواه مسلم — أهْدِ الفجر لمن تحب</span></div>
+        <div class="hadith"><q>«أثقل الصلاة على المنافقين صلاة العشاء وصلاة الفجر»</q><span>متفق عليه — عشان كذا الفجر يستاهل وسيلة تثبتك</span></div>
+        <div class="hadith"><q>«بشّر المشّائين في الظُّلَم إلى المساجد بالنور التام يوم القيامة»</q><span>رواه أبو داود والترمذي</span></div>
+      </div>
+      <div class="card-grid" style="margin-top:22px">
+        <div class="card"><h3>ثبات على طاعة</h3><p>الفجر أول امتحان يومي. النجاح فيه بداية يوم يُرجى فيه القبول.</p></div>
+        <div class="card"><h3>بركة الوقت</h3><p>من قام للفجر يُوفَّق غالباً في يومه: ساعات أطول، وهمّ أخف إن شاء الله.</p></div>
+        <div class="card"><h3>ستر أهل البيت</h3><p>تقوم بهدوء. زوجتك وأطفالك يكملون نومهم. ما في صراخ منبه.</p></div>
+      </div>
+      <button class="btn btn-cta btn-order" type="button" onclick="openSheet()">اطلب رفيق فجرك — من 195 ر.س<small>الدفع عند الاستلام داخل السعودية</small></button>
     </div>
   </section>
 
-  <section class="offers" id="order">
-    <div class="wrap" style="max-width:560px">
-      <p class="kicker" style="color:var(--gold-2)">العرض</p>
-      <h2>اختر رفيقك</h2>
-      <p class="sub">الباقة الوسطى مختارة تلقائيًا — هذا اللي يحوّل: هدية = أجر مضاعف.</p>
-
-      <article class="offer" data-id="1" data-price="195" onclick="pick(this)">
-        <img src="./product-studio.jpg" alt="سوار واحد" />
-        <div>
-          <h3>سوار واحد</h3>
-          <p>رحلة التزام تخصّك أنت</p>
-          <div><span class="gold-price">195 ر.س</span></div>
-        </div>
-        <span class="check"></span>
-      </article>
-
-      <article class="offer on" data-id="2" data-price="299" onclick="pick(this)">
-        <span class="badge">الأكثر طلبًا – خصم 23%</span>
-        <span class="disc">23%-</span>
-        <img src="./pack-two.jpg" alt="باقة الأجر المضاعف" />
-        <div>
-          <h3>باقة الأجر المضاعف</h3>
-          <p>قطعة لك، وهدية لمن تحب. كل فجر يقومه بسببك يُكتب لك مثل أجره.</p>
-          <div><span class="gold-price">299 ر.س</span><span class="old">390 ر.س</span></div>
-          <span class="save">وفّرت 91 ر.س</span>
-        </div>
-        <span class="check"></span>
-      </article>
-
-      <article class="offer" data-id="3" data-price="499" onclick="pick(this)">
-        <span class="badge">الأفضل للعائلات</span>
-        <span class="disc">36%-</span>
-        <img src="./pack-family.jpg" alt="باقة فجر العائلة" />
-        <div>
-          <h3>باقة فجر العائلة</h3>
-          <p>3 قطع + الرابعة هدية. البيت يقوم بهدوء.</p>
-          <div><span class="gold-price">499 ر.س</span><span class="old">780 ر.س</span></div>
-          <span class="save">وفّرت 281 ر.س</span>
-        </div>
-        <span class="check"></span>
-      </article>
-
-      <div class="hook">
-        <p>أجمل من فجرك… أن تكون سبب فجر من تحب.</p>
-        <em>«من دلّ على خير فله مثل أجر فاعله» — رواه مسلم</em>
+  <section>
+    <div class="wrap">
+      <p class="kicker" style="color:var(--gold-2)">صور حقيقية للمنتج</p>
+      <h2>تأمّل التفاصيل</h2>
+      <p class="sub">نفس السوار اللي يوصلك: على المعصم، من قريب، وفي غرفة الفجر. خفيف تنساه إلى أن يهتز.</p>
+      <div class="gallery">
+        <figure>
+          <img src="./hero-wrist.jpg" alt="سُكون على المعصم قبل الفجر" />
+          <figcaption>على المعصم قبل الأذان</figcaption>
+        </figure>
+        <figure>
+          <img src="./product-studio.jpg" alt="سوار سُكون عن قرب" />
+          <figcaption>تفاصيل السوار</figcaption>
+        </figure>
+        <figure>
+          <img src="./product.jpg" alt="سُكون من زاوية الاستوديو" />
+          <figcaption>خفة المقاس</figcaption>
+        </figure>
+        <figure>
+          <img src="./dawn-room.jpg" alt="غرفة هادئة وقت الفجر" />
+          <figcaption>الغرفة تبقى ليل</figcaption>
+        </figure>
+        <figure>
+          <img src="./pack-two.jpg" alt="باقة سُكون لشخصين" />
+          <figcaption>لك ولمن تحب</figcaption>
+        </figure>
+        <figure>
+          <img src="./pack-family.jpg" alt="باقة فجر العائلة" />
+          <figcaption>فجر البيت كامل</figcaption>
+        </figure>
       </div>
+      <div class="specs">
+        <div><b>3</b><span>منبهات اهتزاز</span></div>
+        <div><b>5–7 أيام</b><span>عمر البطارية</span></div>
+        <div><b>IP67</b><span>تتوضأ فيه</span></div>
+        <div><b>سيليكون</b><span>مقاس قابل للتعديل</span></div>
+      </div>
+      <div class="box-list">
+        <h3>يصلك في العلبة</h3>
+        <ul>
+          <li>سوار سُكون</li>
+          <li>كابل شحن</li>
+          <li>دليل عربي مبسّط — تضبط الفجر بخطوات سهلة</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-      <button class="btn" style="width:100%;margin-top:18px;padding:16px;font-size:17px" type="button" onclick="openSheet()">
-        اقتنهِ الآن — الدفع عند الاستلام (<span id="ctaPrice">299</span> ر.س)
+  <section>
+    <div class="wrap">
+      <p class="kicker" style="color:var(--gold-2)">رحلتك الأولى</p>
+      <h2>ماذا يتغيّر في شهرك</h2>
+      <div class="journey">
+        <article>
+          <b>01 · أول ليلة</b>
+          <h3>تصحى بهدوء</h3>
+          <p class="sub" style="margin:8px 0 0">تحدد الفجر من السوار. تصحى على اهتزاز في معصمك. لا رنة. لا أحد صحي غيرك.</p>
+        </article>
+        <article>
+          <b>02 · الأسبوع</b>
+          <h3>الفجر يثبت</h3>
+          <p class="sub" style="margin:8px 0 0">جسمك يتعوّد على الصحوة. تقوم من أول اهتزاز، وبعض الأيام قبل ما يهتز.</p>
+        </article>
+        <article>
+          <b>03 · الشهر</b>
+          <h3>عادة راسخة</h3>
+          <p class="sub" style="margin:8px 0 0">الفجر جزء من يومك مو معركة. والجوال برا الغرفة من أول ليلة.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="kicker" style="color:var(--gold-2)">آراء من السعودية</p>
+      <h2>قالوا عن رفيق فجرهم</h2>
+      <div class="reviews">
+        <article class="review">
+          <p class="stars-inline">★★★★★</p>
+          <h3>ثقيل النوم… والاهتزاز هو اللي نفع</h3>
+          <p>شفت كل المنبهات الصوتية. أحط ثلاث رنات وأكمل نوم. سُكون مختلف لأن التنبيه على الجلد مو على الطاولة. أسبوعين وأنا أدرك الفجر في المسجد، وأهلي ما صحتوا مرّة.</p>
+          <p class="who"><b>يوسف ح.</b> · المدينة · موثّق ✓</p>
+        </article>
+        <article class="review">
+          <p class="stars-inline">★★★★★</p>
+          <h3>هديته لأخوي الكبير</h3>
+          <p>أخوي دوامه ست الصبح وكان يزعج البيت كل فجر. طلبت له سُكون مع باقة الاثنين. الحين يقوم وهو ما يفتح الجوال، وأمي ترتاح. أحسن هدية اشتريتها هالسنة.</p>
+          <p class="who"><b>نورة ع.</b> · الخبر · موثّق ✓</p>
+        </article>
+        <article class="review">
+          <p class="stars-inline">★★★★★</p>
+          <h3>وضوء بدون ما أشيله</h3>
+          <p>كنت أخاف الماء يخرّبه. توضأت فيه من أول يوم عادي. خفيف وأنام فيه. المنبه الثاني حطيته للدوام. البطارية عندي تعدّت خمسة أيام.</p>
+          <p class="who"><b>إبراهيم د.</b> · أبها · موثّق ✓</p>
+        </article>
+        <article class="review">
+          <p class="stars-inline">★★★★☆</p>
+          <h3>يسوي المطلوب بدون تعقيد</h3>
+          <p>ما أبي خطوات وسعرات. أبي أقوم للفجر بدون ما أزعج زوجتي. هذا اللي صار. أول ليلتين أحس بالحزام، بعدها نسيت. الشاشة صغيرة بس تكفي الوقت والمنبه.</p>
+          <p class="who"><b>ماجد ك.</b> · بريدة · موثّق ✓</p>
+        </article>
+      </div>
+      <button class="btn btn-cta btn-order" type="button" onclick="openSheet()">انضم إليهم — اطلب من 195 ر.س<small>الدفع عند الاستلام داخل السعودية</small></button>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="quote">أجمل من فجرك… أن تكون سبب فجر من تحب.</p>
+      <p class="sub" style="text-align:center;margin-inline:auto">الباقة ليست عرض تسويقي فارغ. كل فجر يقومه أبوك أو زوجك بسببك يُرجى لك مثل أجره إن شاء الله.</p>
+    </div>
+  </section>
+
+  <section class="cta-block" id="order">
+    <div class="wrap" style="max-width:520px">
+      <p class="kicker" style="color:var(--gold-2)">ابدأ الليلة</p>
+      <h2>سُكون لك — من 195 ر.س</h2>
+      <p class="sub" style="margin-inline:auto">الدفع عند الباب بعد المعاينة. شحن 1–3 أيام داخل السعودية.</p>
+      <button class="btn btn-cta btn-order" type="button" onclick="openSheet()">
+        اطلب الآن — من 195 ر.س
+        <small>شحن مجاني · الدفع عند الاستلام</small>
       </button>
       <div class="trust">
-        <span>✓ شحن مجاني</span>
+        <span>✓ شحن 1–3 أيام داخل المملكة</span>
         <span>✓ الدفع عند الاستلام</span>
         <span>✓ رضا أو استرجاع</span>
       </div>
@@ -349,29 +594,62 @@
 
   <section>
     <div class="wrap" style="max-width:560px">
-      <h2>أسئلة</h2>
-      <details open><summary>نومي ثقيل بزاف</summary><p>هذا جمهور السوار. الصوت يتتجاهل. الجلد ما يتتجاهل بسهولة.</p></details>
-      <details><summary>باش نحتاج التطبيق؟</summary><p>ما تحتاج. المنبه من الجهاز.</p></details>
-      <details><summary>علاش الزوجية أرخص للقطعة؟</summary><p>تسويق عالمي: الناس ما يشترون «سوارين». يشترون قصة هدية + أجر. نخليها الخيار الافتراضي.</p></details>
+      <h2>أسئلة قبل ما تطلب</h2>
+      <details open><summary>نومي ثقيل، هل ينفع معاي؟</summary><p>هذا جمهور سُكون. الصوت على الطاولة ينتجاهل وأنت نايم. الاهتزاز الملاصق للجلد أصعب على الدماغ يتجاهله. يبدأ لطيف ويشتد حتى تصحى.</p></details>
+      <details><summary>أشيله للوضوء؟</summary><p>لا. مقاوم للماء بما يكفي للوضوء وغسل اليدين. للاستحمام الطويل بماء حار ننصح تشيله.</p></details>
+      <details><summary>أحتاج جوال أو تطبيق؟</summary><p>لا. تحدد منبه الفجر من السوار نفسه. الجوال يقدر يبقى في الصالة.</p></details>
+      <details><summary>كم تدوم البطارية؟</summary><p>من 5 إلى 7 أيام بالاستخدام العادي. يشحن بكابل مرفق في العلبة.</p></details>
+      <details><summary>يناسب المرأة وكبار السن؟</summary><p>نعم. الحزام سيليكون قابل للتعديل، خفيف أثناء النوم.</p></details>
+      <details><summary>كيف أدفع داخل السعودية؟</summary><p>الدفع عند الاستلام: تعاين السوار عند الباب، بعدين تدفع نقداً أو بطاقة للمندوب. بدون تحويل مقدم.</p></details>
+      <details><summary>أبغى أهديه لأهلي</summary><p>باقة الأجر المضاعف: لك ولمن تحب. باقة فجر العائلة للبيت كامل. «من دلّ على خير فله مثل أجر فاعله».</p></details>
     </div>
   </section>
 
   <footer>
-    <p style="color:var(--gold);font-weight:900;font-size:20px">سُكون</p>
-    <p>تصحى للفجر. البيت ما يحس.</p>
-    <p style="margin-top:12px">sokon.shop</p>
+    <div class="foot">
+      <div>
+        <p class="foot-brand">سُكون</p>
+        <p>SUKOON · رفيق صلاة الفجر</p>
+        <p style="margin-top:10px">سوار اهتزاز صامت يوقظك للفجر بدون ما يوقظ أهل البيت. تتوضأ فيه، والجوال يبقى برا الغرفة.</p>
+      </div>
+      <div>
+        <h4>الشحن والدفع</h4>
+        <ul>
+          <li>شحن داخل جميع مدن السعودية</li>
+          <li>التوصيل خلال 1–3 أيام عمل</li>
+          <li>شحن مجاني على كل الطلبات</li>
+          <li>الدفع عند الاستلام نقداً أو بطاقة</li>
+          <li>معاينة المنتج عند الباب قبل الدفع</li>
+        </ul>
+      </div>
+      <div>
+        <h4>الشركة</h4>
+        <ul>
+          <li>سُكون — متجر إلكتروني</li>
+          <li>المملكة العربية السعودية</li>
+          <li>sokon.shop</li>
+          <li>رضا أو استرجاع</li>
+          <li>فريقنا يتصل لتأكيد الطلب</li>
+        </ul>
+      </div>
+    </div>
+    <p class="foot-copy">© سُكون · sokon.shop · جميع الحقوق محفوظة</p>
   </footer>
 
   <div class="sticky">
-    <button class="btn" style="width:100%" type="button" onclick="openSheet()">اقتنهِ الآن — <span class="ctaPrice">299</span> ر.س عند الباب</button>
+    <div class="sticky-copy">
+      <p>سُكون — رفيقك لصلاة الفجر</p>
+      <span>من <strong>195 ر.س</strong> · الدفع عند الاستلام</span>
+    </div>
+    <button class="sticky-btn" type="button" onclick="openSheet()">اطلبه الآن بضمان كامل</button>
   </div>
 
-  <div class="sheet-bg" id="sheetBg" onclick="closeSheet()"></div>
+  <div class="sheet-bg" id="sheetBg" onclick="tryCloseSheet()"></div>
   <aside class="sheet" id="sheet" role="dialog" aria-modal="true">
     <div class="handle"></div>
     <div class="sheet-head">
-      <h3>اختر رفيقك</h3>
-      <button class="x" type="button" onclick="closeSheet()">×</button>
+      <h3>كمّل طلب فجرك</h3>
+      <button class="x" type="button" onclick="tryCloseSheet()">×</button>
     </div>
     <img class="sheet-hero" src="./dawn-room.jpg" alt="" />
     <div id="sheetOffers"></div>
@@ -382,9 +660,10 @@
       <input required name="phone" dir="ltr" placeholder="05xxxxxxxx" pattern="05[0-9]{8}" />
       <label>المدينة</label>
       <input name="city" placeholder="الرياض" />
-      <input type="hidden" name="pack" id="packField" value="2" />
-      <button class="btn" style="width:100%;margin-top:12px;padding:16px" type="submit">
-        أكّد الطلب — <span class="ctaPrice">299</span> ر.س عند الاستلام
+      <input type="hidden" name="pack" id="packField" value="1" />
+      <button class="btn btn-cta btn-order" type="submit">
+        أكّد الطلب — من 195 ر.س
+        <small><span class="ctaPrice">195</span> ر.س عند الاستلام</small>
       </button>
     </form>
     <div class="trust">
@@ -392,7 +671,18 @@
       <span>✓ الدفع عند الاستلام</span>
       <span>✓ رضا أو استرجاع</span>
     </div>
-  </aside>
+    </aside>
+
+  <div class="exit" id="exitOffer" role="dialog" aria-modal="true">
+    <div class="exit-card">
+      <p class="chip">لحظة — لا تفوّت فجر الغد</p>
+      <h3>كمّل الطلب الحين وخذ 10%</h3>
+      <b id="exitPrice">176 ر.س</b>
+      <p style="color:#5c564c;line-height:1.8">خصم بركة الفجر على باقتك. العرض يظهر مرة واحدة، والدفع يبقى عند الاستلام داخل السعودية.</p>
+      <button class="btn btn-cta btn-order" type="button" onclick="acceptExitOffer()">خذ الخصم وكمّل الطلب</button>
+      <button class="exit-skip" type="button" onclick="declineExitOffer()">إغلاق بدون خصم</button>
+    </div>
+  </div>
 
   <script>
     /* ── إعدادات الإعلانات والطلبات: عبّي غير هاد الثلاثة ── */
@@ -404,35 +694,46 @@
     };
 
     const offers = [
-      { id: "1", price: 195, title: "سوار واحد", desc: "رحلة التزام تخصّك أنت", img: "./product-studio.jpg", old: "", save: "", badge: "", disc: "" },
+      { id: "1", price: 195, title: "سُكون لك", desc: "تبدأ فجرك أنت، بهدوء", img: "./product-studio.jpg", old: "", save: "", badge: "", disc: "" },
       { id: "2", price: 299, title: "باقة الأجر المضاعف", desc: "قطعة لك وهدية لمن تحب", img: "./pack-two.jpg", old: "390 ر.س", save: "وفّرت 91 ر.س", badge: "الأكثر طلبًا – خصم 23%", disc: "23%-" },
       { id: "3", price: 499, title: "باقة فجر العائلة", desc: "3 + الرابعة هدية", img: "./pack-family.jpg", old: "780 ر.س", save: "وفّرت 281 ر.س", badge: "الأفضل للعائلات", disc: "36%-" }
     ];
-    let selected = "2";
+    let selected = "1";
+    let exitDiscount = false;
+    let orderSent = false;
 
+    function packById(id) {
+      return offers.find((o) => o.id === id) || offers[0];
+    }
+    function chargedPrice(pack) {
+      var p = pack.price;
+      return exitDiscount ? Math.round(p * 0.9) : p;
+    }
     function setPrice(p) {
       document.querySelectorAll(".ctaPrice, #ctaPrice").forEach((el) => { el.textContent = p; });
+      var ep = document.getElementById("exitPrice");
+      if (ep) ep.textContent = Math.round(packById(selected).price * 0.9) + " ر.س";
     }
     function pick(el) {
       document.querySelectorAll(".offer").forEach((n) => n.classList.remove("on"));
       el.classList.add("on");
       selected = el.dataset.id;
-      setPrice(el.dataset.price);
+      setPrice(chargedPrice(packById(selected)));
       const pf = document.getElementById("packField");
       if (pf) pf.value = selected;
     }
     function renderSheetOffers() {
       const box = document.getElementById("sheetOffers");
       box.innerHTML = offers.map((o) => `
-        <article class="offer ${o.id === selected ? "on" : ""}" data-id="${o.id}" data-price="${o.price}" onclick="pick(this)">
+        <article class="offer ${o.id === selected ? "on" : ""}" data-id="${o.id}" data-price="${chargedPrice(o)}" onclick="pick(this)">
           ${o.badge ? `<span class="badge">${o.badge}</span>` : ""}
           ${o.disc ? `<span class="disc">${o.disc}</span>` : ""}
           <img src="${o.img}" alt="" />
           <div>
             <h3>${o.title}</h3>
             <p>${o.desc}</p>
-            <div><span class="gold-price">${o.price} ر.س</span>${o.old ? `<span class="old">${o.old}</span>` : ""}</div>
-            ${o.save ? `<span class="save">${o.save}</span>` : ""}
+            <div><span class="gold-price">${chargedPrice(o)} ر.س</span>${exitDiscount ? `<span class="old">${o.price} ر.س</span>` : (o.old ? `<span class="old">${o.old}</span>` : "")}</div>
+            ${exitDiscount ? `<span class="save">خصم بركة الفجر 10%</span>` : (o.save ? `<span class="save">${o.save}</span>` : "")}
           </div>
           <span class="check"></span>
         </article>
@@ -440,15 +741,39 @@
     }
     function openSheet() {
       renderSheetOffers();
+      setPrice(chargedPrice(packById(selected)));
       document.getElementById("sheetBg").classList.add("show");
       document.getElementById("sheet").classList.add("show");
       document.body.style.overflow = "hidden";
+      document.querySelector(".sticky").style.display = "none";
       if (window.fbq) window.fbq("track", "InitiateCheckout", { currency: "SAR" });
     }
+    function tryCloseSheet() {
+      if (orderSent) { closeSheet(); return; }
+      if (!exitDiscount && !sessionStorage.getItem("sk_exit_shown")) {
+        sessionStorage.setItem("sk_exit_shown", "1");
+        document.getElementById("exitOffer").classList.add("show");
+        setPrice(chargedPrice(packById(selected)));
+        return;
+      }
+      closeSheet();
+    }
+    function acceptExitOffer() {
+      exitDiscount = true;
+      document.getElementById("exitOffer").classList.remove("show");
+      renderSheetOffers();
+      setPrice(chargedPrice(packById(selected)));
+    }
+    function declineExitOffer() {
+      document.getElementById("exitOffer").classList.remove("show");
+      closeSheet();
+    }
     function closeSheet() {
+      document.getElementById("exitOffer").classList.remove("show");
       document.getElementById("sheetBg").classList.remove("show");
       document.getElementById("sheet").classList.remove("show");
       document.body.style.overflow = "";
+      document.querySelector(".sticky").style.display = "";
     }
     function postToSheet(payload) {
       var iframe = document.getElementById("gsFrame");
@@ -475,7 +800,9 @@
         btn.textContent = "جاري إرسال الطلب…";
       }
       const fd = new FormData(form);
-      const pack = offers.find((o) => o.id === selected);
+      const pack = packById(selected);
+      const price = chargedPrice(pack);
+      orderSent = true;
       const payload = {
         brand: "sukoon",
         name: (fd.get("name") || "").trim(),
@@ -483,15 +810,16 @@
         city: (fd.get("city") || "").trim(),
         pack_id: pack.id,
         pack_title: pack.title,
-        price: pack.price,
+        price: price,
+        discount: exitDiscount ? "10" : "0",
         created_at: new Date().toISOString()
       };
 
-      fireLead(pack.price, pack.title);
+      fireLead(price, pack.title);
       postToSheet(payload);
       setTimeout(function () {
         window.location.href = "./thank-you.html?name=" + encodeURIComponent(payload.name)
-          + "&value=" + encodeURIComponent(pack.price)
+          + "&value=" + encodeURIComponent(price)
           + "&content_name=" + encodeURIComponent(pack.title)
           + "&content_ids=" + encodeURIComponent(pack.id);
       }, 900);
@@ -504,15 +832,6 @@
     }
 
     function loadPixels() {
-      if (CONFIG.metaPixelId) {
-        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-        n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script',
-        'https://connect.facebook.net/en_US/fbevents.js');
-        fbq("init", CONFIG.metaPixelId);
-        fbq("track", "PageView");
-      }
       if (CONFIG.tiktokPixelId) {
         !function (w, d, t) {
           w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie"];
