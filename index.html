@@ -395,6 +395,14 @@
   </aside>
 
   <script>
+    /* ── إعدادات الإعلانات والطلبات: عبّي غير هاد الثلاثة ── */
+    const CONFIG = {
+      metaPixelId: "",
+      tiktokPixelId: "",
+      snapPixelId: "",
+      sheetWebhook: "https://script.google.com/macros/s/AKfycbxTidbmqTr6dKV7lOEmIQBR81R_Sv-VF8AA7UerWzvJ0wWd8pT5QtyyA9NIOGU7WLE9YQ/exec"
+    };
+
     const offers = [
       { id: "1", price: 195, title: "سوار واحد", desc: "رحلة التزام تخصّك أنت", img: "./product-studio.jpg", old: "", save: "", badge: "", disc: "" },
       { id: "2", price: 299, title: "باقة الأجر المضاعف", desc: "قطعة لك وهدية لمن تحب", img: "./pack-two.jpg", old: "390 ر.س", save: "وفّرت 91 ر.س", badge: "الأكثر طلبًا – خصم 23%", disc: "23%-" },
@@ -443,12 +451,74 @@
     }
     function sendOrder(e) {
       e.preventDefault();
-      const fd = new FormData(e.target);
+      const form = e.target;
+      const btn = form.querySelector("button[type=submit]");
+      if (btn) {
+        btn.disabled = true;
+        btn.textContent = "جاري إرسال الطلب…";
+      }
+      const fd = new FormData(form);
       const pack = offers.find((o) => o.id === selected);
-      const msg = `طلب سُكون%0A${pack.title} — ${pack.price} ر.س%0A${fd.get("name")}%0A${fd.get("phone")}%0A${fd.get("city") || ""}`;
-      window.open("https://wa.me/966500000000?text=" + msg, "_blank");
+      const payload = {
+        brand: "sukoon",
+        name: (fd.get("name") || "").trim(),
+        phone: (fd.get("phone") || "").trim(),
+        city: (fd.get("city") || "").trim(),
+        pack_id: pack.id,
+        pack_title: pack.title,
+        price: pack.price,
+        created_at: new Date().toISOString()
+      };
+
+      fireLead(pack.price, pack.title);
+
+      fetch(CONFIG.sheetWebhook, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "text/plain" },
+        body: JSON.stringify(payload)
+      }).catch(function () {});
+
+      form.innerHTML =
+        "<div class='hook' style='margin:0'>" +
+        "<p style='font-weight:800;font-size:18px'>تم استلام طلبك</p>" +
+        "<p>بنت من الفريق غادي تتصل على رقمك خلال ساعات لتأكيد الطلب والدفع عند الاستلام.</p>" +
+        "</div>";
       return false;
     }
+
+    function fireLead(value, contentName) {
+      if (window.fbq) window.fbq("track", "Lead", { value: value, currency: "SAR", content_name: contentName });
+      if (window.ttq) window.ttq.track("SubmitForm", { value: value, currency: "SAR" });
+      if (window.snaptr) window.snaptr("track", "SIGN_UP", { price: value, currency: "SAR" });
+    }
+
+    function loadPixels() {
+      if (CONFIG.metaPixelId) {
+        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+        n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq("init", CONFIG.metaPixelId);
+        fbq("track", "PageView");
+      }
+      if (CONFIG.tiktokPixelId) {
+        !function (w, d, t) {
+          w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie"];
+          ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};
+          for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);
+          ttq.load=function(e){var i="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||{};ttq._i[e]=[];ttq._i[e]._u=i;ttq._t=ttq._t||{};ttq._t[e]=+new Date;var n=document.createElement("script");n.async=!0;n.src=i+"?sdkid="+e+"&lib="+t;var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(n,s)};
+          ttq.load(CONFIG.tiktokPixelId); ttq.page();
+        }(window, document, "ttq");
+      }
+      if (CONFIG.snapPixelId) {
+        (function(e,t,n){if(e.snaptr)return;var a=e.snaptr=function(){a.handleRequest?a.handleRequest.apply(a,arguments):a.queue.push(arguments)};a.queue=[];var s=t.createElement("script");s.async=!0;s.src=n;var u=t.getElementsByTagName("script")[0];u.parentNode.insertBefore(s,u);})(window,document,"https://sc-static.net/scevent.min.js");
+        snaptr("init", CONFIG.snapPixelId);
+        snaptr("track", "PAGE_VIEW");
+      }
+    }
+    window.addEventListener("load", function () { setTimeout(loadPixels, 1200); });
   </script>
 </body>
 </html>
