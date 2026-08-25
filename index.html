@@ -397,7 +397,7 @@
   <script>
     /* ── إعدادات الإعلانات والطلبات: عبّي غير هاد الثلاثة ── */
     const CONFIG = {
-      metaPixelId: "",
+      metaPixelId: "1102428529130490",
       tiktokPixelId: "",
       snapPixelId: "",
       sheetWebhook: "https://script.google.com/macros/s/AKfycbxTidbmqTr6dKV7lOEmlQBR81R_Sv-VF8AA7UerWzvJ0wWd8pT5QtyyA9NlOGU7WLE9YQ/exec"
@@ -443,6 +443,7 @@
       document.getElementById("sheetBg").classList.add("show");
       document.getElementById("sheet").classList.add("show");
       document.body.style.overflow = "hidden";
+      if (window.fbq) window.fbq("track", "InitiateCheckout", { currency: "SAR" });
     }
     function closeSheet() {
       document.getElementById("sheetBg").classList.remove("show");
@@ -489,13 +490,15 @@
       fireLead(pack.price, pack.title);
       postToSheet(payload);
       setTimeout(function () {
-        window.location.href = "./thank-you.html?name=" + encodeURIComponent(payload.name);
+        window.location.href = "./thank-you.html?name=" + encodeURIComponent(payload.name)
+          + "&value=" + encodeURIComponent(pack.price)
+          + "&content_name=" + encodeURIComponent(pack.title)
+          + "&content_ids=" + encodeURIComponent(pack.id);
       }, 900);
       return false;
     }
 
     function fireLead(value, contentName) {
-      if (window.fbq) window.fbq("track", "Lead", { value: value, currency: "SAR", content_name: contentName });
       if (window.ttq) window.ttq.track("SubmitForm", { value: value, currency: "SAR" });
       if (window.snaptr) window.snaptr("track", "SIGN_UP", { price: value, currency: "SAR" });
     }
@@ -525,7 +528,7 @@
         snaptr("track", "PAGE_VIEW");
       }
     }
-    window.addEventListener("load", function () { setTimeout(loadPixels, 1200); });
+    loadPixels();
   </script>
 </body>
 </html>

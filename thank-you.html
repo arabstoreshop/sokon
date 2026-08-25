@@ -49,6 +49,15 @@
       font-weight: 800; border-radius: 999px; padding: 12px 22px; text-decoration: none;
     }
   </style>
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq("init", "1102428529130490");
+    fbq("track", "PageView");
+  </script>
 </head>
 <body>
   <div class="card">
@@ -65,8 +74,25 @@
     <a href="./index.html">العودة للرئيسية</a>
   </div>
   <script>
-    var q = new URLSearchParams(location.search).get("name");
-    if (q) document.getElementById("hi").textContent = "الله يعافيك يا " + q;
+    var params = new URLSearchParams(location.search);
+    var name = params.get("name");
+    if (name) document.getElementById("hi").textContent = "الله يعافيك يا " + name;
+    var value = parseFloat(params.get("value") || "0");
+    var contentName = params.get("content_name") || "سُكون";
+    var contentIds = params.get("content_ids") || "2";
+    if (value > 0) {
+      var firedKey = "sk_purchase_" + value + "_" + contentIds;
+      if (!sessionStorage.getItem(firedKey)) {
+        sessionStorage.setItem(firedKey, "1");
+        fbq("track", "Purchase", {
+          value: value,
+          currency: "SAR",
+          content_name: contentName,
+          content_ids: [contentIds],
+          content_type: "product"
+        });
+      }
+    }
   </script>
 </body>
 </html>
