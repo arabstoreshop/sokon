@@ -400,7 +400,7 @@
       metaPixelId: "",
       tiktokPixelId: "",
       snapPixelId: "",
-      sheetWebhook: "https://script.google.com/macros/s/AKfycbxTidbmqTr6dKV7lOEmIQBR81R_Sv-VF8AA7UerWzvJ0wWd8pT5QtyyA9NIOGU7WLE9YQ/exec"
+      sheetWebhook: "https://script.google.com/macros/s/AKfycbxTidbmqTr6dKV7lOEmlQBR81R_Sv-VF8AA7UerWzvJ0wWd8pT5QtyyA9NlOGU7WLE9YQ/exec"
     };
 
     const offers = [
@@ -449,6 +449,31 @@
       document.getElementById("sheet").classList.remove("show");
       document.body.style.overflow = "";
     }
+    function postToSheet(payload) {
+      var iframe = document.getElementById("gsFrame");
+      if (!iframe) {
+        iframe = document.createElement("iframe");
+        iframe.name = "gsFrame";
+        iframe.id = "gsFrame";
+        iframe.style.display = "none";
+        document.body.appendChild(iframe);
+      }
+      var form = document.createElement("form");
+      form.method = "POST";
+      form.action = CONFIG.sheetWebhook;
+      form.target = "gsFrame";
+      Object.keys(payload).forEach(function (key) {
+        var input = document.createElement("input");
+        input.type = "hidden";
+        input.name = key;
+        input.value = payload[key] == null ? "" : String(payload[key]);
+        form.appendChild(input);
+      });
+      document.body.appendChild(form);
+      form.submit();
+      setTimeout(function () { form.remove(); }, 2500);
+    }
+
     function sendOrder(e) {
       e.preventDefault();
       const form = e.target;
@@ -471,19 +496,10 @@
       };
 
       fireLead(pack.price, pack.title);
-
-      fetch(CONFIG.sheetWebhook, {
-        method: "POST",
-        mode: "no-cors",
-        headers: { "Content-Type": "text/plain" },
-        body: JSON.stringify(payload)
-      }).catch(function () {});
-
-      form.innerHTML =
-        "<div class='hook' style='margin:0'>" +
-        "<p style='font-weight:800;font-size:18px'>تم استلام طلبك</p>" +
-        "<p>بنت من الفريق غادي تتصل على رقمك خلال ساعات لتأكيد الطلب والدفع عند الاستلام.</p>" +
-        "</div>";
+      postToSheet(payload);
+      setTimeout(function () {
+        window.location.href = "./thank-you.html?name=" + encodeURIComponent(payload.name);
+      }, 700);
       return false;
     }
 
