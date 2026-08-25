@@ -128,6 +128,9 @@
     .bad { color: #9a3b3b; }
     .night { background: var(--ink); color: #fff; }
     .night .sub { color: rgba(255,255,255,.62); }
+    .night .hadith, .night .card { color: var(--ink); }
+    .night .hadith q, .night .card h3 { color: var(--ink); }
+    .night .card p { color: #5c564c; }
     .steps { display: grid; gap: 18px; margin-top: 36px; }
     @media (min-width: 800px) { .steps { grid-template-columns: repeat(3, 1fr); } }
     .step { padding: 28px; border: 1px solid rgba(226,192,138,.25); border-radius: 28px; }
@@ -157,25 +160,22 @@
     details p { margin-top: 8px; color: var(--mute); }
     .sticky {
       position: fixed; bottom: 0; left: 0; right: 0; z-index: 40;
-      display: flex; align-items: center; justify-content: space-between; gap: 12px;
-      padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+      padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
       background: #0b0f16;
       border-top: 1px solid var(--gold);
       box-shadow: 0 -16px 40px rgba(0,0,0,.35);
     }
-    .sticky-copy { color: #fff; min-width: 0; }
-    .sticky-copy p { font-size: 13px; font-weight: 800; line-height: 1.3; }
-    .sticky-copy span { display: block; margin-top: 3px; font-size: 12px; color: rgba(255,255,255,.55); font-weight: 700; }
-    .sticky-copy strong { color: var(--gold); font-weight: 900; }
     .sticky-btn {
-      flex-shrink: 0;
-      border: 0; cursor: pointer;
+      width: 100%; border: 0; cursor: pointer;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 2px;
       background: linear-gradient(180deg, #f0d7a4 0%, #e2c08a 42%, #c9a46a 100%);
-      color: #070b12; font: 800 14px Tajawal, sans-serif;
-      border-radius: 999px; padding: 13px 18px;
+      color: #070b12; font: 800 17px Tajawal, sans-serif;
+      border-radius: 16px; padding: 12px 16px;
       box-shadow: 0 6px 20px rgba(226,192,138,.4), inset 0 1px 0 rgba(255,255,255,.45);
       animation: stickyShake 2.8s ease-in-out infinite;
     }
+    .sticky-btn small { font-size: 12px; font-weight: 700; opacity: .72; }
     @keyframes stickyShake {
       0%, 78%, 100% { transform: rotate(0) translateX(0); }
       82% { transform: rotate(-3deg) translateX(-2px); }
@@ -238,7 +238,7 @@
       background: #fff; border-radius: 24px; padding: 22px 22px 18px;
       border: 1px solid rgba(226,192,138,.35);
     }
-    .hadith q { font-family: Amiri, serif; font-size: 20px; line-height: 1.9; display: block; }
+    .hadith q { font-family: Amiri, serif; font-size: 20px; line-height: 1.9; display: block; color: var(--ink); quotes: none; }
     .hadith span { display: block; margin-top: 8px; color: var(--gold-2); font-size: 13px; font-weight: 800; }
     .gallery figcaption { margin-top: 8px; font-size: 13px; font-weight: 800; color: var(--mute); text-align: center; }
     .review h3 { font-size: 18px; margin: 6px 0 10px; }
@@ -250,18 +250,28 @@
     .box-list { margin-top: 22px; background: #fff; border-radius: 24px; padding: 22px 24px; }
     .box-list li { margin: 8px 0; font-weight: 700; }
     footer {
-      background: var(--ink); color: rgba(255,255,255,.62);
-      padding: 56px 16px 120px; text-align: right;
+      background: #070b12; color: rgba(255,255,255,.62);
+      padding: 64px 16px 140px; text-align: right;
+      border-top: 1px solid rgba(226,192,138,.22);
     }
     .foot {
-      display: grid; gap: 28px; max-width: 1120px; margin: 0 auto;
+      display: grid; gap: 32px; max-width: 1120px; margin: 0 auto;
     }
-    @media (min-width: 800px) { .foot { grid-template-columns: 1.2fr 1fr 1fr; } }
-    .foot h4 { color: var(--gold); font-size: 14px; margin-bottom: 10px; letter-spacing: .12em; }
-    .foot p, .foot li { font-size: 13px; line-height: 1.8; }
+    @media (min-width: 800px) { .foot { grid-template-columns: 1.4fr .9fr .9fr .9fr; } }
+    .foot h4 { color: var(--gold); font-size: 12px; margin-bottom: 14px; letter-spacing: .18em; font-weight: 800; }
+    .foot p, .foot li { font-size: 14px; line-height: 1.9; }
     .foot ul { list-style: none; }
-    .foot-brand { font-size: 28px; font-weight: 900; color: var(--gold); }
-    .foot-copy { margin-top: 36px; text-align: center; font-size: 12px; color: rgba(255,255,255,.38); }
+    .foot a { color: rgba(255,255,255,.72); }
+    .foot-brand { font-size: 32px; font-weight: 900; color: var(--gold); }
+    .foot-tag { color: var(--gold); letter-spacing: .22em; font-size: 11px; margin: 4px 0 12px; }
+    .foot-bar {
+      max-width: 1120px; margin: 36px auto 0;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+      padding: 18px 0 0; border-top: 1px solid rgba(226,192,138,.18);
+      font-size: 12px; font-weight: 800; color: var(--gold);
+    }
+    @media (min-width: 800px) { .foot-bar { grid-template-columns: repeat(4, 1fr); text-align: center; } }
+    .foot-copy { margin-top: 22px; text-align: center; font-size: 12px; color: rgba(255,255,255,.38); }
     .sheet {
       position: fixed; left: 0; right: 0; bottom: 0; z-index: 90;
       background: #f7f3ea; border-radius: 22px 22px 0 0;
@@ -477,8 +487,8 @@
           <figcaption>تفاصيل السوار</figcaption>
         </figure>
         <figure>
-          <img src="./product.jpg" alt="سُكون من زاوية الاستوديو" />
-          <figcaption>خفة المقاس</figcaption>
+          <img src="./pack-one.jpg" alt="قطعة سُكون في علبة الإهداء" />
+          <figcaption>القطعة الواحدة</figcaption>
         </figure>
         <figure>
           <img src="./dawn-room.jpg" alt="غرفة هادئة وقت الفجر" />
@@ -609,17 +619,25 @@
     <div class="foot">
       <div>
         <p class="foot-brand">سُكون</p>
-        <p>SUKOON · رفيق صلاة الفجر</p>
-        <p style="margin-top:10px">سوار اهتزاز صامت يوقظك للفجر بدون ما يوقظ أهل البيت. تتوضأ فيه، والجوال يبقى برا الغرفة.</p>
+        <p class="foot-tag">SUKOON</p>
+        <p>سوار اهتزاز صامت يوقظك للفجر بدون ما يوقظ أهل البيت. تتوضأ فيه، والجوال يبقى برا الغرفة.</p>
       </div>
       <div>
-        <h4>الشحن والدفع</h4>
+        <h4>التسوق</h4>
         <ul>
-          <li>شحن داخل جميع مدن السعودية</li>
-          <li>التوصيل خلال 1–3 أيام عمل</li>
-          <li>شحن مجاني على كل الطلبات</li>
+          <li><a href="#order" onclick="openSheet(); return false;">اطلب سُكون</a></li>
+          <li><a href="#diff">ليش سُكون</a></li>
+          <li>الباقات من 195 ر.س</li>
+          <li>شحن 1–3 أيام داخل السعودية</li>
+        </ul>
+      </div>
+      <div>
+        <h4>الدفع والضمان</h4>
+        <ul>
           <li>الدفع عند الاستلام نقداً أو بطاقة</li>
-          <li>معاينة المنتج عند الباب قبل الدفع</li>
+          <li>معاينة المنتج عند الباب</li>
+          <li>شحن مجاني على كل الطلبات</li>
+          <li>رضا أو استرجاع</li>
         </ul>
       </div>
       <div>
@@ -628,20 +646,24 @@
           <li>سُكون — متجر إلكتروني</li>
           <li>المملكة العربية السعودية</li>
           <li>sokon.shop</li>
-          <li>رضا أو استرجاع</li>
           <li>فريقنا يتصل لتأكيد الطلب</li>
         </ul>
       </div>
+    </div>
+    <div class="foot-bar">
+      <span>شحن مجاني</span>
+      <span>الدفع عند الاستلام</span>
+      <span>معاينة قبل الدفع</span>
+      <span>رضا أو استرجاع</span>
     </div>
     <p class="foot-copy">© سُكون · sokon.shop · جميع الحقوق محفوظة</p>
   </footer>
 
   <div class="sticky">
-    <div class="sticky-copy">
-      <p>سُكون — رفيقك لصلاة الفجر</p>
-      <span>من <strong>195 ر.س</strong> · الدفع عند الاستلام</span>
-    </div>
-    <button class="sticky-btn" type="button" onclick="openSheet()">اطلبه الآن بضمان كامل</button>
+    <button class="sticky-btn" type="button" onclick="openSheet()">
+      صحّ فجرك الليلة — 195 ر.س
+      <small>الدفع عند الباب · شحن مجاني</small>
+    </button>
   </div>
 
   <div class="sheet-bg" id="sheetBg" onclick="tryCloseSheet()"></div>
@@ -694,7 +716,7 @@
     };
 
     const offers = [
-      { id: "1", price: 195, title: "سُكون لك", desc: "تبدأ فجرك أنت، بهدوء", img: "./product-studio.jpg", old: "", save: "", badge: "", disc: "" },
+      { id: "1", price: 195, title: "سُكون لك", desc: "قطعة واحدة في علبة الإهداء — تبدأ فجرك بهدوء", img: "./pack-one.jpg", old: "", save: "الدفع عند الباب", badge: "القطعة الواحدة", disc: "" },
       { id: "2", price: 299, title: "باقة الأجر المضاعف", desc: "قطعة لك وهدية لمن تحب", img: "./pack-two.jpg", old: "390 ر.س", save: "وفّرت 91 ر.س", badge: "الأكثر طلبًا – خصم 23%", disc: "23%-" },
       { id: "3", price: 499, title: "باقة فجر العائلة", desc: "3 + الرابعة هدية", img: "./pack-family.jpg", old: "780 ر.س", save: "وفّرت 281 ر.س", badge: "الأفضل للعائلات", disc: "36%-" }
     ];
