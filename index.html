@@ -161,7 +161,7 @@
     }
     input, select {
       width: 100%; padding: 14px 16px; border-radius: 16px; border: 1px solid #e6e0d6;
-      font: inherit;
+      font: inherit; text-align: right;
     }
     details { border-bottom: 1px solid #e8e2d8; padding: 16px 0; }
     summary { font-weight: 800; cursor: pointer; }
@@ -292,23 +292,31 @@
     .sheet.show { transform: translateY(0); }
     .sheet-head h3 { font-size: 17px; font-weight: 800; }
     .sheet-hero { display: none; }
-    #sheetOffers { display: none; }
-    .sheet.step2 #sheetOffers { display: block; }
-    .sheet form .only-step1,
-    .sheet form .only-step2 { display: contents; }
-    .sheet.step2 .only-step1 { display: none; }
-    .sheet.step1 .only-step2 { display: none; }
+    #sheetOffers { display: grid; gap: 8px; margin-bottom: 6px; }
     .sheet .offer {
-      grid-template-columns: 64px 1fr; padding: 10px 10px 10px 8px; margin-top: 8px;
-      gap: 10px; border-radius: 16px;
+      grid-template-columns: 86px 1fr; padding: 10px 12px; margin-top: 0;
+      gap: 12px; border-radius: 18px; align-items: center;
+      background: #fff; border: 1px solid #e6dccb;
+      box-shadow: 0 4px 14px rgba(7,11,18,.04);
     }
-    .sheet .offer img { width: 64px; height: 64px; border-radius: 12px; }
-    .sheet .offer h3 { font-size: 13px; margin: 0; }
-    .sheet .offer p { display: block; font-size: 11px; line-height: 1.45; color: #6b645a; margin: 3px 0 4px; }
-    .sheet .gold-price { font-size: 15px; }
-    .sheet .save, .sheet .old { font-size: 10px; }
-    .sheet .badge, .sheet .disc { font-size: 9px; padding: 2px 6px; top: 6px; }
-    .sheet .check { width: 16px; height: 16px; bottom: 8px; left: 8px; }
+    .sheet .offer.hot { background: #fffaf1; }
+    .sheet .offer.on {
+      border: 2px solid #c9a46a;
+      background: linear-gradient(180deg, #fffdf8 0%, #f4ead6 100%);
+      box-shadow: 0 10px 28px rgba(201,164,106,.22);
+    }
+    .sheet .offer img { width: 86px; height: 78px; border-radius: 14px; object-fit: cover; }
+    .sheet .offer h3 { font-size: 14px; margin: 0 0 2px; font-weight: 900; }
+    .sheet .offer p { display: block; font-size: 12px; line-height: 1.45; color: #6b645a; margin: 0 0 6px; }
+    .sheet .gold-price { font-size: 18px; }
+    .sheet .save, .sheet .old { font-size: 11px; }
+    .sheet .badge {
+      position: static; display: inline-block; margin-bottom: 4px;
+      font-size: 10px; padding: 3px 8px;
+    }
+    .sheet .disc { font-size: 10px; padding: 3px 7px; top: 8px; right: 8px; }
+    .sheet .check { width: 20px; height: 20px; bottom: auto; left: 10px; top: 50%; transform: translateY(-50%); }
+    .sheet .offer.on .check { transform: translateY(-50%); }
     .sheet form {
       padding: 10px 12px; gap: 5px; border-radius: 16px; margin-top: 8px;
       flex: 1; min-height: 0;
@@ -367,7 +375,8 @@
       color: #fff; font-weight: 800; font-size: 14px;
     }
     .sheet input[name="phone"] {
-      letter-spacing: .12em; font-weight: 800; font-size: 17px;
+      letter-spacing: .08em; font-weight: 800; font-size: 16px;
+      text-align: right; direction: rtl;
     }
     .specs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 14px; }
     @media (min-width: 800px) { .specs { grid-template-columns: repeat(4, 1fr); } }
@@ -665,31 +674,25 @@
   </div>
 
   <div class="sheet-bg" id="sheetBg" onclick="tryCloseSheet()"></div>
-  <aside class="sheet step1" id="sheet" role="dialog" aria-modal="true">
+  <aside class="sheet" id="sheet" role="dialog" aria-modal="true">
     <div class="handle"></div>
     <div class="sheet-head">
-      <h3 id="sheetTitle">بياناتك</h3>
+      <h3>كمّل طلب فجرك</h3>
       <button class="x" type="button" onclick="tryCloseSheet()">×</button>
     </div>
-    <img class="sheet-hero" src="./dawn-room.jpg" alt="" />
+    <div id="sheetOffers"></div>
     <form id="orderForm" onsubmit="return sendOrder(event)">
-      <div class="only-step1">
-        <label>الاسم</label>
-        <input required name="name" placeholder="اسمك" autocomplete="name" />
-        <label>الجوال</label>
-        <input required name="phone" type="tel" inputmode="numeric" autocomplete="tel" dir="ltr" placeholder="05xxxxxxxx" pattern="05[0-9]{8}" />
-        <label>المدينة</label>
-        <input name="city" placeholder="الرياض" autocomplete="address-level2" />
-        <button class="btn btn-cta btn-order" type="button" onclick="showOffers()">التالي — اختر باقتك</button>
-      </div>
-      <div id="sheetOffers"></div>
-      <div class="only-step2">
-        <input type="hidden" name="pack" id="packField" value="2" />
-        <button class="btn btn-cta btn-order" type="submit">
-          أكّد الطلب
-          <small><span class="ctaPrice">299</span> ر.س عند الاستلام</small>
-        </button>
-      </div>
+      <label>الاسم</label>
+      <input required name="name" placeholder="اسمك" autocomplete="name" />
+      <label>الجوال</label>
+      <input required name="phone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="05xxxxxxxx" pattern="05[0-9]{8}" />
+      <label>المدينة</label>
+      <input name="city" placeholder="الرياض" autocomplete="address-level2" />
+      <input type="hidden" name="pack" id="packField" value="2" />
+      <button class="btn btn-cta btn-order" type="submit">
+        أكّد الطلب
+        <small><span class="ctaPrice">299</span> ر.س عند الاستلام</small>
+      </button>
     </form>
     <div class="trust">
       <span>✓ شحن مجاني</span>
@@ -750,11 +753,11 @@
     function renderSheetOffers() {
       const box = document.getElementById("sheetOffers");
       box.innerHTML = offers.map((o) => `
-        <article class="offer ${o.id === selected ? "on" : ""}" data-id="${o.id}" data-price="${chargedPrice(o)}" onclick="pick(this)">
-          ${o.badge ? `<span class="badge">${o.badge}</span>` : ""}
+        <article class="offer ${o.id === selected ? "on" : ""} ${o.id === "2" ? "hot" : ""}" data-id="${o.id}" data-price="${chargedPrice(o)}" onclick="pick(this)">
           ${o.disc ? `<span class="disc">${o.disc}</span>` : ""}
           <img src="${o.img}" alt="" />
           <div>
+            ${o.badge ? `<span class="badge">${o.badge}</span>` : ""}
             <h3>${o.title}</h3>
             <p>${o.desc}</p>
             <div><span class="gold-price">${chargedPrice(o)} ر.س</span>${exitDiscount ? `<span class="old">${o.price} ر.س</span>` : (o.old ? `<span class="old">${o.old}</span>` : "")}</div>
@@ -764,31 +767,18 @@
         </article>
       `).join("");
     }
-    function showOffers() {
-      var form = document.getElementById("orderForm");
-      if (!form.name.reportValidity()) { form.name.focus(); return; }
-      if (!form.phone.reportValidity()) { form.phone.focus(); return; }
-      var sheet = document.getElementById("sheet");
-      sheet.classList.remove("step1");
-      sheet.classList.add("step2");
-      document.getElementById("sheetTitle").textContent = "اختر باقتك";
+    function openSheet() {
       renderSheetOffers();
       setPrice(chargedPrice(packById(selected)));
-    }
-    function openSheet() {
-      var sheet = document.getElementById("sheet");
-      sheet.classList.remove("step2");
-      sheet.classList.add("step1", "show");
-      document.getElementById("sheetTitle").textContent = "بياناتك";
       document.getElementById("sheetBg").classList.add("show");
+      document.getElementById("sheet").classList.add("show");
       document.body.style.overflow = "hidden";
       document.querySelector(".sticky").style.display = "none";
       if (window.fbq) window.fbq("track", "InitiateCheckout", { currency: "SAR" });
     }
     function tryCloseSheet() {
       if (orderSent) { closeSheet(); return; }
-      var onOffers = document.getElementById("sheet").classList.contains("step2");
-      if (onOffers && !exitDiscount && !sessionStorage.getItem("sk_exit_shown")) {
+      if (!exitDiscount && !sessionStorage.getItem("sk_exit_shown")) {
         sessionStorage.setItem("sk_exit_shown", "1");
         document.getElementById("exitOffer").classList.add("show");
         setPrice(chargedPrice(packById(selected)));
@@ -809,10 +799,7 @@
     function closeSheet() {
       document.getElementById("exitOffer").classList.remove("show");
       document.getElementById("sheetBg").classList.remove("show");
-      var sheet = document.getElementById("sheet");
-      sheet.classList.remove("show", "step2");
-      sheet.classList.add("step1");
-      document.getElementById("sheetTitle").textContent = "بياناتك";
+      document.getElementById("sheet").classList.remove("show");
       document.body.style.overflow = "";
       document.querySelector(".sticky").style.display = "";
     }
@@ -834,10 +821,6 @@
 
     function sendOrder(e) {
       e.preventDefault();
-      if (!document.getElementById("sheet").classList.contains("step2")) {
-        showOffers();
-        return false;
-      }
       const form = e.target;
       const btn = form.querySelector("button[type=submit]");
       if (btn) {
