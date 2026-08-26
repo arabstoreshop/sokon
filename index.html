@@ -435,11 +435,15 @@
       background: linear-gradient(transparent, rgba(7,11,18,.88));
       color: #fff; font-weight: 800; font-size: 14px;
     }
-    .phone-row { display: grid; grid-template-columns: 72px 1fr; gap: 8px; align-items: stretch; }
+    .phone-row {
+      display: grid; grid-template-columns: 72px 1fr; gap: 8px; align-items: stretch;
+      direction: ltr;
+    }
     .phone-row .cc {
       display: grid; place-items: center; background: #f3ead8; border-radius: 12px;
-      font-weight: 800; font-size: 13px; color: var(--ink);
+      font-weight: 800; font-size: 13px; color: var(--ink); direction: ltr;
     }
+    .phone-row input { direction: ltr; text-align: left; }
     .form-box {
       border: 1.5px dashed #d4b483; border-radius: 18px; padding: 12px;
       display: grid; gap: 8px; background: #fffdf8;
