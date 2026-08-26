@@ -288,7 +288,12 @@
     .sheet.show { transform: translateY(0); }
     .sheet-head h3 { font-size: 17px; font-weight: 800; }
     .sheet-hero { display: none; }
-    #sheetOffers { flex: 0 0 auto; }
+    #sheetOffers { display: none; }
+    .sheet.step2 #sheetOffers { display: block; }
+    .sheet form .only-step1,
+    .sheet form .only-step2 { display: contents; }
+    .sheet.step2 .only-step1 { display: none; }
+    .sheet.step1 .only-step2 { display: none; }
     .sheet .offer {
       grid-template-columns: 56px 1fr; padding: 7px 8px; margin-top: 6px;
       gap: 8px; border-radius: 14px;
@@ -395,8 +400,8 @@
       </p>
       <div class="hero-cta">
         <button class="btn btn-cta" type="button" onclick="openSheet()">
-          اطلب سُكون — الأكثر طلباً
-          <small>قطعة لك وهدية · 299 ر.س عند الاستلام</small>
+          اطلب سُكون — 195 ر.س
+          <small>الدفع عند الاستلام · شحن مجاني داخل المملكة</small>
         </button>
       </div>
       <div class="stats">
@@ -493,7 +498,7 @@
         <div class="card"><h3>بركة الوقت</h3><p>من قام للفجر يُوفَّق غالباً في يومه: ساعات أطول، وهمّ أخف إن شاء الله.</p></div>
         <div class="card"><h3>ستر أهل البيت</h3><p>تقوم بهدوء. زوجتك وأطفالك يكملون نومهم. ما في صراخ منبه.</p></div>
       </div>
-      <button class="btn btn-cta btn-order" type="button" onclick="openSheet()">اطلب رفيق فجرك<small>الأكثر طلباً · الدفع عند الاستلام</small></button>
+      <button class="btn btn-cta btn-order" type="button" onclick="openSheet()">اطلب رفيق فجرك — 195 ر.س<small>الدفع عند الاستلام داخل السعودية</small></button>
     </div>
   </section>
 
@@ -583,7 +588,7 @@
           <p class="who"><b>ماجد ك.</b> · بريدة · موثّق ✓</p>
         </article>
       </div>
-      <button class="btn btn-cta btn-order" type="button" onclick="openSheet()">انضم إليهم — اطلب باقتك<small>الأكثر طلباً · الدفع عند الاستلام</small></button>
+      <button class="btn btn-cta btn-order" type="button" onclick="openSheet()">انضم إليهم — اطلب سُكون<small>195 ر.س · الدفع عند الاستلام</small></button>
     </div>
   </section>
 
@@ -597,11 +602,11 @@
   <section class="cta-block" id="order">
     <div class="wrap" style="max-width:520px">
       <p class="kicker" style="color:var(--gold-2)">ابدأ الليلة</p>
-      <h2>الأكثر طلباً — لك ولمن تحب</h2>
-      <p class="sub" style="margin-inline:auto">قطعة لك وهدية. الدفع عند الباب بعد المعاينة. شحن 1–3 أيام داخل السعودية.</p>
+      <h2>سُكون لك — 195 ر.س</h2>
+      <p class="sub" style="margin-inline:auto">الدفع عند الباب بعد المعاينة. شحن 1–3 أيام داخل السعودية.</p>
       <button class="btn btn-cta btn-order" type="button" onclick="openSheet()">
-        اطلب الأكثر طلباً
-        <small>299 ر.س عند الاستلام</small>
+        اطلب الآن — 195 ر.س
+        <small>شحن مجاني · الدفع عند الاستلام</small>
       </button>
       <div class="trust">
         <span>✓ شحن 1–3 أيام داخل المملكة</span>
@@ -671,35 +676,40 @@
   <div class="sticky">
     <div class="sticky-copy">
       <p>فجرك الليلة — البيت نايم</p>
-      <span>الأكثر طلباً · <strong>299 ر.س</strong> عند الباب</span>
+      <span>من <strong>195 ر.س</strong> · الدفع عند الباب</span>
     </div>
     <button class="sticky-btn" type="button" onclick="openSheet()">
-      اطلب باقتك
-      <small>قطعة لك وهدية</small>
+      اطلبه الآن
+      <small>شحن مجاني</small>
     </button>
   </div>
 
   <div class="sheet-bg" id="sheetBg" onclick="tryCloseSheet()"></div>
-  <aside class="sheet" id="sheet" role="dialog" aria-modal="true">
+  <aside class="sheet step1" id="sheet" role="dialog" aria-modal="true">
     <div class="handle"></div>
     <div class="sheet-head">
-      <h3>كمّل طلب فجرك</h3>
+      <h3 id="sheetTitle">بياناتك</h3>
       <button class="x" type="button" onclick="tryCloseSheet()">×</button>
     </div>
     <img class="sheet-hero" src="./dawn-room.jpg" alt="" />
-    <div id="sheetOffers"></div>
     <form id="orderForm" onsubmit="return sendOrder(event)">
-      <label>الاسم</label>
-      <input required name="name" placeholder="اسمك" autocomplete="name" />
-      <label>الجوال</label>
-      <input required name="phone" type="tel" inputmode="numeric" autocomplete="tel" dir="ltr" placeholder="05xxxxxxxx" pattern="05[0-9]{8}" />
-      <label>المدينة</label>
-      <input name="city" placeholder="الرياض" autocomplete="address-level2" />
-      <input type="hidden" name="pack" id="packField" value="2" />
-      <button class="btn btn-cta btn-order" type="submit">
-        أكّد الطلب
-        <small><span class="ctaPrice">299</span> ر.س عند الاستلام</small>
-      </button>
+      <div class="only-step1">
+        <label>الاسم</label>
+        <input required name="name" placeholder="اسمك" autocomplete="name" />
+        <label>الجوال</label>
+        <input required name="phone" type="tel" inputmode="numeric" autocomplete="tel" dir="ltr" placeholder="05xxxxxxxx" pattern="05[0-9]{8}" />
+        <label>المدينة</label>
+        <input name="city" placeholder="الرياض" autocomplete="address-level2" />
+        <button class="btn btn-cta btn-order" type="button" onclick="showOffers()">التالي — اختر باقتك</button>
+      </div>
+      <div id="sheetOffers"></div>
+      <div class="only-step2">
+        <input type="hidden" name="pack" id="packField" value="2" />
+        <button class="btn btn-cta btn-order" type="submit">
+          أكّد الطلب
+          <small><span class="ctaPrice">299</span> ر.س عند الاستلام</small>
+        </button>
+      </div>
     </form>
     <div class="trust">
       <span>✓ شحن مجاني</span>
@@ -774,18 +784,31 @@
         </article>
       `).join("");
     }
-    function openSheet() {
+    function showOffers() {
+      var form = document.getElementById("orderForm");
+      if (!form.name.reportValidity()) { form.name.focus(); return; }
+      if (!form.phone.reportValidity()) { form.phone.focus(); return; }
+      var sheet = document.getElementById("sheet");
+      sheet.classList.remove("step1");
+      sheet.classList.add("step2");
+      document.getElementById("sheetTitle").textContent = "اختر باقتك";
       renderSheetOffers();
       setPrice(chargedPrice(packById(selected)));
+    }
+    function openSheet() {
+      var sheet = document.getElementById("sheet");
+      sheet.classList.remove("step2");
+      sheet.classList.add("step1", "show");
+      document.getElementById("sheetTitle").textContent = "بياناتك";
       document.getElementById("sheetBg").classList.add("show");
-      document.getElementById("sheet").classList.add("show");
       document.body.style.overflow = "hidden";
       document.querySelector(".sticky").style.display = "none";
       if (window.fbq) window.fbq("track", "InitiateCheckout", { currency: "SAR" });
     }
     function tryCloseSheet() {
       if (orderSent) { closeSheet(); return; }
-      if (!exitDiscount && !sessionStorage.getItem("sk_exit_shown")) {
+      var onOffers = document.getElementById("sheet").classList.contains("step2");
+      if (onOffers && !exitDiscount && !sessionStorage.getItem("sk_exit_shown")) {
         sessionStorage.setItem("sk_exit_shown", "1");
         document.getElementById("exitOffer").classList.add("show");
         setPrice(chargedPrice(packById(selected)));
@@ -806,7 +829,10 @@
     function closeSheet() {
       document.getElementById("exitOffer").classList.remove("show");
       document.getElementById("sheetBg").classList.remove("show");
-      document.getElementById("sheet").classList.remove("show");
+      var sheet = document.getElementById("sheet");
+      sheet.classList.remove("show", "step2");
+      sheet.classList.add("step1");
+      document.getElementById("sheetTitle").textContent = "بياناتك";
       document.body.style.overflow = "";
       document.querySelector(".sticky").style.display = "";
     }
@@ -828,6 +854,10 @@
 
     function sendOrder(e) {
       e.preventDefault();
+      if (!document.getElementById("sheet").classList.contains("step2")) {
+        showOffers();
+        return false;
+      }
       const form = e.target;
       const btn = form.querySelector("button[type=submit]");
       if (btn) {

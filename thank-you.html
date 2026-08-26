@@ -3,51 +3,83 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>تم استلام طلبك | سُكون</title>
+  <title>طلبك في الطريق | سُكون</title>
+  <meta name="description" content="تم استلام طلب سُكون. فريقنا بيتصل عليك لتأكيد الطلب، والسوار يوصلك خلال 1–3 أيام. الدفع عند الباب." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;1,400&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;1,400&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
   <style>
-    :root { --ink:#070b12; --gold:#e2c08a; --cream:#f4eee4; }
+    :root { --ink:#070b12; --gold:#e2c08a; --gold-2:#c9a46a; --cream:#f4eee4; }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       min-height: 100vh;
       font-family: Tajawal, sans-serif;
-      background: var(--cream);
-      color: var(--ink);
-      display: grid;
-      place-items: center;
-      padding: 24px;
-    }
-    .card {
-      width: min(520px, 100%);
-      background: #fff;
-      border-radius: 28px;
-      padding: 40px 28px;
-      text-align: center;
-      box-shadow: 0 24px 70px rgba(7,11,18,.08);
-    }
-    .mark {
-      width: 56px; height: 56px; border-radius: 50%;
-      margin: 0 auto 18px;
       background: #070b12;
+      color: #fff;
+    }
+    .hero {
+      position: relative;
+      min-height: 42vh;
+      display: grid;
+      align-items: end;
+      overflow: hidden;
+    }
+    .hero img {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; opacity: .55;
+    }
+    .hero::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(7,11,18,.2), rgba(7,11,18,.96));
+    }
+    .hero-inner { position: relative; z-index: 1; padding: 28px 20px 32px; text-align: center; }
+    .mark {
+      width: 64px; height: 64px; border-radius: 50%; margin: 0 auto 16px;
+      background: #070b12; border: 1px solid var(--gold);
       display: grid; place-items: center;
     }
-    .mark svg { width: 40px; height: 40px; display: block; }
-    h1 { font-size: 28px; font-weight: 900; line-height: 1.3; margin-bottom: 12px; }
-    p { color: #5c564c; line-height: 1.8; }
-    .steps { text-align: right; margin: 28px 0; display: grid; gap: 12px; }
-    .steps div {
-      background: #f7f3ea; border-radius: 16px; padding: 14px 16px;
+    .mark svg { width: 40px; height: 40px; }
+    .ok {
+      display: inline-block; background: rgba(226,192,138,.16); color: var(--gold);
+      font-size: 12px; font-weight: 800; letter-spacing: .14em;
+      border-radius: 999px; padding: 6px 12px; margin-bottom: 12px;
     }
-    .steps b { color: #b8893e; }
+    h1 { font-size: clamp(28px, 7vw, 40px); font-weight: 900; line-height: 1.25; }
+    h1 span { color: var(--gold); }
     .wait {
-      font-family: Amiri, serif; font-size: 20px; color: #b8893e;
-      margin: 8px 0 22px;
+      font-family: Amiri, serif; font-size: 22px; color: var(--gold);
+      margin-top: 12px; line-height: 1.7;
     }
-    a {
-      display: inline-block; background: var(--gold); color: var(--ink);
-      font-weight: 800; border-radius: 999px; padding: 12px 22px; text-decoration: none;
+    .wrap { width: min(560px, calc(100% - 32px)); margin: 0 auto; padding: 8px 0 48px; }
+    .call {
+      background: linear-gradient(180deg, #f0d7a4, #c9a46a);
+      color: #070b12; border-radius: 24px; padding: 22px 20px;
+      text-align: center; margin-top: -12px;
+      box-shadow: 0 16px 40px rgba(226,192,138,.28);
+    }
+    .call b { display: block; font-size: 22px; font-weight: 900; }
+    .call p { margin-top: 6px; font-weight: 700; opacity: .78; }
+    .steps { margin-top: 28px; display: grid; gap: 12px; }
+    .steps article {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(226,192,138,.18);
+      border-radius: 20px; padding: 16px 18px;
+    }
+    .steps b { color: var(--gold); font-size: 12px; letter-spacing: .12em; }
+    .steps h3 { font-size: 18px; margin: 4px 0 6px; }
+    .steps p { color: rgba(255,255,255,.62); font-size: 14px; line-height: 1.7; }
+    .prod {
+      margin-top: 24px; border-radius: 24px; overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0,0,0,.35);
+    }
+    .prod img { width: 100%; display: block; }
+    .note {
+      margin-top: 22px; text-align: center; color: rgba(255,255,255,.58);
+      line-height: 1.8; font-size: 14px;
+    }
+    .back {
+      display: block; margin: 28px auto 0; text-align: center;
+      color: rgba(255,255,255,.4); font-size: 13px; text-decoration: none;
     }
   </style>
   <script>
@@ -62,25 +94,51 @@
   <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1102428529130490&ev=PageView&noscript=1" alt="" /></noscript>
 </head>
 <body>
-  <div class="card">
-    <div class="mark" aria-hidden="true">
-      <svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="23" stroke="#e2c08a" stroke-width="2.15" stroke-linecap="round" stroke-dasharray="122 22" transform="rotate(-90 32 32)"/><path fill="#e2c08a" d="M36.2 19.8c7.4 2.2 12.4 9.2 12.4 17.2 0 10-8.1 18.1-18.1 18.1-4.4 0-8.4-1.6-11.5-4.2 3.8 3.6 9 5.8 14.6 5.8 11.2 0 20.3-9.1 20.3-20.3 0-8.4-5.1-15.6-12.4-18.6-.8 0-3.4.4-5.3 2z"/><circle cx="46.2" cy="17.8" r="2.15" fill="#f4eee4"/></svg>
+  <section class="hero">
+    <img src="./dawn-room.jpg" alt="" />
+    <div class="hero-inner">
+      <div class="mark" aria-hidden="true">
+        <svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="23" stroke="#e2c08a" stroke-width="2.15" stroke-linecap="round" stroke-dasharray="122 22" transform="rotate(-90 32 32)"/><path fill="#e2c08a" d="M36.2 19.8c7.4 2.2 12.4 9.2 12.4 17.2 0 10-8.1 18.1-18.1 18.1-4.4 0-8.4-1.6-11.5-4.2 3.8 3.6 9 5.8 14.6 5.8 11.2 0 20.3-9.1 20.3-20.3 0-8.4-5.1-15.6-12.4-18.6-.8 0-3.4.4-5.3 2z"/><circle cx="46.2" cy="17.8" r="2.15" fill="#f4eee4"/></svg>
+      </div>
+      <p class="ok">تم استلام الطلب</p>
+      <h1>فجرك في الطريق.<br /><span>خلّ الجوال مفتوح.</span></h1>
+      <p class="wait" id="hi">سُكون</p>
     </div>
-    <h1>تم استلام طلبك</h1>
-    <p class="wait" id="hi">سُكون</p>
-    <p>ما تحتاج تسوي شيء الحين. فريقنا بيتصل على رقمك لتأكيد الطلب، والدفعة عند الاستلام.</p>
+  </section>
+
+  <div class="wrap">
+    <div class="call">
+      <b>بنرد عليك على الهاتف</b>
+      <p>ما تحتاج تسوي شيء. بنتصل عليك لتأكيد الطلب، وبعدين السوار يوصلك.</p>
+    </div>
+
     <div class="steps">
-      <div><b>1.</b> خلّ الجوال قريب — بنت من الفريق بتتصل.</div>
-      <div><b>2.</b> تأكد العنوان والباقة على الهاتف.</div>
-      <div><b>3.</b> ادفع عند ما يوصلك الطلب داخل السعودية.</div>
+      <article>
+        <b>01 · الحين</b>
+        <h3>انتظر مكالمتنا</h3>
+        <p>فريق سُكون بيتصل على رقمك خلال ساعات العمل. جاوب — بدونها ما نقدر نأكد الشحن.</p>
+      </article>
+      <article>
+        <b>02 · بعد التأكيد</b>
+        <h3>السوار يتجهّز لك</h3>
+        <p>نشحن داخل السعودية خلال 1–3 أيام. تعاين المنتج عند الباب، بعدين تدفع.</p>
+      </article>
+      <article>
+        <b>03 · أول فجر</b>
+        <h3>تصحى، والبيت نايم</h3>
+        <p>حدد منبه الفجر من السوار، ونام. الاهتزاز لك وحدك.</p>
+      </article>
     </div>
-    <p style="font-size:13px;margin-bottom:22px">بدون تحويل واتساب. الطلب وصلنا مباشرة.</p>
-    <a href="./index.html">العودة للرئيسية</a>
+
+    <div class="prod"><img src="./pack-one.jpg" alt="سُكون في علبة الإهداء" /></div>
+    <p class="note">الدفع عند الاستلام نقداً أو بطاقة. شحن مجاني. ما فيه تحويل مقدم.</p>
+    <a class="back" href="./index.html">العودة لسُكون</a>
   </div>
+
   <script>
     var params = new URLSearchParams(location.search);
     var name = params.get("name");
-    if (name) document.getElementById("hi").textContent = "الله يعافيك يا " + name;
+    if (name) document.getElementById("hi").textContent = "الله يعافيك يا " + name + " — طلبك عندنا";
     var value = parseFloat(params.get("value") || "0");
     var contentName = params.get("content_name") || "سُكون";
     var contentIds = params.get("content_ids") || "2";
