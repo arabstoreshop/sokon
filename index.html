@@ -109,6 +109,8 @@
     @keyframes slide { from { transform: translateX(-50%); } to { transform: translateX(0); } }
     section { padding: 44px 0; }
     @media (min-width: 800px) { section { padding: 64px 0; } }
+    section.night { padding: 64px 0 72px; }
+    @media (min-width: 800px) { section.night { padding: 80px 0 88px; } }
     h2 { font-size: clamp(24px, 4vw, 40px); font-weight: 900; line-height: 1.2; }
     .sub { color: var(--mute); margin-top: 8px; max-width: 40rem; }
     .split { display: grid; gap: 24px; align-items: center; }
@@ -134,11 +136,35 @@
     .compare tr:last-child td { border-bottom: 0; }
     .good { color: #1c6b45; font-weight: 800; }
     .bad { color: #9a3b3b; }
-    .night { background: var(--ink); color: #fff; }
+    .night {
+      position: relative;
+      background: var(--ink);
+      color: #fff;
+      overflow: hidden;
+    }
+    .night .wrap { position: relative; z-index: 2; }
+    .night::before,
+    .night::after {
+      content: "";
+      position: absolute; left: 0; right: 0;
+      height: 88px;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .night::before { top: 0; background: linear-gradient(180deg, var(--cream), transparent); }
+    .night::after { bottom: 0; background: linear-gradient(0deg, var(--cream), transparent); }
     .night .sub { color: rgba(255,255,255,.62); }
     .night .hadith, .night .card { color: var(--ink); }
     .night .hadith q, .night .card h3 { color: var(--ink); }
     .night .card p { color: #5c564c; }
+    .vid-break {
+      max-width: 360px; margin: 22px auto 8px;
+    }
+    .vid-break .vid-frame { border-radius: 22px; }
+    .vid-break video {
+      width: 100%; display: block; aspect-ratio: 4/5; max-height: 380px;
+      object-fit: cover; pointer-events: none;
+    }
     .steps { display: grid; gap: 10px; margin-top: 16px; }
     @media (min-width: 800px) { .steps { grid-template-columns: repeat(3, 1fr); } }
     .step { padding: 16px 18px; border: 1px solid rgba(226,192,138,.25); border-radius: 18px; }
@@ -363,7 +389,7 @@
       position: relative; border-radius: 28px; overflow: hidden;
       background: #070b12; box-shadow: 0 24px 60px rgba(7,11,18,.18);
     }
-    .vids video {
+    .vids video, .vid-break video {
       width: 100%; height: 100%; display: block;
       aspect-ratio: 4/5; max-height: 420px; object-fit: cover;
       pointer-events: none;
@@ -503,10 +529,18 @@
       <div class="hadiths">
         <div class="hadith"><q>«من صلّى البَرْدَين دخل الجنة»</q><span>متفق عليه — البردان: الفجر والعصر</span></div>
         <div class="hadith"><q>«من دلّ على خير فله مثل أجر فاعله»</q><span>رواه مسلم — أهْدِ الفجر لمن تحب</span></div>
+      </div>
+      <div class="vid-break">
+        <div class="vid-frame">
+          <video autoplay muted loop playsinline disablepictureinpicture preload="auto" poster="./hero-wrist.jpg" src="./video-fajr.mp4"></video>
+          <p class="vid-cap">صيحة الفجر — بدون ما يفيق البيت</p>
+        </div>
+      </div>
+      <div class="hadiths">
         <div class="hadith"><q>«أثقل الصلاة على المنافقين صلاة العشاء وصلاة الفجر»</q><span>متفق عليه — عشان كذا الفجر يستاهل وسيلة تثبتك</span></div>
         <div class="hadith"><q>«بشّر المشّائين في الظُّلَم إلى المساجد بالنور التام يوم القيامة»</q><span>رواه أبو داود والترمذي</span></div>
       </div>
-      <div class="card-grid" style="margin-top:22px">
+      <div class="card-grid" style="margin-top:16px">
         <div class="card"><h3>ثبات على طاعة</h3><p>الفجر أول امتحان يومي. النجاح فيه بداية يوم يُرجى فيه القبول.</p></div>
         <div class="card"><h3>بركة الوقت</h3><p>من قام للفجر يُوفَّق غالباً في يومه: ساعات أطول، وهمّ أخف إن شاء الله.</p></div>
         <div class="card"><h3>ستر أهل البيت</h3><p>تقوم بهدوء. زوجتك وأطفالك يكملون نومهم. ما في صراخ منبه.</p></div>
@@ -519,12 +553,8 @@
     <div class="wrap">
       <p class="kicker" style="color:var(--gold-2)">شوف القيمة</p>
       <h2>تأمّل التفاصيل</h2>
-      <p class="sub">فيديو قصير يتكرّر: السوار على المعصم وقت الفجر، والقطعة بين يديك. خفيف، وتتوضأ فيه.</p>
-      <div class="vids">
-        <div class="vid-frame">
-          <video autoplay muted loop playsinline disablepictureinpicture preload="auto" poster="./hero-wrist.jpg" src="./video-fajr.mp4"></video>
-          <p class="vid-cap">صيحة الفجر — بدون ما يفيق البيت</p>
-        </div>
+      <p class="sub">السوار بين يديك: خفيف، وتتوضأ فيه، وتنساه إلى أن يهتز.</p>
+      <div class="vids" style="max-width:360px;margin-inline:auto">
         <div class="vid-frame">
           <video autoplay muted loop playsinline disablepictureinpicture preload="auto" poster="./product-studio.jpg" src="./video-product.mp4"></video>
           <p class="vid-cap">السوار في يدك — خفيف وتتوضأ فيه</p>
