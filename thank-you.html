@@ -9,77 +9,77 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;1,400&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
   <style>
-    :root { --ink:#070b12; --gold:#e2c08a; --gold-2:#c9a46a; --cream:#f4eee4; }
+    :root { --ink:#3a3228; --gold:#d4b483; --gold-2:#b8893e; --cream:#f7f1e6; }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       min-height: 100vh;
       font-family: Tajawal, sans-serif;
-      background: #070b12;
-      color: #fff;
+      background: var(--cream);
+      color: var(--ink);
     }
     .hero {
       position: relative;
-      min-height: 42vh;
+      min-height: 38vh;
       display: grid;
       align-items: end;
       overflow: hidden;
     }
     .hero img {
       position: absolute; inset: 0; width: 100%; height: 100%;
-      object-fit: cover; opacity: .55;
+      object-fit: cover; opacity: .88;
     }
     .hero::after {
       content: ""; position: absolute; inset: 0;
-      background: linear-gradient(180deg, rgba(7,11,18,.2), rgba(7,11,18,.96));
+      background: linear-gradient(180deg, rgba(247,241,230,.2), rgba(247,241,230,.96));
     }
     .hero-inner { position: relative; z-index: 1; padding: 28px 20px 32px; text-align: center; }
     .mark {
       width: 64px; height: 64px; border-radius: 50%; margin: 0 auto 16px;
-      background: #070b12; border: 1px solid var(--gold);
+      background: #fffdf8; border: 1px solid var(--gold);
       display: grid; place-items: center;
     }
     .mark svg { width: 40px; height: 40px; }
     .ok {
-      display: inline-block; background: rgba(226,192,138,.16); color: var(--gold);
+      display: inline-block; background: rgba(184,137,62,.12); color: var(--gold-2);
       font-size: 12px; font-weight: 800; letter-spacing: .14em;
       border-radius: 999px; padding: 6px 12px; margin-bottom: 12px;
     }
     h1 { font-size: clamp(28px, 7vw, 40px); font-weight: 900; line-height: 1.25; }
-    h1 span { color: var(--gold); }
+    h1 span { color: var(--gold-2); }
     .wait {
-      font-family: Amiri, serif; font-size: 22px; color: var(--gold);
+      font-family: Amiri, serif; font-size: 22px; color: var(--gold-2);
       margin-top: 12px; line-height: 1.7;
     }
     .wrap { width: min(560px, calc(100% - 32px)); margin: 0 auto; padding: 8px 0 48px; }
     .call {
       background: linear-gradient(180deg, #f0d7a4, #c9a46a);
-      color: #070b12; border-radius: 24px; padding: 22px 20px;
+      color: #3a3228; border-radius: 24px; padding: 22px 20px;
       text-align: center; margin-top: -12px;
-      box-shadow: 0 16px 40px rgba(226,192,138,.28);
+      box-shadow: 0 16px 40px rgba(184,137,62,.2);
     }
     .call b { display: block; font-size: 22px; font-weight: 900; }
     .call p { margin-top: 6px; font-weight: 700; opacity: .78; }
     .steps { margin-top: 28px; display: grid; gap: 12px; }
     .steps article {
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(226,192,138,.18);
+      background: #fff;
+      border: 1px solid rgba(184,137,62,.22);
       border-radius: 20px; padding: 16px 18px;
     }
-    .steps b { color: var(--gold); font-size: 12px; letter-spacing: .12em; }
+    .steps b { color: var(--gold-2); font-size: 12px; letter-spacing: .12em; }
     .steps h3 { font-size: 18px; margin: 4px 0 6px; }
-    .steps p { color: rgba(255,255,255,.62); font-size: 14px; line-height: 1.7; }
+    .steps p { color: #6b645a; font-size: 14px; line-height: 1.7; }
     .prod {
       margin-top: 24px; border-radius: 24px; overflow: hidden;
-      box-shadow: 0 20px 50px rgba(0,0,0,.35);
+      box-shadow: 0 16px 40px rgba(58,50,40,.1);
     }
     .prod img { width: 100%; display: block; }
     .note {
-      margin-top: 22px; text-align: center; color: rgba(255,255,255,.58);
+      margin-top: 22px; text-align: center; color: #6b645a;
       line-height: 1.8; font-size: 14px;
     }
     .back {
       display: block; margin: 28px auto 0; text-align: center;
-      color: rgba(255,255,255,.4); font-size: 13px; text-decoration: none;
+      color: var(--mute); font-size: 13px; text-decoration: none;
     }
   </style>
   <script>
@@ -95,7 +95,7 @@
 </head>
 <body>
   <section class="hero">
-    <img src="./dawn-room.jpg" alt="" />
+    <img src="./pack-one.jpg" alt="" />
     <div class="hero-inner">
       <div class="mark" aria-hidden="true">
         <svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="23" stroke="#e2c08a" stroke-width="2.15" stroke-linecap="round" stroke-dasharray="122 22" transform="rotate(-90 32 32)"/><path fill="#e2c08a" d="M36.2 19.8c7.4 2.2 12.4 9.2 12.4 17.2 0 10-8.1 18.1-18.1 18.1-4.4 0-8.4-1.6-11.5-4.2 3.8 3.6 9 5.8 14.6 5.8 11.2 0 20.3-9.1 20.3-20.3 0-8.4-5.1-15.6-12.4-18.6-.8 0-3.4.4-5.3 2z"/><circle cx="46.2" cy="17.8" r="2.15" fill="#f4eee4"/></svg>

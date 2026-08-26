@@ -20,12 +20,13 @@
   <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1102428529130490&ev=PageView&noscript=1" alt="" /></noscript>
   <style>
     :root {
-      --ink: #070b12;
-      --night: #101826;
-      --gold: #e2c08a;
-      --gold-2: #c9a46a;
-      --cream: #f4eee4;
-      --mute: #8b8378;
+      --ink: #3a3228;
+      --night: #efe6d6;
+      --gold: #d4b483;
+      --gold-2: #b8893e;
+      --cream: #f7f1e6;
+      --mute: #8a8174;
+      --paper: #fffdf8;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
@@ -41,9 +42,9 @@
     .nav {
       position: sticky; top: 0; z-index: 50;
       display: flex; justify-content: space-between; align-items: center;
-      padding: 14px 22px; background: rgba(7,11,18,.82);
-      backdrop-filter: blur(16px); color: #fff;
-      border-bottom: 1px solid rgba(226,192,138,.15);
+      padding: 12px 18px; background: rgba(247,241,230,.92);
+      backdrop-filter: blur(16px); color: var(--ink);
+      border-bottom: 1px solid rgba(184,137,62,.18);
     }
     .brand { display: flex; gap: 10px; align-items: center; font-weight: 800; letter-spacing: .02em; }
     .mark {
@@ -69,38 +70,38 @@
       50% { transform: translateY(-2px); box-shadow: 0 16px 40px rgba(226,192,138,.55); }
     }
     .btn-order { width: 100%; padding: 18px 16px; font-size: 18px; margin-top: 18px; }
-    .btn-ghost { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,.2); }
+    .btn-ghost { background: transparent; color: var(--ink); border: 1px solid rgba(58,50,40,.15); }
     .hero {
-      position: relative; min-height: 78vh; color: #fff;
+      position: relative; min-height: 86vh; color: var(--ink);
       display: grid; align-items: end;
-      background: #070b12;
+      background: var(--cream);
     }
     .hero img.bg {
-      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .72;
+      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .92;
     }
     .hero::after {
       content: ""; position: absolute; inset: 0;
-      background: linear-gradient(180deg, rgba(7,11,18,.15) 0%, rgba(7,11,18,.55) 45%, rgba(7,11,18,.96) 100%);
+      background: linear-gradient(180deg, rgba(247,241,230,.12) 0%, rgba(247,241,230,.35) 42%, rgba(247,241,230,.96) 100%);
     }
     .hero-inner { position: relative; z-index: 1; padding: 0 0 48px; }
     .kicker {
-      color: var(--gold); font-size: 13px; font-weight: 700; letter-spacing: .18em;
+      color: var(--gold-2); font-size: 13px; font-weight: 700; letter-spacing: .18em;
       margin-bottom: 14px;
     }
     h1 {
       font-size: clamp(40px, 7vw, 84px); font-weight: 900; line-height: 1.08;
       max-width: 14ch;
     }
-    h1 span { color: var(--gold); }
-    .lead { max-width: 36rem; margin-top: 18px; font-size: 18px; color: rgba(255,255,255,.78); }
+    h1 span { color: var(--gold-2); }
+    .lead { max-width: 36rem; margin-top: 18px; font-size: 18px; color: #5c564c; }
     .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
     .stats {
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
       margin-top: 22px; max-width: 560px;
     }
-    .stats div { border-top: 1px solid rgba(226,192,138,.35); padding-top: 10px; }
-    .stats b { display: block; font-size: 20px; color: var(--gold); }
-    .stats span { font-size: 12px; color: rgba(255,255,255,.6); }
+    .stats div { border-top: 1px solid rgba(184,137,62,.35); padding-top: 10px; }
+    .stats b { display: block; font-size: 20px; color: var(--gold-2); }
+    .stats span { font-size: 12px; color: var(--mute); }
     .marquee {
       overflow: hidden; background: var(--gold); color: var(--ink);
       font-weight: 800; padding: 12px 0; white-space: nowrap;
@@ -129,7 +130,7 @@
     .compare th, .compare td {
       padding: 10px 8px; text-align: center; border-bottom: 1px solid #efe8dc; vertical-align: middle;
     }
-    .compare th { background: var(--ink); color: #fff; font-size: 11px; font-weight: 800; }
+    .compare th { background: #5c4a32; color: #fff; font-size: 11px; font-weight: 800; }
     .compare th:last-child { background: #b8893e; color: #fff; }
     .compare td:first-child { text-align: right; font-weight: 800; width: 36%; color: var(--ink); }
     .compare td:last-child { background: #f6efe2; }
@@ -138,22 +139,10 @@
     .bad { color: #9a3b3b; }
     .night {
       position: relative;
-      background: var(--ink);
-      color: #fff;
-      overflow: hidden;
+      background: #efe6d6;
+      color: var(--ink);
     }
-    .night .wrap { position: relative; z-index: 2; }
-    .night::before,
-    .night::after {
-      content: "";
-      position: absolute; left: 0; right: 0;
-      height: 88px;
-      pointer-events: none;
-      z-index: 1;
-    }
-    .night::before { top: 0; background: linear-gradient(180deg, var(--cream), transparent); }
-    .night::after { bottom: 0; background: linear-gradient(0deg, var(--cream), transparent); }
-    .night .sub { color: rgba(255,255,255,.62); }
+    .night .sub { color: var(--mute); }
     .night .hadith, .night .card { color: var(--ink); }
     .night .hadith q, .night .card h3 { color: var(--ink); }
     .night .card p { color: #5c564c; }
@@ -161,9 +150,9 @@
       max-width: 360px; margin: 22px auto 8px;
     }
     .vid-break .vid-frame { border-radius: 22px; }
-    .vid-break video {
+    .vid-break img, .vid-break video {
       width: 100%; display: block; aspect-ratio: 4/5; max-height: 380px;
-      object-fit: cover; pointer-events: none;
+      object-fit: cover;
     }
     .steps { display: grid; gap: 10px; margin-top: 16px; }
     @media (min-width: 800px) { .steps { grid-template-columns: repeat(3, 1fr); } }
@@ -196,11 +185,14 @@
       position: fixed; bottom: 0; left: 0; right: 0; z-index: 40;
       display: flex; align-items: center; justify-content: space-between; gap: 12px;
       padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
-      background: #0b0f16;
+      background: #fffdf8;
       border-top: 1px solid var(--gold);
-      box-shadow: 0 -16px 40px rgba(0,0,0,.35);
+      box-shadow: 0 -10px 30px rgba(58,50,40,.08);
     }
-    .sticky-copy { color: #fff; min-width: 0; }
+    .sticky-copy { color: var(--ink); min-width: 0; }
+    .sticky-copy p { font-size: 13px; font-weight: 800; line-height: 1.3; }
+    .sticky-copy span { display: block; margin-top: 3px; font-size: 12px; color: var(--mute); font-weight: 700; }
+    .sticky-copy strong { color: var(--gold-2); font-weight: 900; }
     .sticky-copy p { font-size: 13px; font-weight: 800; line-height: 1.3; }
     .sticky-copy span { display: block; margin-top: 3px; font-size: 12px; color: rgba(255,255,255,.55); font-weight: 700; }
     .sticky-copy strong { color: var(--gold); font-weight: 900; }
@@ -289,24 +281,24 @@
     .box-list { margin-top: 14px; background: #fff; border-radius: 18px; padding: 16px 18px; }
     .box-list li { margin: 8px 0; font-weight: 700; }
     footer {
-      background: #070b12; color: rgba(255,255,255,.62);
+      background: #efe6d6; color: var(--mute);
       padding: 28px 16px 118px; text-align: center;
-      border-top: 1px solid rgba(226,192,138,.22);
+      border-top: 1px solid rgba(184,137,62,.18);
     }
     .foot { max-width: 640px; margin: 0 auto; }
     .foot h4 { display: none; }
     .foot p, .foot li { font-size: 13px; line-height: 1.7; }
     .foot ul { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 14px; margin-top: 10px; }
-    .foot a { color: rgba(255,255,255,.72); }
-    .foot-brand { font-size: 26px; font-weight: 900; color: var(--gold); }
-    .foot-tag { color: var(--gold); letter-spacing: .22em; font-size: 10px; margin: 2px 0 8px; }
+    .foot a { color: var(--ink); }
+    .foot-brand { font-size: 26px; font-weight: 900; color: var(--gold-2); }
+    .foot-tag { color: var(--gold-2); letter-spacing: .22em; font-size: 10px; margin: 2px 0 8px; }
     .foot-bar {
       max-width: 640px; margin: 16px auto 0;
       display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 16px;
-      padding-top: 14px; border-top: 1px solid rgba(226,192,138,.18);
-      font-size: 12px; font-weight: 800; color: var(--gold);
+      padding-top: 14px; border-top: 1px solid rgba(184,137,62,.18);
+      font-size: 12px; font-weight: 800; color: var(--gold-2);
     }
-    .foot-copy { margin-top: 12px; text-align: center; font-size: 11px; color: rgba(255,255,255,.38); }
+    .foot-copy { margin-top: 12px; text-align: center; font-size: 11px; color: var(--mute); }
     .sheet {
       position: fixed; left: 0; right: 0; bottom: 0; z-index: 90;
       background: #f7f3ea; border-radius: 22px 22px 0 0;
@@ -370,8 +362,8 @@
     .exit-card b { display: block; font-size: 28px; color: #b8893e; margin: 8px 0 12px; }
     .exit-skip { margin-top: 12px; background: transparent; border: 0; color: #8b8378; cursor: pointer; font: inherit; }
     .chip { display: inline-block; background: rgba(226,192,138,.18); color: var(--gold-2); font-size: 12px; font-weight: 800; border-radius: 999px; padding: 4px 10px; margin-bottom: 10px; }
-    .stars { margin-top: 18px; font-size: 14px; color: var(--gold); font-weight: 800; }
-    .stars span { color: rgba(255,255,255,.7); font-weight: 600; }
+    .stars { margin-top: 18px; font-size: 14px; color: var(--gold-2); font-weight: 800; }
+    .stars span { color: var(--mute); font-weight: 600; }
     .trust-bar {
       display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
       padding: 14px 16px; background: #fff;
@@ -387,12 +379,11 @@
     @media (min-width: 800px) { .vids { grid-template-columns: 1fr 1fr; max-width: 720px; } }
     .vid-frame {
       position: relative; border-radius: 28px; overflow: hidden;
-      background: #070b12; box-shadow: 0 24px 60px rgba(7,11,18,.18);
+      background: #efe6d6; box-shadow: 0 24px 60px rgba(58,50,40,.08);
     }
-    .vids video, .vid-break video {
+    .vids img {
       width: 100%; height: 100%; display: block;
       aspect-ratio: 4/5; max-height: 420px; object-fit: cover;
-      pointer-events: none;
     }
     .vid-cap {
       position: absolute; bottom: 0; left: 0; right: 0;
@@ -400,10 +391,21 @@
       background: linear-gradient(transparent, rgba(7,11,18,.88));
       color: #fff; font-weight: 800; font-size: 14px;
     }
-    .sheet input[name="phone"] {
-      letter-spacing: .08em; font-weight: 800; font-size: 16px;
-      text-align: right; direction: rtl;
+    .phone-row { display: grid; grid-template-columns: 72px 1fr; gap: 8px; align-items: stretch; }
+    .phone-row .cc {
+      display: grid; place-items: center; background: #f3ead8; border-radius: 12px;
+      font-weight: 800; font-size: 13px; color: var(--ink);
     }
+    .form-box {
+      border: 1.5px dashed #d4b483; border-radius: 18px; padding: 12px;
+      display: grid; gap: 8px; background: #fffdf8;
+    }
+    .hint {
+      background: #eef6ea; color: #2f5d3a; border-radius: 12px; padding: 10px 12px;
+      font-size: 12px; font-weight: 700; line-height: 1.6;
+    }
+    .sheet.step-form #stepPacks { display: none; }
+    .sheet.step-packs #orderForm { display: none; }
     .specs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 14px; }
     @media (min-width: 800px) { .specs { grid-template-columns: repeat(4, 1fr); } }
     .specs div { background: #fff; border-radius: 20px; padding: 18px; text-align: center; }
@@ -429,7 +431,7 @@
   </header>
 
   <section class="hero" id="top">
-    <img class="bg" src="./hero-wrist.jpg" alt="" />
+    <img class="bg" src="./hero-luxe.jpg" alt="" />
     <div class="wrap hero-inner">
       <p class="kicker">رفيق صلاة الفجر · داخل السعودية</p>
       <h1>تصحى للفجر.<br /><span>البيت ما يحس.</span></h1>
@@ -532,8 +534,8 @@
       </div>
       <div class="vid-break">
         <div class="vid-frame">
-          <video autoplay muted loop playsinline disablepictureinpicture preload="auto" poster="./hero-wrist.jpg" src="./video-fajr.mp4"></video>
-          <p class="vid-cap">صيحة الفجر — بدون ما يفيق البيت</p>
+          <img src="./pack-one.jpg" alt="سُكون في علبة الإهداء" />
+          <p class="vid-cap">يصلك بعناية — في علبة الإهداء</p>
         </div>
       </div>
       <div class="hadiths">
@@ -553,11 +555,15 @@
     <div class="wrap">
       <p class="kicker" style="color:var(--gold-2)">شوف القيمة</p>
       <h2>تأمّل التفاصيل</h2>
-      <p class="sub">السوار بين يديك: خفيف، وتتوضأ فيه، وتنساه إلى أن يهتز.</p>
-      <div class="vids" style="max-width:360px;margin-inline:auto">
+      <p class="sub">نفس السوار اللي يوصلك: في العلبة، وعلى المعصم. خفيف، وتتوضأ فيه.</p>
+      <div class="vids">
         <div class="vid-frame">
-          <video autoplay muted loop playsinline disablepictureinpicture preload="auto" poster="./product-studio.jpg" src="./video-product.mp4"></video>
-          <p class="vid-cap">السوار في يدك — خفيف وتتوضأ فيه</p>
+          <img src="./product-studio.jpg" alt="تفاصيل سوار سُكون" />
+          <p class="vid-cap">خفة المقاس — تنساه إلى أن يهتز</p>
+        </div>
+        <div class="vid-frame">
+          <img src="./pack-two.jpg" alt="باقة سُكون لشخصين" />
+          <p class="vid-cap">لك ولمن تحب</p>
         </div>
       </div>
       <div class="specs">
@@ -704,25 +710,38 @@
   </div>
 
   <div class="sheet-bg" id="sheetBg" onclick="tryCloseSheet()"></div>
-  <aside class="sheet" id="sheet" role="dialog" aria-modal="true">
+  <aside class="sheet step-packs" id="sheet" role="dialog" aria-modal="true">
     <div class="handle"></div>
     <div class="sheet-head">
-      <h3>كمّل طلب فجرك</h3>
+      <h3 id="sheetTitle">اختر باقتك</h3>
       <button class="x" type="button" onclick="tryCloseSheet()">×</button>
     </div>
-    <div id="sheetOffers"></div>
+    <div id="stepPacks">
+      <div id="sheetOffers"></div>
+      <button class="btn btn-cta btn-order" type="button" onclick="goToForm()">التالي — بيانات التوصيل</button>
+    </div>
     <form id="orderForm" onsubmit="return sendOrder(event)">
-      <label>الاسم</label>
-      <input required name="name" placeholder="اسمك" autocomplete="name" />
-      <label>الجوال</label>
-      <input required name="phone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="05xxxxxxxx" pattern="05[0-9]{8}" />
-      <label>المدينة</label>
-      <input name="city" placeholder="الرياض" autocomplete="address-level2" />
+      <p style="font-size:13px;color:#6b645a;margin:0 0 6px">يسعدنا استقبال طلبك. أدخل معلومات التوصيل فقط.</p>
+      <div class="form-box">
+        <label>الاسم الكامل *</label>
+        <input required name="name" placeholder="مثال: خالد بن عبدالعزيز" autocomplete="name" />
+        <label>رقم الجوال *</label>
+        <div class="phone-row">
+          <span class="cc">+966</span>
+          <input required name="phone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="5X XXX XXXX" pattern="5[0-9]{8}" />
+        </div>
+        <label>المدينة *</label>
+        <input required name="city" placeholder="الرياض" autocomplete="address-level2" />
+        <label>العنوان</label>
+        <input name="address" placeholder="الحي أو الشارع" autocomplete="street-address" />
+        <p class="hint">أضف معلماً قريباً (جامع أو دوار) ليسهل وصول المندوب.</p>
+      </div>
       <input type="hidden" name="pack" id="packField" value="2" />
       <button class="btn btn-cta btn-order" type="submit">
-        أكّد الطلب
-        <small><span class="ctaPrice">299</span> ر.س عند الاستلام</small>
+        أكّد طلبي — الدفع عند الاستلام
+        <small><span class="ctaPrice">299</span> ر.س عند الباب</small>
       </button>
+      <p style="text-align:center;font-size:12px;color:#6b645a;margin:0">رضا أو استرجاع · نؤكّد الطلب على الهاتف</p>
     </form>
     <div class="trust">
       <span>✓ شحن مجاني</span>
@@ -797,11 +816,20 @@
         </article>
       `).join("");
     }
+    function goToForm() {
+      document.getElementById("sheet").classList.remove("step-packs");
+      document.getElementById("sheet").classList.add("step-form");
+      document.getElementById("sheetTitle").textContent = "بيانات التوصيل";
+      setPrice(chargedPrice(packById(selected)));
+    }
     function openSheet() {
+      var sheet = document.getElementById("sheet");
+      sheet.classList.remove("step-form");
+      sheet.classList.add("step-packs", "show");
+      document.getElementById("sheetTitle").textContent = "اختر باقتك";
       renderSheetOffers();
       setPrice(chargedPrice(packById(selected)));
       document.getElementById("sheetBg").classList.add("show");
-      document.getElementById("sheet").classList.add("show");
       document.body.style.overflow = "hidden";
       document.querySelector(".sticky").style.display = "none";
       if (window.fbq) window.fbq("track", "InitiateCheckout", { currency: "SAR" });
@@ -829,7 +857,10 @@
     function closeSheet() {
       document.getElementById("exitOffer").classList.remove("show");
       document.getElementById("sheetBg").classList.remove("show");
-      document.getElementById("sheet").classList.remove("show");
+      var sheet = document.getElementById("sheet");
+      sheet.classList.remove("show", "step-form");
+      sheet.classList.add("step-packs");
+      document.getElementById("sheetTitle").textContent = "اختر باقتك";
       document.body.style.overflow = "";
       document.querySelector(".sticky").style.display = "";
     }
@@ -858,14 +889,17 @@
         btn.textContent = "جاري إرسال الطلب…";
       }
       const fd = new FormData(form);
+      var phone = (fd.get("phone") || "").trim().replace(/\s/g, "");
+      if (phone.charAt(0) === "5") phone = "0" + phone;
       const pack = packById(selected);
       const price = chargedPrice(pack);
       orderSent = true;
       const payload = {
         brand: "sukoon",
         name: (fd.get("name") || "").trim(),
-        phone: (fd.get("phone") || "").trim(),
+        phone: phone,
         city: (fd.get("city") || "").trim(),
+        address: (fd.get("address") || "").trim(),
         pack_id: pack.id,
         pack_title: pack.title,
         price: price,
@@ -906,11 +940,6 @@
       }
     }
     loadPixels();
-    document.querySelectorAll("video").forEach(function (v) {
-      v.muted = true;
-      v.playsInline = true;
-      v.play().catch(function () {});
-    });
   </script>
 </body>
 </html>
