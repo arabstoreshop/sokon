@@ -33,6 +33,11 @@
       ttq.page();
     }(window, document, "ttq");
   </script>
+  <script>
+    (function(e,t,n){if(e.snaptr)return;var a=e.snaptr=function(){a.handleRequest?a.handleRequest.apply(a,arguments):a.queue.push(arguments)};a.queue=[];var s=t.createElement("script");s.async=!0;s.src=n;var u=t.getElementsByTagName("script")[0];u.parentNode.insertBefore(s,u);})(window,document,"https://sc-static.net/scevent.min.js");
+    snaptr("init", "54c85c29-ea32-4a54-9f3b-f4cd8941cddf");
+    snaptr("track", "PAGE_VIEW");
+  </script>
   <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
       c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -857,7 +862,7 @@
     const CONFIG = {
       metaPixelId: "1102428529130490",
       tiktokPixelId: "DA41OHRC77U208UL6VU0",
-      snapPixelId: "",
+      snapPixelId: "54c85c29-ea32-4a54-9f3b-f4cd8941cddf",
       sheetWebhook: "https://script.google.com/macros/s/AKfycbxTidbmqTr6dKV7lOEmlQBR81R_Sv-VF8AA7UerWzvJ0wWd8pT5QtyyA9NlOGU7WLE9YQ/exec"
     };
 
@@ -938,6 +943,7 @@
       document.querySelector(".sticky").style.display = "none";
       if (window.fbq) window.fbq("track", "InitiateCheckout", { currency: "SAR" });
       if (window.ttq) window.ttq.track("InitiateCheckout", { currency: "SAR" });
+      if (window.snaptr) window.snaptr("track", "START_CHECKOUT", { currency: "SAR" });
     }
     function tryCloseSheet() {
       if (orderSent) { closeSheet(); return; }
@@ -1026,7 +1032,6 @@
 
     function fireLead(value, contentName) {
       if (window.ttq) window.ttq.track("PlaceAnOrder", { value: value, currency: "SAR", content_name: contentName });
-      if (window.snaptr) window.snaptr("track", "SIGN_UP", { price: value, currency: "SAR" });
     }
 
     function loadPixels() {
@@ -1039,7 +1044,7 @@
           ttq.load(CONFIG.tiktokPixelId); ttq.page();
         }(window, document, "ttq");
       }
-      if (CONFIG.snapPixelId) {
+      if (CONFIG.snapPixelId && !window.snaptr) {
         (function(e,t,n){if(e.snaptr)return;var a=e.snaptr=function(){a.handleRequest?a.handleRequest.apply(a,arguments):a.queue.push(arguments)};a.queue=[];var s=t.createElement("script");s.async=!0;s.src=n;var u=t.getElementsByTagName("script")[0];u.parentNode.insertBefore(s,u);})(window,document,"https://sc-static.net/scevent.min.js");
         snaptr("init", CONFIG.snapPixelId);
         snaptr("track", "PAGE_VIEW");
