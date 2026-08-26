@@ -71,7 +71,7 @@
     .btn-order { width: 100%; padding: 18px 16px; font-size: 18px; margin-top: 18px; }
     .btn-ghost { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,.2); }
     .hero {
-      position: relative; min-height: 92vh; color: #fff;
+      position: relative; min-height: 78vh; color: #fff;
       display: grid; align-items: end;
       background: #070b12;
     }
@@ -82,7 +82,7 @@
       content: ""; position: absolute; inset: 0;
       background: linear-gradient(180deg, rgba(7,11,18,.15) 0%, rgba(7,11,18,.55) 45%, rgba(7,11,18,.96) 100%);
     }
-    .hero-inner { position: relative; z-index: 1; padding: 0 0 72px; }
+    .hero-inner { position: relative; z-index: 1; padding: 0 0 48px; }
     .kicker {
       color: var(--gold); font-size: 13px; font-weight: 700; letter-spacing: .18em;
       margin-bottom: 14px;
@@ -93,10 +93,10 @@
     }
     h1 span { color: var(--gold); }
     .lead { max-width: 36rem; margin-top: 18px; font-size: 18px; color: rgba(255,255,255,.78); }
-    .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+    .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
     .stats {
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
-      margin-top: 36px; max-width: 560px;
+      margin-top: 22px; max-width: 560px;
     }
     .stats div { border-top: 1px solid rgba(226,192,138,.35); padding-top: 10px; }
     .stats b { display: block; font-size: 20px; color: var(--gold); }
@@ -107,23 +107,31 @@
     }
     .marquee p { display: inline-block; padding-left: 64px; animation: slide 22s linear infinite; }
     @keyframes slide { from { transform: translateX(-50%); } to { transform: translateX(0); } }
-    section { padding: 88px 0; }
-    h2 { font-size: clamp(28px, 4vw, 44px); font-weight: 900; line-height: 1.2; }
-    .sub { color: var(--mute); margin-top: 12px; max-width: 40rem; }
-    .split { display: grid; gap: 48px; align-items: center; }
-    @media (min-width: 900px) { .split { grid-template-columns: 1.05fr .95fr; } }
-    .card-grid { display: grid; gap: 16px; margin-top: 36px; }
+    section { padding: 44px 0; }
+    @media (min-width: 800px) { section { padding: 64px 0; } }
+    h2 { font-size: clamp(24px, 4vw, 40px); font-weight: 900; line-height: 1.2; }
+    .sub { color: var(--mute); margin-top: 8px; max-width: 40rem; }
+    .split { display: grid; gap: 24px; align-items: center; }
+    @media (min-width: 900px) { .split { grid-template-columns: 1.05fr .95fr; gap: 40px; } }
+    .card-grid { display: grid; gap: 10px; margin-top: 18px; }
     @media (min-width: 800px) { .card-grid { grid-template-columns: repeat(3, 1fr); } }
     .card {
-      background: #fff; border-radius: 28px; padding: 28px; box-shadow: 0 10px 40px rgba(7,11,18,.06);
+      background: #fff; border-radius: 20px; padding: 18px 20px; box-shadow: 0 10px 40px rgba(7,11,18,.06);
     }
-    .card h3 { font-size: 22px; margin-bottom: 10px; }
+    .card h3 { font-size: 18px; margin-bottom: 6px; }
     .compare {
-      width: 100%; border-collapse: collapse; margin-top: 28px; background: #fff;
-      border-radius: 24px; overflow: hidden;
+      width: 100%; table-layout: fixed; border-collapse: collapse; margin-top: 18px; background: #fff;
+      border-radius: 18px; overflow: hidden; font-size: 12px;
+      box-shadow: 0 10px 30px rgba(7,11,18,.05);
     }
-    .compare th, .compare td { padding: 16px 18px; text-align: right; border-bottom: 1px solid #eee; }
-    .compare th { background: var(--ink); color: var(--gold); }
+    .compare th, .compare td {
+      padding: 10px 8px; text-align: center; border-bottom: 1px solid #efe8dc; vertical-align: middle;
+    }
+    .compare th { background: var(--ink); color: #fff; font-size: 11px; font-weight: 800; }
+    .compare th:last-child { background: #b8893e; color: #fff; }
+    .compare td:first-child { text-align: right; font-weight: 800; width: 36%; color: var(--ink); }
+    .compare td:last-child { background: #f6efe2; }
+    .compare tr:last-child td { border-bottom: 0; }
     .good { color: #1c6b45; font-weight: 800; }
     .bad { color: #9a3b3b; }
     .night { background: var(--ink); color: #fff; }
@@ -131,9 +139,9 @@
     .night .hadith, .night .card { color: var(--ink); }
     .night .hadith q, .night .card h3 { color: var(--ink); }
     .night .card p { color: #5c564c; }
-    .steps { display: grid; gap: 18px; margin-top: 36px; }
+    .steps { display: grid; gap: 10px; margin-top: 16px; }
     @media (min-width: 800px) { .steps { grid-template-columns: repeat(3, 1fr); } }
-    .step { padding: 28px; border: 1px solid rgba(226,192,138,.25); border-radius: 28px; }
+    .step { padding: 16px 18px; border: 1px solid rgba(226,192,138,.25); border-radius: 18px; }
     .step b { color: var(--gold); }
     .quote {
       font-family: Amiri, serif; font-size: clamp(24px, 3vw, 34px); text-align: center;
@@ -237,10 +245,10 @@
     .sheet-head h3 { font-size: 22px; font-weight: 800; }
     .x { width: 36px; height: 36px; border: 0; border-radius: 50%; background: #efe9dd; font-size: 20px; cursor: pointer; }
     .sheet-hero { width: 100%; height: 120px; object-fit: cover; border-radius: 18px; margin-bottom: 8px; }
-    .hadiths { display: grid; gap: 14px; margin-top: 28px; }
+    .hadiths { display: grid; gap: 10px; margin-top: 16px; }
     @media (min-width: 800px) { .hadiths { grid-template-columns: 1fr 1fr; } }
     .hadith {
-      background: #fff; border-radius: 24px; padding: 22px 22px 18px;
+      background: #fff; border-radius: 18px; padding: 16px 18px;
       border: 1px solid rgba(226,192,138,.35);
     }
     .hadith q { font-family: Amiri, serif; font-size: 20px; line-height: 1.9; display: block; color: var(--ink); quotes: none; }
@@ -248,35 +256,31 @@
     .gallery figcaption { margin-top: 8px; font-size: 13px; font-weight: 800; color: var(--mute); text-align: center; }
     .review h3 { font-size: 18px; margin: 6px 0 10px; }
     .review .stars-inline { color: var(--gold-2); letter-spacing: .08em; }
-    .journey { display: grid; gap: 14px; margin-top: 28px; }
+    .journey { display: grid; gap: 10px; margin-top: 16px; }
     @media (min-width: 800px) { .journey { grid-template-columns: repeat(3, 1fr); } }
-    .journey article { background: #fff; border-radius: 24px; padding: 24px; }
-    .journey b { color: var(--gold-2); font-size: 13px; letter-spacing: .12em; }
-    .box-list { margin-top: 22px; background: #fff; border-radius: 24px; padding: 22px 24px; }
+    .journey article { background: #fff; border-radius: 18px; padding: 16px 18px; }
+    .journey b { color: var(--gold-2); font-size: 12px; letter-spacing: .12em; }
+    .box-list { margin-top: 14px; background: #fff; border-radius: 18px; padding: 16px 18px; }
     .box-list li { margin: 8px 0; font-weight: 700; }
     footer {
       background: #070b12; color: rgba(255,255,255,.62);
-      padding: 64px 16px 140px; text-align: right;
+      padding: 28px 16px 118px; text-align: center;
       border-top: 1px solid rgba(226,192,138,.22);
     }
-    .foot {
-      display: grid; gap: 32px; max-width: 1120px; margin: 0 auto;
-    }
-    @media (min-width: 800px) { .foot { grid-template-columns: 1.4fr .9fr .9fr .9fr; } }
-    .foot h4 { color: var(--gold); font-size: 12px; margin-bottom: 14px; letter-spacing: .18em; font-weight: 800; }
-    .foot p, .foot li { font-size: 14px; line-height: 1.9; }
-    .foot ul { list-style: none; }
+    .foot { max-width: 640px; margin: 0 auto; }
+    .foot h4 { display: none; }
+    .foot p, .foot li { font-size: 13px; line-height: 1.7; }
+    .foot ul { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 14px; margin-top: 10px; }
     .foot a { color: rgba(255,255,255,.72); }
-    .foot-brand { font-size: 32px; font-weight: 900; color: var(--gold); }
-    .foot-tag { color: var(--gold); letter-spacing: .22em; font-size: 11px; margin: 4px 0 12px; }
+    .foot-brand { font-size: 26px; font-weight: 900; color: var(--gold); }
+    .foot-tag { color: var(--gold); letter-spacing: .22em; font-size: 10px; margin: 2px 0 8px; }
     .foot-bar {
-      max-width: 1120px; margin: 36px auto 0;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
-      padding: 18px 0 0; border-top: 1px solid rgba(226,192,138,.18);
+      max-width: 640px; margin: 16px auto 0;
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 16px;
+      padding-top: 14px; border-top: 1px solid rgba(226,192,138,.18);
       font-size: 12px; font-weight: 800; color: var(--gold);
     }
-    @media (min-width: 800px) { .foot-bar { grid-template-columns: repeat(4, 1fr); text-align: center; } }
-    .foot-copy { margin-top: 22px; text-align: center; font-size: 12px; color: rgba(255,255,255,.38); }
+    .foot-copy { margin-top: 12px; text-align: center; font-size: 11px; color: rgba(255,255,255,.38); }
     .sheet {
       position: fixed; left: 0; right: 0; bottom: 0; z-index: 90;
       background: #f7f3ea; border-radius: 22px 22px 0 0;
@@ -295,12 +299,12 @@
     .sheet.step2 .only-step1 { display: none; }
     .sheet.step1 .only-step2 { display: none; }
     .sheet .offer {
-      grid-template-columns: 56px 1fr; padding: 7px 8px; margin-top: 6px;
-      gap: 8px; border-radius: 14px;
+      grid-template-columns: 64px 1fr; padding: 10px 10px 10px 8px; margin-top: 8px;
+      gap: 10px; border-radius: 16px;
     }
-    .sheet .offer img { width: 56px; height: 48px; border-radius: 10px; }
+    .sheet .offer img { width: 64px; height: 64px; border-radius: 12px; }
     .sheet .offer h3 { font-size: 13px; margin: 0; }
-    .sheet .offer p { display: none; }
+    .sheet .offer p { display: block; font-size: 11px; line-height: 1.45; color: #6b645a; margin: 3px 0 4px; }
     .sheet .gold-price { font-size: 15px; }
     .sheet .save, .sheet .old { font-size: 10px; }
     .sheet .badge, .sheet .disc { font-size: 9px; padding: 2px 6px; top: 6px; }
@@ -313,7 +317,7 @@
     .sheet input { padding: 10px 12px; border-radius: 12px; font-size: 15px; }
     .sheet .btn-order { margin-top: 8px; padding: 12px; font-size: 15px; }
     .sheet .trust { font-size: 11px; gap: 8px; margin-top: 6px; }
-    .cta-block { text-align: center; padding: 72px 0; background: #f3efe6; }
+    .cta-block { text-align: center; padding: 40px 0; background: #f3efe6; }
     .wudu {
       display: grid; gap: 12px; margin-top: 22px;
       grid-template-columns: 1fr;
@@ -335,8 +339,8 @@
     .stars { margin-top: 18px; font-size: 14px; color: var(--gold); font-weight: 800; }
     .stars span { color: rgba(255,255,255,.7); font-weight: 600; }
     .trust-bar {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
-      padding: 22px 16px; background: #fff;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+      padding: 14px 16px; background: #fff;
     }
     @media (min-width: 800px) { .trust-bar { grid-template-columns: repeat(4, 1fr); } }
     .trust-bar div { text-align: center; font-size: 13px; font-weight: 800; }
@@ -345,7 +349,7 @@
     @media (min-width: 800px) { .gallery { grid-template-columns: 1fr 1fr; max-width: 720px; } }
     .gallery figure { margin: 0; }
     .gallery img { width: 100%; height: 220px; object-fit: cover; border-radius: 22px; }
-    .vids { display: grid; gap: 12px; margin-top: 28px; }
+    .vids { display: grid; gap: 10px; margin-top: 16px; }
     @media (min-width: 800px) { .vids { grid-template-columns: 1fr 1fr; max-width: 720px; } }
     .vid-frame {
       position: relative; border-radius: 28px; overflow: hidden;
@@ -365,16 +369,16 @@
     .sheet input[name="phone"] {
       letter-spacing: .12em; font-weight: 800; font-size: 17px;
     }
-    .specs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 28px; }
+    .specs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 14px; }
     @media (min-width: 800px) { .specs { grid-template-columns: repeat(4, 1fr); } }
     .specs div { background: #fff; border-radius: 20px; padding: 18px; text-align: center; }
     .specs b { display: block; color: var(--gold-2); font-size: 20px; }
-    .reviews { display: grid; gap: 14px; margin-top: 28px; }
+    .reviews { display: grid; gap: 10px; margin-top: 16px; }
     @media (min-width: 800px) { .reviews { grid-template-columns: 1fr 1fr; } }
-    .review { background: #fff; border-radius: 24px; padding: 22px; box-shadow: 0 10px 30px rgba(7,11,18,.05); }
+    .review { background: #fff; border-radius: 18px; padding: 16px 18px; box-shadow: 0 10px 30px rgba(7,11,18,.05); }
     .review .who { margin-top: 14px; font-size: 13px; color: var(--mute); font-weight: 800; }
     .review .who b { color: var(--ink); }
-    .feat { max-width: 720px; margin: 40px auto 0; background: #fff; border-radius: 28px; padding: 28px; }
+    .feat { max-width: 720px; margin: 20px auto 0; background: #fff; border-radius: 22px; padding: 20px; }
     .feat p { font-size: 17px; line-height: 1.85; }
   </style>
 </head>
@@ -431,14 +435,14 @@
       <p class="sub">تنام وأنت ناوي تقوم، وتصحى والشمس طالعة. الجوال يصرخ فيوقظ أهلك، أو تخفضه فما تسمعه. سُكون يقلب المعادلة: التنبيه على معصمك، وأنت وحدك تصحى على السجادة.</p>
       <table class="compare">
         <thead>
-          <tr><th></th><th>منبه الجوال</th><th>سوار عام</th><th>سُكون</th></tr>
+          <tr><th>الميزة</th><th>الجوال</th><th>سُكون</th></tr>
         </thead>
         <tbody>
-          <tr><td>يوقظك وأنت ثقيل النوم</td><td class="bad">غالباً لا</td><td>متوسط</td><td class="good">اهتزاز على الجلد</td></tr>
-          <tr><td>يوقظ الزوجة والأطفال</td><td class="bad">نعم</td><td class="good">لا</td><td class="good">لا</td></tr>
-          <tr><td>تتوضأ فيه</td><td class="bad">لا</td><td>أحياناً</td><td class="good">نعم — مقاوم للماء</td></tr>
-          <tr><td>تحتاج تطبيق</td><td class="bad">دائماً</td><td>أحياناً</td><td class="good">لا — مستقل</td></tr>
-          <tr><td>الدفع داخل السعودية</td><td>—</td><td>COD</td><td class="good">عند الباب بعد المعاينة</td></tr>
+          <tr><td>ثقيل النوم</td><td class="bad">غالباً لا</td><td class="good">اهتزاز على الجلد</td></tr>
+          <tr><td>يوقظ الأهل</td><td class="bad">نعم</td><td class="good">لا — أنت وحدك</td></tr>
+          <tr><td>الوضوء</td><td class="bad">لا</td><td class="good">نعم — مقاوم للماء</td></tr>
+          <tr><td>تطبيق</td><td class="bad">دائماً</td><td class="good">لا — مستقل</td></tr>
+          <tr><td>الدفع</td><td>—</td><td class="good">عند الباب بعد المعاينة</td></tr>
         </tbody>
       </table>
       <div class="feat">
@@ -631,38 +635,14 @@
 
   <footer>
     <div class="foot">
-      <div>
-        <p class="foot-brand">سُكون</p>
-        <p class="foot-tag">SUKOON</p>
-        <p>سوار اهتزاز صامت يوقظك للفجر بدون ما يوقظ أهل البيت. تتوضأ فيه، والجوال يبقى برا الغرفة.</p>
-      </div>
-      <div>
-        <h4>التسوق</h4>
-        <ul>
-          <li><a href="#order" onclick="openSheet(); return false;">اطلب سُكون</a></li>
-          <li><a href="#diff">ليش سُكون</a></li>
-          <li>اطلبه الآن — الدفع عند الباب</li>
-          <li>شحن 1–3 أيام داخل السعودية</li>
-        </ul>
-      </div>
-      <div>
-        <h4>الدفع والضمان</h4>
-        <ul>
-          <li>الدفع عند الاستلام نقداً أو بطاقة</li>
-          <li>معاينة المنتج عند الباب</li>
-          <li>شحن مجاني على كل الطلبات</li>
-          <li>رضا أو استرجاع</li>
-        </ul>
-      </div>
-      <div>
-        <h4>الشركة</h4>
-        <ul>
-          <li>سُكون — متجر إلكتروني</li>
-          <li>المملكة العربية السعودية</li>
-          <li>sokon.shop</li>
-          <li>فريقنا يتصل لتأكيد الطلب</li>
-        </ul>
-      </div>
+      <p class="foot-brand">سُكون</p>
+      <p class="foot-tag">SUKOON</p>
+      <p>رفيق صلاة الفجر · الدفع عند الباب · شحن داخل السعودية</p>
+      <ul>
+        <li><a href="#order" onclick="openSheet(); return false;">اطلب سُكون</a></li>
+        <li><a href="#diff">ليش سُكون</a></li>
+        <li>فريقنا يتصل لتأكيد الطلب</li>
+      </ul>
     </div>
     <div class="foot-bar">
       <span>شحن مجاني</span>
@@ -670,7 +650,7 @@
       <span>معاينة قبل الدفع</span>
       <span>رضا أو استرجاع</span>
     </div>
-    <p class="foot-copy">© سُكون · sokon.shop · جميع الحقوق محفوظة</p>
+    <p class="foot-copy">© سُكون · sokon.shop</p>
   </footer>
 
   <div class="sticky">
@@ -739,9 +719,9 @@
     };
 
     const offers = [
-      { id: "1", price: 195, title: "سُكون لك", desc: "قطعة واحدة في علبة الإهداء — تبدأ فجرك بهدوء", img: "./pack-one.jpg", old: "", save: "الدفع عند الباب", badge: "القطعة الواحدة", disc: "" },
-      { id: "2", price: 299, title: "باقة الأجر المضاعف", desc: "قطعة لك وهدية لمن تحب", img: "./pack-two.jpg", old: "390 ر.س", save: "وفّرت 91 ر.س", badge: "الأكثر طلبًا – خصم 23%", disc: "23%-" },
-      { id: "3", price: 499, title: "باقة فجر العائلة", desc: "3 + الرابعة هدية", img: "./pack-family.jpg", old: "780 ر.س", save: "وفّرت 281 ر.س", badge: "الأفضل للعائلات", disc: "36%-" }
+      { id: "1", price: 195, title: "سُكون لك", desc: "يوقظك للفجر وأنت ثقيل النوم، والبيت يكمل نومه. ابدأ الليلة.", img: "./pack-one.jpg", old: "", save: "الدفع عند الباب", badge: "القطعة الواحدة", disc: "" },
+      { id: "2", price: 299, title: "باقة الأجر المضاعف", desc: "قطعة لك وهدية لأبوك أو زوجك. كل فجر يقومه بسببك يُرجى لك مثل أجره.", img: "./pack-two.jpg", old: "390 ر.س", save: "وفّرت 91 ر.س", badge: "الأكثر طلبًا – خصم 23%", disc: "23%-" },
+      { id: "3", price: 499, title: "باقة فجر العائلة", desc: "البيت كامل يصحى بهدوء. الرابعة مجاناً — الكمية محدودة.", img: "./pack-family.jpg", old: "780 ر.س", save: "وفّرت 281 ر.س", badge: "الأفضل للعائلات", disc: "36%-" }
     ];
     let selected = "2";
     let exitDiscount = false;
