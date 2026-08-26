@@ -160,22 +160,27 @@
     details p { margin-top: 8px; color: var(--mute); }
     .sticky {
       position: fixed; bottom: 0; left: 0; right: 0; z-index: 40;
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
       padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
       background: #0b0f16;
       border-top: 1px solid var(--gold);
       box-shadow: 0 -16px 40px rgba(0,0,0,.35);
     }
+    .sticky-copy { color: #fff; min-width: 0; }
+    .sticky-copy p { font-size: 13px; font-weight: 800; line-height: 1.3; }
+    .sticky-copy span { display: block; margin-top: 3px; font-size: 12px; color: rgba(255,255,255,.55); font-weight: 700; }
+    .sticky-copy strong { color: var(--gold); font-weight: 900; }
     .sticky-btn {
-      width: 100%; border: 0; cursor: pointer;
+      flex-shrink: 0; border: 0; cursor: pointer;
       display: flex; flex-direction: column; align-items: center; justify-content: center;
-      gap: 2px;
+      gap: 1px;
       background: linear-gradient(180deg, #f0d7a4 0%, #e2c08a 42%, #c9a46a 100%);
-      color: #070b12; font: 800 17px Tajawal, sans-serif;
-      border-radius: 16px; padding: 12px 16px;
+      color: #070b12; font: 800 15px Tajawal, sans-serif;
+      border-radius: 999px; padding: 11px 18px;
       box-shadow: 0 6px 20px rgba(226,192,138,.4), inset 0 1px 0 rgba(255,255,255,.45);
       animation: stickyShake 2.8s ease-in-out infinite;
     }
-    .sticky-btn small { font-size: 12px; font-weight: 700; opacity: .72; }
+    .sticky-btn small { font-size: 11px; font-weight: 700; opacity: .72; }
     @keyframes stickyShake {
       0%, 78%, 100% { transform: rotate(0) translateX(0); }
       82% { transform: rotate(-3deg) translateX(-2px); }
@@ -332,9 +337,29 @@
     .trust-bar div { text-align: center; font-size: 13px; font-weight: 800; }
     .trust-bar small { display: block; color: var(--mute); font-weight: 600; margin-top: 4px; }
     .gallery { display: grid; gap: 14px 10px; margin-top: 28px; grid-template-columns: 1fr 1fr; }
-    @media (min-width: 800px) { .gallery { grid-template-columns: repeat(3, 1fr); } }
+    @media (min-width: 800px) { .gallery { grid-template-columns: 1fr 1fr; max-width: 720px; } }
     .gallery figure { margin: 0; }
     .gallery img { width: 100%; height: 220px; object-fit: cover; border-radius: 22px; }
+    .vids { display: grid; gap: 12px; margin-top: 28px; }
+    @media (min-width: 800px) { .vids { grid-template-columns: 1fr 1fr; max-width: 720px; } }
+    .vid-frame {
+      position: relative; border-radius: 28px; overflow: hidden;
+      background: #070b12; box-shadow: 0 24px 60px rgba(7,11,18,.18);
+    }
+    .vids video {
+      width: 100%; height: 100%; display: block;
+      aspect-ratio: 4/5; max-height: 420px; object-fit: cover;
+      pointer-events: none;
+    }
+    .vid-cap {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 40px 16px 14px;
+      background: linear-gradient(transparent, rgba(7,11,18,.88));
+      color: #fff; font-weight: 800; font-size: 14px;
+    }
+    .sheet input[name="phone"] {
+      letter-spacing: .12em; font-weight: 800; font-size: 17px;
+    }
     .specs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 28px; }
     @media (min-width: 800px) { .specs { grid-template-columns: repeat(4, 1fr); } }
     .specs div { background: #fff; border-radius: 20px; padding: 18px; text-align: center; }
@@ -356,7 +381,7 @@
       </span>
       <span>سُكون<small>SUKOON</small></span>
     </a>
-    <a class="btn" href="#order" onclick="openSheet(); return false;">من 195 ر.س</a>
+    <a class="btn" href="#order" onclick="openSheet(); return false;">اطلبه الآن</a>
   </header>
 
   <section class="hero" id="top">
@@ -370,8 +395,8 @@
       </p>
       <div class="hero-cta">
         <button class="btn btn-cta" type="button" onclick="openSheet()">
-          اطلب سُكون — من 195 ر.س
-          <small>الدفع عند الاستلام · شحن مجاني داخل المملكة</small>
+          اطلب سُكون — الأكثر طلباً
+          <small>قطعة لك وهدية · 299 ر.س عند الاستلام</small>
         </button>
       </div>
       <div class="stats">
@@ -415,7 +440,7 @@
         <p class="kicker" style="color:var(--gold-2);margin:0">مشتري من مكة</p>
         <p>كنت أحط الجوال تحت المخدة عشان أقوم للفجر، وأصحى على أذان المسجد وأنا كسرت النية. من لبست سُكون، الاهتزاز يجي على يدي قبل الأذان بدقايق. أقوم أتوضأ والبيت ما درى. هذا اللي كنت أحتاجه.</p>
         <p class="who" style="margin-top:12px;font-weight:800">فهد م. — مكة · مشترٍ موثّق</p>
-        <button class="btn" style="margin-top:16px" type="button" onclick="openSheet()">كن مثله — اطلب من 195 ر.س</button>
+        <button class="btn" style="margin-top:16px" type="button" onclick="openSheet()">كن مثله — اطلب باقتك</button>
       </div>
     </div>
   </section>
@@ -468,40 +493,24 @@
         <div class="card"><h3>بركة الوقت</h3><p>من قام للفجر يُوفَّق غالباً في يومه: ساعات أطول، وهمّ أخف إن شاء الله.</p></div>
         <div class="card"><h3>ستر أهل البيت</h3><p>تقوم بهدوء. زوجتك وأطفالك يكملون نومهم. ما في صراخ منبه.</p></div>
       </div>
-      <button class="btn btn-cta btn-order" type="button" onclick="openSheet()">اطلب رفيق فجرك — من 195 ر.س<small>الدفع عند الاستلام داخل السعودية</small></button>
+      <button class="btn btn-cta btn-order" type="button" onclick="openSheet()">اطلب رفيق فجرك<small>الأكثر طلباً · الدفع عند الاستلام</small></button>
     </div>
   </section>
 
   <section>
     <div class="wrap">
-      <p class="kicker" style="color:var(--gold-2)">صور حقيقية للمنتج</p>
+      <p class="kicker" style="color:var(--gold-2)">شوف القيمة</p>
       <h2>تأمّل التفاصيل</h2>
-      <p class="sub">نفس السوار اللي يوصلك: على المعصم، من قريب، وفي غرفة الفجر. خفيف تنساه إلى أن يهتز.</p>
-      <div class="gallery">
-        <figure>
-          <img src="./hero-wrist.jpg" alt="سُكون على المعصم قبل الفجر" />
-          <figcaption>على المعصم قبل الأذان</figcaption>
-        </figure>
-        <figure>
-          <img src="./product-studio.jpg" alt="سوار سُكون عن قرب" />
-          <figcaption>تفاصيل السوار</figcaption>
-        </figure>
-        <figure>
-          <img src="./pack-one.jpg" alt="قطعة سُكون في علبة الإهداء" />
-          <figcaption>القطعة الواحدة</figcaption>
-        </figure>
-        <figure>
-          <img src="./dawn-room.jpg" alt="غرفة هادئة وقت الفجر" />
-          <figcaption>الغرفة تبقى ليل</figcaption>
-        </figure>
-        <figure>
-          <img src="./pack-two.jpg" alt="باقة سُكون لشخصين" />
-          <figcaption>لك ولمن تحب</figcaption>
-        </figure>
-        <figure>
-          <img src="./pack-family.jpg" alt="باقة فجر العائلة" />
-          <figcaption>فجر البيت كامل</figcaption>
-        </figure>
+      <p class="sub">فيديو قصير يتكرّر: السوار على المعصم وقت الفجر، والقطعة بين يديك. خفيف، وتتوضأ فيه.</p>
+      <div class="vids">
+        <div class="vid-frame">
+          <video autoplay muted loop playsinline disablepictureinpicture preload="auto" poster="./hero-wrist.jpg" src="./video-fajr.mp4"></video>
+          <p class="vid-cap">صيحة الفجر — بدون ما يفيق البيت</p>
+        </div>
+        <div class="vid-frame">
+          <video autoplay muted loop playsinline disablepictureinpicture preload="auto" poster="./product-studio.jpg" src="./video-product.mp4"></video>
+          <p class="vid-cap">السوار في يدك — خفيف وتتوضأ فيه</p>
+        </div>
       </div>
       <div class="specs">
         <div><b>3</b><span>منبهات اهتزاز</span></div>
@@ -574,7 +583,7 @@
           <p class="who"><b>ماجد ك.</b> · بريدة · موثّق ✓</p>
         </article>
       </div>
-      <button class="btn btn-cta btn-order" type="button" onclick="openSheet()">انضم إليهم — اطلب من 195 ر.س<small>الدفع عند الاستلام داخل السعودية</small></button>
+      <button class="btn btn-cta btn-order" type="button" onclick="openSheet()">انضم إليهم — اطلب باقتك<small>الأكثر طلباً · الدفع عند الاستلام</small></button>
     </div>
   </section>
 
@@ -588,11 +597,11 @@
   <section class="cta-block" id="order">
     <div class="wrap" style="max-width:520px">
       <p class="kicker" style="color:var(--gold-2)">ابدأ الليلة</p>
-      <h2>سُكون لك — من 195 ر.س</h2>
-      <p class="sub" style="margin-inline:auto">الدفع عند الباب بعد المعاينة. شحن 1–3 أيام داخل السعودية.</p>
+      <h2>الأكثر طلباً — لك ولمن تحب</h2>
+      <p class="sub" style="margin-inline:auto">قطعة لك وهدية. الدفع عند الباب بعد المعاينة. شحن 1–3 أيام داخل السعودية.</p>
       <button class="btn btn-cta btn-order" type="button" onclick="openSheet()">
-        اطلب الآن — من 195 ر.س
-        <small>شحن مجاني · الدفع عند الاستلام</small>
+        اطلب الأكثر طلباً
+        <small>299 ر.س عند الاستلام</small>
       </button>
       <div class="trust">
         <span>✓ شحن 1–3 أيام داخل المملكة</span>
@@ -627,7 +636,7 @@
         <ul>
           <li><a href="#order" onclick="openSheet(); return false;">اطلب سُكون</a></li>
           <li><a href="#diff">ليش سُكون</a></li>
-          <li>الباقات من 195 ر.س</li>
+          <li>اطلبه الآن — الدفع عند الباب</li>
           <li>شحن 1–3 أيام داخل السعودية</li>
         </ul>
       </div>
@@ -660,9 +669,13 @@
   </footer>
 
   <div class="sticky">
+    <div class="sticky-copy">
+      <p>فجرك الليلة — البيت نايم</p>
+      <span>الأكثر طلباً · <strong>299 ر.س</strong> عند الباب</span>
+    </div>
     <button class="sticky-btn" type="button" onclick="openSheet()">
-      صحّ فجرك الليلة — 195 ر.س
-      <small>الدفع عند الباب · شحن مجاني</small>
+      اطلب باقتك
+      <small>قطعة لك وهدية</small>
     </button>
   </div>
 
@@ -677,15 +690,15 @@
     <div id="sheetOffers"></div>
     <form id="orderForm" onsubmit="return sendOrder(event)">
       <label>الاسم</label>
-      <input required name="name" placeholder="اسمك" />
+      <input required name="name" placeholder="اسمك" autocomplete="name" />
       <label>الجوال</label>
-      <input required name="phone" dir="ltr" placeholder="05xxxxxxxx" pattern="05[0-9]{8}" />
+      <input required name="phone" type="tel" inputmode="numeric" autocomplete="tel" dir="ltr" placeholder="05xxxxxxxx" pattern="05[0-9]{8}" />
       <label>المدينة</label>
-      <input name="city" placeholder="الرياض" />
-      <input type="hidden" name="pack" id="packField" value="1" />
+      <input name="city" placeholder="الرياض" autocomplete="address-level2" />
+      <input type="hidden" name="pack" id="packField" value="2" />
       <button class="btn btn-cta btn-order" type="submit">
-        أكّد الطلب — من 195 ر.س
-        <small><span class="ctaPrice">195</span> ر.س عند الاستلام</small>
+        أكّد الطلب
+        <small><span class="ctaPrice">299</span> ر.س عند الاستلام</small>
       </button>
     </form>
     <div class="trust">
@@ -720,7 +733,7 @@
       { id: "2", price: 299, title: "باقة الأجر المضاعف", desc: "قطعة لك وهدية لمن تحب", img: "./pack-two.jpg", old: "390 ر.س", save: "وفّرت 91 ر.س", badge: "الأكثر طلبًا – خصم 23%", disc: "23%-" },
       { id: "3", price: 499, title: "باقة فجر العائلة", desc: "3 + الرابعة هدية", img: "./pack-family.jpg", old: "780 ر.س", save: "وفّرت 281 ر.س", badge: "الأفضل للعائلات", disc: "36%-" }
     ];
-    let selected = "1";
+    let selected = "2";
     let exitDiscount = false;
     let orderSent = false;
 
@@ -870,6 +883,11 @@
       }
     }
     loadPixels();
+    document.querySelectorAll("video").forEach(function (v) {
+      v.muted = true;
+      v.playsInline = true;
+      v.play().catch(function () {});
+    });
   </script>
 </body>
 </html>
