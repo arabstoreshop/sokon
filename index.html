@@ -7,7 +7,8 @@
   <meta name="description" content="سُكون — سوار اهتزاز صامت لصلاة الفجر. تتوضأ فيه، والبيت ما يحس. الدفع عند الاستلام داخل السعودية." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;1,400&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400&family=Tajawal:wght@400;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="preload" as="image" href="./hero-luxe.jpg" fetchpriority="high" />
   <script>
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
@@ -53,7 +54,7 @@
       display: grid; place-items: center;
     }
     .mark svg { width: 36px; height: 36px; display: block; }
-    .brand small { display: block; font-size: 9px; letter-spacing: .28em; color: var(--gold); font-weight: 500; }
+    .brand small { display: block; font-size: 9px; letter-spacing: .28em; color: var(--gold); font-weight: 400; }
     .btn {
       display: inline-flex; align-items: center; justify-content: center;
       background: var(--gold); color: var(--ink); font-weight: 800;
@@ -95,7 +96,7 @@
     }
     h1 span { color: #8a6428; }
     .lead {
-      max-width: 32rem; margin-top: 14px; font-size: 17px; font-weight: 500;
+      max-width: 32rem; margin-top: 14px; font-size: 17px; font-weight: 400;
       color: #3a3228; line-height: 1.8;
     }
     .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
@@ -476,7 +477,7 @@
   </header>
 
   <section class="hero" id="top">
-    <img class="bg" src="./hero-luxe.jpg" alt="" />
+    <img class="bg" src="./hero-luxe.jpg" alt="" fetchpriority="high" decoding="async" />
     <div class="wrap hero-inner">
       <p class="kicker">رفيق صلاة الفجر · داخل السعودية</p>
       <h1>تصحى للفجر.<br /><span>البيت ما يحس.</span></h1>
@@ -548,7 +549,7 @@
 
   <section class="night">
     <div class="wrap split">
-      <div class="pic"><img src="./dawn-room.jpg" alt="غرفة هادئة قبل الفجر" /></div>
+      <div class="pic"><img src="./dawn-room.jpg" alt="غرفة هادئة قبل الفجر" loading="lazy" decoding="async" /></div>
       <div>
         <p class="kicker">المشهد قبل الأذان</p>
         <h2>الغرفة تبقى ليل.<br />أنت تصير فجر.</h2>
@@ -575,7 +576,7 @@
         </div>
       </div>
       <div class="pic">
-        <video autoplay muted loop playsinline poster="./wudu.jpg">
+        <video id="wuduVid" muted loop playsinline preload="none" poster="./wudu.jpg">
           <source src="./video-wudu.mp4" type="video/mp4" />
         </video>
         <p class="pic-cap">تتوضأ فيه — مقاوم للماء</p>
@@ -594,7 +595,7 @@
       </div>
       <div class="vid-break">
         <div class="vid-frame">
-          <img src="./pack-one.jpg" alt="سُكون في علبة الإهداء" />
+          <img src="./pack-one.jpg" alt="سُكون في علبة الإهداء" loading="lazy" decoding="async" />
           <p class="vid-cap">يصلك بعناية — في علبة الإهداء</p>
         </div>
       </div>
@@ -618,11 +619,11 @@
       <p class="sub">نفس السوار اللي يوصلك: في العلبة، وعلى المعصم. خفيف، وتتوضأ فيه.</p>
       <div class="vids">
         <div class="vid-frame">
-          <img src="./product-studio.jpg" alt="تفاصيل سوار سُكون" />
+          <img src="./product-studio.jpg" alt="تفاصيل سوار سُكون" loading="lazy" decoding="async" />
           <p class="vid-cap">خفة المقاس — تنساه إلى أن يهتز</p>
         </div>
         <div class="vid-frame">
-          <img src="./pack-two.jpg" alt="باقة سُكون لشخصين" />
+          <img src="./pack-two.jpg" alt="باقة سُكون لشخصين" loading="lazy" decoding="async" />
           <p class="vid-cap">لك ولمن تحب</p>
         </div>
       </div>
@@ -673,7 +674,7 @@
       <h2>قالوا عن رفيق فجرهم</h2>
       <div class="reviews">
         <article class="review">
-          <img src="./review-1.jpg" alt="سُكون على المعصم في الفجر" />
+          <img src="./review-1.jpg" alt="سُكون على المعصم في الفجر" loading="lazy" decoding="async" />
           <div class="rev-body">
             <p class="stars-inline">★★★★★</p>
             <h3>ثقيل النوم… والاهتزاز هو اللي نفع</h3>
@@ -682,7 +683,7 @@
           </div>
         </article>
         <article class="review">
-          <img src="./review-2.jpg" alt="علبة سُكون في البيت" />
+          <img src="./review-2.jpg" alt="علبة سُكون في البيت" loading="lazy" decoding="async" />
           <div class="rev-body">
             <p class="stars-inline">★★★★★</p>
             <h3>هديته لأخوي الكبير</h3>
@@ -691,7 +692,7 @@
           </div>
         </article>
         <article class="review">
-          <img src="./review-3.jpg" alt="سُكون أثناء الوضوء" />
+          <img src="./review-3.jpg" alt="سُكون أثناء الوضوء" loading="lazy" decoding="async" />
           <div class="rev-body">
             <p class="stars-inline">★★★★★</p>
             <h3>وضوء بدون ما أشيله</h3>
@@ -700,7 +701,7 @@
           </div>
         </article>
         <article class="review">
-          <img src="./review-4.jpg" alt="سُكون في البيت" />
+          <img src="./review-4.jpg" alt="سُكون في البيت" loading="lazy" decoding="async" />
           <div class="rev-body">
             <p class="stars-inline">★★★★☆</p>
             <h3>يسوي المطلوب بدون تعقيد</h3>
@@ -873,7 +874,7 @@
       box.innerHTML = offers.map((o) => `
         <article class="offer ${o.id === selected ? "on" : ""} ${o.id === "2" ? "hot" : ""}" data-id="${o.id}" data-price="${chargedPrice(o)}" onclick="pick(this)">
           ${o.disc ? `<span class="disc">${o.disc}</span>` : ""}
-          <img src="${o.img}" alt="" />
+          <img src="${o.img}" alt="" loading="lazy" decoding="async" />
           <div>
             ${o.badge ? `<span class="badge">${o.badge}</span>` : ""}
             <h3>${o.title}</h3>
@@ -1026,7 +1027,20 @@
         });
       });
     }
+    function playWuduWhenVisible() {
+      var v = document.getElementById("wuduVid");
+      if (!v) return;
+      if (!("IntersectionObserver" in window)) { v.play(); return; }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) v.play();
+          else v.pause();
+        });
+      }, { rootMargin: "120px" });
+      io.observe(v);
+    }
     wireArabicValidation();
+    playWuduWhenVisible();
     loadPixels();
   </script>
 </body>
