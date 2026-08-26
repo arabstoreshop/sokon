@@ -876,15 +876,52 @@
     let orderSent = false;
 
     function captureSource() {
-      var p = new URLSearchParams(location.search);
-      var raw = (p.get("utm_source") || p.get("utm_medium") || "").toLowerCase();
+      var KEY = "sk_source";
+      var TTL = 7 * 24 * 60 * 60 * 1000;
+      var keys = {};
+      new URLSearchParams(location.search).forEach(function (v, k) {
+        keys[String(k).toLowerCase()] = v || "";
+      });
+      var raw = (keys.utm_source || keys.utm_medium || keys.utm_campaign || "").toLowerCase();
+      var ref = (document.referrer || "").toLowerCase();
       var source = "";
-      if (p.get("fbclid") || /fb|facebook|meta|ig|instagram/.test(raw)) source = "فيسبوك";
-      else if (p.get("ttclid") || /tiktok|tt\b/.test(raw)) source = "تيك توك";
-      else if (p.get("ScCid") || p.get("sccid") || p.get("sclid") || /snap/.test(raw)) source = "سناب";
-      else if (raw) source = raw;
-      if (source) sessionStorage.setItem("sk_source", source);
-      return sessionStorage.getItem("sk_source") || "مباشر";
+
+      function fromText(s) {
+        if (/facebook|meta|\bfb\b|instagram|\big\b/.test(s)) return "فيسبوك";
+        if (/tiktok|\btt\b/.test(s)) return "تيك توك";
+        if (/snap/.test(s)) return "سناب";
+        if (/google|gclid|youtube/.test(s)) return "جوجل";
+        return "";
+      }
+
+      if (keys.fbclid || keys.fb_action_ids) source = "فيسبوك";
+      else if (keys.ttclid || keys.tt_chain_token) source = "تيك توك";
+      else if (keys.sccid || keys.sclid || keys.ssclid || keys.sc_cid || keys.scclid) source = "سناب";
+      else source = fromText(raw);
+
+      if (!source && keys.gclid) source = "جوجل";
+      if (!source && ref) {
+        if (/facebook|instagram|\.fb\.com/.test(ref)) source = "فيسبوك";
+        else if (/tiktok/.test(ref)) source = "تيك توك";
+        else if (/snapchat|\.snap\.com/.test(ref)) source = "سناب";
+      }
+      if (!source) {
+        var fbc = (document.cookie.match(/(?:^|; )_fbc=([^;]*)/) || [])[1];
+        if (fbc) source = "فيسبوك";
+      }
+
+      try {
+        if (source) {
+          localStorage.setItem(KEY, JSON.stringify({ s: source, t: Date.now() }));
+          sessionStorage.setItem(KEY, source);
+        } else {
+          var saved = JSON.parse(localStorage.getItem(KEY) || "null");
+          if (saved && saved.s && (Date.now() - saved.t) < TTL) source = saved.s;
+          source = source || sessionStorage.getItem(KEY) || "";
+        }
+      } catch (err) {}
+
+      return source || "مباشر";
     }
     captureSource();
 
