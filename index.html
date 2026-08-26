@@ -77,24 +77,41 @@
       background: var(--cream);
     }
     .hero img.bg {
-      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .92;
+      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 1;
     }
     .hero::after {
       content: ""; position: absolute; inset: 0;
-      background: linear-gradient(180deg, rgba(247,241,230,.12) 0%, rgba(247,241,230,.35) 42%, rgba(247,241,230,.96) 100%);
+      background:
+        linear-gradient(90deg, rgba(247,241,230,.78) 0%, rgba(247,241,230,.42) 52%, rgba(247,241,230,.18) 100%),
+        linear-gradient(180deg, rgba(247,241,230,.28) 0%, rgba(247,241,230,.12) 34%, rgba(247,241,230,.97) 100%);
     }
     .hero-inner { position: relative; z-index: 1; padding: 0 0 48px; }
+    .hero-copy {
+      max-width: 40rem;
+      background: rgba(255,253,248,.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(184,137,62,.28);
+      border-radius: 28px;
+      padding: 22px 22px 20px;
+      box-shadow: 0 18px 50px rgba(58,50,40,.1);
+    }
     .kicker {
-      color: var(--gold-2); font-size: 13px; font-weight: 700; letter-spacing: .18em;
+      color: #8a6428; font-size: 13px; font-weight: 800; letter-spacing: .18em;
       margin-bottom: 14px;
     }
     h1 {
-      font-size: clamp(40px, 7vw, 84px); font-weight: 900; line-height: 1.08;
-      max-width: 14ch;
+      font-size: clamp(36px, 6.4vw, 76px); font-weight: 900; line-height: 1.12;
+      max-width: 14ch; color: #241c14;
+      text-shadow: 0 1px 0 rgba(255,253,248,.8);
     }
-    h1 span { color: var(--gold-2); }
-    .lead { max-width: 36rem; margin-top: 18px; font-size: 18px; color: #5c564c; }
+    h1 span { color: #8a6428; }
+    .lead {
+      max-width: 36rem; margin-top: 16px; font-size: 17px; font-weight: 600;
+      color: #3a3228; line-height: 1.85;
+    }
     .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
+    .hero-copy + .hero-cta { margin-top: 16px; }
     .stats {
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
       margin-top: 22px; max-width: 560px;
@@ -122,19 +139,40 @@
       background: #fff; border-radius: 20px; padding: 18px 20px; box-shadow: 0 10px 40px rgba(7,11,18,.06);
     }
     .card h3 { font-size: 18px; margin-bottom: 6px; }
-    .compare {
-      width: 100%; table-layout: fixed; border-collapse: collapse; margin-top: 18px; background: #fff;
-      border-radius: 18px; overflow: hidden; font-size: 12px;
-      box-shadow: 0 10px 30px rgba(7,11,18,.05);
+    .cmp-board {
+      display: grid; grid-template-columns: .92fr 1fr 1.18fr; gap: 8px;
+      margin-top: 20px;
     }
-    .compare th, .compare td {
-      padding: 10px 8px; text-align: center; border-bottom: 1px solid #efe8dc; vertical-align: middle;
+    .cmp-col {
+      background: #fff; border-radius: 20px; overflow: hidden;
+      box-shadow: 0 10px 30px rgba(58,50,40,.07);
+      border: 1px solid #efe6d6;
+      min-width: 0;
     }
-    .compare th { background: #5c4a32; color: #fff; font-size: 11px; font-weight: 800; }
-    .compare th:last-child { background: #b8893e; color: #fff; }
-    .compare td:first-child { text-align: right; font-weight: 800; width: 36%; color: var(--ink); }
-    .compare td:last-child { background: #f6efe2; }
-    .compare tr:last-child td { border-bottom: 0; }
+    .cmp-col header {
+      padding: 13px 8px; text-align: center; font-weight: 900; font-size: 14px; color: #fff;
+    }
+    .cmp-feat header { background: #5c4a32; }
+    .cmp-phone header { background: #8a7b68; }
+    .cmp-sukoon {
+      border: 1.5px solid rgba(184,137,62,.55);
+      box-shadow: 0 12px 34px rgba(184,137,62,.18);
+    }
+    .cmp-sukoon header { background: #b8893e; }
+    .cmp-col p {
+      margin: 0; padding: 13px 8px; text-align: center; font-size: 12px; font-weight: 800;
+      border-bottom: 1px solid #efe8dc; min-height: 52px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .cmp-col p:last-child { border-bottom: 0; }
+    .cmp-feat p { color: var(--ink); background: #faf6f0; }
+    .cmp-phone p { color: #9a3b3b; }
+    .cmp-sukoon p { color: #1c6b45; background: #f6efe2; }
+    @media (max-width: 520px) {
+      .cmp-board { gap: 5px; }
+      .cmp-col header { font-size: 12px; padding: 11px 4px; }
+      .cmp-col p { font-size: 11px; padding: 11px 4px; min-height: 48px; }
+    }
     .good { color: #1c6b45; font-weight: 800; }
     .bad { color: #9a3b3b; }
     .night {
@@ -193,20 +231,18 @@
     .sticky-copy p { font-size: 13px; font-weight: 800; line-height: 1.3; }
     .sticky-copy span { display: block; margin-top: 3px; font-size: 12px; color: var(--mute); font-weight: 700; }
     .sticky-copy strong { color: var(--gold-2); font-weight: 900; }
-    .sticky-copy p { font-size: 13px; font-weight: 800; line-height: 1.3; }
-    .sticky-copy span { display: block; margin-top: 3px; font-size: 12px; color: rgba(255,255,255,.55); font-weight: 700; }
-    .sticky-copy strong { color: var(--gold); font-weight: 900; }
     .sticky-btn {
       flex-shrink: 0; border: 0; cursor: pointer;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      gap: 1px;
+      display: inline-flex; align-items: center; justify-content: center;
       background: linear-gradient(180deg, #f0d7a4 0%, #e2c08a 42%, #c9a46a 100%);
-      color: #070b12; font: 800 15px Tajawal, sans-serif;
-      border-radius: 999px; padding: 11px 18px;
-      box-shadow: 0 6px 20px rgba(226,192,138,.4), inset 0 1px 0 rgba(255,255,255,.45);
+      color: #1a1610; font: 800 14px Tajawal, sans-serif;
+      border-radius: 999px; padding: 14px 22px; white-space: nowrap;
+      box-shadow: 0 6px 20px rgba(226,192,138,.4), inset 0 1px 0 rgba(255,255,255,.5);
       animation: stickyShake 2.8s ease-in-out infinite;
     }
-    .sticky-btn small { font-size: 11px; font-weight: 700; opacity: .72; }
+    @media (max-width: 420px) {
+      .sticky-btn { font-size: 12px; padding: 12px 14px; }
+    }
     @keyframes stickyShake {
       0%, 78%, 100% { transform: rotate(0) translateX(0); }
       82% { transform: rotate(-3deg) translateX(-2px); }
@@ -217,7 +253,15 @@
     @media (prefers-reduced-motion: reduce) {
       .sticky-btn { animation: none; }
     }
-    .pic { border-radius: 32px; overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,.25); }
+    .pic { position: relative; border-radius: 32px; overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,.18); }
+    .pic video, .pic img { width: 100%; height: 100%; object-fit: cover; display: block; min-height: 340px; }
+    .pic-cap {
+      position: absolute; left: 12px; right: 12px; bottom: 12px;
+      background: rgba(255,253,248,.92); color: var(--ink);
+      font-size: 13px; font-weight: 800; text-align: center;
+      border-radius: 999px; padding: 8px 12px;
+      border: 1px solid rgba(184,137,62,.28);
+    }
     .offers { background: #f3efe6; }
     .offer {
       position: relative; background: #fff; border: 1.5px solid #e8e0d2;
@@ -410,9 +454,15 @@
     @media (min-width: 800px) { .specs { grid-template-columns: repeat(4, 1fr); } }
     .specs div { background: #fff; border-radius: 20px; padding: 18px; text-align: center; }
     .specs b { display: block; color: var(--gold-2); font-size: 20px; }
-    .reviews { display: grid; gap: 10px; margin-top: 16px; }
+    .reviews { display: grid; gap: 12px; margin-top: 16px; }
     @media (min-width: 800px) { .reviews { grid-template-columns: 1fr 1fr; } }
-    .review { background: #fff; border-radius: 18px; padding: 16px 18px; box-shadow: 0 10px 30px rgba(7,11,18,.05); }
+    .review {
+      background: #fffdf8; border-radius: 22px; overflow: hidden;
+      box-shadow: 0 10px 30px rgba(7,11,18,.06); padding: 0;
+      border: 1px solid #efe6d6;
+    }
+    .review img { width: 100%; height: 210px; object-fit: cover; display: block; }
+    .review .rev-body { padding: 14px 16px 16px; }
     .review .who { margin-top: 14px; font-size: 13px; color: var(--mute); font-weight: 800; }
     .review .who b { color: var(--ink); }
     .feat { max-width: 720px; margin: 20px auto 0; background: #fff; border-radius: 22px; padding: 20px; }
@@ -433,12 +483,14 @@
   <section class="hero" id="top">
     <img class="bg" src="./hero-luxe.jpg" alt="" />
     <div class="wrap hero-inner">
-      <p class="kicker">رفيق صلاة الفجر · داخل السعودية</p>
-      <h1>تصحى للفجر.<br /><span>البيت ما يحس.</span></h1>
-      <p class="lead">
-        سُكون مو منبه يصرخ. سوار اهتزاز صامت يوقظك لصلاة الفجر وأنت ثقيل النوم —
-        وتتوضأ فيه، والجوال يبقى برا الغرفة. الأجر لله. إحنا بس نسهّل تقوم في الوقت.
-      </p>
+      <div class="hero-copy">
+        <p class="kicker">رفيق صلاة الفجر · داخل السعودية</p>
+        <h1>تصحى للفجر.<br /><span>البيت ما يحس.</span></h1>
+        <p class="lead">
+          سُكون مو منبه يصرخ. سوار اهتزاز صامت يوقظك لصلاة الفجر وأنت ثقيل النوم —
+          وتتوضأ فيه، والجوال يبقى برا الغرفة. الأجر لله. إحنا بس نسهّل تقوم في الوقت.
+        </p>
+      </div>
       <div class="hero-cta">
         <button class="btn btn-cta" type="button" onclick="openSheet()">
           اطلب سُكون — فقط 195 ر.س
@@ -470,18 +522,32 @@
       <p class="kicker" style="color:var(--gold-2)">ليش الناس يفوتون الفجر</p>
       <h2>النية موجودة.<br />الوسيلة هي اللي تخونك.</h2>
       <p class="sub">تنام وأنت ناوي تقوم، وتصحى والشمس طالعة. الجوال يصرخ فيوقظ أهلك، أو تخفضه فما تسمعه. سُكون يقلب المعادلة: التنبيه على معصمك، وأنت وحدك تصحى على السجادة.</p>
-      <table class="compare">
-        <thead>
-          <tr><th>الميزة</th><th>الجوال</th><th>سُكون</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>ثقيل النوم</td><td class="bad">غالباً لا</td><td class="good">اهتزاز على الجلد</td></tr>
-          <tr><td>يوقظ الأهل</td><td class="bad">نعم</td><td class="good">لا — أنت وحدك</td></tr>
-          <tr><td>الوضوء</td><td class="bad">لا</td><td class="good">نعم — مقاوم للماء</td></tr>
-          <tr><td>تطبيق</td><td class="bad">دائماً</td><td class="good">لا — مستقل</td></tr>
-          <tr><td>الدفع</td><td>—</td><td class="good">عند الباب بعد المعاينة</td></tr>
-        </tbody>
-      </table>
+      <div class="cmp-board" role="table" aria-label="مقارنة سُكون والجوال">
+        <div class="cmp-col cmp-feat">
+          <header>الميزة</header>
+          <p>ثقيل النوم</p>
+          <p>يوقظ الأهل</p>
+          <p>الوضوء</p>
+          <p>تطبيق</p>
+          <p>الدفع</p>
+        </div>
+        <div class="cmp-col cmp-phone">
+          <header>الجوال</header>
+          <p>غالباً لا</p>
+          <p>نعم</p>
+          <p>لا</p>
+          <p>دائماً</p>
+          <p>—</p>
+        </div>
+        <div class="cmp-col cmp-sukoon">
+          <header>سُكون</header>
+          <p>اهتزاز على الجلد</p>
+          <p>لا — أنت وحدك</p>
+          <p>نعم — مقاوم للماء</p>
+          <p>لا — مستقل</p>
+          <p>عند الباب بعد المعاينة</p>
+        </div>
+      </div>
       <div class="feat">
         <p class="kicker" style="color:var(--gold-2);margin:0">مشتري من مكة</p>
         <p>كنت أحط الجوال تحت المخدة عشان أقوم للفجر، وأصحى على أذان المسجد وأنا كسرت النية. من لبست سُكون، الاهتزاز يجي على يدي قبل الأذان بدقايق. أقوم أتوضأ والبيت ما درى. هذا اللي كنت أحتاجه.</p>
@@ -519,7 +585,12 @@
           <div><h3>مستقل</h3><p class="sub" style="margin:0">الجوال في الصالة. أول ما تفتح عينك ما تفتح شاشة.</p></div>
         </div>
       </div>
-      <div class="pic"><img src="./product-studio.jpg" alt="سوار سُكون" /></div>
+      <div class="pic">
+        <video autoplay muted loop playsinline poster="./wudu.jpg">
+          <source src="./video-wudu.mp4" type="video/mp4" />
+        </video>
+        <p class="pic-cap">تتوضأ فيه — مقاوم للماء</p>
+      </div>
     </div>
   </section>
 
@@ -613,28 +684,40 @@
       <h2>قالوا عن رفيق فجرهم</h2>
       <div class="reviews">
         <article class="review">
-          <p class="stars-inline">★★★★★</p>
-          <h3>ثقيل النوم… والاهتزاز هو اللي نفع</h3>
-          <p>شفت كل المنبهات الصوتية. أحط ثلاث رنات وأكمل نوم. سُكون مختلف لأن التنبيه على الجلد مو على الطاولة. أسبوعين وأنا أدرك الفجر في المسجد، وأهلي ما صحتوا مرّة.</p>
-          <p class="who"><b>يوسف ح.</b> · المدينة · موثّق ✓</p>
+          <img src="./hero-wrist.jpg" alt="سُكون على المعصم" />
+          <div class="rev-body">
+            <p class="stars-inline">★★★★★</p>
+            <h3>ثقيل النوم… والاهتزاز هو اللي نفع</h3>
+            <p>شفت كل المنبهات الصوتية. أحط ثلاث رنات وأكمل نوم. سُكون مختلف لأن التنبيه على الجلد مو على الطاولة. أسبوعين وأنا أدرك الفجر في المسجد، وأهلي ما صحتوا مرّة.</p>
+            <p class="who"><b>يوسف ح.</b> · المدينة · موثّق ✓</p>
+          </div>
         </article>
         <article class="review">
-          <p class="stars-inline">★★★★★</p>
-          <h3>هديته لأخوي الكبير</h3>
-          <p>أخوي دوامه ست الصبح وكان يزعج البيت كل فجر. طلبت له سُكون مع باقة الاثنين. الحين يقوم وهو ما يفتح الجوال، وأمي ترتاح. أحسن هدية اشتريتها هالسنة.</p>
-          <p class="who"><b>نورة ع.</b> · الخبر · موثّق ✓</p>
+          <img src="./pack-two.jpg" alt="علبة سُكون" />
+          <div class="rev-body">
+            <p class="stars-inline">★★★★★</p>
+            <h3>هديته لأخوي الكبير</h3>
+            <p>أخوي دوامه ست الصبح وكان يزعج البيت كل فجر. طلبت له سُكون مع باقة الاثنين. الحين يقوم وهو ما يفتح الجوال، وأمي ترتاح. أحسن هدية اشتريتها هالسنة.</p>
+            <p class="who"><b>نورة ع.</b> · الخبر · موثّق ✓</p>
+          </div>
         </article>
         <article class="review">
-          <p class="stars-inline">★★★★★</p>
-          <h3>وضوء بدون ما أشيله</h3>
-          <p>كنت أخاف الماء يخرّبه. توضأت فيه من أول يوم عادي. خفيف وأنام فيه. المنبه الثاني حطيته للدوام. البطارية عندي تعدّت خمسة أيام.</p>
-          <p class="who"><b>إبراهيم د.</b> · أبها · موثّق ✓</p>
+          <img src="./wudu.jpg" alt="سُكون أثناء الوضوء" />
+          <div class="rev-body">
+            <p class="stars-inline">★★★★★</p>
+            <h3>وضوء بدون ما أشيله</h3>
+            <p>كنت أخاف الماء يخرّبه. توضأت فيه من أول يوم عادي. خفيف وأنام فيه. المنبه الثاني حطيته للدوام. البطارية عندي تعدّت خمسة أيام.</p>
+            <p class="who"><b>إبراهيم د.</b> · أبها · موثّق ✓</p>
+          </div>
         </article>
         <article class="review">
-          <p class="stars-inline">★★★★☆</p>
-          <h3>يسوي المطلوب بدون تعقيد</h3>
-          <p>ما أبي خطوات وسعرات. أبي أقوم للفجر بدون ما أزعج زوجتي. هذا اللي صار. أول ليلتين أحس بالحزام، بعدها نسيت. الشاشة صغيرة بس تكفي الوقت والمنبه.</p>
-          <p class="who"><b>ماجد ك.</b> · بريدة · موثّق ✓</p>
+          <img src="./pack-one.jpg" alt="سُكون في العلبة" />
+          <div class="rev-body">
+            <p class="stars-inline">★★★★☆</p>
+            <h3>يسوي المطلوب بدون تعقيد</h3>
+            <p>ما أبي خطوات وسعرات. أبي أقوم للفجر بدون ما أزعج زوجتي. هذا اللي صار. أول ليلتين أحس بالحزام، بعدها نسيت. الشاشة صغيرة بس تكفي الوقت والمنبه.</p>
+            <p class="who"><b>ماجد ك.</b> · بريدة · موثّق ✓</p>
+          </div>
         </article>
       </div>
       <button class="btn btn-cta btn-order" type="button" onclick="openSheet()">انضم إليهم — اطلب سُكون<small>فقط 195 ر.س · الدفع عند الاستلام</small></button>
@@ -703,10 +786,7 @@
       <p>فجرك الليلة — البيت نايم</p>
       <span>فقط <strong>195 ر.س</strong> · الدفع عند الباب</span>
     </div>
-    <button class="sticky-btn" type="button" onclick="openSheet()">
-      اطلبه الآن
-      <small>شحن مجاني</small>
-    </button>
+    <button class="sticky-btn" type="button" onclick="openSheet()">اطلبه الآن بضمان كامل</button>
   </div>
 
   <div class="sheet-bg" id="sheetBg" onclick="tryCloseSheet()"></div>
