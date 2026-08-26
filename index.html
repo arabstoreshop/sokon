@@ -870,6 +870,19 @@
     let exitDiscount = false;
     let orderSent = false;
 
+    function captureSource() {
+      var p = new URLSearchParams(location.search);
+      var raw = (p.get("utm_source") || p.get("utm_medium") || "").toLowerCase();
+      var source = "";
+      if (p.get("fbclid") || /fb|facebook|meta|ig|instagram/.test(raw)) source = "فيسبوك";
+      else if (p.get("ttclid") || /tiktok|tt\b/.test(raw)) source = "تيك توك";
+      else if (p.get("ScCid") || p.get("sccid") || p.get("sclid") || /snap/.test(raw)) source = "سناب";
+      else if (raw) source = raw;
+      if (source) sessionStorage.setItem("sk_source", source);
+      return sessionStorage.getItem("sk_source") || "مباشر";
+    }
+    captureSource();
+
     function packById(id) {
       return offers.find((o) => o.id === id) || offers[0];
     }
@@ -996,6 +1009,7 @@
         pack_title: pack.title,
         price: price,
         discount: exitDiscount ? "10" : "0",
+        source: captureSource(),
         created_at: new Date().toISOString()
       };
 
