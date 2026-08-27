@@ -168,8 +168,11 @@
     var value = parseFloat(params.get("value") || "0");
     var contentName = params.get("content_name") || "سُكون";
     var contentIds = params.get("content_ids") || "2";
+    var numItems = parseInt(params.get("num_items") || contentIds, 10) || 1;
+    var orderId = params.get("order_id") || ("SK-" + Date.now() + "-" + contentIds);
+    var itemPrice = Math.round((value / numItems) * 100) / 100;
     if (value > 0) {
-      var firedKey = "sk_purchase_" + value + "_" + contentIds;
+      var firedKey = "sk_purchase_" + orderId;
       if (!sessionStorage.getItem(firedKey)) {
         sessionStorage.setItem(firedKey, "1");
         fbq("track", "Purchase", {
@@ -177,7 +180,10 @@
           currency: "SAR",
           content_name: contentName,
           content_ids: [contentIds],
-          content_type: "product"
+          content_type: "product",
+          contents: [{ id: contentIds, quantity: numItems, item_price: itemPrice }],
+          num_items: numItems,
+          order_id: orderId
         });
         if (window.ttq) {
           window.ttq.track("CompletePayment", {
@@ -191,9 +197,10 @@
           window.snaptr("track", "PURCHASE", {
             price: value,
             currency: "SAR",
-            transaction_id: "SK-" + contentIds + "-" + value,
+            transaction_id: orderId,
             item_ids: [contentIds],
-            item_category: contentName
+            item_category: contentName,
+            number_items: numItems
           });
         }
       }

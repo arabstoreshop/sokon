@@ -1091,10 +1091,13 @@
       fireLead(price, pack.title);
       postToSheet(payload);
       setTimeout(function () {
+        var orderId = "SK-" + Date.now() + "-" + pack.id;
         window.location.href = "./thank-you.html?name=" + encodeURIComponent(payload.name)
           + "&value=" + encodeURIComponent(price)
           + "&content_name=" + encodeURIComponent(pack.title)
-          + "&content_ids=" + encodeURIComponent(pack.id);
+          + "&content_ids=" + encodeURIComponent(pack.id)
+          + "&num_items=" + encodeURIComponent(pack.id)
+          + "&order_id=" + encodeURIComponent(orderId);
       }, 900);
       return false;
     }
