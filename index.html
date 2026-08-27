@@ -228,7 +228,12 @@
     }
     input, select {
       width: 100%; padding: 14px 16px; border-radius: 16px; border: 1px solid #e6e0d6;
-      font: inherit; text-align: right;
+      font: inherit; text-align: right; background: #fff;
+      -webkit-appearance: none; appearance: none;
+    }
+    input::-webkit-contacts-auto-fill-button,
+    input::-webkit-credentials-auto-fill-button {
+      visibility: hidden; display: none; pointer-events: none;
     }
     details { border-bottom: 1px solid #e8e2d8; padding: 16px 0; }
     summary { font-weight: 800; cursor: pointer; }
@@ -463,7 +468,7 @@
     }
     .phone-row input { direction: ltr; text-align: left; }
     .form-box {
-      border: 1.5px dashed #d4b483; border-radius: 18px; padding: 12px;
+      border: 1.5px solid #e2c08a; border-radius: 18px; padding: 12px;
       display: grid; gap: 8px; background: #fffdf8;
     }
     .hint {
@@ -829,7 +834,7 @@
         <label>المدينة *</label>
         <input required name="city" placeholder="الرياض" autocomplete="address-level2" title="من فضلك اكتب المدينة" />
         <label>العنوان</label>
-        <input name="address" placeholder="الحي أو الشارع" autocomplete="street-address" />
+        <input name="address" placeholder="الحي أو الشارع" autocomplete="address-line1" />
         <p class="hint">أضف معلماً قريباً (جامع أو دوار) ليسهل وصول المندوب.</p>
       </div>
       <input type="hidden" name="pack" id="packField" value="2" />
