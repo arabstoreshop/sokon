@@ -824,7 +824,7 @@
         <label>رقم الجوال *</label>
         <div class="phone-row">
           <span class="cc">+966</span>
-          <input required name="phone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="5X XXX XXXX" pattern="5[0-9]{8}" title="من فضلك اكتب رقم الجوال يبدأ بـ 5" />
+          <input required name="phone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="5X XXX XXXX" maxlength="16" title="من فضلك اكتب رقم الجوال يبدأ بـ 5" />
         </div>
         <label>المدينة *</label>
         <input required name="city" placeholder="الرياض" autocomplete="address-level2" title="من فضلك اكتب المدينة" />
@@ -1028,17 +1028,44 @@
       iframe.src = CONFIG.sheetWebhook + "?" + qs.toString();
     }
 
+    function easternToWestern(str) {
+      return String(str || "")
+        .replace(/[\u0660-\u0669]/g, function (d) { return String(d.charCodeAt(0) - 0x0660); })
+        .replace(/[\u06F0-\u06F9]/g, function (d) { return String(d.charCodeAt(0) - 0x06F0); });
+    }
+    function digitsOnlyPhone(raw) {
+      var s = easternToWestern(raw).replace(/[^\d]/g, "");
+      if (s.indexOf("00966") === 0) s = s.slice(5);
+      else if (s.indexOf("966") === 0) s = s.slice(3);
+      if (s.charAt(0) === "0") s = s.slice(1);
+      return s;
+    }
+    function isSaudiMobile(raw) {
+      return /^5\d{8}$/.test(digitsOnlyPhone(raw));
+    }
+    function toSheetPhone(raw) {
+      return "0" + digitsOnlyPhone(raw);
+    }
+
     function sendOrder(e) {
       e.preventDefault();
       const form = e.target;
+      const phoneEl = form.querySelector("[name=phone]");
+      if (phoneEl) {
+        phoneEl.value = easternToWestern(phoneEl.value);
+        phoneEl.setCustomValidity(isSaudiMobile(phoneEl.value) ? "" : "من فضلك اكتب رقم الجوال يبدأ بـ 5 ويتكوّن من تسعة أرقام.");
+        if (!phoneEl.checkValidity()) {
+          phoneEl.reportValidity();
+          return false;
+        }
+      }
       const btn = form.querySelector("button[type=submit]");
       if (btn) {
         btn.disabled = true;
         btn.textContent = "جاري إرسال الطلب…";
       }
       const fd = new FormData(form);
-      var phone = (fd.get("phone") || "").trim().replace(/\s/g, "");
-      if (phone.charAt(0) === "5") phone = "0" + phone;
+      var phone = toSheetPhone(fd.get("phone"));
       const pack = packById(selected);
       const price = chargedPrice(pack);
       orderSent = true;
@@ -1088,10 +1115,10 @@
       }
     }
     function arabicValidity(el) {
-      if (el.validity.valueMissing) return "من فضلك عبّي هذا الحقل لنقدر نكمّل طلبك.";
-      if (el.name === "phone" && el.validity.patternMismatch) {
+      if (el.name === "phone" && el.value && !isSaudiMobile(el.value)) {
         return "من فضلك اكتب رقم الجوال يبدأ بـ 5 ويتكوّن من تسعة أرقام.";
       }
+      if (el.validity.valueMissing) return "من فضلك عبّي هذا الحقل لنقدر نكمّل طلبك.";
       if (el.validity.patternMismatch) return "من فضلك تأكد من صحة هذا الحقل.";
       return "من فضلك راجع هذا الحقل.";
     }
@@ -1101,6 +1128,7 @@
           el.setCustomValidity(arabicValidity(el));
         });
         el.addEventListener("input", function () {
+          if (el.name === "phone") el.value = easternToWestern(el.value);
           el.setCustomValidity("");
         });
       });
