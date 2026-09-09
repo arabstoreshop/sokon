@@ -33,41 +33,39 @@
     .card p { color: #7a6b5e; margin-top: 6px; font-size: 14px; }
     .sum { display: flex; justify-content: space-between; margin-top: 10px; font-size: 14px; }
     .sum strong { color: #a67c52; font-size: 26px; }
-    .wa {
-      display: flex; align-items: center; justify-content: center; gap: 8px;
-      width: 100%; margin-top: 14px;
-      background: #25d366; color: #fff;
-      border: 0; border-radius: 999px;
-      padding: 16px 14px;
-      font-weight: 900; font-size: 16px;
+    .call {
+      background: #2a221c;
+      color: #fffaf5;
+      border: 0;
+      border-radius: 18px;
+      padding: 16px;
+      margin-top: 14px;
       animation: pulse 1.4s ease-in-out infinite;
     }
+    .call strong { display: block; font-size: 18px; font-weight: 900; }
+    .call p { color: #f3e4d4; margin-top: 8px; font-size: 14px; line-height: 1.7; }
     @keyframes pulse {
-      0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37,211,102,.45); }
-      50% { transform: scale(1.02); box-shadow: 0 0 0 10px rgba(37,211,102,0); }
+      0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(42,34,28,.35); }
+      50% { transform: scale(1.015); box-shadow: 0 0 0 10px rgba(42,34,28,0); }
     }
-    .add {
-      width: 100%; margin-top: 10px;
-      background: linear-gradient(180deg, #d8b08a, #a67c52);
-      color: #fff; border: 0; border-radius: 999px;
-      padding: 14px; font-weight: 900; font-size: 15px; cursor: pointer;
-    }
-    .add:disabled { opacity: .6; }
-    .skip { width: 100%; background: none; border: 0; margin-top: 8px; color: #7a6b5e; font-weight: 800; }
     ol { list-style: none; margin-top: 8px; }
     li { padding: 10px 0; border-top: 1px solid #e8d5c2; display: grid; grid-template-columns: 28px 1fr; gap: 8px; }
     li em { font-style: normal; font-size: 16px; color: #a67c52; font-weight: 900; }
     li h3 { font-size: 14px; font-weight: 900; }
     li p { color: #7a6b5e; font-size: 12px; margin-top: 2px; }
     a.back { display: inline-block; margin-top: 18px; color: #a67c52; font-weight: 800; }
-    .ok { color: #1b7a3d; font-weight: 800; margin-top: 8px; display: none; }
   </style>
 </head>
 <body>
   <div class="wrap">
     <p class="mark">COVER COCO</p>
     <h1>شكراً لك أختي! تم تسجيل طلبك بنجاح 🎉</h1>
-    <p class="hi" id="hi">سيتصل بك فريق الدعم عبر الهاتف أو الواتساب بأقرب وقت لتأكيد العنوان والشحن. خلي التليفون قريب منك باش يخرج الطرد اليوم.</p>
+    <p class="hi" id="hi">فريق التأكيد غادي يتصل بيك دابا على التليفون باش نأكّدو العنوان ونخرجو الطرد اليوم.</p>
+
+    <div class="call">
+      <strong>جاوبي التليفون — ضروري</strong>
+      <p>كنتسّلو بيك مباشرة على رقمك. إلا ما جاوبتيش، الطلب كيتوقف وما كيتصيفطش. خلّي التليفون محلول وقريب منك.</p>
+    </div>
 
     <div class="card">
       <b>ملخص الطلب</b>
@@ -75,21 +73,10 @@
       <div class="sum"><span>المجموع</span><strong id="total">—</strong></div>
     </div>
 
-    <a class="wa" id="waBtn" href="#">تأكيد الطلب فوراً عبر الواتساب 💬</a>
-
-    <div class="card" id="addon">
-      <b>زيد للطلبية</b>
-      <h2>إسفنجة المكياج — 49 درهم</h2>
-      <p>كتوزّع الفونديشن مزيان وكتخلي التغطية طبيعية. كتمشي مع نفس التوصيل.</p>
-      <div class="sum"><span>السعر</span><strong>49 درهم</strong></div>
-      <button class="add" type="button" id="addSponge">إضافة للطلبية — 49 درهم</button>
-      <p class="ok" id="added">تزادات الإسفنجة للطلب. الله يعطيك الصحة.</p>
-    </div>
-
     <div class="card">
       <b>شنو وقع دابا</b>
       <ol>
-        <li><em>01</em><div><h3>تأكيد الواتساب</h3><p>جاوبي باش نأكّدو العنوان. بلا الجواب الطلب ما كيتشافش.</p></div></li>
+        <li><em>01</em><div><h3>جاوبي المكالمة</h3><p>كنأكّدو معاك الاسم، الرقم، والمدينة. بلا الجواب الطلب ما كيمشيش.</p></div></li>
         <li><em>02</em><div><h3>التوصيل 24–48 ساعة</h3><p>تعايني فالدار، من بعد الدفع نقداً.</p></div></li>
         <li><em>03</em><div><h3>أول استعمال</h3><p>قطرتين. وزّعي. اللون كيجي ليك.</p></div></li>
       </ol>
@@ -97,25 +84,17 @@
     <a class="back" href="./index.html">رجوع لـ Cover Coco</a>
   </div>
   <script>
-    var CONFIG = {
-      sheetWebhook: "https://script.google.com/macros/s/AKfycbxTidbmqTr6dKV7lOEmlQBR81R_Sv-VF8AA7UerWzvJ0wWd8pT5QtyyA9NlOGU7WLE9YQ/exec",
-      whatsapp: "212600000000"
-    };
     var params = new URLSearchParams(location.search);
     var name = params.get("name") || "";
-    var phone = params.get("phone") || "";
-    if (name) document.getElementById("hi").textContent = name + "، سيتصل بك فريق الدعم عبر الهاتف أو الواتساب بأقرب وقت. خلي التليفون قريب منك باش يخرج الطرد اليوم.";
+    if (name) document.getElementById("hi").textContent = name + "، فريق التأكيد غادي يتصل بيك دابا على التليفون. جاوبـي باش يخرج الطرد اليوم.";
     var value = parseFloat(params.get("value") || "0");
     var contentName = params.get("content_name") || "Cover Coco";
-    var contentIds = params.get("content_ids") || "covercoco-2";
-    var numItems = parseInt(params.get("num_items") || "2", 10) || 1;
+    var contentIds = params.get("content_ids") || "covercoco-1";
+    var numItems = parseInt(params.get("num_items") || "1", 10) || 1;
     var orderId = params.get("order_id") || ("CC-" + Date.now());
     var eventId = params.get("event_id") || (orderId + "-pay");
     document.getElementById("packName").textContent = contentName;
     if (value > 0) document.getElementById("total").textContent = value + " درهم";
-
-    var waText = "سلام، أنا " + (name || "زبونة") + " أطلب تأكيد الطلبية الخاصة بـ CoverCoco.";
-    document.getElementById("waBtn").href = "https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(waText);
 
     if (value > 0) {
       var firedKey = "cc_purchase_" + orderId;
@@ -130,32 +109,6 @@
         }
       }
     }
-
-    document.getElementById("addSponge").onclick = function () {
-      var btn = this;
-      btn.disabled = true;
-      var qs = new URLSearchParams({
-        brand: "covercoco",
-        name: name,
-        phone: phone,
-        city: "",
-        address: "",
-        pack_id: "sponge",
-        pack_title: "Cover Coco · إسفنجة مكياج",
-        price: "49",
-        upsell: "49",
-        source: "thank-you",
-        event_id: eventId + "-sp",
-        created_at: new Date().toISOString()
-      });
-      var iframe = document.createElement("iframe");
-      iframe.style.display = "none";
-      iframe.src = CONFIG.sheetWebhook + "?" + qs.toString();
-      document.body.appendChild(iframe);
-      document.getElementById("added").style.display = "block";
-      if (value > 0) document.getElementById("total").textContent = (value + 49) + " درهم";
-      btn.textContent = "تزادات للطلبية";
-    };
   </script>
 </body>
 </html>
