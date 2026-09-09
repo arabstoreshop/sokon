@@ -243,7 +243,7 @@
     .field::placeholder { color: #5c534c; }
     .phone-row {
       display: grid;
-      grid-template-columns: 1fr 72px;
+      grid-template-columns: 72px 1fr;
       gap: 8px;
       direction: ltr;
     }
@@ -443,8 +443,8 @@
 
           <label>رقم الواتساب</label>
           <div class="phone-row">
-            <input class="field" required name="phone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="6XXXXXXXX" />
             <span class="cc">+212</span>
+            <input class="field" required name="phone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="6XXXXXXXX" />
           </div>
 
           <label>المدينة</label>
