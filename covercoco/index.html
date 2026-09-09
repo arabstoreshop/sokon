@@ -4,15 +4,15 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Cover Coco الأصلي | من 199 درهم — الدفع عند الاستلام</title>
-  <meta name="description" content="Cover Coco Naked Foundation SPF 30 الأصلي. كيتأقلم مع لونك. من 199 درهم. تخلّصي ملي يوصلك فالمغرب." />
-  <meta name="theme-color" content="#14100e" />
+  <meta name="description" content="Cover Coco Naked Foundation SPF 30. كيتأقلم مع لونك. علبة بـ 199 درهم. الدفع عند الاستلام فالمغرب." />
+  <meta name="theme-color" content="#f7efe6" />
   <meta property="og:title" content="Cover Coco — من 199 درهم" />
-  <meta property="og:image" content="./product-hero.jpg" />
+  <meta property="og:image" content="./hero-brand.jpg" />
   <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="preload" as="image" href="./product-hero.jpg" fetchpriority="high" />
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="preload" as="image" href="./hero-brand.jpg" fetchpriority="high" />
   <script>
     !function (w, d, t) {
       w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];
@@ -26,13 +26,15 @@
   </script>
   <style>
     :root {
-      --bg: #14100e;
-      --card: #1c1714;
-      --ink: #f3ebe3;
-      --mute: #a89a8e;
-      --gold: #d4b08a;
-      --gold-d: #b88962;
-      --line: rgba(212,176,138,.22);
+      --bg: #f7efe6;
+      --paper: #fffaf5;
+      --peach: #f3e4d4;
+      --ink: #2a221c;
+      --mute: #7a6b5e;
+      --nude: #c9a27a;
+      --nude-d: #a67c52;
+      --line: #e8d5c2;
+      --orange: #e8a06a;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
@@ -41,388 +43,465 @@
       background: var(--bg);
       color: var(--ink);
       line-height: 1.65;
-      padding-bottom: 92px;
+      padding-bottom: 88px;
     }
     img { max-width: 100%; display: block; }
     a { color: inherit; text-decoration: none; }
     button, input { font-family: inherit; }
-    .wrap { width: min(560px, calc(100% - 24px)); margin-inline: auto; }
+    .wrap { width: min(520px, calc(100% - 24px)); margin-inline: auto; }
 
     .top {
-      background: var(--gold-d);
-      color: #14100e;
+      background: var(--nude-d);
+      color: #fffaf5;
       text-align: center;
       font-size: 12px;
-      font-weight: 900;
+      font-weight: 800;
       padding: 8px 10px;
     }
     nav {
       position: sticky; top: 0; z-index: 50;
       display: flex; justify-content: space-between; align-items: center;
       padding: 10px 14px;
-      background: rgba(20,16,14,.94);
-      backdrop-filter: blur(14px);
+      background: rgba(247,239,230,.95);
+      backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--line);
     }
-    .logo b {
-      display: block;
-      font-family: "Cormorant Garamond", serif;
-      font-size: 20px;
-      letter-spacing: .14em;
-      color: var(--gold);
-    }
-    .logo small { display: block; font-size: 9px; letter-spacing: .24em; color: var(--mute); font-weight: 800; }
+    .logo b { display: block; font-size: 18px; letter-spacing: .12em; font-weight: 900; color: var(--nude-d); }
+    .logo small { display: block; font-size: 9px; letter-spacing: .22em; color: var(--mute); font-weight: 800; }
     .nav-cta {
       display: inline-flex; align-items: center; gap: 6px;
-      background: var(--gold); color: #14100e;
+      background: var(--nude); color: #fff;
       font-size: 13px; font-weight: 900;
       padding: 9px 14px; border-radius: 999px;
     }
-    .nav-cta svg { animation: bob 1.2s ease-in-out infinite; }
+    .nav-cta svg { animation: bob 1.15s ease-in-out infinite; }
 
-    .hero {
-      padding: 10px 0 4px;
+    .badges {
+      display: flex; flex-wrap: wrap; gap: 6px; justify-content: center;
+      padding: 12px 12px 0;
     }
+    .badges span {
+      font-size: 11px; font-weight: 800;
+      border: 1px solid var(--nude-d);
+      color: var(--nude-d);
+      background: var(--paper);
+      border-radius: 999px;
+      padding: 6px 10px;
+    }
+    .badges span.hot {
+      background: var(--nude);
+      color: #fff;
+      border-color: var(--nude);
+    }
+
+    .hero { padding: 12px 0 0; }
     .hero-shot {
-      border-radius: 22px;
+      border-radius: 24px;
       overflow: hidden;
-      background: #0c0a09;
-      border: 1px solid var(--line);
+      background: #1a1410;
+      box-shadow: 0 10px 30px rgba(80,50,30,.12);
     }
     .hero-shot img {
       width: 100%;
-      aspect-ratio: 1 / 1.05;
+      aspect-ratio: 4 / 5;
       object-fit: cover;
-      object-position: 50% 35%;
+      object-position: 55% 18%;
     }
-    .hero-copy { padding: 14px 2px 0; }
-    .eye { font-size: 11px; letter-spacing: .18em; font-weight: 800; color: var(--gold); margin-bottom: 6px; }
-    h1 { font-size: clamp(26px, 6.8vw, 36px); font-weight: 900; line-height: 1.25; }
+    .hero-copy { text-align: center; padding: 16px 4px 0; }
+    .brand-line { color: var(--nude-d); font-weight: 900; letter-spacing: .08em; font-size: 15px; }
+    h1 { font-size: clamp(24px, 6.5vw, 32px); font-weight: 900; line-height: 1.3; margin-top: 6px; }
+    h1 em { font-style: normal; color: var(--nude-d); }
     .lead { margin-top: 8px; color: var(--mute); font-size: 14px; }
-    .price-hero {
-      margin-top: 12px;
-      display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap;
+    .pills { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-top: 12px; }
+    .pills span {
+      border: 1px solid var(--line); background: var(--paper);
+      border-radius: 999px; padding: 6px 12px;
+      font-size: 12px; font-weight: 800; color: var(--ink);
     }
-    .price-hero b {
-      font-size: clamp(42px, 12vw, 56px);
-      font-weight: 900;
-      color: var(--gold);
-      line-height: 1;
-      letter-spacing: -.02em;
-    }
-    .price-hero span { font-size: 18px; font-weight: 800; color: var(--gold); }
-    .price-hero s { color: #6e635b; font-size: 16px; font-weight: 700; }
-    .price-hero em { font-style: normal; font-size: 12px; font-weight: 800; color: var(--mute); width: 100%; }
+    .rating { margin-top: 10px; color: var(--nude-d); font-weight: 800; font-size: 13px; }
+    .rating i { color: #d4a017; font-style: normal; letter-spacing: 1px; }
 
     .cta {
-      display: flex; align-items: center; justify-content: center; gap: 10px;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
       width: 100%; margin-top: 14px;
-      background: linear-gradient(180deg, #e0c09a, #b88962);
-      color: #14100e;
-      border: 0; border-radius: 16px;
-      padding: 15px 12px;
+      background: linear-gradient(180deg, #d8b08a, #a67c52);
+      color: #fff;
+      border: 0; border-radius: 999px;
+      padding: 15px 16px;
       font-weight: 900; font-size: 16px;
-      box-shadow: 0 10px 26px rgba(184,137,98,.35);
+      box-shadow: 0 10px 24px rgba(166,124,82,.28);
       cursor: pointer;
     }
-    .cta svg {
-      width: 22px; height: 22px; flex: 0 0 auto;
-      animation: bob 1.1s ease-in-out infinite;
-    }
-    .cta small { display: block; font-size: 11px; font-weight: 800; opacity: .8; }
+    .cta svg { width: 20px; height: 20px; animation: bob 1.15s ease-in-out infinite; }
+    .cta small { display: block; font-size: 11px; font-weight: 700; opacity: .9; }
     @keyframes bob {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-3px); }
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-3px) scale(1.06); }
     }
 
-    .trust {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-top: 10px;
+    .features {
+      margin-top: 18px;
+      background: var(--paper);
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      padding: 6px 0;
     }
-    .trust span {
-      text-align: center; font-size: 10px; font-weight: 800; line-height: 1.35;
-      border: 1px solid var(--line); border-radius: 12px; padding: 8px 4px; color: var(--mute);
+    .features li {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: 12px;
+      align-items: center;
+      padding: 12px 16px;
+      border-top: 1px solid var(--line);
+      font-weight: 800; font-size: 15px;
     }
-
-    .ticker {
-      overflow: hidden; margin: 14px 0 0;
-      border-block: 1px solid var(--line);
+    .features li:first-child { border-top: 0; }
+    .features .ic {
+      width: 40px; height: 40px; border-radius: 50%;
+      border: 1.5px solid var(--nude);
+      display: grid; place-items: center;
+      color: var(--nude-d); font-size: 16px;
     }
-    .ticker-track {
-      display: flex; gap: 24px; width: max-content;
-      animation: marq 24s linear infinite;
-      padding: 9px 0; font-size: 12px; font-weight: 800; color: var(--gold);
-    }
-    @keyframes marq { from { transform: translateX(0); } to { transform: translateX(50%); } }
 
     section { padding: 28px 0; }
-    .kicker { font-size: 11px; letter-spacing: .16em; font-weight: 800; color: var(--gold); margin-bottom: 6px; }
-    h2 { font-size: clamp(22px, 5.8vw, 30px); font-weight: 900; line-height: 1.28; }
-    .mute { color: var(--mute); margin-top: 6px; font-size: 14px; }
-
-    .facts { display: grid; gap: 8px; margin-top: 12px; }
-    .facts article {
-      background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px;
+    .kicker {
+      text-align: center;
+      font-size: 18px; font-weight: 900;
+      margin-bottom: 14px;
     }
-    .facts b { display: block; font-size: 14px; }
-    .facts span { display: block; color: var(--mute); font-size: 12px; margin-top: 2px; }
+    .kicker span { color: #d4a017; }
 
-    .feed { display: grid; gap: 10px; margin-top: 12px; }
-    .comment {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 18px;
+    .ugc { display: grid; gap: 14px; }
+    .ugc article {
+      background: var(--paper);
+      border-radius: 22px;
       overflow: hidden;
+      border: 1px solid var(--line);
+      box-shadow: 0 6px 18px rgba(80,50,30,.06);
     }
-    .comment .who {
-      display: flex; align-items: center; gap: 8px; padding: 10px 10px 6px;
+    .ugc .pic {
+      width: 100%;
+      aspect-ratio: 5 / 4;
+      object-fit: cover;
+      object-position: 50% 20%;
+      border-radius: 22px 22px 0 0;
     }
-    .comment .av {
-      width: 36px; height: 36px; border-radius: 50%; object-fit: cover; border: 1px solid var(--line);
+    .ugc .meta {
+      display: flex; align-items: center; gap: 8px;
+      padding: 10px 12px 4px; flex-wrap: wrap;
     }
-    .comment .who b { display: block; font-size: 13px; }
-    .comment .who span { display: block; font-size: 10px; color: var(--mute); font-weight: 700; }
+    .stars { color: #d4a017; letter-spacing: 1px; font-size: 12px; }
+    .ugc .meta b { font-size: 13px; }
     .ok {
       margin-inline-start: auto;
-      background: rgba(212,176,138,.16); color: var(--gold);
-      font-size: 10px; font-weight: 900;
-      border-radius: 999px; padding: 4px 8px; white-space: nowrap;
+      background: #2c251f; color: #fff;
+      font-size: 10px; font-weight: 800;
+      border-radius: 999px; padding: 5px 9px;
     }
-    .comment .pic {
-      width: 100%; aspect-ratio: 1 / 1; object-fit: cover; object-position: 50% 20%;
-      border-radius: 0;
-    }
-    .comment .txt { padding: 10px 12px 12px; }
-    .stars { color: #e0b35a; letter-spacing: 1px; font-size: 12px; }
-    .comment .txt p { margin-top: 4px; font-size: 13.5px; }
+    .ugc p { padding: 0 12px 14px; font-size: 14px; color: var(--ink); }
 
-    /* ORDER BLOCK — offers + form in one tight scroll */
-    .order-block {
-      background: #1a1512;
+    .comments { display: grid; gap: 10px; margin-top: 14px; }
+    .comment {
+      background: var(--paper);
       border: 1px solid var(--line);
-      border-radius: 22px;
-      padding: 14px 12px 16px;
-      margin-top: 4px;
+      border-radius: 18px;
+      padding: 12px;
+      display: grid;
+      grid-template-columns: 48px 1fr auto;
+      gap: 10px;
+      align-items: start;
     }
-    .sets { display: grid; gap: 8px; margin-top: 10px; }
-    .set {
-      display: grid; grid-template-columns: 72px 1fr auto; gap: 10px; align-items: center;
-      background: #221c18; border: 2px solid transparent; border-radius: 16px;
-      padding: 8px; cursor: pointer; text-align: right;
+    .comment .av {
+      width: 48px; height: 48px; border-radius: 50%;
+      object-fit: cover; border: 2px solid var(--nude);
     }
-    .set.on { border-color: var(--gold); background: #2a221c; }
-    .set img {
-      width: 72px; height: 72px; object-fit: cover; border-radius: 12px;
-      background: #0c0a09;
+    .comment b { display: block; font-size: 13px; }
+    .comment .stars { font-size: 11px; margin-top: 2px; }
+    .comment p { grid-column: 1 / -1; font-size: 13px; color: var(--mute); margin-top: 2px; }
+    .comment .thumbs {
+      display: flex; gap: 4px;
     }
-    .set h3 { font-size: 15px; font-weight: 900; }
-    .set p { color: var(--mute); font-size: 11px; margin-top: 2px; }
-    .set .pr {
-      font-size: 26px; font-weight: 900; color: var(--gold); line-height: 1; text-align: left;
-    }
-    .set .pr small {
-      display: block; font-size: 11px; color: #6e635b; text-decoration: line-through; font-weight: 700; margin-top: 2px;
-    }
-    .set .pr .dh { font-size: 12px; font-weight: 800; }
-    .tag {
-      display: inline-block; background: var(--gold); color: #14100e;
-      font-size: 9px; font-weight: 900; border-radius: 999px; padding: 2px 7px; margin-bottom: 3px;
+    .comment .thumbs img {
+      width: 44px; height: 44px; border-radius: 10px;
+      object-fit: cover; border: 1px solid var(--line);
     }
 
-    .form { margin-top: 12px; }
-    label { display: block; font-size: 11px; font-weight: 800; color: var(--gold); margin: 10px 0 5px; }
+    .order-title { font-size: 18px; font-weight: 900; text-align: center; margin-bottom: 12px; }
+    .sets { display: grid; gap: 10px; }
+    .set {
+      position: relative;
+      display: grid;
+      grid-template-columns: auto 1fr 70px;
+      gap: 10px;
+      align-items: center;
+      background: var(--paper);
+      border: 2px solid var(--orange);
+      border-radius: 18px;
+      padding: 10px 10px;
+      cursor: pointer;
+      text-align: right;
+    }
+    .set.on {
+      border-color: var(--nude-d);
+      box-shadow: 0 0 0 3px rgba(166,124,82,.15);
+      background: #fff;
+    }
+    .set .pr {
+      font-size: 26px; font-weight: 900; color: var(--ink); line-height: 1.05;
+      min-width: 78px;
+    }
+    .set .pr small { display: block; font-size: 12px; font-weight: 800; }
+    .set h3 { font-size: 14px; font-weight: 900; line-height: 1.35; }
+    .set .chip {
+      display: inline-block;
+      margin-top: 5px;
+      background: #1f1a16; color: #fff;
+      font-size: 11px; font-weight: 700;
+      border-radius: 999px; padding: 5px 9px; line-height: 1.35;
+    }
+    .set img {
+      width: 64px; height: 64px; object-fit: cover; border-radius: 14px;
+      background: var(--peach);
+    }
+    .ribbon {
+      position: absolute; top: -1px; right: -1px;
+      background: #7c5cff; color: #fff;
+      font-size: 10px; font-weight: 900;
+      padding: 5px 10px;
+      border-radius: 0 16px 0 12px;
+    }
+
+    .form-head {
+      text-align: center;
+      font-size: 16px; font-weight: 900;
+      margin: 18px 0 10px;
+    }
     .field {
       width: 100%;
-      background: #14100e;
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 12px 12px;
+      background: #fff;
+      border: 2px solid var(--orange);
+      border-radius: 16px;
+      padding: 14px 14px;
       font-size: 16px;
       color: var(--ink);
+      margin-bottom: 10px;
+      text-align: right;
     }
-    .field:focus { outline: 0; border-color: var(--gold); }
-    .field::placeholder { color: #5c534c; }
+    .field:focus { outline: 0; border-color: var(--nude-d); }
+    .field::placeholder { color: #a89888; }
     .phone-row {
       display: grid;
       grid-template-columns: 72px 1fr;
       gap: 8px;
       direction: ltr;
+      margin-bottom: 10px;
     }
-    .phone-row .field { text-align: left; }
+    .phone-row .field { margin: 0; text-align: left; }
     .cc {
       display: grid; place-items: center;
-      background: #14100e; border: 1px solid var(--line); border-radius: 12px;
-      font-weight: 900; color: var(--gold); font-size: 14px; direction: ltr;
+      background: #fff;
+      border: 2px solid var(--orange);
+      border-radius: 16px;
+      font-weight: 900; color: var(--nude-d); font-size: 14px;
     }
-    .legal { margin-top: 10px; color: #6e635b; font-size: 10px; line-height: 1.6; }
+    .legal { margin-top: 8px; color: #9a8b7d; font-size: 11px; text-align: center; line-height: 1.6; }
 
     .faq details {
-      background: var(--card); border: 1px solid var(--line); border-radius: 14px;
-      padding: 12px 14px; margin-top: 8px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 12px 14px;
+      margin-top: 8px;
     }
-    .faq summary { font-weight: 800; cursor: pointer; list-style: none; font-size: 14px; }
+    .faq summary { font-weight: 800; cursor: pointer; list-style: none; }
     .faq summary::-webkit-details-marker { display: none; }
     .faq p { color: var(--mute); margin-top: 5px; font-size: 13px; }
 
     footer {
-      text-align: center; color: #6e635b; font-size: 10px; letter-spacing: .14em;
-      padding: 18px 12px 8px;
+      text-align: center; color: #9a8b7d; font-size: 11px;
+      letter-spacing: .12em; padding: 16px 12px 8px;
     }
-    footer b {
-      display: block; font-family: "Cormorant Garamond", serif; font-size: 16px;
-      color: var(--gold); letter-spacing: .18em; font-weight: 600; margin-bottom: 4px;
-    }
+    footer b { display: block; color: var(--nude-d); font-size: 15px; letter-spacing: .16em; margin-bottom: 4px; }
 
     .sticky {
       position: fixed; inset-inline: 0; bottom: 0; z-index: 60;
       display: flex; justify-content: space-between; align-items: center; gap: 10px;
-      background: rgba(20,16,14,.96);
-      backdrop-filter: blur(14px);
+      background: rgba(247,239,230,.97);
+      backdrop-filter: blur(12px);
       border-top: 1px solid var(--line);
       padding: 10px 12px 14px;
     }
-    .sticky .big {
-      font-size: 28px; font-weight: 900; color: var(--gold); line-height: 1;
-    }
+    .sticky .big { font-size: 28px; font-weight: 900; color: var(--nude-d); line-height: 1; }
     .sticky .big span { font-size: 13px; }
     .sticky small { display: block; font-size: 11px; color: var(--mute); font-weight: 700; margin-top: 2px; }
     .sticky a {
-      display: inline-flex; align-items: center; gap: 7px;
-      background: linear-gradient(180deg, #e0c09a, #b88962);
-      color: #14100e; border-radius: 999px;
+      display: inline-flex; align-items: center; gap: 6px;
+      background: linear-gradient(180deg, #d8b08a, #a67c52);
+      color: #fff; border-radius: 999px;
       padding: 12px 16px; font-weight: 900; font-size: 14px;
-      box-shadow: 0 8px 18px rgba(184,137,98,.3);
+      box-shadow: 0 8px 18px rgba(166,124,82,.28);
     }
-    .sticky a svg { animation: bob 1.1s ease-in-out infinite; }
+    .sticky a svg { animation: bob 1.15s ease-in-out infinite; }
 
     .modal {
       position: fixed; inset: 0; z-index: 80;
-      background: rgba(0,0,0,.62);
+      background: rgba(42,34,28,.5);
       display: none; align-items: flex-end; justify-content: center;
     }
     .modal.on { display: flex; }
     .modal-card {
       width: min(480px, 100%);
-      background: #1c1714; color: var(--ink);
-      border-radius: 22px 22px 0 0;
-      border: 1px solid var(--line);
+      background: var(--paper);
+      border-radius: 24px 24px 0 0;
       padding: 18px 16px 24px;
+      border: 1px solid var(--line);
     }
-    .bar { height: 3px; background: #2a221c; margin: -18px -16px 14px; overflow: hidden; border-radius: 22px 22px 0 0; }
-    .bar i { display: block; height: 100%; width: 100%; background: var(--gold); transform-origin: right center; animation: drain 15s linear forwards; }
+    .bar { height: 3px; background: var(--peach); margin: -18px -16px 14px; overflow: hidden; }
+    .bar i { display: block; height: 100%; width: 100%; background: var(--nude-d); transform-origin: right center; animation: drain 15s linear forwards; }
     @keyframes drain { to { transform: scaleX(0); } }
     .modal-card h3 { font-size: 22px; font-weight: 900; }
-    .upsell-row { display: grid; grid-template-columns: 84px 1fr; gap: 10px; margin: 12px 0; align-items: center; }
-    .upsell-row img { width: 84px; height: 84px; object-fit: cover; border-radius: 14px; }
+    .upsell-row { display: grid; grid-template-columns: 80px 1fr; gap: 10px; margin: 12px 0; align-items: center; }
+    .upsell-row img { width: 80px; height: 80px; object-fit: cover; border-radius: 14px; }
     .price-row { display: flex; gap: 8px; align-items: baseline; margin-top: 4px; }
-    .price-row b { font-size: 28px; color: var(--gold); }
-    .price-row s { color: #6e635b; font-size: 14px; }
+    .price-row b { font-size: 26px; color: var(--nude-d); }
+    .price-row s { color: #9a8b7d; font-size: 14px; }
     .yes {
-      width: 100%; border: 0; border-radius: 14px; padding: 14px;
+      width: 100%; border: 0; border-radius: 999px; padding: 14px;
       font-weight: 900; font-size: 15px; cursor: pointer;
-      background: linear-gradient(180deg, #e0c09a, #b88962); color: #14100e;
+      background: linear-gradient(180deg, #d8b08a, #a67c52); color: #fff;
       display: flex; align-items: center; justify-content: center; gap: 8px;
     }
-    .yes svg { animation: bob 1.1s ease-in-out infinite; }
+    .yes svg { animation: bob 1.15s ease-in-out infinite; }
     .no { width: 100%; background: none; border: 0; margin-top: 8px; color: var(--mute); font-weight: 800; cursor: pointer; }
-    .clock { color: var(--gold); font-size: 12px; font-weight: 800; margin-top: 6px; }
-
-    .icon-bag { width: 20px; height: 20px; }
+    .clock { color: var(--nude-d); font-size: 12px; font-weight: 800; margin-top: 6px; }
+    .mute { color: var(--mute); }
   </style>
 </head>
 <body>
-  <div class="top">معاينة قبل الدفع · توصيل 24–48 ساعة · أصلي 100%</div>
+  <div class="top">توصيل مجاني · المعاينة عند الاستلام · أصلي 100%</div>
   <nav>
     <div class="logo">
       <b>COVER COCO</b>
       <small>MAKE-UP STUDIO</small>
     </div>
     <a class="nav-cta" href="#order">
-      <svg class="icon-bag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 7h15l-1.5 9h-12z"/><path d="M6 7 5 4H2"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 7h15l-1.5 9h-12z"/><path d="M6 7 5 4H2"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg>
       أطلبي
     </a>
   </nav>
 
+  <div class="badges">
+    <span>15000+ زبونة راضية</span>
+    <span>توصيل لكل المدن</span>
+    <span class="hot">ضمان 7 أيام</span>
+  </div>
+
   <div class="wrap">
     <header class="hero">
       <div class="hero-shot">
-        <img src="./product-hero.jpg" alt="Cover Coco Naked Foundation SPF 30" fetchpriority="high" />
+        <img src="./hero-brand.jpg" alt="Cover Coco Naked Foundation SPF 30" fetchpriority="high" />
       </div>
       <div class="hero-copy">
-        <p class="eye">COVER COCO ORIGINAL · SPF 30</p>
-        <h1>اللون كيجي ليك. تغطية كاملة. فـ ثواني.</h1>
-        <p class="lead">الفونديشن الأصلي كيتأقلم مع بشرتك، كيغطّي الهالات والبقع، وكيثبت فالحرّ. تخلّصي ملي يوصلك.</p>
-        <div class="price-hero">
-          <b class="ctaPrice">199</b><span>درهم</span>
-          <s id="oldPrice" style="display:none"></s>
-          <em>الدفع عند الاستلام · لجميع المدن</em>
+        <p class="brand-line">Cover Coco</p>
+        <h1>السحر لي كيجملك — وجهك <em>ديما منوّر</em></h1>
+        <p class="lead">فونديشن كيتأقلم مع لون بشرتك ف ثواني. تغطية طبيعية، ثابت فالحرّ، و SPF 30.</p>
+        <div class="pills">
+          <span>حماية</span><span>طبيعي</span><span>ترطيب</span><span>تغطية</span>
         </div>
+        <p class="rating"><i>★★★★★</i> 4.9 تقييم</p>
         <a class="cta" href="#order">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 7h15l-1.5 9h-12z"/><path d="M6 7 5 4H2"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg>
-          <span>أطلبي الآن<small>نتصلو على الواتساب · بلا تحويل دابا</small></span>
+          <span>أطلبي دابا — <span class="ctaPrice">249</span> درهم<small>الدفع عند الاستلام</small></span>
         </a>
-        <div class="trust">
-          <span>تعايني قبل الدفع</span>
-          <span>24–48 ساعة</span>
-          <span>ضمان الأصالة</span>
-        </div>
       </div>
+
+      <ul class="features">
+        <li><span class="ic">✓</span>كيتأقلم مع بشرتك</li>
+        <li><span class="ic">❀</span>تغطية طبيعية بلا ماسك</li>
+        <li><span class="ic">☀</span>SPF 30 نهار كامل</li>
+      </ul>
     </header>
   </div>
 
-  <div class="ticker" aria-hidden="true"><div class="ticker-track" id="ticker"></div></div>
-
   <section>
     <div class="wrap">
-      <p class="kicker">علاش كيبان الفرق</p>
-      <h2>علبة وحدة. كل لون بشرة.</h2>
-      <div class="facts">
-        <article><b>كيتأقلم مع لونك</b><span>ما كاينش رقم لون غالط. قطرتين وكيجي لونك.</span></article>
-        <article><b>تغطية الهالات والبقع</b><span>العيوب كتختافي، والوجه كيبان طبيعي.</span></article>
-        <article><b>ثابت فالحرّ</b><span>المغرب: زنقة وغبرة. كيبان حتى العشية.</span></article>
+      <p class="kicker"><span>✨</span> شنو شراو وصوّرو فالدار <span>✨</span></p>
+      <div class="ugc">
+        <article>
+          <img class="pic" src="./rev-1.jpg" alt="زبونة من مراكش" />
+          <div class="meta">
+            <span class="stars">★★★★★</span>
+            <b>Imane · مراكش</b>
+            <span class="ok">✓ شرات المنتوج</span>
+          </div>
+          <p>وصلني فالوقت، تغطية زوينة وبجوج ديال قطرات كافيين.</p>
+        </article>
+        <article>
+          <img class="pic" src="./rev-2.jpg" alt="زبونة من الرباط" />
+          <div class="meta">
+            <span class="stars">★★★★★</span>
+            <b>Maryam · الرباط</b>
+            <span class="ok">✓ شرات المنتوج</span>
+          </div>
+          <p>اللون تما مع لوني، خفيف وما كيتحركش نهائياً.</p>
+        </article>
+        <article>
+          <img class="pic" src="./rev-3.jpg" alt="زبونة من الدار البيضاء" />
+          <div class="meta">
+            <span class="stars">★★★★★</span>
+            <b>سعاد · الدار البيضاء</b>
+            <span class="ok">✓ شرات المنتوج</span>
+          </div>
+          <p>شريتو وصوّرتو فالدار. بحال جلد ثاني، والهالات اختافاو.</p>
+        </article>
+        <article>
+          <img class="pic" src="./rev-4.jpg" alt="العلبة فالدار" />
+          <div class="meta">
+            <span class="stars">★★★★★</span>
+            <b>نادية · فاس</b>
+            <span class="ok">✓ شرات المنتوج</span>
+          </div>
+          <p>هادشي اللي كيبان فالريل هو هو. من الغد خذيت جوج لختي.</p>
+        </article>
       </div>
-    </div>
-  </section>
 
-  <section>
-    <div class="wrap">
-      <p class="kicker">صور من الدار</p>
-      <h2>بحال التعاليق. شراو وصوّرو.</h2>
-      <div class="feed">
+      <div class="comments">
         <article class="comment">
-          <div class="who">
-            <img class="av" src="./home-1.jpg" alt="" />
-            <div><b>سعاد</b><span>الدار البيضاء · قبل ساعتين</span></div>
-            <span class="ok">✓ شراء مؤكّد</span>
-          </div>
-          <img class="pic" src="./home-1.jpg" alt="Cover Coco فالدار" />
-          <div class="txt">
+          <img class="av" src="./rev-5.jpg" alt="" />
+          <div>
+            <b>سارة</b>
             <div class="stars">★★★★★</div>
-            <p>وصلني وصوّرتو فالدار. اللون تما مع وجهي بحال جلد ثاني. قطرتين كافيين.</p>
           </div>
+          <div class="thumbs"><img src="./offer-1.jpg" alt="" /></div>
+          <p>أخيراً فونديشن كيجي مع لون بشرتي. ما بقيتش كنخلط جوج علب.</p>
         </article>
         <article class="comment">
-          <div class="who">
-            <img class="av" src="./home-2.jpg" alt="" />
-            <div><b>إيمان</b><span>مراكش · قبل 4 ساعات</span></div>
-            <span class="ok">✓ شراء مؤكّد</span>
-          </div>
-          <img class="pic" src="./home-2.jpg" alt="العلبة فالدار" />
-          <div class="txt">
+          <img class="av" src="./rev-6.jpg" alt="" />
+          <div>
+            <b>عائشة</b>
             <div class="stars">★★★★★</div>
-            <p>تغطية زوينة وبلا ماسك. من الغد خذيت جوج لختي. هادا الأصلي مو اللي فالسوق.</p>
           </div>
+          <div class="thumbs"><img src="./offer-2.jpg" alt="" /><img src="./rev-2.jpg" alt="" /></div>
+          <p>خفيفة وما كتحسيش بثقل. مثالية لكل نهار فالحرّ.</p>
         </article>
         <article class="comment">
-          <div class="who">
-            <img class="av" src="./home-3.jpg" alt="" />
-            <div><b>مريم</b><span>الرباط · البارح</span></div>
-            <span class="ok">✓ شراء مؤكّد</span>
-          </div>
-          <img class="pic" src="./home-3.jpg" alt="النتيجة على البشرة" />
-          <div class="txt">
+          <img class="av" src="./rev-1.jpg" alt="" />
+          <div>
+            <b>مريم</b>
             <div class="stars">★★★★★</div>
-            <p>خفيفة وما كاتتحركش. أمي سولاتني شنو درتي لوجهك. الله يعطيكم الصحة.</p>
           </div>
+          <div class="thumbs"><img src="./offer-1.jpg" alt="" /></div>
+          <p>كنت كنقلب على شي حاجة كتتأقلم مع لوني. هادا زوين بصح.</p>
+        </article>
+        <article class="comment">
+          <img class="av" src="./rev-3.jpg" alt="" />
+          <div>
+            <b>هدى · أكادير</b>
+            <div class="stars">★★★★★</div>
+          </div>
+          <div class="thumbs"><img src="./offer-3.jpg" alt="" /></div>
+          <p>طلبت 3 علب. تكفيني شهور وما غادي نرجع نشري غالي.</p>
         </article>
       </div>
     </div>
@@ -430,55 +509,41 @@
 
   <section id="order">
     <div class="wrap">
-      <p class="kicker">الطلب</p>
-      <h2>اختاري العرض وكمّلي.</h2>
-      <p class="mute">العروض والطلب فمكان واحد. تخلّصي ملي يوصلك.</p>
+      <p class="order-title">اختاري العرض وكمّلي الطلب</p>
+      <div class="sets" id="packs"></div>
 
-      <div class="order-block">
-        <div class="sets" id="packs"></div>
-
-        <form class="form" id="orderForm">
-          <label>الاسم الكامل</label>
-          <input class="field" required name="name" placeholder="سارة بنعلي" autocomplete="name" />
-
-          <label>رقم الواتساب</label>
-          <div class="phone-row">
-            <span class="cc">+212</span>
-            <input class="field" required name="phone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="6XXXXXXXX" />
-          </div>
-
-          <label>المدينة</label>
-          <input class="field" required name="city" list="cities" placeholder="الدار البيضاء" autocomplete="address-level2" />
-          <datalist id="cities">
-            <option value="الدار البيضاء"></option><option value="الرباط"></option><option value="سلا"></option>
-            <option value="مراكش"></option><option value="فاس"></option><option value="طنجة"></option>
-            <option value="أكادير"></option><option value="مكناس"></option><option value="وجدة"></option>
-            <option value="تطوان"></option><option value="القنيطرة"></option><option value="الجديدة"></option>
-          </datalist>
-
-          <label>العنوان</label>
-          <input class="field" required name="address" placeholder="الحي، الزنقة، أو معلم" autocomplete="street-address" />
-
-          <button class="cta" type="submit" style="margin-top:14px">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 7h15l-1.5 9h-12z"/><path d="M6 7 5 4H2"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg>
-            <span>أكّدي الطلب — <span class="ctaPrice">199</span> درهم<small>الدفع عند الاستلام بعد المعاينة</small></span>
-          </button>
-          <p class="legal">Cover Coco Color Changing Naked Foundation SPF 30 — 30مل. منتج تجميل أصلي. جرّبي كمية صغيرة أول مرة. ليس دواءً.</p>
-        </form>
-      </div>
+      <p class="form-head">أدخلي معلوماتك أسفله</p>
+      <form id="orderForm">
+        <input class="field" required name="name" placeholder="الإسم" autocomplete="name" />
+        <div class="phone-row">
+          <span class="cc">+212</span>
+          <input class="field" required name="phone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="رقم الهاتف" />
+        </div>
+        <input class="field" required name="city" list="cities" placeholder="المدينة" autocomplete="address-level2" />
+        <datalist id="cities">
+          <option value="الدار البيضاء"></option><option value="الرباط"></option><option value="سلا"></option>
+          <option value="مراكش"></option><option value="فاس"></option><option value="طنجة"></option>
+          <option value="أكادير"></option><option value="مكناس"></option><option value="وجدة"></option>
+          <option value="تطوان"></option><option value="القنيطرة"></option><option value="الجديدة"></option>
+        </datalist>
+        <button class="cta" type="submit">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 7h15l-1.5 9h-12z"/><path d="M6 7 5 4H2"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg>
+          <span>أكّدي الطلب — <span class="ctaPrice">249</span> درهم<small>الدفع عند الاستلام بعد المعاينة</small></span>
+        </button>
+        <p class="legal">Cover Coco Naked Foundation SPF 30 — 30مل. منتج تجميل أصلي. ليس دواءً.</p>
+      </form>
     </div>
   </section>
 
   <section class="faq">
     <div class="wrap">
-      <p class="kicker">أسئلة</p>
       <details open>
         <summary>واش هادا الأصلي؟</summary>
-        <p>إي، Cover Coco Make-Up Studio — Naked Foundation SPF 30، 30مل. نفس العلبة اللي فالريل.</p>
+        <p>إي، Cover Coco Make-Up Studio — Naked Foundation SPF 30. نفس العلبة اللي فالريل.</p>
       </details>
       <details>
         <summary>فاش كندفع؟</summary>
-        <p>ملي يوصلك للدار، من بعد المعاينة. نقداً. ما كاينش تحويل قبل التوصيل.</p>
+        <p>ملي يوصلك للدار، من بعد المعاينة. نقداً.</p>
       </details>
       <details>
         <summary>قدّاش كيوصل؟</summary>
@@ -494,8 +559,8 @@
 
   <div class="sticky" id="sticky">
     <div>
-      <div class="big"><span class="ctaPrice">199</span> <span>درهم</span></div>
-      <small id="stickyLabel">علبة واحدة · الدفع عند الاستلام</small>
+      <div class="big"><span class="ctaPrice">249</span> <span>درهم</span></div>
+      <small id="stickyLabel">عرض البنات · الدفع عند الاستلام</small>
     </div>
     <a href="#order">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 7h15l-1.5 9h-12z"/><path d="M6 7 5 4H2"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg>
@@ -506,15 +571,13 @@
   <div class="modal" id="upsell" role="dialog" aria-modal="true">
     <div class="modal-card">
       <div class="bar"><i></i></div>
-      <p class="kicker">عرض 15 ثانية</p>
       <h3>زيدي علبة بـ 99 درهم</h3>
-      <p class="mute">علبة إضافية بـ 99 بدل 199. كتمشي مع نفس التوصيل.</p>
+      <p class="mute" style="margin-top:6px">علبة إضافية بـ 99 بدل 199. كتمشي مع نفس التوصيل.</p>
       <p class="clock">ينتهي فـ <b id="secs">15</b> ثانية</p>
       <div class="upsell-row">
-        <img src="./pack-1.jpg" alt="علبة إضافية" />
+        <img src="./offer-1.jpg" alt="علبة إضافية" />
         <div>
           <b>علبة Cover Coco 30مل</b>
-          <p class="mute">لنفسك أو لأختك</p>
           <div class="price-row"><b>99 درهم</b><s>199</s></div>
         </div>
       </div>
@@ -532,30 +595,29 @@
       whitelist: ["0600000000", "0700000000"]
     };
     var offers = [
-      { id: "1", qty: 1, price: 199, old: "", title: "علبة واحدة", desc: "30مل · توصيل مجاني", img: "./pack-1.jpg", label: "علبة واحدة" },
-      { id: "2", qty: 2, price: 299, old: "398", title: "علبتين", desc: "وفّري 99 درهم · الأكثر طلباً", img: "./pack-2.jpg", label: "علبتين", featured: true },
-      { id: "3", qty: 3, price: 388, old: "597", title: "3 علب — العائلة", desc: "وفّري 209 درهم · توصيل سريع", img: "./pack-3.jpg", label: "3 علب" }
+      {
+        id: "1", qty: 1, price: 199,
+        title: "عبوة واحدة جربي اللون على بشرتك",
+        chip: "تجربة أولى. كيتبدّل مع لونك ف ثواني",
+        img: "./offer-1.jpg", label: "عبوة واحدة"
+      },
+      {
+        id: "2", qty: 2, price: 249, featured: true,
+        title: "عرض البنات قطعتين",
+        chip: "لك وهدية لختك أو صاحبتك. وفّرتي بزاف على الوحدة",
+        img: "./offer-2.jpg", label: "عرض البنات"
+      },
+      {
+        id: "3", qty: 3, price: 299,
+        title: "باقة المكياج الكامل 3 عبوات",
+        chip: "تكفيك شهور. ما ترجعيش تشري فونديشن غالي",
+        img: "./offer-3.jpg", label: "باقة المكياج"
+      }
     ];
-    var selected = "1";
+    var selected = "2";
     var pending = null;
     var eventId = (crypto.randomUUID && crypto.randomUUID()) || ("cc-" + Date.now());
     var upsellTimer = null;
-
-    document.getElementById("ticker").innerHTML = [
-      "فاطمة من كازا طلبات علبة",
-      "سارة من الرباط طلبات دابا",
-      "إيمان من مراكش اختارت علبتين",
-      "نادية من فاس أكّدات الطلب",
-      "سلمى من طنجة طلبات علبة",
-      "هدى من أكادير طلبات علبتين"
-    ].concat([
-      "فاطمة من كازا طلبات علبة",
-      "سارة من الرباط طلبات دابا",
-      "إيمان من مراكش اختارت علبتين",
-      "نادية من فاس أكّدات الطلب",
-      "سلمى من طنجة طلبات علبة",
-      "هدى من أكادير طلبات علبتين"
-    ]).map(function (t) { return "<span>" + t + "</span>"; }).join("");
 
     function captureSource() {
       var keys = {};
@@ -565,13 +627,10 @@
       if (keys.utm_source) return keys.utm_source;
       return "مباشر";
     }
-    function packById(id) { return offers.find(function (o) { return o.id === id; }) || offers[0]; }
+    function packById(id) { return offers.find(function (o) { return o.id === id; }) || offers[1]; }
     function setPrice(pack) {
       document.querySelectorAll(".ctaPrice").forEach(function (el) { el.textContent = pack.price; });
       document.getElementById("stickyLabel").textContent = pack.label + " · الدفع عند الاستلام";
-      var old = document.getElementById("oldPrice");
-      if (pack.old) { old.style.display = ""; old.textContent = pack.old + " درهم"; }
-      else { old.style.display = "none"; }
     }
     function pick(el) {
       document.querySelectorAll(".set").forEach(function (n) { n.classList.remove("on"); });
@@ -582,11 +641,10 @@
     function renderPacks() {
       document.getElementById("packs").innerHTML = offers.map(function (o) {
         return '<article class="set ' + (o.id === selected ? "on" : "") + '" data-id="' + o.id + '" onclick="pick(this)">'
-          + '<img src="' + o.img + '" alt="' + o.title + '" />'
-          + "<div>" + (o.featured ? '<span class="tag">الأكثر طلباً</span>' : "")
-          + "<h3>" + o.title + "</h3><p>" + o.desc + "</p></div>"
-          + '<div class="pr">' + o.price + ' <span class="dh">درهم</span>'
-          + (o.old ? "<small>" + o.old + "</small>" : "") + "</div></article>";
+          + (o.featured ? '<span class="ribbon">الأكثر طلباً</span>' : "")
+          + '<div class="pr">' + o.price + '<small>درهم</small></div>'
+          + "<div><h3>" + o.title + '</h3><span class="chip">' + o.chip + "</span></div>"
+          + '<img src="' + o.img + '" alt="" /></article>';
       }).join("");
     }
     function easternToWestern(str) {
@@ -614,7 +672,7 @@
     if (window.ttq) {
       window.ttq.track("ViewContent", {
         content_id: "covercoco", content_name: "Cover Coco Foundation",
-        value: 199, currency: "MAD", event_id: eventId
+        value: 249, currency: "MAD", event_id: eventId
       });
     }
     var checkoutArmed = false;
@@ -650,7 +708,7 @@
         name: pending.name,
         phone: pending.phone,
         city: pending.city,
-        address: pending.address,
+        address: pending.city,
         pack_id: pack.id,
         pack_title: title,
         price: total,
@@ -716,7 +774,6 @@
         name: String(fd.get("name") || "").trim(),
         phone: toSheetPhone(fd.get("phone")),
         city: String(fd.get("city") || "").trim(),
-        address: String(fd.get("address") || "").trim(),
         pack: packById(selected),
         source: captureSource()
       };
