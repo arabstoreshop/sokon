@@ -4,11 +4,11 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>طلبك تسجّل | Cover Coco</title>
-  <meta name="theme-color" content="#f4ece3" />
+  <meta name="theme-color" content="#14100e" />
   <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600&family=Tajawal:wght@400;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Tajawal:wght@400;700;800;900&display=swap" rel="stylesheet" />
   <script>
     !function (w, d, t) {
       w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];
@@ -22,27 +22,28 @@
   </script>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { min-height: 100vh; font-family: Tajawal, sans-serif; background: #f4ece3; color: #2c231c; }
-    .pic img { width: 100%; aspect-ratio: 16 / 11; object-fit: cover; object-position: 50% 22%; }
-    .wrap { width: min(520px, calc(100% - 32px)); margin: 0 auto; padding: 22px 0 56px; }
-    .mark { font-family: "Cormorant Garamond", serif; letter-spacing: .22em; color: #8d6844; font-size: 13px; }
-    h1 { font-size: clamp(30px, 8vw, 42px); font-weight: 900; margin-top: 8px; }
-    .hi { margin-top: 8px; color: #7a6d62; }
-    .card { background: #fffaf4; border: 1px solid #e6d8c8; border-radius: 20px; padding: 16px; margin-top: 16px; }
-    .card b { display: block; font-size: 11px; letter-spacing: .16em; color: #8d6844; margin-bottom: 6px; }
-    .card h2 { font-size: 20px; font-weight: 900; }
+    body { min-height: 100vh; font-family: Tajawal, sans-serif; background: #14100e; color: #f3ebe3; }
+    .pic { padding: 12px 12px 0; }
+    .pic img { width: 100%; aspect-ratio: 16 / 11; object-fit: cover; object-position: 50% 30%; border-radius: 18px; }
+    .wrap { width: min(520px, calc(100% - 28px)); margin: 0 auto; padding: 18px 0 48px; }
+    .mark { font-family: "Cormorant Garamond", serif; letter-spacing: .2em; color: #d4b08a; font-size: 13px; }
+    h1 { font-size: clamp(28px, 7vw, 40px); font-weight: 900; margin-top: 6px; }
+    .hi { margin-top: 8px; color: #a89a8e; }
+    .card { background: #1c1714; border: 1px solid rgba(212,176,138,.22); border-radius: 18px; padding: 14px; margin-top: 14px; }
+    .card b { display: block; font-size: 11px; letter-spacing: .14em; color: #d4b08a; margin-bottom: 6px; }
+    .card h2 { font-size: 18px; font-weight: 900; }
     .sum { display: flex; justify-content: space-between; margin-top: 10px; font-size: 14px; }
-    .sum strong { color: #8d6844; font-size: 22px; }
-    ol { list-style: none; margin-top: 8px; }
-    li { padding: 12px 0; border-top: 1px solid #e6d8c8; display: grid; grid-template-columns: 36px 1fr; gap: 8px; }
-    li em { font-family: "Cormorant Garamond", serif; font-style: normal; font-size: 22px; color: #8d6844; }
-    li h3 { font-size: 15px; font-weight: 900; }
-    li p { color: #7a6d62; font-size: 13px; margin-top: 3px; }
-    a { display: inline-block; margin-top: 22px; color: #8d6844; font-weight: 800; }
+    .sum strong { color: #d4b08a; font-size: 26px; }
+    ol { list-style: none; margin-top: 6px; }
+    li { padding: 10px 0; border-top: 1px solid rgba(212,176,138,.18); display: grid; grid-template-columns: 32px 1fr; gap: 8px; }
+    li em { font-family: "Cormorant Garamond", serif; font-style: normal; font-size: 20px; color: #d4b08a; }
+    li h3 { font-size: 14px; font-weight: 900; }
+    li p { color: #a89a8e; font-size: 12px; margin-top: 2px; }
+    a { display: inline-block; margin-top: 18px; color: #d4b08a; font-weight: 800; }
   </style>
 </head>
 <body>
-  <div class="pic"><img src="./cover-open.jpg" alt="" /></div>
+  <div class="pic"><img src="./product-hero.jpg" alt="" /></div>
   <div class="wrap">
     <p class="mark">COVER COCO</p>
     <h1>طلبك تسجّل.</h1>
@@ -51,7 +52,7 @@
       <b>ملخص</b>
       <h2 id="packName">Cover Coco</h2>
       <div class="sum"><span>المجموع</span><strong id="total">—</strong></div>
-      <p id="upsellLine" style="display:none;margin-top:8px;color:#8d6844;font-weight:800">زيداتي علبة بـ 99 د.م</p>
+      <p id="upsellLine" style="display:none;margin-top:8px;color:#d4b08a;font-weight:800">زيداتي علبة بـ 99 درهم</p>
     </div>
     <div class="card">
       <b>شنو وقع دابا</b>
@@ -70,12 +71,12 @@
     if (name) document.getElementById("hi").textContent = name + "، الله يعطيك الصحة. خلّي الواتساب محلول.";
     var value = parseFloat(params.get("value") || "0");
     var contentName = params.get("content_name") || "Cover Coco";
-    var contentIds = params.get("content_ids") || "covercoco-2";
-    var numItems = parseInt(params.get("num_items") || "2", 10) || 1;
+    var contentIds = params.get("content_ids") || "covercoco-1";
+    var numItems = parseInt(params.get("num_items") || "1", 10) || 1;
     var orderId = params.get("order_id") || ("CC-" + Date.now());
     var eventId = params.get("event_id") || (orderId + "-pay");
     document.getElementById("packName").textContent = contentName;
-    if (value > 0) document.getElementById("total").textContent = value + " د.م";
+    if (value > 0) document.getElementById("total").textContent = value + " درهم";
     if (params.get("upsell") === "1") document.getElementById("upsellLine").style.display = "block";
     if (value > 0) {
       var firedKey = "cc_purchase_" + orderId;
@@ -83,11 +84,8 @@
         sessionStorage.setItem(firedKey, "1");
         if (window.ttq) {
           window.ttq.track("CompletePayment", {
-            value: value,
-            currency: "MAD",
-            content_name: contentName,
-            content_id: contentIds,
-            event_id: eventId + "-pay",
+            value: value, currency: "MAD", content_name: contentName,
+            content_id: contentIds, event_id: eventId + "-pay",
             contents: [{ content_id: contentIds, quantity: numItems, price: value }]
           });
         }
