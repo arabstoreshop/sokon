@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>طلبك تسجّل | Cover Coco</title>
+  <title>شكراً لك! تم تسجيل طلبك | Cover Coco</title>
   <meta name="theme-color" content="#f7efe6" />
   <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -22,53 +22,129 @@
   </script>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { min-height: 100vh; font-family: Tajawal, sans-serif; background: #f7efe6; color: #2a221c; }
-    .pic { padding: 12px 12px 0; }
-    .pic img { width: 100%; aspect-ratio: 16 / 11; object-fit: cover; object-position: 50% 20%; border-radius: 20px; }
-    .wrap { width: min(520px, calc(100% - 28px)); margin: 0 auto; padding: 18px 0 48px; }
-    .mark { letter-spacing: .16em; color: #a67c52; font-size: 13px; font-weight: 900; }
-    h1 { font-size: clamp(28px, 7vw, 38px); font-weight: 900; margin-top: 6px; }
-    .hi { margin-top: 8px; color: #7a6b5e; }
-    .card { background: #fffaf5; border: 1px solid #e8d5c2; border-radius: 18px; padding: 14px; margin-top: 14px; }
+    body { min-height: 100vh; font-family: Tajawal, sans-serif; background: #f7efe6; color: #2a221c; padding-bottom: 40px; }
+    .wrap { width: min(520px, calc(100% - 28px)); margin: 0 auto; padding: 28px 0 24px; }
+    .mark { letter-spacing: .14em; color: #a67c52; font-size: 12px; font-weight: 900; }
+    h1 { font-size: clamp(24px, 6.5vw, 32px); font-weight: 900; margin-top: 8px; line-height: 1.35; }
+    .hi { margin-top: 10px; color: #7a6b5e; font-size: 15px; }
+    .callout {
+      margin-top: 18px;
+      background: #fff4ea;
+      border: 1px solid #e8d5c2;
+      border-radius: 18px;
+      padding: 16px;
+    }
+    .callout b { display: block; font-size: 15px; margin-bottom: 6px; }
+    .callout p { color: #7a6b5e; font-size: 14px; }
+    .wa {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      width: 100%; margin-top: 16px;
+      background: #25d366; color: #fff;
+      border: 0; border-radius: 999px;
+      padding: 16px 14px;
+      font-weight: 900; font-size: 16px;
+      text-decoration: none;
+      box-shadow: 0 10px 24px rgba(37,211,102,.35);
+      animation: pulse 1.6s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%,100% { transform: scale(1); box-shadow: 0 10px 24px rgba(37,211,102,.35); }
+      50% { transform: scale(1.03); box-shadow: 0 14px 30px rgba(37,211,102,.5); }
+    }
+    .card {
+      background: #fffaf5; border: 1px solid #e8d5c2;
+      border-radius: 18px; padding: 14px; margin-top: 16px;
+    }
     .card b { display: block; font-size: 11px; letter-spacing: .1em; color: #a67c52; margin-bottom: 6px; }
-    .card h2 { font-size: 17px; font-weight: 900; }
+    .card h2 { font-size: 16px; font-weight: 900; }
     .sum { display: flex; justify-content: space-between; margin-top: 10px; font-size: 14px; }
-    .sum strong { color: #a67c52; font-size: 26px; }
-    ol { list-style: none; margin-top: 6px; }
+    .sum strong { color: #a67c52; font-size: 24px; }
+    .upsell {
+      margin-top: 16px;
+      background: #fff;
+      border: 2px solid #e8a06a;
+      border-radius: 18px;
+      padding: 14px;
+    }
+    .upsell h3 { font-size: 17px; font-weight: 900; }
+    .upsell p { color: #7a6b5e; font-size: 13px; margin-top: 4px; }
+    .row { display: grid; grid-template-columns: 72px 1fr; gap: 10px; align-items: center; margin-top: 12px; }
+    .row img { width: 72px; height: 72px; object-fit: contain; border-radius: 12px; border: 1px solid #e8d5c2; background: #fff; }
+    .price { font-size: 24px; font-weight: 900; color: #a67c52; }
+    .price s { font-size: 13px; color: #9a8b7d; font-weight: 700; margin-inline-start: 6px; }
+    .add {
+      width: 100%; margin-top: 12px;
+      background: linear-gradient(180deg, #d8b08a, #a67c52);
+      color: #fff; border: 0; border-radius: 999px;
+      padding: 13px; font-weight: 900; font-size: 15px; cursor: pointer;
+    }
+    .skip { width: 100%; margin-top: 8px; background: none; border: 0; color: #7a6b5e; font-weight: 800; cursor: pointer; }
+    ol { list-style: none; margin-top: 8px; }
     li { padding: 10px 0; border-top: 1px solid #e8d5c2; display: grid; grid-template-columns: 28px 1fr; gap: 8px; }
-    li em { font-style: normal; font-size: 16px; color: #a67c52; font-weight: 900; }
+    li em { font-style: normal; font-weight: 900; color: #a67c52; }
     li h3 { font-size: 14px; font-weight: 900; }
     li p { color: #7a6b5e; font-size: 12px; margin-top: 2px; }
-    a { display: inline-block; margin-top: 18px; color: #a67c52; font-weight: 800; }
+    .done { display: none; margin-top: 10px; color: #25d366; font-weight: 800; font-size: 14px; }
   </style>
 </head>
 <body>
-  <div class="pic"><img src="./hero-brand.jpg" alt="" /></div>
   <div class="wrap">
     <p class="mark">COVER COCO</p>
-    <h1>طلبك تسجّل.</h1>
-    <p class="hi" id="hi">خلّي الواتساب محلول. غادي نتصلو باش نأكّدو.</p>
+    <h1>شكراً لك أختي! تم تسجيل طلبك بنجاح 🎉</h1>
+    <p class="hi" id="hi">سيتصل بك فريق الدعم عبر الهاتف أو الواتساب خلال أسرع وقت لتأكيد العنوان والشحن. المرجو إبقاء هاتفك قريباً منك لضمان خروج الطرد اليوم!</p>
+
+    <div class="callout">
+      <b>خلّي الرقم محلول</b>
+      <p>بلا تأكيد الطلب ما كيتشافش. أكّدي دابا بضغطة وحدة على الواتساب.</p>
+    </div>
+
+    <a class="wa" id="waBtn" href="#" target="_blank" rel="noopener">
+      تأكيد الطلب فوراً عبر الواتساب 💬
+    </a>
+
     <div class="card">
-      <b>ملخص</b>
+      <b>ملخص الطلب</b>
       <h2 id="packName">Cover Coco</h2>
       <div class="sum"><span>المجموع</span><strong id="total">—</strong></div>
       <p id="upsellLine" style="display:none;margin-top:8px;color:#a67c52;font-weight:800">زيداتي علبة بـ 99 درهم</p>
     </div>
+
+    <div class="upsell" id="postUpsell">
+      <h3>عرض خاص بعد الطلب</h3>
+      <p>إسفنجة المكياج (Beauty Blender) بـ 49 درهم بدل 99 — كتمشي مع نفس الطرد.</p>
+      <div class="row">
+        <img src="./offer-1.jpg" alt="Beauty Blender" />
+        <div>
+          <b>إسفنجة مكياج</b>
+          <div class="price">49 درهم <s>99</s></div>
+        </div>
+      </div>
+      <button class="add" type="button" id="addBlender">إضافة للطلبية — 49 درهم</button>
+      <button class="skip" type="button" id="skipBlender">لا شكراً</button>
+      <p class="done" id="upsellDone">✓ تزادت للإسفنجة على طلبك. غادي نأكّدو معاك فالمكالمة.</p>
+    </div>
+
     <div class="card">
-      <b>شنو وقع دابا</b>
-      <h2>غادي نتصلو عليك.</h2>
+      <b>الخطوات الجاية</b>
       <ol>
-        <li><em>01</em><div><h3>تأكيد الواتساب</h3><p>بلا الجواب الطلب ما كيتشافش.</p></div></li>
-        <li><em>02</em><div><h3>التوصيل 24–48 ساعة</h3><p>تعايني فالدار، من بعد الدفع نقداً.</p></div></li>
-        <li><em>03</em><div><h3>أول استعمال</h3><p>قطرتين. وزّعي. اللون كيجي ليك.</p></div></li>
+        <li><em>01</em><div><h3>تأكيد الواتساب / المكالمة</h3><p>جاوبي باش نأكّدو العنوان.</p></div></li>
+        <li><em>02</em><div><h3>التوصيل 24–48 ساعة</h3><p>تعايني العلبة، من بعد الدفع نقداً.</p></div></li>
+        <li><em>03</em><div><h3>أول استعمال</h3><p>قطرتين. وزّعي. اللون كيجي ليك فـ ثواني.</p></div></li>
       </ol>
     </div>
-    <a href="./index.html">رجوع لـ Cover Coco</a>
   </div>
+
   <script>
+    // حط رقم واتساب المتجر هنا (بلا +) مثال: 2126XXXXXXXX
+    var WHATSAPP = "212600000000";
+
     var params = new URLSearchParams(location.search);
-    var name = params.get("name");
-    if (name) document.getElementById("hi").textContent = name + "، الله يعطيك الصحة. خلّي الواتساب محلول.";
+    var name = params.get("name") || "";
+    var phone = params.get("phone") || "";
+    if (name) {
+      document.getElementById("hi").textContent =
+        name + "، سيتصل بك فريق الدعم عبر الهاتف أو الواتساب خلال أسرع وقت لتأكيد العنوان والشحن. المرجو إبقاء هاتفك قريباً منك لضمان خروج الطرد اليوم!";
+    }
     var value = parseFloat(params.get("value") || "0");
     var contentName = params.get("content_name") || "Cover Coco";
     var contentIds = params.get("content_ids") || "covercoco-2";
@@ -78,14 +154,61 @@
     document.getElementById("packName").textContent = contentName;
     if (value > 0) document.getElementById("total").textContent = value + " درهم";
     if (params.get("upsell") === "1") document.getElementById("upsellLine").style.display = "block";
+
+    var waText = "سلام، أنا " + (name || "زبونة") + " أطلب تأكيد الطلبية الخاصة بـ CoverCoco"
+      + (orderId ? " رقم " + orderId : "")
+      + (value ? " (" + value + " درهم)" : "")
+      + ".";
+    document.getElementById("waBtn").href =
+      "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(waText);
+
+    document.getElementById("addBlender").onclick = function () {
+      document.getElementById("upsellDone").style.display = "block";
+      this.disabled = true;
+      this.textContent = "تمت الإضافة ✓";
+      document.getElementById("skipBlender").style.display = "none";
+      if (window.ttq) {
+        window.ttq.track("AddToCart", {
+          content_id: "covercoco-blender",
+          content_name: "Beauty Blender",
+          value: 49,
+          currency: "MAD"
+        });
+      }
+      // append note into sheet via same webhook pattern
+      try {
+        var iframe = document.createElement("iframe");
+        iframe.style.display = "none";
+        document.body.appendChild(iframe);
+        var qs = new URLSearchParams({
+          brand: "covercoco",
+          name: name || "زبونة",
+          phone: phone,
+          city: "",
+          address: "",
+          pack_title: "Cover Coco · إسفنجة مكياج (بعد الطلب)",
+          price: "49",
+          source: "thank-you-upsell",
+          created_at: new Date().toISOString()
+        });
+        iframe.src = "https://script.google.com/macros/s/AKfycbxTidbmqTr6dKV7lOEmlQBR81R_Sv-VF8AA7UerWzvJ0wWd8pT5QtyyA9NlOGU7WLE9YQ/exec?" + qs.toString();
+      } catch (e) {}
+    };
+    document.getElementById("skipBlender").onclick = function () {
+      document.getElementById("postUpsell").style.display = "none";
+    };
+
     if (value > 0) {
       var firedKey = "cc_purchase_" + orderId;
       if (!sessionStorage.getItem(firedKey)) {
         sessionStorage.setItem(firedKey, "1");
         if (window.ttq) {
           window.ttq.track("CompletePayment", {
-            value: value, currency: "MAD", content_name: contentName,
-            content_id: contentIds, event_id: eventId + "-pay",
+            value: value,
+            currency: "MAD",
+            content_name: contentName,
+            content_id: contentIds,
+            event_id: eventId + "-pay",
             contents: [{ content_id: contentIds, quantity: numItems, price: value }]
           });
         }

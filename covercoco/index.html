@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Cover Coco الأصلي | من 199 درهم — الدفع عند الاستلام</title>
-  <meta name="description" content="Cover Coco Naked Foundation SPF 30. كيتأقلم مع لونك. علبة بـ 199 درهم. الدفع عند الاستلام فالمغرب." />
+  <title>Cover Coco الأصلي | بشرة صافية فـ 5 ثواني — الدفع عند الاستلام</title>
+  <meta name="description" content="فوندسيون CoverCoco الأصلي: تغطية كاملة، كيتأقلم مع لونك، مقاوم للماء. من 199 درهم. المعاينة والدفع عند الاستلام فالمغرب." />
   <meta name="theme-color" content="#f7efe6" />
-  <meta property="og:title" content="Cover Coco — من 199 درهم" />
+  <meta property="og:title" content="Cover Coco — بشرة صافية فـ 5 ثواني" />
   <meta property="og:image" content="./hero-brand.jpg" />
   <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -28,7 +28,6 @@
     :root {
       --bg: #f7efe6;
       --paper: #fffaf5;
-      --peach: #f3e4d4;
       --ink: #2a221c;
       --mute: #7a6b5e;
       --nude: #c9a27a;
@@ -42,8 +41,8 @@
       font-family: Tajawal, sans-serif;
       background: var(--bg);
       color: var(--ink);
-      line-height: 1.65;
-      padding-bottom: 88px;
+      line-height: 1.7;
+      padding-bottom: 92px;
     }
     img { max-width: 100%; display: block; }
     a { color: inherit; text-decoration: none; }
@@ -52,7 +51,7 @@
 
     .top {
       background: var(--nude-d);
-      color: #fffaf5;
+      color: #fff;
       text-align: center;
       font-size: 12px;
       font-weight: 800;
@@ -62,130 +61,140 @@
       position: sticky; top: 0; z-index: 50;
       display: flex; justify-content: space-between; align-items: center;
       padding: 10px 14px;
-      background: rgba(247,239,230,.95);
+      background: rgba(247,239,230,.96);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--line);
     }
-    .logo b { display: block; font-size: 18px; letter-spacing: .12em; font-weight: 900; color: var(--nude-d); }
-    .logo small { display: block; font-size: 9px; letter-spacing: .22em; color: var(--mute); font-weight: 800; }
+    .logo b { display: block; font-size: 17px; letter-spacing: .1em; font-weight: 900; color: var(--nude-d); }
+    .logo small { display: block; font-size: 9px; letter-spacing: .2em; color: var(--mute); font-weight: 800; }
     .nav-cta {
       display: inline-flex; align-items: center; gap: 6px;
-      background: var(--nude); color: #fff;
+      background: var(--nude-d); color: #fff;
       font-size: 13px; font-weight: 900;
       padding: 9px 14px; border-radius: 999px;
     }
     .nav-cta svg { animation: bob 1.15s ease-in-out infinite; }
 
-    .badges {
-      display: flex; flex-wrap: wrap; gap: 6px; justify-content: center;
-      padding: 12px 12px 0;
-    }
-    .badges span {
-      font-size: 11px; font-weight: 800;
-      border: 1px solid var(--nude-d);
-      color: var(--nude-d);
-      background: var(--paper);
-      border-radius: 999px;
-      padding: 6px 10px;
-    }
-    .badges span.hot {
-      background: var(--nude);
-      color: #fff;
-      border-color: var(--nude);
-    }
-
-    .hero { padding: 12px 0 0; }
-    .hero-shot {
+    /* HERO with text ON image */
+    .hero {
+      position: relative;
+      margin: 10px 12px 0;
       border-radius: 24px;
       overflow: hidden;
+      min-height: 78vh;
       background: #1a1410;
-      box-shadow: 0 10px 30px rgba(80,50,30,.12);
     }
-    .hero-shot img {
-      width: 100%;
-      aspect-ratio: 4 / 5;
+    .hero img.bg {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
       object-fit: cover;
-      object-position: 55% 18%;
+      object-position: 62% 12%;
     }
-    .hero-copy { text-align: center; padding: 16px 4px 0; }
-    .brand-line { color: var(--nude-d); font-weight: 900; letter-spacing: .08em; font-size: 15px; }
-    h1 { font-size: clamp(24px, 6.5vw, 32px); font-weight: 900; line-height: 1.3; margin-top: 6px; }
-    h1 em { font-style: normal; color: var(--nude-d); }
-    .lead { margin-top: 8px; color: var(--mute); font-size: 14px; }
-    .pills { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-top: 12px; }
-    .pills span {
-      border: 1px solid var(--line); background: var(--paper);
-      border-radius: 999px; padding: 6px 12px;
-      font-size: 12px; font-weight: 800; color: var(--ink);
+    .hero::after {
+      content: "";
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(180deg, rgba(20,14,10,.35) 0%, rgba(20,14,10,.15) 35%, rgba(20,14,10,.88) 100%);
     }
-    .rating { margin-top: 10px; color: var(--nude-d); font-weight: 800; font-size: 13px; }
-    .rating i { color: #d4a017; font-style: normal; letter-spacing: 1px; }
-
+    .hero-copy {
+      position: absolute; inset-inline: 0; bottom: 0; z-index: 2;
+      padding: 20px 18px 22px;
+      color: #fffaf5;
+    }
+    .hero-copy .eye {
+      font-size: 11px; font-weight: 800; letter-spacing: .14em;
+      color: var(--nude); margin-bottom: 8px;
+    }
+    .hero-copy h1 {
+      font-size: clamp(26px, 7vw, 34px);
+      font-weight: 900; line-height: 1.3;
+    }
+    .hero-copy .lead {
+      margin-top: 10px;
+      font-size: 14px;
+      color: rgba(255,250,245,.88);
+      line-height: 1.65;
+    }
     .cta {
       display: flex; align-items: center; justify-content: center; gap: 8px;
       width: 100%; margin-top: 14px;
       background: linear-gradient(180deg, #d8b08a, #a67c52);
-      color: #fff;
-      border: 0; border-radius: 999px;
-      padding: 15px 16px;
+      color: #fff; border: 0; border-radius: 999px;
+      padding: 15px 14px;
       font-weight: 900; font-size: 16px;
-      box-shadow: 0 10px 24px rgba(166,124,82,.28);
+      box-shadow: 0 10px 24px rgba(166,124,82,.35);
       cursor: pointer;
     }
     .cta svg { width: 20px; height: 20px; animation: bob 1.15s ease-in-out infinite; }
     .cta small { display: block; font-size: 11px; font-weight: 700; opacity: .9; }
     @keyframes bob {
-      0%, 100% { transform: translateY(0) scale(1); }
-      50% { transform: translateY(-3px) scale(1.06); }
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-3px); }
     }
-
-    .features {
-      margin-top: 18px;
-      background: var(--paper);
-      border-radius: 20px;
-      border: 1px solid var(--line);
-      padding: 6px 0;
+    .trust {
+      display: grid; gap: 6px; margin-top: 12px;
     }
-    .features li {
-      list-style: none;
-      display: grid;
-      grid-template-columns: 44px 1fr;
-      gap: 12px;
-      align-items: center;
-      padding: 12px 16px;
-      border-top: 1px solid var(--line);
-      font-weight: 800; font-size: 15px;
-    }
-    .features li:first-child { border-top: 0; }
-    .features .ic {
-      width: 40px; height: 40px; border-radius: 50%;
-      border: 1.5px solid var(--nude);
-      display: grid; place-items: center;
-      color: var(--nude-d); font-size: 16px;
+    .trust span {
+      display: block;
+      font-size: 12px; font-weight: 800;
+      background: rgba(255,250,245,.12);
+      border: 1px solid rgba(255,250,245,.2);
+      border-radius: 12px;
+      padding: 8px 10px;
     }
 
     section { padding: 28px 0; }
-    .kicker {
-      text-align: center;
-      font-size: 18px; font-weight: 900;
-      margin-bottom: 14px;
-    }
-    .kicker span { color: #d4a017; }
+    .kicker { font-size: 12px; font-weight: 800; letter-spacing: .12em; color: var(--nude-d); margin-bottom: 8px; }
+    h2 { font-size: clamp(22px, 5.8vw, 28px); font-weight: 900; line-height: 1.35; }
+    .mute { color: var(--mute); margin-top: 8px; font-size: 14.5px; }
 
+    .pain {
+      background: #fff4ea;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .pain-box {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 16px;
+      margin-top: 14px;
+    }
+    .pain-box h3 { font-size: 15px; font-weight: 900; color: #8a3a2a; }
+    .pain-box p { margin-top: 6px; color: var(--mute); font-size: 14px; }
+
+    .benefits { display: grid; gap: 10px; margin-top: 14px; }
+    .benefits article {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 14px 14px;
+      display: grid;
+      grid-template-columns: 40px 1fr;
+      gap: 10px;
+    }
+    .benefits .n {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: #f0e0d0; color: var(--nude-d);
+      display: grid; place-items: center;
+      font-weight: 900; font-size: 14px;
+    }
+    .benefits b { display: block; font-size: 14px; }
+    .benefits span { display: block; margin-top: 3px; color: var(--mute); font-size: 13px; }
+
+    .ugc-title { text-align: center; font-size: 18px; font-weight: 900; margin-bottom: 14px; }
+    .ugc-title span { color: #d4a017; }
     .ugc { display: grid; gap: 14px; }
     .ugc article {
       background: var(--paper);
+      border: 1px solid var(--line);
       border-radius: 22px;
       overflow: hidden;
-      border: 1px solid var(--line);
-      box-shadow: 0 6px 18px rgba(80,50,30,.06);
+      box-shadow: 0 6px 16px rgba(80,50,30,.06);
     }
     .ugc .pic {
-      width: 100%;
-      aspect-ratio: 5 / 4;
-      object-fit: cover;
-      object-position: 50% 20%;
-      border-radius: 22px 22px 0 0;
+      width: 100%; aspect-ratio: 5 / 4;
+      object-fit: cover; object-position: 50% 18%;
     }
     .ugc .meta {
       display: flex; align-items: center; gap: 8px;
@@ -199,70 +208,47 @@
       font-size: 10px; font-weight: 800;
       border-radius: 999px; padding: 5px 9px;
     }
-    .ugc p { padding: 0 12px 14px; font-size: 14px; color: var(--ink); }
+    .ugc p { padding: 0 12px 14px; font-size: 14px; }
 
-    .comments { display: grid; gap: 10px; margin-top: 14px; }
-    .comment {
-      background: var(--paper);
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 12px;
-      display: grid;
-      grid-template-columns: 48px 1fr auto;
-      gap: 10px;
-      align-items: start;
-    }
-    .comment .av {
-      width: 48px; height: 48px; border-radius: 50%;
-      object-fit: cover; border: 2px solid var(--nude);
-    }
-    .comment b { display: block; font-size: 13px; }
-    .comment .stars { font-size: 11px; margin-top: 2px; }
-    .comment p { grid-column: 1 / -1; font-size: 13px; color: var(--mute); margin-top: 2px; }
-    .comment .thumbs {
-      display: flex; gap: 4px;
-    }
-    .comment .thumbs img {
-      width: 44px; height: 44px; border-radius: 10px;
-      object-fit: cover; border: 1px solid var(--line);
-    }
-
-    .order-title { font-size: 18px; font-weight: 900; text-align: center; margin-bottom: 12px; }
+    /* OFFERS: price LEFT, image RIGHT */
+    .order-title { text-align: center; font-size: 18px; font-weight: 900; margin-bottom: 12px; }
     .sets { display: grid; gap: 10px; }
     .set {
       position: relative;
       display: grid;
-      grid-template-columns: auto 1fr 70px;
+      grid-template-columns: auto 1fr 88px;
       gap: 10px;
       align-items: center;
-      background: var(--paper);
+      background: #fff;
       border: 2px solid var(--orange);
       border-radius: 18px;
-      padding: 10px 10px;
+      padding: 10px;
       cursor: pointer;
       text-align: right;
     }
     .set.on {
       border-color: var(--nude-d);
-      box-shadow: 0 0 0 3px rgba(166,124,82,.15);
-      background: #fff;
+      box-shadow: 0 0 0 3px rgba(166,124,82,.16);
     }
     .set .pr {
-      font-size: 26px; font-weight: 900; color: var(--ink); line-height: 1.05;
-      min-width: 78px;
+      font-size: 28px; font-weight: 900; line-height: 1.05;
+      color: var(--ink); min-width: 84px;
     }
     .set .pr small { display: block; font-size: 12px; font-weight: 800; }
     .set h3 { font-size: 14px; font-weight: 900; line-height: 1.35; }
     .set .chip {
-      display: inline-block;
-      margin-top: 5px;
+      display: inline-block; margin-top: 5px;
       background: #1f1a16; color: #fff;
       font-size: 11px; font-weight: 700;
       border-radius: 999px; padding: 5px 9px; line-height: 1.35;
     }
     .set img {
-      width: 64px; height: 64px; object-fit: cover; border-radius: 14px;
-      background: var(--peach);
+      width: 88px; height: 88px;
+      object-fit: contain;
+      background: #fff;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      padding: 4px;
     }
     .ribbon {
       position: absolute; top: -1px; right: -1px;
@@ -272,17 +258,13 @@
       border-radius: 0 16px 0 12px;
     }
 
-    .form-head {
-      text-align: center;
-      font-size: 16px; font-weight: 900;
-      margin: 18px 0 10px;
-    }
+    .form-head { text-align: center; font-size: 16px; font-weight: 900; margin: 18px 0 10px; }
     .field {
       width: 100%;
       background: #fff;
       border: 2px solid var(--orange);
       border-radius: 16px;
-      padding: 14px 14px;
+      padding: 14px;
       font-size: 16px;
       color: var(--ink);
       margin-bottom: 10px;
@@ -316,13 +298,13 @@
     }
     .faq summary { font-weight: 800; cursor: pointer; list-style: none; }
     .faq summary::-webkit-details-marker { display: none; }
-    .faq p { color: var(--mute); margin-top: 5px; font-size: 13px; }
+    .faq p { color: var(--mute); margin-top: 6px; font-size: 13.5px; }
 
     footer {
       text-align: center; color: #9a8b7d; font-size: 11px;
       letter-spacing: .12em; padding: 16px 12px 8px;
     }
-    footer b { display: block; color: var(--nude-d); font-size: 15px; letter-spacing: .16em; margin-bottom: 4px; }
+    footer b { display: block; color: var(--nude-d); font-size: 15px; margin-bottom: 4px; letter-spacing: .14em; }
 
     .sticky {
       position: fixed; inset-inline: 0; bottom: 0; z-index: 60;
@@ -340,7 +322,6 @@
       background: linear-gradient(180deg, #d8b08a, #a67c52);
       color: #fff; border-radius: 999px;
       padding: 12px 16px; font-weight: 900; font-size: 14px;
-      box-shadow: 0 8px 18px rgba(166,124,82,.28);
     }
     .sticky a svg { animation: bob 1.15s ease-in-out infinite; }
 
@@ -357,12 +338,12 @@
       padding: 18px 16px 24px;
       border: 1px solid var(--line);
     }
-    .bar { height: 3px; background: var(--peach); margin: -18px -16px 14px; overflow: hidden; }
+    .bar { height: 3px; background: #f0e0d0; margin: -18px -16px 14px; overflow: hidden; }
     .bar i { display: block; height: 100%; width: 100%; background: var(--nude-d); transform-origin: right center; animation: drain 15s linear forwards; }
     @keyframes drain { to { transform: scaleX(0); } }
     .modal-card h3 { font-size: 22px; font-weight: 900; }
     .upsell-row { display: grid; grid-template-columns: 80px 1fr; gap: 10px; margin: 12px 0; align-items: center; }
-    .upsell-row img { width: 80px; height: 80px; object-fit: cover; border-radius: 14px; }
+    .upsell-row img { width: 80px; height: 80px; object-fit: contain; border-radius: 14px; background: #fff; border: 1px solid var(--line); }
     .price-row { display: flex; gap: 8px; align-items: baseline; margin-top: 4px; }
     .price-row b { font-size: 26px; color: var(--nude-d); }
     .price-row s { color: #9a8b7d; font-size: 14px; }
@@ -375,11 +356,10 @@
     .yes svg { animation: bob 1.15s ease-in-out infinite; }
     .no { width: 100%; background: none; border: 0; margin-top: 8px; color: var(--mute); font-weight: 800; cursor: pointer; }
     .clock { color: var(--nude-d); font-size: 12px; font-weight: 800; margin-top: 6px; }
-    .mute { color: var(--mute); }
   </style>
 </head>
 <body>
-  <div class="top">توصيل مجاني · المعاينة عند الاستلام · أصلي 100%</div>
+  <div class="top">معاينة قبل الدفع · توصيل 24–48 ساعة · أصلي 100%</div>
   <nav>
     <div class="logo">
       <b>COVER COCO</b>
@@ -391,42 +371,76 @@
     </a>
   </nav>
 
-  <div class="badges">
-    <span>15000+ زبونة راضية</span>
-    <span>توصيل لكل المدن</span>
-    <span class="hot">ضمان 7 أيام</span>
-  </div>
-
-  <div class="wrap">
-    <header class="hero">
-      <div class="hero-shot">
-        <img src="./hero-brand.jpg" alt="Cover Coco Naked Foundation SPF 30" fetchpriority="high" />
+  <header class="hero">
+    <img class="bg" src="./hero-brand.jpg" alt="Cover Coco Naked Foundation" fetchpriority="high" />
+    <div class="hero-copy">
+      <p class="eye">COVERCOCO ORIGINAL · COLOR CHANGING</p>
+      <h1>بشرة صافية، موحدة وخالية من العيوب فـ 5 ثواني فقط! ✨</h1>
+      <p class="lead">فوندسيون CoverCoco الأصلي بتغطية كاملة ومقاومة للماء طيلة اليوم. كيحيد الهالات، الآثار، والحبوب بلا ما يخلي وجهك يبان مزيف ولا يسبب قشور!</p>
+      <a class="cta" href="#order">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 7h15l-1.5 9h-12z"/><path d="M6 7 5 4H2"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg>
+        <span>أطلبي دابا — <span class="ctaPrice">249</span> درهم<small>الدفع عند الاستلام</small></span>
+      </a>
+      <div class="trust">
+        <span>💯 منتج أصلي 100% مع ضمان الجودة</span>
+        <span>🚚 توصيل سريع لجميع المدن (24–48 ساعة)</span>
+        <span>📦 المعاينة والدفع بعد الاستلام — فتحي العلبة وتأكدي وعاد ادفعي</span>
       </div>
-      <div class="hero-copy">
-        <p class="brand-line">Cover Coco</p>
-        <h1>السحر لي كيجملك — وجهك <em>ديما منوّر</em></h1>
-        <p class="lead">فونديشن كيتأقلم مع لون بشرتك ف ثواني. تغطية طبيعية، ثابت فالحرّ، و SPF 30.</p>
-        <div class="pills">
-          <span>حماية</span><span>طبيعي</span><span>ترطيب</span><span>تغطية</span>
-        </div>
-        <p class="rating"><i>★★★★★</i> 4.9 تقييم</p>
-        <a class="cta" href="#order">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 7h15l-1.5 9h-12z"/><path d="M6 7 5 4H2"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg>
-          <span>أطلبي دابا — <span class="ctaPrice">249</span> درهم<small>الدفع عند الاستلام</small></span>
-        </a>
-      </div>
+    </div>
+  </header>
 
-      <ul class="features">
-        <li><span class="ic">✓</span>كيتأقلم مع بشرتك</li>
-        <li><span class="ic">❀</span>تغطية طبيعية بلا ماسك</li>
-        <li><span class="ic">☀</span>SPF 30 نهار كامل</li>
-      </ul>
-    </header>
-  </div>
+  <section class="pain">
+    <div class="wrap">
+      <p class="kicker">المشكل</p>
+      <h2>عييتي من الفونديشن لي كيقشر، كيثقال على الوجه، وما كايغطيش العيوب؟ 🤦‍♀️</h2>
+      <p class="mute">أغلب المنتجات فـ السوق إما كايعطيو تغطية خفيفة ما باينش فيها الفرق، أو كايحسسوك بلي لابسة ماسك ثقيل كيسد المسام ويدير الحبوب.</p>
+      <div class="pain-box">
+        <h3>الحل: CoverCoco</h3>
+        <p>فوندسيون CoverCoco تصمم خصيصاً باش يعطيك تغطية زجاجية عالية (Full Coverage) مريحة وبلا ما يبان كيكة فـ وجهك!</p>
+      </div>
+    </div>
+  </section>
 
   <section>
     <div class="wrap">
-      <p class="kicker"><span>✨</span> شنو شراو وصوّرو فالدار <span>✨</span></p>
+      <p class="kicker">الفوائد</p>
+      <h2>علاش البنات كيختاروه</h2>
+      <div class="benefits">
+        <article>
+          <div class="n">01</div>
+          <div>
+            <b>تغطية خيالية فـ 5 ثواني</b>
+            <span>كيتدمج بسهولة مع البشرة وكيغطي الهالات السوداء، الحبوب، والتصبغات.</span>
+          </div>
+        </article>
+        <article>
+          <div class="n">02</div>
+          <div>
+            <b>تغيير اللون الذكي (Color Changing)</b>
+            <span>كيتأقلم أوتوماتيكياً مع لون بشرتك الطبيعي باش ما يعطيش لون طبشوري.</span>
+          </div>
+        </article>
+        <article>
+          <div class="n">03</div>
+          <div>
+            <b>مقاوم للماء والعرق 100%</b>
+            <span>كيبقى ثابت 16 ساعة بلا ما يسيح أو يتغير.</span>
+          </div>
+        </article>
+        <article>
+          <div class="n">04</div>
+          <div>
+            <b>تركيبة خفيفة ومغذية</b>
+            <span>غني بفيتامينات مرطبة كتحمي البشرة وما كايسدش المسام.</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="ugc-title"><span>✨</span> شنو شراو وصوّرو فالدار <span>✨</span></p>
       <div class="ugc">
         <article>
           <img class="pic" src="./rev-1.jpg" alt="زبونة من مراكش" />
@@ -447,61 +461,22 @@
           <p>اللون تما مع لوني، خفيف وما كيتحركش نهائياً.</p>
         </article>
         <article>
-          <img class="pic" src="./rev-3.jpg" alt="زبونة من الدار البيضاء" />
+          <img class="pic" src="./rev-3.jpg" alt="زبونة من كازا" />
           <div class="meta">
             <span class="stars">★★★★★</span>
             <b>سعاد · الدار البيضاء</b>
             <span class="ok">✓ شرات المنتوج</span>
           </div>
-          <p>شريتو وصوّرتو فالدار. بحال جلد ثاني، والهالات اختافاو.</p>
+          <p>تغطية زوينة وبلا ماسك. من الغد خذيت جوج لختي. هادا الأصلي مو اللي فالسوق.</p>
         </article>
         <article>
-          <img class="pic" src="./rev-4.jpg" alt="العلبة فالدار" />
+          <img class="pic" src="./rev-4.jpg" alt="زبونة من فاس" />
           <div class="meta">
             <span class="stars">★★★★★</span>
             <b>نادية · فاس</b>
             <span class="ok">✓ شرات المنتوج</span>
           </div>
-          <p>هادشي اللي كيبان فالريل هو هو. من الغد خذيت جوج لختي.</p>
-        </article>
-      </div>
-
-      <div class="comments">
-        <article class="comment">
-          <img class="av" src="./rev-5.jpg" alt="" />
-          <div>
-            <b>سارة</b>
-            <div class="stars">★★★★★</div>
-          </div>
-          <div class="thumbs"><img src="./offer-1.jpg" alt="" /></div>
           <p>أخيراً فونديشن كيجي مع لون بشرتي. ما بقيتش كنخلط جوج علب.</p>
-        </article>
-        <article class="comment">
-          <img class="av" src="./rev-6.jpg" alt="" />
-          <div>
-            <b>عائشة</b>
-            <div class="stars">★★★★★</div>
-          </div>
-          <div class="thumbs"><img src="./offer-2.jpg" alt="" /><img src="./rev-2.jpg" alt="" /></div>
-          <p>خفيفة وما كتحسيش بثقل. مثالية لكل نهار فالحرّ.</p>
-        </article>
-        <article class="comment">
-          <img class="av" src="./rev-1.jpg" alt="" />
-          <div>
-            <b>مريم</b>
-            <div class="stars">★★★★★</div>
-          </div>
-          <div class="thumbs"><img src="./offer-1.jpg" alt="" /></div>
-          <p>كنت كنقلب على شي حاجة كتتأقلم مع لوني. هادا زوين بصح.</p>
-        </article>
-        <article class="comment">
-          <img class="av" src="./rev-3.jpg" alt="" />
-          <div>
-            <b>هدى · أكادير</b>
-            <div class="stars">★★★★★</div>
-          </div>
-          <div class="thumbs"><img src="./offer-3.jpg" alt="" /></div>
-          <p>طلبت 3 علب. تكفيني شهور وما غادي نرجع نشري غالي.</p>
         </article>
       </div>
     </div>
@@ -530,24 +505,34 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 7h15l-1.5 9h-12z"/><path d="M6 7 5 4H2"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg>
           <span>أكّدي الطلب — <span class="ctaPrice">249</span> درهم<small>الدفع عند الاستلام بعد المعاينة</small></span>
         </button>
-        <p class="legal">Cover Coco Naked Foundation SPF 30 — 30مل. منتج تجميل أصلي. ليس دواءً.</p>
+        <p class="legal">Cover Coco / Color Changing Naked Foundation — منتج تجميل. جرّبي كمية صغيرة أول مرة. ليس دواءً.</p>
       </form>
     </div>
   </section>
 
   <section class="faq">
     <div class="wrap">
+      <p class="kicker">أسئلة</p>
+      <h2>قبل ما تطلبي</h2>
       <details open>
-        <summary>واش هادا الأصلي؟</summary>
-        <p>إي، Cover Coco Make-Up Studio — Naked Foundation SPF 30. نفس العلبة اللي فالريل.</p>
+        <summary>واش المنتج أصلي 100%؟</summary>
+        <p>نعم أختي، كنستوردو CoverCoco الأصلي. وتأكيداً لثقتنا، عندك الحق الكامل فـ معاينة وفتح الطرد والتأكد منه قبل دفع أي درهم للمندوب!</p>
       </details>
       <details>
-        <summary>فاش كندفع؟</summary>
-        <p>ملي يوصلك للدار، من بعد المعاينة. نقداً.</p>
+        <summary>كيفاش نختار الدرجة/اللون المناسب لبشرتي؟</summary>
+        <p>الفوندسيون فيه تقنية تكييف اللون (Smart Adapt)؛ بمجرد ما كتدلكيه على البشرة، كيتغير وكيتحول أوتوماتيكياً للون مطابق 100% مع درجة بشرتك سواء كانت بيضاء، حنطية، أو سمراء!</p>
       </details>
       <details>
-        <summary>قدّاش كيوصل؟</summary>
-        <p>من بعد تأكيد الواتساب، عادة 24–48 ساعة داخل المغرب.</p>
+        <summary>واش كيدير الحبوب ولا كيسد المسام؟</summary>
+        <p>لا نهائياً، التركيبة خفيفة بزاف وخالية من الزيوت الثقيلة، مخصصة للبشرة الحساسة وتسمح للجلد بالتنفس طيلة اليوم.</p>
+      </details>
+      <details>
+        <summary>شحال ديال الوقت كياخد التوصيل؟</summary>
+        <p>التوصيل سريع فـ ظرف 24 إلى 48 ساعة كيوصلك حتى لباب الدار فـ جميع المدن المغربية.</p>
+      </details>
+      <details>
+        <summary>كيفاش كيدوز الاقتطاع والدفع؟</summary>
+        <p>ما كايناش أي أدوات دفع إلكتروني أو بطاقة! الدفع نقداً عند الاستلام بعدما كتوصلك الطلبية وتعاينيها.</p>
       </details>
     </div>
   </section>
@@ -577,7 +562,7 @@
       <div class="upsell-row">
         <img src="./offer-1.jpg" alt="علبة إضافية" />
         <div>
-          <b>علبة Cover Coco 30مل</b>
+          <b>علبة Cover Coco</b>
           <div class="price-row"><b>99 درهم</b><s>199</s></div>
         </div>
       </div>
@@ -644,7 +629,7 @@
           + (o.featured ? '<span class="ribbon">الأكثر طلباً</span>' : "")
           + '<div class="pr">' + o.price + '<small>درهم</small></div>'
           + "<div><h3>" + o.title + '</h3><span class="chip">' + o.chip + "</span></div>"
-          + '<img src="' + o.img + '" alt="" /></article>';
+          + '<img src="' + o.img + '" alt="' + o.qty + ' علب" /></article>';
       }).join("");
     }
     function easternToWestern(str) {
@@ -733,6 +718,7 @@
           + "&num_items=" + encodeURIComponent(pack.qty + (withUpsell ? 1 : 0))
           + "&order_id=" + encodeURIComponent(orderId)
           + "&event_id=" + encodeURIComponent(eventId)
+          + "&phone=" + encodeURIComponent(payload.phone)
           + "&upsell=" + (withUpsell ? "1" : "0");
       }, 700);
     }
