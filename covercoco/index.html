@@ -910,11 +910,13 @@
     }
     var TT_PIXELS = ["DA41OHRC77U208UL6VU0", "DAGTP9RC77U208ULEIB0"];
     function trackTT(name, data) {
-      if (!window.ttq) return;
-      TT_PIXELS.forEach(function (id) {
-        var inst = window.ttq.instance ? window.ttq.instance(id) : window.ttq;
-        inst.track(name, data);
-      });
+      try {
+        if (!window.ttq) return;
+        TT_PIXELS.forEach(function (id) {
+          var inst = window.ttq.instance ? window.ttq.instance(id) : window.ttq;
+          if (inst && inst.track) inst.track(name, data);
+        });
+      } catch (err) {}
     }
 
     setTimeout(function () {
