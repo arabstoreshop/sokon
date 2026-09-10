@@ -542,6 +542,30 @@
     </div>
   </div>
 
+  <section id="order">
+    <div class="wrap">
+      <p class="order-title">اختاري العرض وكمّلي الطلب</p>
+      <div class="sets" id="packs"></div>
+      <p class="form-head">أدخلي معلوماتك أسفله</p>
+      <form id="orderForm">
+        <input class="field" required name="name" placeholder="الإسم" autocomplete="name" />
+        <input class="field" required name="phone" type="tel" inputmode="numeric" autocomplete="tel" maxlength="10" placeholder="رقم الهاتف" />
+        <input class="field" required name="city" list="cities" placeholder="المدينة" autocomplete="address-level2" />
+        <datalist id="cities">
+          <option value="الدار البيضاء"></option><option value="الرباط"></option><option value="سلا"></option>
+          <option value="مراكش"></option><option value="فاس"></option><option value="طنجة"></option>
+          <option value="أكادير"></option><option value="مكناس"></option><option value="وجدة"></option>
+          <option value="تطوان"></option><option value="القنيطرة"></option><option value="الجديدة"></option>
+        </datalist>
+        <button class="cta" type="submit">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 7h15l-1.5 9h-12z"/><path d="M6 7 5 4H2"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg>
+          <span>أكّدي الطلب — <span class="ctaPrice">199</span> درهم<small>الدفع عند الاستلام بعد المعاينة</small></span>
+        </button>
+        <p class="legal">Cover Coco Color Changing Naked Foundation — 30مل. منتج تجميل أصلي. ليس دواءً.</p>
+      </form>
+    </div>
+  </section>
+
   <section class="pain">
     <div class="wrap">
       <p class="kicker">المشكل لي كتعرفيه</p>
@@ -630,30 +654,6 @@
           <p>تغطية زوينة وبلا ماسك. من الغد خذيت جوج لختي. هادا الأصلي مو اللي فالسوق.</p>
         </article>
       </div>
-    </div>
-  </section>
-
-  <section id="order">
-    <div class="wrap">
-      <p class="order-title">اختاري العرض وكمّلي الطلب</p>
-      <div class="sets" id="packs"></div>
-      <p class="form-head">أدخلي معلوماتك أسفله</p>
-      <form id="orderForm">
-        <input class="field" required name="name" placeholder="الإسم" autocomplete="name" />
-        <input class="field" required name="phone" type="tel" inputmode="numeric" autocomplete="tel" maxlength="10" placeholder="رقم الهاتف" />
-        <input class="field" required name="city" list="cities" placeholder="المدينة" autocomplete="address-level2" />
-        <datalist id="cities">
-          <option value="الدار البيضاء"></option><option value="الرباط"></option><option value="سلا"></option>
-          <option value="مراكش"></option><option value="فاس"></option><option value="طنجة"></option>
-          <option value="أكادير"></option><option value="مكناس"></option><option value="وجدة"></option>
-          <option value="تطوان"></option><option value="القنيطرة"></option><option value="الجديدة"></option>
-        </datalist>
-        <button class="cta" type="submit">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 7h15l-1.5 9h-12z"/><path d="M6 7 5 4H2"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg>
-          <span>أكّدي الطلب — <span class="ctaPrice">249</span> درهم<small>الدفع عند الاستلام بعد المعاينة</small></span>
-        </button>
-        <p class="legal">Cover Coco Color Changing Naked Foundation — 30مل. منتج تجميل أصلي. ليس دواءً.</p>
-      </form>
     </div>
   </section>
 
@@ -831,10 +831,10 @@
 
   <div class="sticky" id="sticky">
     <div class="sticky-info">
-      <img id="stickyImg" src="./offer-v5-2.jpg" alt="Cover Coco" />
+      <img id="stickyImg" src="./offer-v5-1.jpg" alt="Cover Coco" />
       <div>
-        <div class="big">199 <span>درهم</span></div>
-        <small id="stickyLabel">عرض البنات · الدفع عند الاستلام</small>
+        <div class="big"><span id="stickyPrice">199</span> <span>درهم</span></div>
+        <small id="stickyLabel">عبوة واحدة · الدفع عند الاستلام</small>
       </div>
     </div>
     <a href="#order">
@@ -849,11 +849,11 @@
       whitelist: ["0600000000", "0700000000"]
     };
     var offers = [
-      { id: "1", qty: 1, price: 199, old: 299, title: "عبوة واحدة جربي اللون على بشرتك", chip: "تجربة أولى. كيتبدّل مع لونك ف ثواني", img: "./offer-v5-1.jpg", label: "عبوة واحدة" },
-      { id: "2", qty: 2, price: 249, old: 498, featured: true, title: "عرض البنات قطعتين", chip: "لك وهدية لختك أو صاحبتك. وفّرتي بزاف على الوحدة", img: "./offer-v5-2.jpg", label: "عرض البنات" },
+      { id: "1", qty: 1, price: 199, old: 299, featured: true, title: "عبوة واحدة جربي اللون على بشرتك", chip: "نفس سعر الإعلان. جربي اللون على بشرتك", img: "./offer-v5-1.jpg", label: "عبوة واحدة" },
+      { id: "2", qty: 2, price: 249, old: 498, title: "عرض البنات قطعتين", chip: "لك وهدية لختك أو صاحبتك. وفّرتي بزاف على الوحدة", img: "./offer-v5-2.jpg", label: "عرض البنات" },
       { id: "3", qty: 3, price: 299, old: 597, title: "باقة المكياج الكامل 3 عبوات", chip: "تكفيك شهور. ما ترجعيش تشري فونديشن غالي", img: "./offer-v5-3.jpg", label: "باقة المكياج" }
     ];
-    var selected = "2";
+    var selected = "1";
     var pending = null;
     var eventId = (crypto.randomUUID && crypto.randomUUID()) || ("cc-" + Date.now());
 
@@ -865,9 +865,10 @@
       if (keys.utm_source) return keys.utm_source;
       return "مباشر";
     }
-    function packById(id) { return offers.find(function (o) { return o.id === id; }) || offers[1]; }
+    function packById(id) { return offers.find(function (o) { return o.id === id; }) || offers[0]; }
     function setPrice(pack) {
       document.querySelectorAll(".ctaPrice").forEach(function (el) { el.textContent = pack.price; });
+      document.getElementById("stickyPrice").textContent = pack.price;
       document.getElementById("stickyLabel").textContent = pack.label + " · الدفع عند الاستلام";
       document.getElementById("stickyImg").src = pack.img;
     }
@@ -922,7 +923,7 @@
     setTimeout(function () {
       trackTT("ViewContent", {
         content_id: "covercoco", content_name: "Cover Coco Foundation",
-        value: 249, currency: "MAD", event_id: eventId
+        value: 199, currency: "MAD", event_id: eventId
       });
     }, 800);
     var checkoutArmed = false;
