@@ -21,9 +21,11 @@
       for (var i=0;i<ttq.methods.length;i++) ttq.setAndDefer(ttq,ttq.methods[i]);
       ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e};
       ttq.load=function(e){var i="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||{};ttq._i[e]=[];ttq._i[e]._u=i;ttq._t=ttq._t||{};ttq._t[e]=+new Date;var n=document.createElement("script");n.async=!0;n.src=i+"?sdkid="+e+"&lib="+t;var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(n,s)};
-      ttq.load("DA41OHRC77U208UL6VU0");
       ttq.load("DAGTP9RC77U208ULEIB0");
+      ttq.load("DA41OHRC77U208UL6VU0");
       ttq.page();
+      ttq.instance("DAGTP9RC77U208ULEIB0").page();
+      ttq.instance("DA41OHRC77U208UL6VU0").page();
     }(window, document, "ttq");
   </script>
   <script type="text/javascript">
@@ -915,10 +917,12 @@
       });
     }
 
-    trackTT("ViewContent", {
-      content_id: "covercoco", content_name: "Cover Coco Foundation",
-      value: 249, currency: "MAD", event_id: eventId
-    });
+    setTimeout(function () {
+      trackTT("ViewContent", {
+        content_id: "covercoco", content_name: "Cover Coco Foundation",
+        value: 249, currency: "MAD", event_id: eventId
+      });
+    }, 800);
     var checkoutArmed = false;
     document.getElementById("orderForm").addEventListener("focusin", function () {
       if (!checkoutArmed) {
