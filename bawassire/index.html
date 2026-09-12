@@ -80,9 +80,9 @@
     .cta {
       display: block;
       width: 100%;
-      background: #16a34a;
-      color: #fff;
-      border: 0; border-radius: 999px;
+      background: var(--gold);
+      color: #2a1406;
+      border: 0; border-radius: 14px;
       padding: 13px 12px;
       font-size: 18px; font-weight: 900;
       line-height: 1.2;
@@ -90,14 +90,13 @@
       text-align: center;
     }
 
-    .order { background: #f3f3f3; padding: 10px 10px 14px; }
+    .order { background: var(--paper); padding: 10px 10px 14px; }
     .box {
-      background: #fff;
+      background: var(--paper);
       border-radius: 16px;
       padding: 12px 10px 14px;
-      box-shadow: 0 8px 24px rgba(0,0,0,.06);
     }
-    .order-title { font-size: 18px; font-weight: 900; text-align: center; margin-bottom: 10px; }
+    .order-title { font-size: 18px; font-weight: 900; text-align: center; margin-bottom: 10px; color: var(--ink); }
 
     .sets { display: grid; gap: 8px; }
     .set {
@@ -107,41 +106,41 @@
       gap: 10px;
       align-items: center;
       background: #fff;
-      border: 1.5px solid #e8e8e8;
+      border: 2px solid var(--line);
       border-radius: 14px;
       padding: 10px 12px;
       cursor: pointer;
       text-align: right;
     }
-    .set.on { border-color: #f5a623; background: #fffdf7; }
+    .set.on { border-color: var(--orange); background: #fff8f4; box-shadow: 0 0 0 3px rgba(232,92,20,.16); }
     .set img { width: 56px; height: 64px; object-fit: contain; }
-    .set h3 { font-size: 14px; font-weight: 900; line-height: 1.4; }
+    .set h3 { font-size: 14px; font-weight: 900; line-height: 1.4; color: var(--ink); }
     .row {
       display: flex; justify-content: space-between; align-items: flex-start; gap: 8px;
     }
     .pill {
       display: inline-block; margin-top: 5px;
-      background: #111; color: #fff;
+      background: #2a1406; color: #fff8ee;
       font-size: 12px; font-weight: 700;
       border-radius: 999px; padding: 4px 9px; line-height: 1.45;
       max-width: 100%;
     }
     .ribbon {
       position: absolute; top: -1px; left: 10px;
-      background: #5b21b6; color: #fff;
+      background: var(--orange); color: #fff;
       font-size: 11px; font-weight: 900;
       padding: 3px 9px;
       border-radius: 0 0 8px 8px;
     }
-    .pr { font-size: 17px; font-weight: 900; color: #111; white-space: nowrap; flex-shrink: 0; }
+    .pr { font-size: 17px; font-weight: 900; color: var(--orange); white-space: nowrap; flex-shrink: 0; }
 
-    .form-head { text-align: center; font-size: 17px; font-weight: 900; margin: 12px 0 8px; }
+    .form-head { text-align: center; font-size: 17px; font-weight: 900; margin: 12px 0 8px; color: var(--ink); }
     .field {
-      width: 100%; background: #fff; border: 1px solid #ddd; border-radius: 12px;
+      width: 100%; background: #fff; border: 2px solid var(--line); border-radius: 12px;
       padding: 11px 14px; font-size: 16px; color: var(--ink); margin-bottom: 8px; text-align: right;
     }
-    .field:focus { outline: 0; border-color: #f5a623; }
-    .field::placeholder { color: #b0b0b0; }
+    .field:focus { outline: 0; border-color: var(--orange); }
+    .field::placeholder { color: #b8a090; }
     .legal { display: none; }
 
     .deal {
