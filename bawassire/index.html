@@ -113,6 +113,7 @@
       text-align: right;
     }
     .set.on { border-color: var(--orange); background: #fff8f4; box-shadow: 0 0 0 3px rgba(232,92,20,.16); }
+    .set.hot { padding-top: 26px; }
     .set img { width: 56px; height: 64px; object-fit: contain; }
     .set h3 { font-size: 14px; font-weight: 900; line-height: 1.4; color: var(--ink); }
     .row {
@@ -277,7 +278,7 @@
     }
     function renderPacks() {
       document.getElementById("packs").innerHTML = offers.map((o) => `
-        <article class="set ${o.id === selected ? "on" : ""}" data-id="${o.id}" onclick="pick('${o.id}')">
+        <article class="set ${o.id === selected ? "on" : ""} ${o.badge ? "hot" : ""}" data-id="${o.id}" onclick="pick('${o.id}')">
           ${o.badge ? `<span class="ribbon">${o.badge}</span>` : ""}
           <img src="${o.img}" alt="${o.title}" />
           <div>
