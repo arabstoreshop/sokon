@@ -80,81 +80,65 @@
     .cta {
       display: block;
       width: 100%;
-      background: var(--gold);
-      color: #2a1406;
-      border: 0; border-radius: 12px;
-      padding: 12px 12px;
+      background: #16a34a;
+      color: #fff;
+      border: 0; border-radius: 999px;
+      padding: 13px 12px;
       font-size: 18px; font-weight: 900;
-      line-height: 1.35;
+      line-height: 1.2;
       cursor: pointer;
       text-align: center;
-      unicode-bidi: isolate;
-    }
-    .cta small { display: block; font-size: 11px; font-weight: 700; opacity: .75; margin-top: 2px; }
-
-    .order { background: var(--paper); padding: 14px 12px 18px; }
-    .order-title { font-size: 20px; font-weight: 900; text-align: center; margin-bottom: 8px; }
-    .trust {
-      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px;
-      margin-bottom: 8px; text-align: center;
-    }
-    .trust div {
-      background: #fff; border: 1px solid var(--line); border-radius: 10px;
-      padding: 6px 4px; font-size: 12px; font-weight: 800; color: var(--ink);
     }
 
-    .sets { display: grid; gap: 6px; }
+    .order { background: #f3f3f3; padding: 10px 10px 14px; }
+    .box {
+      background: #fff;
+      border-radius: 16px;
+      padding: 12px 10px 14px;
+      box-shadow: 0 8px 24px rgba(0,0,0,.06);
+    }
+    .order-title { font-size: 18px; font-weight: 900; text-align: center; margin-bottom: 10px; }
+
+    .sets { display: grid; gap: 8px; }
     .set {
       position: relative;
       display: grid;
-      grid-template-columns: 46px 1fr auto;
+      grid-template-columns: 52px 1fr auto;
       gap: 8px;
       align-items: center;
       background: #fff;
-      border: 2px solid var(--line);
-      border-radius: 12px;
-      padding: 6px 8px;
+      border: 1.5px solid #e8e8e8;
+      border-radius: 14px;
+      padding: 8px 10px;
       cursor: pointer;
       text-align: right;
     }
-    .set.on {
-      border-color: var(--orange);
-      box-shadow: 0 0 0 2px rgba(232,92,20,.16);
-      background: #fff8f4;
+    .set.on { border-color: #f5a623; }
+    .set img { width: 52px; height: 52px; object-fit: contain; }
+    .set h3 { font-size: 13px; font-weight: 900; line-height: 1.35; }
+    .pill {
+      display: inline-block; margin-top: 4px;
+      background: #111; color: #fff;
+      font-size: 11px; font-weight: 700;
+      border-radius: 999px; padding: 3px 8px; line-height: 1.3;
     }
-    .set.hot { border-color: var(--gold); }
-    .set img {
-      width: 46px; height: 56px;
-      object-fit: contain;
-      background: #fff;
-    }
-    .set h3 { font-size: 13px; font-weight: 900; line-height: 1.3; }
-    .set .desc { display: none; }
     .ribbon {
-      position: absolute; top: -1px; left: -1px;
-      background: var(--orange); color: #fff;
+      position: absolute; top: -1px; left: 10px;
+      background: #5b21b6; color: #fff;
       font-size: 10px; font-weight: 900;
-      padding: 2px 7px;
-      border-radius: 0 0 10px 10px;
+      padding: 3px 8px;
+      border-radius: 0 0 8px 8px;
     }
-    .pr { font-size: 18px; font-weight: 900; color: var(--orange); line-height: 1.05; min-width: 52px; text-align: left; direction: ltr; unicode-bidi: isolate; }
-    .pr small { display: none; }
-    .pr s { display: block; color: #c81e1e; font-size: 11px; font-weight: 800; text-decoration: line-through; }
+    .pr { font-size: 16px; font-weight: 900; color: #111; white-space: nowrap; direction: ltr; unicode-bidi: isolate; }
 
-    .form-head { text-align: center; font-size: 18px; font-weight: 900; margin: 12px 0 8px; }
+    .form-head { text-align: center; font-size: 17px; font-weight: 900; margin: 12px 0 8px; }
     .field {
-      width: 100%; background: #fff; border: 2px solid var(--line); border-radius: 12px;
-      padding: 12px 14px; font-size: 17px; color: var(--ink); margin-bottom: 8px; text-align: right;
+      width: 100%; background: #fff; border: 1px solid #ddd; border-radius: 12px;
+      padding: 11px 14px; font-size: 16px; color: var(--ink); margin-bottom: 8px; text-align: right;
     }
-    .field:focus { outline: 0; border-color: var(--orange); }
-    .field::placeholder { color: #b8a090; }
-    .phone-row { display: grid; grid-template-columns: 72px 1fr; gap: 8px; direction: ltr; margin-bottom: 10px; }
-    .phone-row .field { margin: 0; text-align: left; direction: ltr; }
-    .cc {
-      display: grid; place-items: center; background: #fff8ee;
-      border: 2px solid var(--line); border-radius: 14px; font-weight: 900; color: var(--orange); font-size: 14px;
-    }
-    .legal { margin-top: 8px; color: #9a8b7d; font-size: 12px; text-align: center; line-height: 1.6; }
+    .field:focus { outline: 0; border-color: #f5a623; }
+    .field::placeholder { color: #b0b0b0; }
+    .legal { display: none; }
 
     .deal {
       display: block;
@@ -209,36 +193,26 @@
     </a>
 
     <section class="order" id="order">
-      <p class="order-title">اختر العرض المناسب لك</p>
-      <div class="trust">
-        <div>تغليف مكتوم</div>
-        <div>معاينة قبل الدفع</div>
-        <div>شحن مجاني</div>
+      <div class="box">
+        <p class="order-title">اختر العرض المناسب لك</p>
+        <div class="sets" id="packs"></div>
+        <p class="form-head">أدخل معلوماتك أسفله</p>
+        <form id="orderForm" onsubmit="return sendOrder(event)">
+          <input class="field" required name="name" placeholder="الاسم" autocomplete="name" />
+          <input class="field" required name="phone" id="phone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="رقم الجوال" />
+          <input class="field" required name="city" list="cities" placeholder="المدينة" autocomplete="address-level2" />
+          <datalist id="cities">
+            <option value="الرياض"></option><option value="جدة"></option><option value="مكة المكرمة"></option>
+            <option value="المدينة المنورة"></option><option value="الدمام"></option><option value="الخبر"></option>
+            <option value="الطائف"></option><option value="تبوك"></option><option value="أبها"></option>
+            <option value="حائل"></option><option value="بريدة"></option><option value="خميس مشيط"></option>
+            <option value="نجران"></option><option value="جازان"></option><option value="الأحساء"></option>
+            <option value="ينبع"></option><option value="الجبيل"></option>
+          </datalist>
+          <input type="hidden" name="pack" id="packField" value="2" />
+          <button class="cta" type="submit">اضغط هنا للطلب</button>
+        </form>
       </div>
-      <div class="sets" id="packs"></div>
-      <p class="form-head">أدخل معلوماتك أسفله</p>
-      <form id="orderForm" onsubmit="return sendOrder(event)">
-        <input class="field" required name="name" placeholder="الاسم الكامل" autocomplete="name" />
-        <div class="phone-row">
-          <span class="cc">+966</span>
-          <input class="field" required name="phone" id="phone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="05XXXXXXXX" />
-        </div>
-        <input class="field" required name="city" list="cities" placeholder="المدينة" autocomplete="address-level2" />
-        <datalist id="cities">
-          <option value="الرياض"></option><option value="جدة"></option><option value="مكة المكرمة"></option>
-          <option value="المدينة المنورة"></option><option value="الدمام"></option><option value="الخبر"></option>
-          <option value="الطائف"></option><option value="تبوك"></option><option value="أبها"></option>
-          <option value="حائل"></option><option value="بريدة"></option><option value="خميس مشيط"></option>
-          <option value="نجران"></option><option value="جازان"></option><option value="الأحساء"></option>
-          <option value="ينبع"></option><option value="الجبيل"></option>
-        </datalist>
-        <input type="hidden" name="pack" id="packField" value="2" />
-        <button class="cta" type="submit">
-          اضغط هنا للطلب
-          <small>السعر <span class="ctaPrice">199</span> ريال عند الباب</small>
-        </button>
-        <p class="legal">منتج عناية موضعية. جل كمادة باردة 20 غرام. ليس دواء بوصفة ولا يغني عن مراجعة الطبيب.</p>
-      </form>
     </section>
 
     <a class="shot" href="#order"><img src="./funnel/01-hero.jpg" alt="علاج طبيعي وكمّادة باردة" loading="lazy" decoding="async" /></a>
@@ -270,9 +244,9 @@
 
   <script>
     const offers = [
-      { id: "3", price: 379, title: "5 عبوات", full: "الباقة العائلية الشاملة (5 عبوات)", old: "845 ر.س", img: "./funnel/pack-5.jpg", badge: "" },
-      { id: "2", price: 199, title: "3 عبوات", full: "كورس العلاج والتأهيل النهائي (3 عبوات)", old: "507 ر.س", img: "./funnel/pack-3.jpg", badge: "الأكثر طلباً" },
-      { id: "1", price: 169, title: "عبوة واحدة", full: "عبوة واحدة تجربة أولية", old: "", img: "./funnel/pack-1.jpg", badge: "" }
+      { id: "3", price: 379, title: "الباقة العائلية الشاملة (5 عبوات)", desc: "5 عبوات تكفي للاستخدام الطويل ولجميع أفراد العائلة", img: "./funnel/pack-5.jpg", badge: "" },
+      { id: "2", price: 199, title: "كورس العلاج والتأهيل النهائي (3 عبوات)", desc: "3 عبوات للعناية الكاملة", img: "./funnel/pack-3.jpg", badge: "الأكثر طلبا" },
+      { id: "1", price: 169, title: "عبوة واحدة تجربة أولية", desc: "لتجربة المنتج وتسكين الألم بشكل مؤقت", img: "./funnel/pack-1.jpg", badge: "" }
     ];
     let selected = "2";
     let checkoutTracked = false;
@@ -300,17 +274,14 @@
     }
     function renderPacks() {
       document.getElementById("packs").innerHTML = offers.map((o) => `
-        <article class="set ${o.id === selected ? "on" : ""} ${o.badge ? "hot" : ""}" data-id="${o.id}" onclick="pick('${o.id}')">
-            ${o.badge ? `<span class="ribbon">${o.badge}</span>` : ""}
+        <article class="set ${o.id === selected ? "on" : ""}" data-id="${o.id}" onclick="pick('${o.id}')">
+          ${o.badge ? `<span class="ribbon">${o.badge}</span>` : ""}
           <img src="${o.img}" alt="${o.title}" />
           <div>
             <h3>${o.title}</h3>
+            <span class="pill">${o.desc}</span>
           </div>
-          <div class="pr">
-            ${o.price}<small>ر.س</small>
-            ${o.old ? `<s>${o.old}</s>` : ""}
-            ${o.save ? `<small>${o.save}</small>` : ""}
-          </div>
+          <div class="pr">${o.price}.00</div>
         </article>`).join("");
     }
     function postToSheet(payload) {
@@ -345,7 +316,7 @@
         city: city,
         address: city,
         pack_id: pack.id,
-        pack_title: "Sitr · " + (pack.full || pack.title),
+        pack_title: "Sitr · " + pack.title,
         price: pack.price,
         upsell: "",
         source: "sokon-bawassire",
@@ -355,8 +326,9 @@
       setTimeout(function () {
         location.href = "./thank-you.html?oid=" + encodeURIComponent(orderId)
           + "&name=" + encodeURIComponent(payload.name)
+          + "&phone=" + encodeURIComponent(payload.phone)
           + "&value=" + encodeURIComponent(pack.price)
-          + "&pack=" + encodeURIComponent(pack.full || pack.title);
+          + "&pack=" + encodeURIComponent(pack.title);
       }, 2200);
       return false;
     }
@@ -366,6 +338,13 @@
     document.getElementById("orderForm").addEventListener("focusin", trackCheckout);
     renderPacks();
     setPrice(packById(selected).price);
+    if ("IntersectionObserver" in window) {
+      var sticky = document.querySelector(".sticky");
+      var box = document.getElementById("order");
+      new IntersectionObserver(function (entries) {
+        sticky.style.display = entries[0].isIntersecting ? "none" : "grid";
+      }, { threshold: 0.35 }).observe(box);
+    }
   </script>
 </body>
 </html>
