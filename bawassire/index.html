@@ -4,15 +4,17 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>كمّادة باردة للبواسير والشقوق | شحن مكتوم — الدفع عند الاستلام</title>
-  <meta name="description" content="جل كمّادة باردة 20غ لتخفيف ألم البواسير والشقوق أثناء الجلوس والعمل. تغليف مكتوم، معاينة قبل الدفع، شحن مجاني لكل مدن السعودية. 3 عبوات بـ 199 ر.س." />
-  <meta name="theme-color" content="#e85c14" />
+  <meta name="description" content="جل كمّادة باردة 20غ لتخفيف ألم البواسير والشقوق. تغليف مكتوم، معاينة قبل الدفع، شحن مجاني لكل مدن السعودية. 3 عبوات بـ 199 ر.س." />
+  <meta name="theme-color" content="#3d1f08" />
+  <meta property="og:title" content="كمّادة باردة — شحن مكتوم والدفع عند الاستلام" />
+  <meta property="og:image" content="./funnel/01-hero.jpg" />
   <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
   <link rel="icon" href="./favicon.png" type="image/png" sizes="32x32" />
   <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="preload" as="image" href="./lp/cro-hero.jpg" fetchpriority="high" />
+  <link rel="preload" as="image" href="./funnel/01-hero.jpg" fetchpriority="high" />
   <script>
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
@@ -25,344 +27,166 @@
   <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=415098696751532&ev=PageView&noscript=1" alt="" /></noscript>
   <style>
     :root {
-      --ink: #14221c;
-      --mute: #5b6b64;
-      --paper: #f4faf7;
-      --card: #fff;
-      --orange: #e85c14;
-      --orange-2: #c4470f;
-      --mint: #1a7a62;
-      --line: #d7e6df;
+      --bg: #3d1f08;
+      --ink: #2a1608;
+      --mute: #7a5a3a;
+      --paper: #fff8ee;
       --gold: #f5c400;
+      --orange: #e85c14;
+      --line: #f0d8a8;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body { font-family: Tajawal, sans-serif; background: var(--paper); color: var(--ink); line-height: 1.75; }
-    img { max-width: 100%; display: block; }
+    body {
+      font-family: Tajawal, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.7;
+      padding-bottom: 86px;
+    }
+    img { width: 100%; display: block; }
     a { color: inherit; text-decoration: none; }
-    .wrap { width: min(560px, calc(100% - 28px)); margin-inline: auto; }
-    .bar {
-      background: var(--ink); color: #fff; text-align: center;
-      font-size: 12px; font-weight: 800; padding: 8px 12px; letter-spacing: .01em;
+    button, input { font-family: inherit; }
+    .page { width: min(480px, 100%); margin-inline: auto; background: var(--bg); }
+
+    .top {
+      background: #2a1406;
+      color: #fff8ee;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 800;
+      padding: 9px 12px;
     }
-    .bar span { color: var(--gold); }
-    .nav {
-      position: sticky; top: 0; z-index: 50;
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 10px 16px; background: rgba(244,250,247,.94); backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--line);
+    .top span { color: var(--gold); }
+
+    .shot { display: block; background: var(--bg); }
+    .shot img { width: 100%; height: auto; vertical-align: top; }
+
+    .cta {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      width: calc(100% - 24px); margin: 14px 12px 0;
+      background: linear-gradient(180deg, #ffd54a, var(--gold));
+      color: #2a1406;
+      border: 0; border-radius: 16px;
+      padding: 15px 14px;
+      font-size: 20px; font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0 10px 24px rgba(245,196,0,.28);
     }
-    .brand { font-weight: 900; }
-    .brand small { display: block; font-size: 9px; letter-spacing: .22em; color: var(--orange); }
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center; text-align: center;
-      border: 0; cursor: pointer; font-family: inherit; font-weight: 900;
+    .cta small { display: block; font-size: 12px; font-weight: 800; opacity: .8; }
+    .cta-wrap { padding-bottom: 6px; }
+
+    .order {
+      background: var(--paper);
+      padding: 22px 14px 26px;
     }
-    .btn-nav { background: var(--orange); color: #fff; border-radius: 999px; padding: 9px 14px; font-size: 13px; }
-    .hero { padding: 18px 0 8px; }
-    .hero img { width: 100%; border-radius: 22px; }
-    .kicker { color: var(--mint); font-size: 12px; font-weight: 800; margin: 14px 0 8px; }
-    h1 { font-size: clamp(26px, 7vw, 36px); font-weight: 900; line-height: 1.25; }
-    h1 span { color: var(--orange); }
-    .lead { margin-top: 10px; color: var(--mute); font-size: 16px; }
-    .badges { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 14px; }
-    .badges div {
-      background: #fff; border: 1px solid var(--line); border-radius: 14px;
-      padding: 10px 8px; text-align: center; font-size: 13px; font-weight: 800;
-    }
-    .btn-cta {
-      width: 100%; margin-top: 16px; flex-direction: column; gap: 3px;
-      background: linear-gradient(180deg, #ff8a42, var(--orange));
-      color: #fff; border-radius: 18px; padding: 17px 16px; font-size: 19px;
-      box-shadow: 0 12px 28px rgba(232,92,20,.32);
-      animation: ctaPulse 2.2s ease-in-out infinite;
-    }
-    .btn-cta small { font-size: 13px; font-weight: 800; opacity: .92; }
-    @keyframes ctaPulse {
-      0%, 100% { transform: translateY(0) scale(1); box-shadow: 0 12px 28px rgba(232,92,20,.3); }
-      50% { transform: translateY(-3px) scale(1.015); box-shadow: 0 18px 36px rgba(232,92,20,.45); }
-    }
-    .trust { display: flex; justify-content: space-between; gap: 8px; margin-top: 14px; text-align: center; }
-    .trust b { display: block; font-size: 18px; color: var(--orange); }
-    .trust span { font-size: 11px; color: var(--mute); font-weight: 700; }
-    section { padding: 36px 0; }
-    h2 { font-size: clamp(22px, 5.6vw, 30px); font-weight: 900; line-height: 1.3; }
-    .sub { color: var(--mute); margin-top: 8px; }
-    .pic { border-radius: 20px; overflow: hidden; margin: 16px 0; }
-    .pic img { width: 100%; }
-    .card {
-      background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 16px; margin-top: 12px;
-    }
-    .vs { display: grid; gap: 10px; margin-top: 14px; }
-    .vs .bad { background: #fff4f2; border-color: #f3d0c8; }
-    .vs .good { background: #eef8f3; border-color: #cfe6db; }
-    .vs h3 { font-size: 16px; margin-bottom: 6px; }
-    .vs .bad h3 { color: #b42318; }
-    .vs .good h3 { color: var(--mint); }
-    .steps { display: grid; gap: 10px; margin-top: 14px; }
-    .steps article { background: #fff; border-radius: 18px; padding: 14px 16px; border: 1px solid var(--line); }
-    .n {
-      display: inline-block; background: var(--orange); color: #fff;
-      font-size: 12px; font-weight: 900; border-radius: 999px; padding: 2px 9px; margin-bottom: 6px;
-    }
-    .rev { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 16px; margin-top: 12px; }
-    .stars { color: #e0a106; letter-spacing: .08em; }
-    .who { margin-top: 10px; font-size: 13px; color: var(--mute); font-weight: 800; }
-    .who b { color: var(--ink); }
-    .offer { background: #fff; border-radius: 22px; }
-    .packs { display: grid; gap: 12px; margin-top: 16px; }
+    .order-title { font-size: 20px; font-weight: 900; text-align: center; margin-bottom: 12px; }
+    .packs { display: grid; gap: 10px; }
     .pack {
       display: grid; grid-template-columns: 1fr auto; gap: 8px; align-items: center;
-      background: #fff; border: 2px solid var(--line); border-radius: 18px;
-      padding: 14px; cursor: pointer; text-align: right;
+      background: #fff; border: 2px solid #f0d8a8; border-radius: 16px;
+      padding: 12px 14px; cursor: pointer; text-align: right;
     }
-    .pack.on { border-color: var(--orange); box-shadow: 0 0 0 3px rgba(232,92,20,.18); background: #fff8f4; }
+    .pack.on { border-color: var(--orange); box-shadow: 0 0 0 3px rgba(232,92,20,.16); background: #fff8f4; }
     .pack.hot { border-color: var(--gold); }
-    .badge { display: inline-block; background: var(--orange); color: #fff; font-size: 10px; font-weight: 900; border-radius: 999px; padding: 3px 8px; margin-bottom: 4px; }
-    .price { color: var(--orange); font-size: 22px; font-weight: 900; white-space: nowrap; }
+    .badge {
+      display: inline-block; background: var(--orange); color: #fff;
+      font-size: 10px; font-weight: 900; border-radius: 999px; padding: 3px 8px; margin-bottom: 4px;
+    }
+    .pack h3 { font-size: 15px; font-weight: 900; line-height: 1.35; }
+    .pack .desc { color: var(--mute); font-size: 13px; }
+    .save { display: block; color: #1a7a62; font-size: 12px; font-weight: 800; margin-top: 2px; }
+    .price { color: var(--orange); font-size: 24px; font-weight: 900; white-space: nowrap; }
     .old { display: block; text-decoration: line-through; color: #aaa; font-size: 12px; }
-    .save { display: block; color: var(--mint); font-size: 12px; font-weight: 800; }
-    .form { display: grid; gap: 8px; margin-top: 12px; }
-    .form label { font-size: 12px; font-weight: 800; }
-    .form input {
-      border: 1.5px solid var(--line); border-radius: 12px; padding: 12px 14px;
-      font: 400 16px Tajawal, sans-serif;
+
+    .form-head { text-align: center; font-size: 18px; font-weight: 900; margin: 18px 0 10px; }
+    .field {
+      width: 100%; background: #fff; border: 2px solid #f0d8a8; border-radius: 14px;
+      padding: 13px 14px; font-size: 16px; color: var(--ink); margin-bottom: 10px; text-align: right;
     }
-    .form input:focus { outline: 2px solid var(--gold); border-color: var(--gold); }
-    .phone-row { display: grid; grid-template-columns: 78px 1fr; gap: 8px; direction: ltr; }
-    .phone-row .cc {
-      display: grid; place-items: center; background: #fff1ea; border-radius: 12px; font-weight: 800;
+    .field:focus { outline: 0; border-color: var(--orange); }
+    .field::placeholder { color: #b8a090; }
+    .phone-row { display: grid; grid-template-columns: 72px 1fr; gap: 8px; direction: ltr; margin-bottom: 10px; }
+    .phone-row .field { margin: 0; text-align: left; direction: ltr; }
+    .cc {
+      display: grid; place-items: center; background: #fff8ee;
+      border: 2px solid #f0d8a8; border-radius: 14px; font-weight: 900; color: var(--orange); font-size: 14px;
     }
-    .phone-row input { direction: ltr; text-align: left; }
-    .hint { background: #eef6ea; color: #2f5d3a; border-radius: 12px; padding: 10px 12px; font-size: 12px; font-weight: 700; }
-    .legal { margin-top: 12px; font-size: 11px; color: var(--mute); line-height: 1.7; }
-    details { border-bottom: 1px solid var(--line); padding: 14px 0; }
-    summary { font-weight: 800; cursor: pointer; }
-    details p { margin-top: 8px; color: var(--mute); }
-    footer { padding: 28px 16px 110px; text-align: center; color: var(--mute); font-size: 13px; }
+    .legal { margin-top: 8px; color: #9a8b7d; font-size: 12px; text-align: center; line-height: 1.6; }
+
     .sticky {
-      position: fixed; bottom: 0; left: 0; right: 0; z-index: 40;
-      display: flex; align-items: center; justify-content: space-between; gap: 10px;
-      padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
-      background: #fff; border-top: 2px solid var(--orange);
-      box-shadow: 0 -10px 30px rgba(20,34,28,.1);
+      position: fixed; inset-inline: 0; bottom: 0; z-index: 60;
+      width: min(480px, 100%); margin-inline: auto;
+      display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 10px;
+      background: rgba(42,20,6,.96);
+      padding: 10px 12px 14px;
     }
-    .sticky p { font-size: 13px; font-weight: 800; }
-    .sticky span { display: block; font-size: 12px; color: var(--mute); }
-    .sticky strong { color: var(--orange); }
-    .sticky-btn {
-      flex-shrink: 0; background: var(--orange); color: #fff; border: 0;
-      font: 900 15px Tajawal, sans-serif; border-radius: 999px; padding: 14px 18px; white-space: nowrap;
-      animation: stickyShake 2.6s ease-in-out infinite;
+    .sticky p { color: #fff8ee; font-size: 13px; font-weight: 800; line-height: 1.35; }
+    .sticky span { display: block; color: var(--gold); font-size: 12px; }
+    .sticky a {
+      background: var(--gold); color: #2a1406; font-weight: 900;
+      border-radius: 999px; padding: 11px 16px; white-space: nowrap;
     }
-    @keyframes stickyShake {
-      0%, 76%, 100% { transform: rotate(0) translateX(0); }
-      80% { transform: rotate(-4deg) translateX(-2px); }
-      85% { transform: rotate(4deg) translateX(2px); }
-      90% { transform: rotate(-2deg); }
-      94% { transform: rotate(2deg); }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .btn-cta, .sticky-btn { animation: none; }
-    }
+    footer { text-align: center; color: #c9a57a; font-size: 11px; padding: 16px 12px 8px; }
   </style>
 </head>
 <body>
-  <div class="bar">شحن <span>مجاني</span> لكل مدن السعودية · الدفع عند الاستلام · تغليف مكتوم 100%</div>
-  <header class="nav">
-    <a class="brand" href="#top">سِتر<small>عناية مكتومة</small></a>
-    <a class="btn btn-nav" href="#order">اطلب الآن</a>
-  </header>
+  <div class="page">
+    <div class="top">شحن <span>مجاني</span> · الدفع عند الاستلام · تغليف مكتوم 100%</div>
 
-  <section class="hero" id="top">
-    <div class="wrap">
-      <img src="./lp/cro-hero.jpg" alt="جل كمّادة باردة 20غ" fetchpriority="high" decoding="async" />
-      <p class="kicker">بدون عملية · تستعمله في بيتك</p>
-      <h1>خلّص نفسك من ألم البواسير والشقوق — <span>وأنت جالس في شغلك.</span></h1>
-      <p class="lead">كمّادة باردة تخفّف الحرقة والألم من أول استعمال. مناسبة للجلوس الطويل، القيادة، وبعد الحمام. يوصلك الكرتون بدون أي كتابة تفضح المحتوى.</p>
-      <div class="badges">
-        <div>راحة سريعة</div>
-        <div>بدون جراحة</div>
-        <div>تركيبة عشبية مبرّدة</div>
-        <div>آمن للاستخدام اليومي</div>
-      </div>
-      <a class="btn btn-cta" href="#order">
-        اطلب الآن وادفع عند الاستلام
-        <small>3 عبوات بـ 199 ر.س · اشتري 2 والثالثة مجاناً</small>
-      </a>
-      <div class="trust">
-        <div><b>4.9/5</b><span>تقييم المشترين</span></div>
-        <div><b>+8,500</b><span>طلب موثّق</span></div>
-        <div><b>معاينة</b><span>قبل ما تدفع للمندوب</span></div>
-      </div>
+    <a class="shot" href="#order">
+      <img src="./funnel/01-hero.jpg" alt="علاج طبيعي — كمّادة باردة للبواسير" fetchpriority="high" decoding="async" />
+    </a>
+    <div class="cta-wrap">
+      <a class="cta" href="#order">اطلب الآن — 199 ر.س<small>الدفع عند الاستلام بعد المعاينة</small></a>
     </div>
-  </section>
 
-  <section>
-    <div class="wrap">
-      <p class="kicker">خصوصية كاملة</p>
-      <h2>الكرتون اللي يوصلك للباب… ما يكتب عليه شيء.</h2>
-      <p class="sub">الحرج هو أكبر سبب للتأجيل. لذلك الشحن مكتوم: علبة كرتون عادية، بدون اسم المنتج، بدون شعار طبي، وبدون وصف للحالة. المندوب ما يعرف وش في الداخل. أنت تعاين عند الباب، وبعدين تدفع.</p>
-      <div class="pic"><img src="./lp/cro-discreet.jpg" alt="تغليف مكتوم بدون شعار" loading="lazy" decoding="async" /></div>
-      <div class="card">
-        <h3>100% سرّية التوصيل</h3>
-        <p class="sub" style="margin:0">ما نطبع نوع المنتج على الكرتون الخارجي. الدفع بعد المعاينة. وما تحتاج تشرح لأحد في الصيدلية.</p>
-      </div>
-    </div>
-  </section>
-
-  <section style="background:#fff">
-    <div class="wrap">
-      <p class="kicker">المشكلة والحل</p>
-      <h2>كل يوم جلوس يزيد الألم. الكمّادة الباردة تقطعه من مصدره.</h2>
-      <div class="pic"><img src="./lp/cro-lifestyle.jpg" alt="من ألم الجلوس إلى الراحة" loading="lazy" decoding="async" /></div>
-      <div class="vs">
-        <article class="card bad">
-          <h3>بدون عناية</h3>
-          <p>ألم مع الجلوس في المكتب، حرقة بعد الحمام، قيادة متعبة، وحرج يمنعك تروح العيادة. التأجيل يخلّي التهيج يرجع كل يوم.</p>
-        </article>
-        <article class="card good">
-          <h3>مع الكمّادة الباردة</h3>
-          <p>طبقة رقيقة تبرّد الموضع فوراً، تخفّف الضغط والحرقة، وتكمّل يومك بدون ما أحد يحس. تستعملها في البيت في أقل من دقيقة.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="wrap">
-      <p class="kicker">طريقة الاستعمال</p>
-      <h2>ثلاث خطوات. دقيقة واحدة.</h2>
-      <p class="sub">الجل 20غ، غير لاصق، ويترك إحساس تبريد موضعي. اقرأ التعليمات على العبوة قبل أول استعمال.</p>
-      <div class="steps">
-        <article><span class="n">1</span><h3>نظّف وجفّف الموضع</h3><p class="sub" style="margin:0">بعد الحمام أو الوضوء، تأكد أن المنطقة نظيفة وجافة.</p></article>
-        <article><span class="n">2</span><h3>ضع طبقة رقيقة</h3><p class="sub" style="margin:0">كمية بسيطة من جل الكمّادة الباردة موضعياً. لا تحتاج كمية كبيرة.</p></article>
-        <article><span class="n">3</span><h3>خلّه يبرّد</h3><p class="sub" style="margin:0">الإحساس بالبرودة يبدأ بسرعة. كرّر حسب التعليمات، خاصة بعد الجلوس الطويل.</p></article>
-      </div>
-    </div>
-  </section>
-
-  <section style="background:#fff">
-    <div class="wrap">
-      <p class="kicker">ليش الجل هذا</p>
-      <h2>تبريد موضعي. ملمس خفيف. روتين يومي.</h2>
-      <div class="pic"><img src="./tube.jpg" alt="أنبوب 20غ" loading="lazy" decoding="async" /></div>
-      <div class="card"><h3>مستخلصات مبرّدة وعناية عشبية</h3><p class="sub" style="margin:0">تركيبة كمّادة باردة تساعد على تهدئة التهيج والحرقة بدون إحساس لزِج يضايقك طول اليوم.</p></div>
-      <div class="card"><h3>غير لاصق — مناسب للشغل والقيادة</h3><p class="sub" style="margin:0">طبقة رقيقة ما تلمّع الثوب وما تعطّلك. تستعملها وترجع لشغلك.</p></div>
-      <div class="card"><h3>آمن للاستخدام اليومي حسب التعليمات</h3><p class="sub" style="margin:0">عبوة 20غ عملية للروتين المنزلي. إذا الألم شديد أو فيه نزيف، راجع طبيباً — المنتج عناية موضعية وليس بديلاً عن الكشف.</p></div>
-    </div>
-  </section>
-
-  <section>
-    <div class="wrap">
-      <p class="kicker">من مدن السعودية</p>
-      <h2>طلبوا، وصلهم مكتوم، وارتاحوا في الجلوس.</h2>
-      <article class="rev">
-        <p class="stars">★★★★★</p>
-        <p>كنت أتألم وأنا أجلس في الاجتماعات. استخدمت الجل بعد الحمام، البرودة فرّقت من أول يوم. الكرتون عادي وما أحد سأل.</p>
-        <p class="who"><b>فهد العتيبي</b> · الرياض · مشتري موثّق</p>
-      </article>
-      <article class="rev">
-        <p class="stars">★★★★★</p>
-        <p>القيادة لجدة كانت تعذيب. بعد الكمّادة صرت أكمّل الطريق أهدى. الدفع عند الباب ريّحني، عاينت وبعدين دفعت.</p>
-        <p class="who"><b>عبدالله الغامدي</b> · جدة · مشتري موثّق</p>
-      </article>
-      <article class="rev">
-        <p class="stars">★★★★★</p>
-        <p>الحرقة بعد الحمام خفّت. طلبت الثلاثة عشان ما ينقطع. التغليف مكتوم مثل ما وعدوا.</p>
-        <p class="who"><b>سلطان الدوسري</b> · الدمام · مشتري موثّق</p>
-      </article>
-      <article class="rev">
-        <p class="stars">★★★★★</p>
-        <p>ما حبيت أروح صيدلية من الحرج. الطلب وصل كرتون عادي. الاستعمال سهل والجلوس بعد الشغل صار أهون.</p>
-        <p class="who"><b>ماجد الحربي</b> · مكة المكرمة · مشتري موثّق</p>
-      </article>
-      <article class="rev">
-        <p class="stars">★★★★★</p>
-        <p>العبوة الواحدة تجربة. الثلاثة أوفر وأرتاح إني ما أطلب كل أسبوع. المكالمة جاءت نفس اليوم.</p>
-        <p class="who"><b>نواف القحطاني</b> · أبها · مشتري موثّق</p>
-      </article>
-    </div>
-  </section>
-
-  <section class="offer" id="order">
-    <div class="wrap">
-      <p class="kicker">العرض</p>
-      <h2>الأكثر طلباً: اشتري 2 والثالثة مجاناً — 199 ر.س</h2>
-      <p class="sub">شحن مجاني. الدفع عند الباب بعد المعاينة. تكفي تلتزم أيام بدون انقطاع.</p>
-      <div class="pic"><img src="./lp/cro-bundle.jpg" alt="3 عبوات بـ 199 ر.س" loading="lazy" decoding="async" /></div>
+    <section class="order" id="order">
+      <p class="order-title">اختَر العرض وأكمل الطلب</p>
       <div class="packs" id="packs"></div>
-      <form class="card" id="orderForm" onsubmit="return sendOrder(event)">
-        <h2 style="font-size:23px">بيانات التوصيل فقط</h2>
-        <p class="sub">نتصل خلال 30–60 دقيقة لتأكيد العنوان. بدون التأكيد ما ينشحن الطلب. ما فيه تحويل مقدّم.</p>
-        <div class="form">
-          <label>الاسم الكامل *</label>
-          <input required name="name" placeholder="مثال: فهد بن عبدالله" autocomplete="name" />
-          <label>رقم الجوال *</label>
-          <div class="phone-row">
-            <span class="cc">+966</span>
-            <input required name="phone" id="phone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="5XXXXXXXX" />
-          </div>
-          <label>المدينة والعنوان *</label>
-          <input required name="city" placeholder="الرياض — الحي أو الشارع أو معلم قريب" autocomplete="street-address" />
-          <p class="hint">أضف معلماً قريباً. الدفع عند الاستلام بعد ما تعاين الشحنة.</p>
-          <input type="hidden" name="pack" id="packField" value="2" />
-          <button class="btn btn-cta" type="submit">
-            أكّد طلبي — <span class="ctaPrice">199</span> ر.س عند الباب
-            <small>نتصل خلال 30–60 دقيقة · تغليف مكتوم</small>
-          </button>
-          <p class="legal">منتج عناية موضعية (جل كمّادة باردة 20غ) لتخفيف الانزعاج. ليس دواءً بوصفة، ولا يغني عن مراجعة الطبيب عند الألم الشديد أو النزيف أو استمرار الأعراض.</p>
+      <p class="form-head">أدخل بيانات التوصيل</p>
+      <form id="orderForm" onsubmit="return sendOrder(event)">
+        <input class="field" required name="name" placeholder="الاسم الكامل" autocomplete="name" />
+        <div class="phone-row">
+          <span class="cc">+966</span>
+          <input class="field" required name="phone" id="phone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="5XXXXXXXX" />
         </div>
+        <input class="field" required name="city" placeholder="المدينة — الحي أو الشارع" autocomplete="street-address" />
+        <input type="hidden" name="pack" id="packField" value="2" />
+        <button class="cta" type="submit" style="width:100%;margin:6px 0 0">
+          أكّد طلبي — <span class="ctaPrice">199</span> ر.س
+          <small>نتصل خلال 30–60 دقيقة · تغليف مكتوم</small>
+        </button>
+        <p class="legal">منتج عناية موضعية (جل كمّادة باردة 20غ). ليس دواءً بوصفة، ولا يغني عن مراجعة الطبيب عند الألم الشديد أو النزيف.</p>
       </form>
-    </div>
-  </section>
+    </section>
 
-  <section>
-    <div class="wrap">
-      <h2>أسئلة قبل الطلب</h2>
-      <details open>
-        <summary>هل المنتج آمن؟</summary>
-        <p>للاستخدام الخارجي الموضعي حسب تعليمات العبوة. آمن للاستخدام اليومي للبالغين عند الالتزام بالكمية المكتوبة. إذا الأعراض شديدة أو مستمرة، راجع طبيباً.</p>
-      </details>
-      <details>
-        <summary>متى يوصل؟</summary>
-        <p>بعد تأكيد الطلب على الجوال، الشحن عادة خلال 24–48 ساعة، ويوصلك خلال 1–3 أيام داخل السعودية حسب المدينة.</p>
-      </details>
-      <details>
-        <summary>التغليف مكتوم؟</summary>
-        <p>نعم. كرتون عادي بدون اسم المنتج وبدون وصف للحالة على الكرتون الخارجي.</p>
-      </details>
-      <details>
-        <summary>كيف أستخدمه؟</summary>
-        <p>نظّف وجفّف الموضع، ضع طبقة رقيقة من الجل، وخلّه يبرّد. كرّر حسب التعليمات، خصوصاً بعد الجلوس الطويل أو بعد الحمام.</p>
-      </details>
-      <details>
-        <summary>كيف أدفع؟</summary>
-        <p>عند الباب بعد المعاينة. نقداً أو بطاقة حسب المندوب. ما فيه تحويل مقدّم.</p>
-      </details>
-      <details>
-        <summary>ليش 3 عبوات مو واحدة؟</summary>
-        <p>العبوة تجربة. الثلاثة = اشتري 2 والثالثة مجاناً بـ 199 بدل 507، وتكفي تلتزم بدون انقطاع — لذلك هي الأكثر طلباً.</p>
-      </details>
-    </div>
-  </section>
+    <a class="shot" href="#order"><img src="./funnel/02-exclusive.jpg" alt="احصل الآن حصرياً على العلاج" loading="lazy" decoding="async" /></a>
+    <a class="shot" href="#order"><img src="./funnel/03-pain.jpg" alt="تخلص من الالتهابات" loading="lazy" decoding="async" /></a>
+    <a class="shot" href="#order"><img src="./funnel/04-anatomy.jpg" alt="الحل بين يديك الآن" loading="lazy" decoding="async" /></a>
+    <a class="shot" href="#order"><img src="./funnel/05-certs.jpg" alt="شهادات واعتماد" loading="lazy" decoding="async" /></a>
+    <a class="shot" href="#order"><img src="./funnel/06-reviews.jpg" alt="آراء العملاء" loading="lazy" decoding="async" /></a>
+    <a class="shot" href="#order"><img src="./funnel/07-faq.jpg" alt="أسئلة شائعة" loading="lazy" decoding="async" /></a>
+    <a class="shot" href="#order"><img src="./funnel/08-offer.jpg" alt="احصل حصرياً على راحة دائمة" loading="lazy" decoding="async" /></a>
 
-  <footer>
-    <p>شحن مكتوم داخل السعودية · الدفع عند الاستلام بعد المعاينة</p>
-  </footer>
+    <div class="cta-wrap" style="padding: 16px 0 8px">
+      <a class="cta" href="#order">اطلب الآن وادفع عند الاستلام<small>3 عبوات بـ 199 ر.س · اشتري 2 والثالثة مجاناً</small></a>
+    </div>
+    <footer>شحن مكتوم داخل السعودية · الدفع عند الاستلام بعد المعاينة</footer>
+  </div>
 
   <div class="sticky">
     <div>
       <p>3 عبوات — اشتري 2 والثالثة مجاناً</p>
-      <span><strong>199 ر.س</strong> · شحن مجاني · عند الباب</span>
+      <span>199 ر.س · شحن مجاني · عند الباب</span>
     </div>
-    <a class="sticky-btn" href="#order">اطلب الآن</a>
+    <a href="#order">اطلب الآن</a>
   </div>
 
   <script>
     const offers = [
-      { id: "1", price: 169, title: "عبوة تجربة — 20غ", desc: "تجربة أولى لتسكين الألم بشكل مؤقت.", old: "", save: "", badge: "" },
-      { id: "2", price: 199, title: "3 عبوات — اشتري 2 والثالثة مجاناً", desc: "الأكثر طلباً. شحن مجاني. تكفي أيام بدون انقطاع.", old: "507 ر.س", save: "وفّرت 308 ر.س", badge: "الأكثر طلباً" },
+      { id: "1", price: 169, title: "عبوة تجربة — 20غ", desc: "تجربة أولى لتسكين الألم.", old: "", save: "", badge: "" },
+      { id: "2", price: 199, title: "3 عبوات — اشتري 2 والثالثة مجاناً", desc: "الأكثر طلباً. شحن مجاني.", old: "507 ر.س", save: "وفّرت 308 ر.س", badge: "الأكثر طلباً" },
       { id: "3", price: 379, title: "5 عبوات — عدة البيت", desc: "للالتزام الطويل أو أكثر من شخص.", old: "845 ر.س", save: "وفّرت 466 ر.س", badge: "" }
     ];
     let selected = "2";
@@ -395,8 +219,8 @@
           <div>
             ${o.badge ? `<span class="badge">${o.badge}</span>` : ""}
             <h3>${o.title}</h3>
-            <p class="sub" style="margin:0">${o.desc}</p>
-            ${o.save ? `<span class="save">${o.save} · شحن مجاني</span>` : ""}
+            <p class="desc">${o.desc}</p>
+            ${o.save ? `<span class="save">${o.save}</span>` : ""}
           </div>
           <div>
             <span class="price">${o.price} ر.س</span>
