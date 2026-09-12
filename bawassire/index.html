@@ -49,7 +49,7 @@
     img { width: 100%; height: auto; display: block; }
     a { color: inherit; text-decoration: none; }
     button, input { font-family: inherit; }
-    .page { width: 100%; max-width: 480px; margin: 0 auto; background: var(--bg); overflow-x: hidden; }
+    .page { width: 100%; max-width: 480px; margin: 0 auto; background: var(--bg); }
 
     .top {
       background: #2a1406;
@@ -61,8 +61,8 @@
     }
     .top span { color: var(--gold); }
 
-    .shot { display: block; background: #fff; line-height: 0; }
-    .shot img { width: 100%; height: auto; object-fit: contain; object-position: center top; }
+    .shot { display: block; background: #fff; padding: 10px 10px 14px; }
+    .shot img { width: 100%; height: auto; object-fit: contain; background: #fff; }
 
     .point {
       display: block;
@@ -107,7 +107,7 @@
     .set {
       position: relative;
       display: grid;
-      grid-template-columns: 72px 1fr auto;
+      grid-template-columns: 84px 1fr auto;
       gap: 10px;
       align-items: center;
       background: #fff;
@@ -125,12 +125,11 @@
     }
     .set.hot { border-color: var(--gold); padding-top: 18px; }
     .set img {
-      width: 72px; height: 96px;
+      width: 84px; height: 112px;
       object-fit: contain;
       object-position: center;
       background: #fff;
       border-radius: 10px;
-      border: 1px solid var(--line);
     }
     .set h3 { font-size: 14.5px; font-weight: 900; line-height: 1.35; }
     .set .desc { color: var(--mute); font-size: 12px; margin-top: 3px; }
@@ -175,15 +174,24 @@
     .sticky {
       position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
       width: 100%; max-width: 480px; margin: 0 auto;
-      display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 10px;
-      background: rgba(42,20,6,.96);
-      padding: 10px 12px 14px;
+      display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 8px;
+      background: #2a1406;
+      padding: 8px 10px 12px;
     }
-    .sticky p { color: #fff8ee; font-size: 13px; font-weight: 800; line-height: 1.35; }
-    .sticky span { display: block; color: var(--gold); font-size: 12px; }
+    .sticky p, .sticky span { unicode-bidi: isolate; }
+    .sticky p { color: #fff8ee; font-size: 12px; font-weight: 800; line-height: 1.35; }
+    .sticky span { display: block; color: var(--gold); font-size: 11px; }
     .sticky a {
       background: var(--gold); color: #2a1406; font-weight: 900;
-      border-radius: 999px; padding: 11px 16px; white-space: nowrap;
+      border-radius: 999px; padding: 6px 11px; font-size: 13px; white-space: nowrap;
+      animation: move 1s ease-in-out infinite;
+    }
+    @keyframes move {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .sticky a { animation: none; }
     }
     footer { text-align: center; color: #c9a57a; font-size: 11px; padding: 16px 12px 8px; }
     .pad { padding: 14px; background: var(--paper); }
@@ -216,9 +224,9 @@
         <input class="field" required name="name" placeholder="الاسم الكامل" autocomplete="name" />
         <div class="phone-row">
           <span class="cc">+966</span>
-          <input class="field" required name="phone" id="phone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="5XXXXXXXX" />
+          <input class="field" required name="phone" id="phone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="05XXXXXXXX" />
         </div>
-        <input class="field" required name="city" list="cities" placeholder="المدينة والحي أو الشارع" autocomplete="street-address" />
+        <input class="field" required name="city" list="cities" placeholder="المدينة" autocomplete="address-level2" />
         <datalist id="cities">
           <option value="الرياض"></option><option value="جدة"></option><option value="مكة المكرمة"></option>
           <option value="المدينة المنورة"></option><option value="الدمام"></option><option value="الخبر"></option>
@@ -256,9 +264,9 @@
   </div>
 
   <div class="sticky">
-    <div>
-      <p>الأكثر طلبا: 3 عبوات</p>
-      <span>199 ريال شحن مجاني عند الباب</span>
+    <div dir="rtl">
+      <p>الأكثر طلبا ثلاث عبوات</p>
+      <span>مئة وتسعة وتسعون ريال مع الشحن</span>
     </div>
     <a href="#order">اطلب الآن</a>
   </div>
@@ -313,9 +321,10 @@
       e.preventDefault();
       var form = e.target, btn = form.querySelector("button[type=submit]"), fd = new FormData(form);
       var phone = easternToWestern((fd.get("phone") || "").trim()).replace(/\s+/g, "");
-      phone = phone.replace(/^\+?966/, "").replace(/^0/, "");
-      if (!/^5\d{8}$/.test(phone)) { alert("اكتب رقم الجوال يبدأ بـ 5 ويتكوّن من 9 أرقام."); return false; }
-      phone = "0" + phone;
+      phone = phone.replace(/^\+?966/, "");
+      if (/^05\d{8}$/.test(phone)) { /* keep leading 0 */ }
+      else if (/^5\d{8}$/.test(phone)) { phone = "0" + phone; }
+      else { alert("اكتب رقم الجوال مثل 05XXXXXXXX"); return false; }
       var pack = packById(selected);
       var orderId = "ST-" + Date.now().toString().slice(-8);
       if (btn) { btn.disabled = true; btn.textContent = "جاري تأكيد الطلب…"; }
@@ -343,7 +352,7 @@
       return false;
     }
     document.getElementById("phone").addEventListener("input", function () {
-      this.value = easternToWestern(this.value).replace(/[^\d]/g, "").slice(0, 9);
+      this.value = easternToWestern(this.value).replace(/[^\d]/g, "").slice(0, 10);
     });
     document.getElementById("orderForm").addEventListener("focusin", trackCheckout);
     renderPacks();
