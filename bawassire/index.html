@@ -37,18 +37,19 @@
       --red: #c81e1e;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
     body {
       font-family: Tajawal, sans-serif;
       background: var(--bg);
       color: var(--ink);
       line-height: 1.7;
       padding-bottom: 86px;
+      overflow-x: hidden;
     }
-    img { width: 100%; display: block; }
+    img { width: 100%; height: auto; display: block; }
     a { color: inherit; text-decoration: none; }
     button, input { font-family: inherit; }
-    .page { width: min(480px, 100%); margin-inline: auto; background: var(--bg); }
+    .page { width: 100%; max-width: 480px; margin: 0 auto; background: var(--bg); overflow-x: hidden; }
 
     .top {
       background: #2a1406;
@@ -60,43 +61,36 @@
     }
     .top span { color: var(--gold); }
 
-    .shot { display: block; background: var(--bg); }
-    .shot img { width: 100%; height: auto; }
+    .shot { display: block; background: #fff; line-height: 0; }
+    .shot img { width: 100%; height: auto; object-fit: contain; object-position: center top; }
 
     .point {
-      background: var(--red);
-      color: #fff;
+      display: block;
+      background: #2a1406;
+      color: #fff8ee;
       text-align: center;
-      padding: 16px 14px 14px;
+      padding: 14px 16px 12px;
+      unicode-bidi: isolate;
     }
-    .point b { display: block; font-size: 22px; font-weight: 900; line-height: 1.35; }
-    .point span { display: block; margin-top: 4px; font-size: 15px; font-weight: 800; }
-    .arrows { display: flex; justify-content: center; gap: 18px; margin-top: 10px; color: #fff; font-size: 28px; line-height: 1; animation: bounce 1.1s ease-in-out infinite; }
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(6px); }
-    }
+    .point strong, .point span { display: block; unicode-bidi: isolate; }
+    .point strong { font-size: 18px; font-weight: 900; line-height: 1.5; }
+    .point span { margin-top: 4px; font-size: 14px; font-weight: 700; color: #f0d8a8; }
+    .arrows { margin-top: 8px; color: #fff; font-size: 18px; letter-spacing: 10px; line-height: 1; }
 
     .cta {
-      display: flex; align-items: center; justify-content: center; flex-direction: column;
+      display: block;
       width: 100%;
-      background: linear-gradient(180deg, #ffd54a, var(--gold));
+      background: var(--gold);
       color: #2a1406;
-      border: 0; border-radius: 16px;
-      padding: 15px 14px;
-      font-size: 20px; font-weight: 900;
+      border: 0; border-radius: 12px;
+      padding: 11px 12px;
+      font-size: 16px; font-weight: 900;
+      line-height: 1.35;
       cursor: pointer;
-      box-shadow: 0 10px 24px rgba(245,196,0,.28);
-      animation: pulse 2.1s ease-in-out infinite;
+      text-align: center;
+      unicode-bidi: isolate;
     }
-    .cta small { display: block; font-size: 12px; font-weight: 800; opacity: .8; }
-    @keyframes pulse {
-      0%, 100% { transform: translateY(0) scale(1); }
-      50% { transform: translateY(-2px) scale(1.015); }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .cta, .arrows { animation: none; }
-    }
+    .cta small { display: block; font-size: 11px; font-weight: 700; opacity: .75; margin-top: 2px; }
 
     .order { background: var(--paper); padding: 20px 14px 24px; }
     .order-title { font-size: 22px; font-weight: 900; text-align: center; margin-bottom: 14px; }
@@ -113,15 +107,16 @@
     .set {
       position: relative;
       display: grid;
-      grid-template-columns: 78px 1fr auto;
+      grid-template-columns: 72px 1fr auto;
       gap: 10px;
       align-items: center;
       background: #fff;
       border: 2px solid var(--line);
-      border-radius: 18px;
+      border-radius: 16px;
       padding: 10px;
       cursor: pointer;
       text-align: right;
+      overflow: visible;
     }
     .set.on {
       border-color: var(--orange);
@@ -130,10 +125,11 @@
     }
     .set.hot { border-color: var(--gold); padding-top: 18px; }
     .set img {
-      width: 78px; height: 78px;
+      width: 72px; height: 96px;
       object-fit: contain;
+      object-position: center;
       background: #fff;
-      border-radius: 14px;
+      border-radius: 10px;
       border: 1px solid var(--line);
     }
     .set h3 { font-size: 14.5px; font-weight: 900; line-height: 1.35; }
@@ -145,7 +141,7 @@
       padding: 5px 11px;
       border-radius: 0 0 14px 16px;
     }
-    .pr { font-size: 24px; font-weight: 900; color: var(--orange); line-height: 1.05; min-width: 72px; text-align: left; }
+    .pr { font-size: 22px; font-weight: 900; color: var(--orange); line-height: 1.05; min-width: 64px; text-align: left; direction: ltr; unicode-bidi: isolate; }
     .pr small { display: block; font-size: 11px; font-weight: 800; color: #1a7a62; }
     .pr s { display: block; color: #c81e1e; font-size: 12px; font-weight: 800; text-decoration: line-through; }
 
@@ -165,17 +161,20 @@
     .legal { margin-top: 8px; color: #9a8b7d; font-size: 12px; text-align: center; line-height: 1.6; }
 
     .deal {
-      background: #111; color: #fff; text-align: center;
-      padding: 22px 16px; border-top: 3px solid var(--gold); border-bottom: 3px solid var(--gold);
+      display: block;
+      background: #2a1406;
+      color: #fff8ee;
+      text-align: center;
+      padding: 20px 16px;
+      unicode-bidi: isolate;
     }
-    .deal b { display: block; font-size: 42px; font-weight: 900; color: var(--gold); line-height: 1; }
-    .deal b i { font-style: normal; font-size: 22px; }
-    .deal p { margin-top: 6px; font-size: 18px; font-weight: 800; }
+    .deal .pct { display: block; font-size: 36px; font-weight: 900; color: var(--gold); line-height: 1.1; unicode-bidi: isolate; }
+    .deal p { margin-top: 6px; font-size: 17px; font-weight: 800; unicode-bidi: isolate; }
     .deal small { display: block; margin-top: 4px; color: #c9a57a; font-size: 13px; }
 
     .sticky {
-      position: fixed; inset-inline: 0; bottom: 0; z-index: 60;
-      width: min(480px, 100%); margin-inline: auto;
+      position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
+      width: 100%; max-width: 480px; margin: 0 auto;
       display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 10px;
       background: rgba(42,20,6,.96);
       padding: 10px 12px 14px;
@@ -199,13 +198,13 @@
     </a>
 
     <a class="point" href="#order">
-      <b>للطلب — عبّوا الاستمارة تحت</b>
-      <span>بمعلومات التوصيل الخاصة بكم</span>
-      <div class="arrows" aria-hidden="true"><span>⌄</span><span>⌄</span><span>⌄</span><span>⌄</span></div>
+      <strong>للطلب عبّوا الاستمارة بالأسفل</strong>
+      <span>ببيانات التوصيل</span>
+      <div class="arrows" aria-hidden="true">▼ ▼ ▼ ▼</div>
     </a>
 
     <section class="order" id="order">
-      <p class="order-title">اختَر العرض المناسب لك</p>
+      <p class="order-title">اختر العرض المناسب لك</p>
       <div class="trust">
         <div>تغليف مكتوم</div>
         <div>معاينة قبل الدفع</div>
@@ -219,7 +218,7 @@
           <span class="cc">+966</span>
           <input class="field" required name="phone" id="phone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="5XXXXXXXX" />
         </div>
-        <input class="field" required name="city" list="cities" placeholder="المدينة — الحي أو الشارع" autocomplete="street-address" />
+        <input class="field" required name="city" list="cities" placeholder="المدينة والحي أو الشارع" autocomplete="street-address" />
         <datalist id="cities">
           <option value="الرياض"></option><option value="جدة"></option><option value="مكة المكرمة"></option>
           <option value="المدينة المنورة"></option><option value="الدمام"></option><option value="الخبر"></option>
@@ -230,10 +229,10 @@
         </datalist>
         <input type="hidden" name="pack" id="packField" value="2" />
         <button class="cta" type="submit">
-          اضغط هنا للطلب — <span class="ctaPrice">199</span> ر.س
-          <small>نتصل خلال 30–60 دقيقة · الدفع عند الباب</small>
+          اضغط هنا للطلب
+          <small>السعر <span class="ctaPrice">199</span> ريال عند الباب</small>
         </button>
-        <p class="legal">منتج عناية موضعية (جل كمّادة باردة 20غ). ليس دواءً بوصفة، ولا يغني عن مراجعة الطبيب عند الألم الشديد أو النزيف.</p>
+        <p class="legal">منتج عناية موضعية. جل كمادة باردة 20 غرام. ليس دواء بوصفة ولا يغني عن مراجعة الطبيب.</p>
       </form>
     </section>
 
@@ -246,20 +245,20 @@
     <a class="shot" href="#order"><img src="./funnel/07-faq.jpg" alt="أسئلة شائعة" loading="lazy" decoding="async" /></a>
 
     <a class="deal" href="#order">
-      <b>50%<i> خصم</i></b>
-      <p>+ توصيل مجاني</p>
+      <span class="pct">خصم <bdi>50%</bdi></span>
+      <p>وتوصيل مجاني</p>
       <small>عرض لفترة محدودة</small>
     </a>
     <div class="pad">
-      <a class="cta" href="#order">اضغط هنا للطلب<small>3 عبوات بـ 199 ر.س · الأكثر طلباً</small></a>
+      <a class="cta" href="#order">اضغط هنا للطلب<small>3 عبوات ب 199 ريال</small></a>
     </div>
     <footer>شحن مكتوم داخل السعودية · الدفع عند الاستلام بعد المعاينة</footer>
   </div>
 
   <div class="sticky">
     <div>
-      <p>الأكثر طلباً — 3 عبوات</p>
-      <span>199 ر.س · شحن مجاني · عند الباب</span>
+      <p>الأكثر طلبا: 3 عبوات</p>
+      <span>199 ريال شحن مجاني عند الباب</span>
     </div>
     <a href="#order">اطلب الآن</a>
   </div>
