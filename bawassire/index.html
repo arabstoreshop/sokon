@@ -120,11 +120,11 @@
       display: flex; justify-content: space-between; align-items: flex-start; gap: 8px;
     }
     .pill {
-      display: inline-block; margin-top: 5px;
+      display: block; margin-top: 5px;
       background: #2a1406; color: #fff8ee;
-      font-size: 12px; font-weight: 700;
-      border-radius: 999px; padding: 4px 9px; line-height: 1.45;
-      max-width: 100%;
+      font-size: 11px; font-weight: 700;
+      border-radius: 999px; padding: 4px 9px; line-height: 1.35;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     }
     .ribbon {
       position: absolute; top: -1px; left: 10px;
@@ -133,7 +133,8 @@
       padding: 3px 9px;
       border-radius: 0 0 8px 8px;
     }
-    .pr { font-size: 17px; font-weight: 900; color: var(--orange); white-space: nowrap; flex-shrink: 0; }
+    .pr { font-size: 17px; font-weight: 900; color: var(--orange); white-space: nowrap; flex-shrink: 0; text-align: left; }
+    .pr s { display: block; color: #c81e1e; font-size: 12px; font-weight: 800; text-decoration: line-through; }
 
     .form-head { text-align: center; font-size: 17px; font-weight: 900; margin: 12px 0 8px; color: var(--ink); }
     .field {
@@ -159,16 +160,13 @@
     .sticky {
       position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
       width: 100%; max-width: 480px; margin: 0 auto;
-      display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 8px;
       background: #2a1406;
-      padding: 8px 10px 12px;
+      padding: 10px 12px 14px;
     }
-    .sticky p, .sticky span { unicode-bidi: isolate; }
-    .sticky p { color: #fff8ee; font-size: 14px; font-weight: 800; line-height: 1.35; }
-    .sticky span { display: block; color: var(--gold); font-size: 13px; }
     .sticky a {
+      display: block; width: 100%; text-align: center;
       background: var(--gold); color: #2a1406; font-weight: 900;
-      border-radius: 999px; padding: 12px 20px; font-size: 17px; white-space: nowrap;
+      border-radius: 14px; padding: 14px 16px; font-size: 18px;
       animation: move 1s ease-in-out infinite;
     }
     @keyframes move {
@@ -233,24 +231,20 @@
       <small>عرض لفترة محدودة</small>
     </a>
     <div class="pad">
-      <a class="cta" href="#order">اضغط هنا للطلب<small>3 عبوات ب 199 ريال</small></a>
+      <a class="cta" href="#order">اطلب الآن — فقط بـ 169 ريال</a>
     </div>
     <footer>شحن مكتوم داخل السعودية · الدفع عند الاستلام بعد المعاينة</footer>
   </div>
 
   <div class="sticky">
-    <div dir="rtl">
-      <p>الأكثر طلبا ثلاث عبوات</p>
-      <span>مئة وتسعة وتسعون ريال مع الشحن</span>
-    </div>
-    <a href="#order">اطلب الآن</a>
+    <a href="#order">اطلب الآن — فقط بـ 169 ريال</a>
   </div>
 
   <script>
     const offers = [
-      { id: "3", price: 379, title: "الباقة العائلية الشاملة (5 عبوات)", desc: "5 عبوات تكفي للاستخدام الطويل ولجميع أفراد العائلة", img: "./funnel/pack-5.jpg", badge: "" },
-      { id: "2", price: 199, title: "كورس العلاج والتأهيل النهائي (3 عبوات)", desc: "3 عبوات للعناية الكاملة", img: "./funnel/pack-3.jpg", badge: "الأكثر طلبا" },
-      { id: "1", price: 169, title: "عبوة واحدة - تجربة أولية", desc: "لتجربة المنتج وتسكين الألم بشكل مؤقت", img: "./funnel/pack-1.jpg", badge: "" }
+      { id: "3", price: 379, old: 845, title: "الباقة العائلية الشاملة (5 عبوات)", desc: "تكفي للاستخدام الطويل وللعائلة", img: "./funnel/pack-5.jpg", badge: "" },
+      { id: "2", price: 199, old: 507, title: "كورس العلاج والتأهيل النهائي (3 عبوات)", desc: "3 عبوات للعناية الكاملة", img: "./funnel/pack-3.jpg", badge: "الأكثر طلبا" },
+      { id: "1", price: 169, old: 250, title: "عبوة واحدة - تجربة أولية", desc: "لتجربة المنتج وتسكين الألم مؤقتا", img: "./funnel/pack-1.jpg", badge: "" }
     ];
     let selected = "2";
     let checkoutTracked = false;
@@ -284,7 +278,7 @@
           <div>
             <div class="row">
               <h3>${o.title}</h3>
-              <div class="pr">${o.price} ريال</div>
+              <div class="pr">${o.price} ريال${o.old ? `<s>${o.old} ريال</s>` : ""}</div>
             </div>
             <span class="pill">${o.desc}</span>
           </div>
@@ -348,7 +342,7 @@
       var sticky = document.querySelector(".sticky");
       var box = document.getElementById("order");
       new IntersectionObserver(function (entries) {
-        sticky.style.display = entries[0].isIntersecting ? "none" : "grid";
+        sticky.style.display = entries[0].isIntersecting ? "none" : "block";
       }, { threshold: 0.35 }).observe(box);
     }
   </script>
