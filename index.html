@@ -29,8 +29,12 @@
       ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};
       for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);
       ttq.load=function(e){var i="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||{};ttq._i[e]=[];ttq._i[e]._u=i;ttq._t=ttq._t||{};ttq._t[e]=+new Date;var n=document.createElement("script");n.async=!0;n.src=i+"?sdkid="+e+"&lib="+t;var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(n,s)};
+      ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e};
+      ttq.load("DAGTP9RC77U208ULEIB0");
       ttq.load("DA41OHRC77U208UL6VU0");
       ttq.page();
+      ttq.instance("DAGTP9RC77U208ULEIB0").page();
+      ttq.instance("DA41OHRC77U208UL6VU0").page();
     }(window, document, "ttq");
   </script>
   <script>
@@ -866,7 +870,8 @@
     /* ── إعدادات الإعلانات والطلبات: عبّي غير هاد الثلاثة ── */
     const CONFIG = {
       metaPixelId: "1102428529130490",
-      tiktokPixelId: "DA41OHRC77U208UL6VU0",
+      tiktokPixelId: "DAGTP9RC77U208ULEIB0",
+      tiktokPixels: ["DAGTP9RC77U208ULEIB0", "DA41OHRC77U208UL6VU0"],
       snapPixelId: "54c85c29-ea32-4a54-9f3b-f4cd8941cddf",
       sheetWebhook: "https://script.google.com/macros/s/AKfycbxTidbmqTr6dKV7lOEmlQBR81R_Sv-VF8AA7UerWzvJ0wWd8pT5QtyyA9NlOGU7WLE9YQ/exec"
     };
@@ -984,7 +989,7 @@
       document.body.style.overflow = "hidden";
       document.querySelector(".sticky").style.display = "none";
       if (window.fbq) window.fbq("track", "InitiateCheckout", { currency: "SAR" });
-      if (window.ttq) window.ttq.track("InitiateCheckout", { currency: "SAR" });
+      trackTT("InitiateCheckout", { currency: "SAR" });
       if (window.snaptr) window.snaptr("track", "START_CHECKOUT", { currency: "SAR" });
     }
     function tryCloseSheet() {
@@ -1102,8 +1107,20 @@
       return false;
     }
 
+    function trackTT(event, data) {
+      if (!window.ttq) return;
+      var ids = CONFIG.tiktokPixels || [CONFIG.tiktokPixelId];
+      try {
+        ids.forEach(function (id) {
+          if (id && ttq.instance) ttq.instance(id).track(event, data || {});
+        });
+      } catch (err) {
+        try { ttq.track(event, data || {}); } catch (e2) {}
+      }
+    }
+
     function fireLead(value, contentName) {
-      if (window.ttq) window.ttq.track("PlaceAnOrder", { value: value, currency: "SAR", content_name: contentName });
+      trackTT("PlaceAnOrder", { value: value, currency: "SAR", content_name: contentName });
     }
 
     function loadPixels() {
