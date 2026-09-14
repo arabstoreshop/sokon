@@ -229,7 +229,7 @@
     .ugc p { padding: 0 12px 14px; font-size: 16px; }
 
     .order-title { font-size: clamp(15px, 4.4vw, 18px); font-weight: 900; text-align: center; margin-bottom: 12px; line-height: 1.55; }
-    .sets { display: grid; gap: clamp(14px, 3.6vw, 16px); }
+    .sets { display: grid; gap: clamp(8px, 2.4vw, 12px); }
     .set {
       position: relative;
       display: grid;
@@ -245,8 +245,9 @@
     }
     .set > div { min-width: 0; }
     .set.on {
-      border-color: #241d18;
-      box-shadow: 0 0 0 2px #241d18;
+      background: linear-gradient(180deg, #fffdf9, #f8ecdf);
+      border-color: var(--nude-d);
+      box-shadow: 0 0 0 2px rgba(166,124,82,.28), 0 8px 18px rgba(166,124,82,.16);
     }
     .set img {
       width: 100%; max-width: 78px; aspect-ratio: 1; height: auto;
@@ -256,6 +257,7 @@
       border: 1.5px solid var(--orange);
       justify-self: center;
     }
+    .set.on img { border-color: var(--nude-d); }
     .set h3 {
       font-size: clamp(12.5px, 3.7vw, 15.5px); font-weight: 900; line-height: 1.35;
     }
@@ -269,27 +271,12 @@
       font-size: clamp(16px, 5vw, 22px); font-weight: 900; color: var(--ink);
       line-height: 1.05; text-align: left;
     }
+    .set.on .pr { color: var(--nude-d); }
     .set .pr small { display: block; font-size: clamp(10px, 3vw, 12px); font-weight: 800; margin-top: 1px; }
     .set .pr s {
       display: block; margin-top: 2px;
-      color: #c4b5a6; font-size: clamp(10px, 3vw, 12px); font-weight: 800;
-    }
-    .set.featured {
-      border-color: #241d18;
-      padding-top: clamp(16px, 4.5vw, 22px);
-      margin-top: 6px;
-    }
-    .ribbon {
-      position: absolute; top: -10px; left: 10px;
-      background: #241d18;
-      color: #fff;
-      font-size: clamp(10px, 2.9vw, 11px); font-weight: 900; white-space: nowrap;
-      padding: 4px 10px;
-      border-radius: 8px 8px 8px 0;
-    }
-    .ribbon::after {
-      content: ""; position: absolute; right: 100%; top: 0;
-      border: 5px solid transparent; border-top-color: #0f0c0a; border-right: 0;
+      color: #d21f1f; font-size: 11px; font-weight: 700;
+      text-decoration: line-through;
     }
 
     .form-head { text-align: center; font-size: 18px; font-weight: 900; margin: 18px 0 10px; }
@@ -862,7 +849,7 @@
     };
     var offers = [
       { id: "1", qty: 1, price: 199, old: 299, title: "عبوة واحدة جرّبي اللون على بشرتك", chip: "تجربة أولى. كيتبدل مع لونك ف ثواني", img: "./offer-v5-1.jpg", label: "عبوة واحدة" },
-      { id: "2", qty: 2, price: 249, old: 498, featured: true, title: "عرض البنات قطعتين", chip: "لكِ وهدية لختك أو صاحبتك. وفّرتي بزاف على الوحدة", img: "./offer-v5-2.jpg", label: "عرض البنات" },
+      { id: "2", qty: 2, price: 249, old: 498, title: "عرض البنات قطعتين", chip: "لكِ وهدية لختك أو صاحبتك. وفّرتي بزاف على الوحدة", img: "./offer-v5-2.jpg", label: "عرض البنات" },
       { id: "3", qty: 3, price: 299, old: 597, title: "باقة المكياج الكامل 3 عبوات", chip: "تكفيك شهور. ما ترجعيش تشري فونديشن غالي", img: "./offer-v5-3.jpg", label: "باقة المكياج" }
     ];
     var selected = "2";
@@ -892,8 +879,7 @@
     }
     function renderPacks() {
       document.getElementById("packs").innerHTML = offers.map(function (o) {
-        return '<article class="set ' + (o.featured ? "featured " : "") + (o.id === selected ? "on" : "") + '" data-id="' + o.id + '" onclick="pick(this)">'
-          + (o.featured ? '<span class="ribbon">الأكثر طلباً</span>' : "")
+        return '<article class="set' + (o.id === selected ? " on" : "") + '" data-id="' + o.id + '" onclick="pick(this)">'
           + '<img src="' + o.img + '" alt="' + o.title + '" />'
           + "<div><h3>" + o.title + '</h3><span class="chip">' + o.chip + "</span></div>"
           + '<div class="pr">' + o.price + "<small>درهم</small><s>" + o.old + "</s></div></article>";
