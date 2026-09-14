@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Profit calculator — COD</title>
+  <style>
+    :root { --bg:#0f1412; --card:#161d1a; --line:#2a3a34; --mut:#9cb3a8; --dim:#6f857c; --acc:#3d8f6b; --ok:#7dcca8; --txt:#e8efe9; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Tajawal, sans-serif; background: var(--bg); color: var(--txt); padding: 24px 16px 80px; }
+    .wrap { width: min(1100px, 100%); margin: 0 auto; }
+    h1 { font-size: 28px; font-weight: 900; }
+    .kicker { font-size: 11px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; color: var(--acc); margin-bottom: 4px; }
+    .tabs, .mkts, .seg { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0; }
+    button { font-family: inherit; cursor: pointer; border: 0; }
+    .chip { background: #1b2521; color: var(--mut); border-radius: 999px; padding: 8px 14px; font-weight: 800; font-size: 13px; }
+    .chip.on { background: var(--txt); color: var(--bg); }
+    .seg .chip.on { background: var(--acc); color: #fff; }
+    .grid { display: grid; gap: 16px; }
+    @media (min-width: 900px) { .split { grid-template-columns: 1.15fr .85fr; } .two { grid-template-columns: 1fr 1fr; } .four { grid-template-columns: repeat(4,1fr); } }
+    .card { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 18px; }
+    .card h2 { font-size: 17px; margin-bottom: 14px; }
+    label { display: block; }
+    label span { display: block; font-size: 11px; font-weight: 800; text-transform: uppercase; color: var(--mut); margin-bottom: 6px; }
+    .inp { display: flex; align-items: center; gap: 8px; border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; background: #121916; }
+    input, select { width: 100%; background: transparent; border: 0; color: var(--txt); font: 700 15px Tajawal, sans-serif; outline: 0; }
+    select option { color: #111; }
+    .suf { color: var(--dim); font-size: 12px; }
+    .hint { font-size: 11px; color: var(--dim); margin-top: 4px; }
+    .stat b { display: block; font-size: 22px; margin-top: 4px; }
+    .stat small { color: var(--dim); }
+    .big { font-size: 36px; font-weight: 900; color: var(--ok); }
+    .big.bad { color: #f0a8a8; }
+    .row { display: flex; justify-content: space-between; gap: 12px; font-size: 14px; color: #c5d5cc; padding: 4px 0; }
+    .row b { color: var(--txt); }
+    .mini { background: #0f1412; border-radius: 12px; padding: 12px; }
+    .mini small { display: block; font-size: 10px; font-weight: 800; text-transform: uppercase; color: var(--dim); }
+    .note { color: var(--mut); font-size: 13px; margin: 8px 0 16px; line-height: 1.5; }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="wrap">
+    <p class="kicker">COD admin</p>
+    <h1>Profit calculator</h1>
+    <p class="note">Works without login. Fees prefills from COD Network + Digylog Morocco. Change any field.</p>
+    <div class="grid four" id="stats"></div>
+    <div class="mkts" id="markets"></div>
+    <p class="note" id="mnote"></p>
+    <div class="grid split">
+      <div class="grid">
+        <section class="card">
+          <h2>Campaign</h2>
+          <div class="grid two" id="vars"></div>
+        </section>
+        <section class="card">
+          <h2>Unit fees <span id="unitlab"></span></h2>
+          <div id="zones"></div>
+          <div class="grid two" id="fees"></div>
+        </section>
+      </div>
+      <div>
+        <div class="seg">
+          <button class="chip on" data-sec="be" onclick="setSec('be')">Breakeven</button>
+          <button class="chip" data-sec="pl" onclick="setSec('pl')">Scale profit</button>
+        </div>
+        <section class="card" id="out"></section>
+      </div>
+    </div>
+  </div>
+<script>
+const SAR = 3.75;
+const MARKETS = [
+  {id:'KSA', name:'Saudi Arabia', ccy:'USD', toUsd:1, provider:'COD Network', shipD:4.99, shipR:2.99, fulfill:0, cod:0.05, cc:{cosmetic:{lead:.5,c:2,d:3},gadget:{lead:.5,c:1,d:2}}},
+  {id:'UAE', name:'UAE', ccy:'USD', toUsd:1, provider:'COD Network', shipD:5.99, shipR:4.99, fulfill:0, cod:0.05, cc:{cosmetic:{lead:.5,c:2,d:3},gadget:{lead:.5,c:1,d:2}}},
+  {id:'BHR', name:'Bahrain', ccy:'USD', toUsd:1, provider:'COD Network', shipD:6.99, shipR:5.99, fulfill:0, cod:0.05, cc:{cosmetic:{lead:.5,c:2,d:3},gadget:{lead:.5,c:1,d:2}}},
+  {id:'OMN', name:'Oman', ccy:'USD', toUsd:1, provider:'COD Network', shipD:6.99, shipR:5.99, fulfill:0, cod:0.05, cc:{cosmetic:{lead:.5,c:2,d:3},gadget:{lead:.5,c:1,d:2}}},
+  {id:'KWT', name:'Kuwait', ccy:'USD', toUsd:1, provider:'COD Network', shipD:6.99, shipR:5.99, fulfill:0, cod:0.05, cc:{cosmetic:{lead:.5,c:2,d:3},gadget:{lead:.5,c:1,d:2}}},
+  {id:'QTR', name:'Qatar', ccy:'USD', toUsd:1, provider:'COD Network', shipD:6.99, shipR:5.99, fulfill:0, cod:0.05, cc:{cosmetic:{lead:.5,c:2,d:3},gadget:{lead:.5,c:1,d:2}}},
+  {id:'MA', name:'Morocco', ccy:'MAD', toUsd:0.1, provider:'Digylog', shipD:33, shipR:18, fulfill:0, cod:0, replace:true,
+    cc:{cosmetic:{lead:0,c:6,d:10},gadget:{lead:0,c:6,d:10}},
+    zones:[
+      {id:'casa',l:'Casablanca / Mohammedia',s:29},
+      {id:'rabat',l:'Rabat / Salé / Témara / Kénitra',s:29},
+      {id:'tanger',l:'Tanger / Tétouan',s:32},
+      {id:'marrakech',l:'Marrakech / Agadir',s:35},
+      {id:'fes',l:'Fès / Meknès / Oujda',s:35},
+      {id:'other',l:'Other cities',s:39},
+      {id:'mix',l:'Average mix',s:33}
+    ]}
+];
+const S = {
+  m:'KSA', cat:'cosmetic', zone:'mix', sec:'be',
+  leads:1000, cpl:3, conf:45, del:65,
+  aovSar:199, aovUsd:53.07, pieces:1.4, cogs:4,
+  feeLead:.5, feeC:2, feeD:3, feeR:2.99, feeF:0, feeShip:4.99, cod:5
+};
+function mkt(){ return MARKETS.find(x=>x.id===S.m); }
+function money(n){ const s=n<0?'-':''; return s+'$'+Math.abs(n).toFixed(2); }
+function applyMarket(){
+  const m=mkt(), cc=m.cc[S.cat];
+  S.feeLead=cc.lead; S.feeC=cc.c; S.feeD=cc.d; S.feeR=m.shipR; S.feeF=m.fulfill; S.cod=m.cod*100;
+  if(m.zones){ const z=m.zones.find(x=>x.id===S.zone)||m.zones[m.zones.length-1]; S.feeShip=z.s; }
+  else S.feeShip=m.shipD;
+}
+function calc(){
+  const m=mkt(), u=m.toUsd;
+  const leads=+S.leads, cpl=+S.cpl, cr=S.conf/100, dr=S.del/100;
+  const aov=+S.aovUsd, pcs=+S.pieces, cogs=+S.cogs;
+  const confirmed=leads*cr, shipped=confirmed, delivered=confirmed*dr, returned=Math.max(0,shipped-delivered);
+  const ad=leads*cpl, ccL=leads*(S.feeLead*u);
+  let ccC, ccD;
+  if(m.replace){ ccC=returned*(S.feeC*u); ccD=delivered*(S.feeD*u); }
+  else { ccC=confirmed*(S.feeC*u); ccD=delivered*(S.feeD*u); }
+  const ful=shipped*(S.feeF*u), shD=delivered*(S.feeShip*u), shR=returned*(S.feeR*u);
+  const cog=shipped*pcs*cogs, rev=delivered*aov, cod=rev*(S.cod/100);
+  const ops=ccL+ccC+ccD+ful+shD+shR+cog+cod, tot=ad+ops, profit=rev-tot;
+  const other=leads?ops/leads:0, rpl=leads?rev/leads:0, maxCpl=rpl-other;
+  return {confirmed,delivered,returned,ad,ccL,ccC,ccD,ful,shD,shR,cog,cod,ops,tot,rev,profit,maxCpl,roi:ad?profit/ad:0, ppd:delivered?profit/delivered:0, contrib:delivered?(rev-ops)/delivered:0};
+}
+function field(id,label,suf,hint){
+  return `<label><span>${label}</span><div class="inp"><input id="${id}" type="number" step="any" /><span class="suf">${suf||''}</span></div>${hint?`<div class="hint">${hint}</div>`:''}</label>`;
+}
+function bind(id, key, extra){
+  const el=document.getElementById(id); if(!el) return;
+  el.value=S[key];
+  el.oninput=()=>{ S[key]=parseFloat(el.value)||0; if(extra) extra(); renderOut(); };
+}
+function render(){
+  const m=mkt();
+  document.getElementById('stats').innerHTML = [
+    ['AOV SAR', S.aovSar.toFixed(2)+' SAR', 'type your AOV'],
+    ['AOV USD', money(S.aovUsd), '÷ 3.75'],
+    ['Avg pieces', S.pieces, 'units in that AOV'],
+    ['Market', m.name, m.provider]
+  ].map(([a,b,c])=>`<div class="card stat"><span>${a}</span><b>${b}</b><small>${c}</small></div>`).join('');
+  document.getElementById('markets').innerHTML = MARKETS.map(x=>`<button class="chip ${x.id===S.m?'on':''}" onclick="S.m='${x.id}';applyMarket();render()">${x.id==='MA'?'Morocco':x.id}</button>`).join('');
+  document.getElementById('mnote').textContent = 'Fees from '+m.provider+' · '+m.name+'. P&L in USD'+(m.ccy==='MAD'?' (DH ÷ 10)':'')+'.';
+  document.getElementById('unitlab').textContent = m.ccy==='MAD'?'(DH)': '($)';
+  document.getElementById('vars').innerHTML =
+    field('leads','Leads')+field('cpl','Cost per lead','$')+
+    field('conf','Confirmation rate','%')+field('del','Delivery rate','%','of confirmed')+
+    field('aovSar','AOV SAR','SAR')+field('aovUsd','AOV USD','$','SAR ÷ 3.75')+
+    field('pieces','Avg pieces / order','','units that made this AOV')+field('cogs','Product cost / piece','$')+
+    `<label><span>Category</span><div class="seg" style="margin:0">${['cosmetic','gadget'].map(c=>`<button class="chip ${S.cat===c?'on':''}" onclick="S.cat='${c}';applyMarket();render()">${c}</button>`).join('')}</div></label>`;
+  document.getElementById('zones').innerHTML = m.zones ? `<label style="margin-bottom:12px"><span>Digylog city</span><select id="zone">${m.zones.map(z=>`<option value="${z.id}" ${S.zone===z.id?'selected':''}>${z.l} — ${z.s} DH</option>`).join('')}</select></label>` : '';
+  document.getElementById('fees').innerHTML =
+    field('feeLead','Per lead (call center)', m.ccy==='MAD'?'DH':'$')+
+    field('feeC','Per confirmed lead', m.ccy==='MAD'?'DH':'$', m.replace?'6 DH if not delivered':'')+
+    field('feeD','Per delivered order', m.ccy==='MAD'?'DH':'$', m.replace?'becomes 10 DH if delivered':'extra CC on delivery')+
+    field('feeR','Per return', m.ccy==='MAD'?'DH':'$')+
+    field('feeF','Per fulfilled (left warehouse)', m.ccy==='MAD'?'DH':'$')+
+    field('feeShip','Shipping delivered', m.ccy==='MAD'?'DH':'$')+
+    field('cod','COD fee','%');
+  ['leads','cpl','conf','del','pieces','cogs','feeLead','feeC','feeD','feeR','feeF','feeShip','cod'].forEach(k=>bind(k,k));
+  bind('aovSar','aovSar', ()=>{ S.aovUsd=Math.round(S.aovSar/SAR*100)/100; const u=document.getElementById('aovUsd'); if(u) u.value=S.aovUsd; });
+  bind('aovUsd','aovUsd');
+  const z=document.getElementById('zone');
+  if(z) z.onchange=()=>{ S.zone=z.value; applyMarket(); render(); };
+  document.querySelectorAll('.seg .chip').forEach(b=>b.classList.toggle('on', b.dataset.sec===S.sec));
+  renderOut();
+}
+function renderOut(){
+  const r=calc();
+  const m=mkt();
+  if(S.sec==='be'){
+    document.getElementById('out').innerHTML = `
+      <h2>Breakeven</h2>
+      <div class="big ${r.maxCpl<0?'bad':''}">${money(r.maxCpl)}</div>
+      <p class="note">Max cost per lead. Above this you lose money.</p>
+      <div class="grid two">
+        <div class="mini"><small>Contribution / delivered</small><b>${money(r.contrib)}</b></div>
+        <div class="mini"><small>Delivered / 100 leads</small><b>${(r.delivered/Math.max(S.leads,1)*100).toFixed(1)}</b></div>
+        <div class="mini"><small>Confirm × deliver</small><b>${S.conf}% × ${S.del}%</b></div>
+        <div class="mini"><small>AOV after COD %</small><b>${money(S.aovUsd*(1-S.cod/100))}</b></div>
+      </div>`;
+  } else {
+    document.getElementById('out').innerHTML = `
+      <h2>P&L on ${Number(S.leads).toLocaleString()} leads</h2>
+      <div class="big ${r.profit<0?'bad':''}">${money(r.profit)}</div>
+      <div style="margin-top:12px">
+        ${[['Revenue',r.rev],['Ad spend',r.ad],['Call center',r.ccL+r.ccC+r.ccD],['Fulfillment',r.ful],['Shipping delivered',r.shD],['Returns',r.shR],['COGS',r.cog],['COD % fees',r.cod],['Total cost',r.tot]].map(([k,v])=>`<div class="row"><span>${k}</span><b>${money(v)}</b></div>`).join('')}
+      </div>
+      <div class="grid two" style="margin-top:12px">
+        <div class="mini"><small>ROI on ads</small><b>${Math.round(r.roi*100)}%</b></div>
+        <div class="mini"><small>Profit / delivered</small><b>${money(r.ppd)}</b></div>
+        <div class="mini"><small>Confirmed</small><b>${Math.round(r.confirmed)}</b></div>
+        <div class="mini"><small>Delivered / returned</small><b>${Math.round(r.delivered)} / ${Math.round(r.returned)}</b></div>
+      </div>`;
+  }
+}
+function setSec(s){ S.sec=s; render(); }
+applyMarket();
+render();
+</script>
+</body>
+</html>
