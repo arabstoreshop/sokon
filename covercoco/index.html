@@ -279,15 +279,14 @@
       color: #d21f1f; font-size: 11px; font-weight: 700;
       text-decoration: line-through;
     }
-    .set.featured { padding-top: 28px; }
+    .set.featured { padding-top: 26px; }
     .ribbon {
-      position: absolute; top: 0; left: 50%;
-      transform: translateX(-50%);
+      position: absolute; top: 0; left: 0;
       background: #4a2c12;
       color: #fff;
       font-size: 11px; font-weight: 900; white-space: nowrap;
-      padding: 4px 14px;
-      border-radius: 0 0 12px 12px;
+      padding: 5px 12px;
+      border-radius: 17px 0 12px 0;
       z-index: 2;
     }
 
@@ -860,8 +859,8 @@
       whitelist: ["0600000000", "0700000000"]
     };
     var offers = [
-      { id: "1", qty: 1, price: 199, old: 299, featured: true, title: "عبوة واحدة جرّبي اللون على بشرتك", chip: "تجربة أولى. كيتبدل مع لونك ف ثواني", img: "./offer-v5-1.jpg", label: "عبوة واحدة" },
-      { id: "2", qty: 2, price: 249, old: 498, title: "عرض البنات قطعتين", chip: "لكِ وهدية لختك أو صاحبتك. وفّرتي بزاف على الوحدة", img: "./offer-v5-2.jpg", label: "عرض البنات" },
+      { id: "1", qty: 1, price: 199, old: 299, title: "عبوة واحدة جرّبي اللون على بشرتك", chip: "تجربة أولى. كيتبدل مع لونك ف ثواني", img: "./offer-v5-1.jpg", label: "عبوة واحدة" },
+      { id: "2", qty: 2, price: 249, old: 498, featured: true, title: "عرض البنات قطعتين", chip: "لكِ وهدية لختك أو صاحبتك. وفّرتي بزاف على الوحدة", img: "./offer-v5-2.jpg", label: "عرض البنات" },
       { id: "3", qty: 3, price: 299, old: 597, title: "باقة المكياج الكامل 3 عبوات", chip: "تكفيك شهور. ما ترجعيش تشري فونديشن غالي", img: "./offer-v5-3.jpg", label: "باقة المكياج" }
     ];
     var selected = "1";
