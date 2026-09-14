@@ -279,16 +279,23 @@
       color: #d21f1f; font-size: 11px; font-weight: 700;
       text-decoration: line-through;
     }
-    .set.featured { padding-top: 26px; }
+    .set.featured { padding-top: 34px; }
     .ribbon {
-      position: absolute; top: 0; left: 0;
+      position: absolute;
+      top: 8px;
+      left: 8px;
       background: #4a2c12;
       color: #fff;
-      font-size: 11px; font-weight: 900; white-space: nowrap;
-      padding: 5px 12px;
-      border-radius: 17px 0 12px 0;
+      font-size: 11px;
+      font-weight: 900;
+      white-space: nowrap;
+      line-height: 1;
+      padding: 6px 11px;
+      border-radius: 999px;
       z-index: 2;
+      box-shadow: 0 2px 8px rgba(42,20,6,.22);
     }
+    .set.on .ribbon { background: #2a1406; }
 
     .form-head { text-align: center; font-size: 18px; font-weight: 900; margin: 18px 0 10px; }
     .field {
@@ -569,7 +576,7 @@
         </datalist>
         <button class="cta" type="submit">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 7h15l-1.5 9h-12z"/><path d="M6 7 5 4H2"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg>
-          <span>أكّدي الطلب — <span class="ctaPrice">199</span> درهم<small>الدفع عند الاستلام بعد المعاينة</small></span>
+          <span>أكّدي الطلب — <span class="ctaPrice">249</span> درهم<small>الدفع عند الاستلام بعد المعاينة</small></span>
         </button>
         <p class="legal"><span dir="ltr">Cover Coco Color Changing Naked Foundation — 30مل</span>. منتج تجميل أصلي. ليس دواءً.</p>
       </form>
@@ -841,10 +848,10 @@
 
   <div class="sticky" id="sticky">
     <div class="sticky-info">
-      <img id="stickyImg" src="./offer-v5-1.jpg" alt="Cover Coco" />
+      <img id="stickyImg" src="./offer-v5-2.jpg" alt="Cover Coco" />
       <div>
-        <div class="big"><span id="stickyPrice">199</span> <span>درهم</span></div>
-        <small id="stickyLabel">عبوة واحدة · الدفع عند الاستلام</small>
+        <div class="big"><span id="stickyPrice">249</span> <span>درهم</span></div>
+        <small id="stickyLabel">عرض البنات · الدفع عند الاستلام</small>
       </div>
     </div>
     <a href="#order">
@@ -863,7 +870,7 @@
       { id: "2", qty: 2, price: 249, old: 498, featured: true, title: "عرض البنات قطعتين", chip: "لكِ وهدية لختك أو صاحبتك. وفّرتي بزاف على الوحدة", img: "./offer-v5-2.jpg", label: "عرض البنات" },
       { id: "3", qty: 3, price: 299, old: 597, title: "باقة المكياج الكامل 3 عبوات", chip: "تكفيك شهور. ما ترجعيش تشري فونديشن غالي", img: "./offer-v5-3.jpg", label: "باقة المكياج" }
     ];
-    var selected = "1";
+    var selected = "2";
     var pending = null;
     var eventId = (crypto.randomUUID && crypto.randomUUID()) || ("cc-" + Date.now());
 
