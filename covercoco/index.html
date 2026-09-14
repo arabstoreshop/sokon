@@ -117,18 +117,18 @@
     .lead { margin-top: 8px; font-size: 15.5px; color: rgba(255,250,245,.92); }
 
     .cta {
-      display: flex; align-items: center; justify-content: center; gap: 8px;
-      width: 100%; margin-top: 14px;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      width: 100%; margin-top: 16px;
       background: linear-gradient(180deg, #d8b08a, #a67c52);
       color: #fff;
       border: 0; border-radius: 999px;
-      padding: 16px 16px;
-      font-weight: 900; font-size: 18px;
-      box-shadow: 0 10px 24px rgba(166,124,82,.28);
+      padding: 20px 18px;
+      font-weight: 900; font-size: clamp(19px, 5.4vw, 22px);
+      box-shadow: 0 12px 28px rgba(166,124,82,.32);
       cursor: pointer;
     }
-    .cta svg { width: 22px; height: 22px; animation: bob 1.15s ease-in-out infinite; }
-    .cta small { display: block; font-size: 13px; font-weight: 700; opacity: .92; }
+    .cta svg { width: 26px; height: 26px; flex: none; animation: bob 1.15s ease-in-out infinite; }
+    .cta small { display: block; font-size: 14px; font-weight: 700; opacity: .92; margin-top: 2px; }
     @keyframes bob {
       0%, 100% { transform: translateY(0) scale(1); }
       50% { transform: translateY(-3px) scale(1.06); }
@@ -229,7 +229,7 @@
     .ugc p { padding: 0 12px 14px; font-size: 16px; }
 
     .order-title { font-size: clamp(15px, 4.4vw, 18px); font-weight: 900; text-align: center; margin-bottom: 12px; line-height: 1.55; }
-    .sets { display: grid; gap: clamp(8px, 2.4vw, 12px); }
+    .sets { display: grid; gap: clamp(12px, 3.2vw, 14px); }
     .set {
       position: relative;
       display: grid;
@@ -245,9 +245,9 @@
     }
     .set > div { min-width: 0; }
     .set.on {
-      background: linear-gradient(180deg, #fffdf9, #f8ecdf);
-      border-color: var(--nude-d);
-      box-shadow: 0 0 0 2px rgba(166,124,82,.28), 0 8px 18px rgba(166,124,82,.16);
+      background: linear-gradient(180deg, #e8c9a4, #c4925c);
+      border-color: #7a4e24;
+      box-shadow: 0 0 0 2px #7a4e24, 0 10px 20px rgba(122,78,36,.28);
     }
     .set img {
       width: 100%; max-width: 78px; aspect-ratio: 1; height: auto;
@@ -257,10 +257,11 @@
       border: 1.5px solid var(--orange);
       justify-self: center;
     }
-    .set.on img { border-color: var(--nude-d); }
+    .set.on img { border-color: #7a4e24; }
     .set h3 {
       font-size: clamp(12.5px, 3.7vw, 15.5px); font-weight: 900; line-height: 1.35;
     }
+    .set.on h3 { color: #2a1406; }
     .set .chip {
       display: block; margin-top: 5px;
       background: #1a1512; color: #fff;
@@ -271,12 +272,23 @@
       font-size: clamp(16px, 5vw, 22px); font-weight: 900; color: var(--ink);
       line-height: 1.05; text-align: left;
     }
-    .set.on .pr { color: var(--nude-d); }
+    .set.on .pr { color: #2a1406; }
     .set .pr small { display: block; font-size: clamp(10px, 3vw, 12px); font-weight: 800; margin-top: 1px; }
     .set .pr s {
       display: block; margin-top: 2px;
       color: #d21f1f; font-size: 11px; font-weight: 700;
       text-decoration: line-through;
+    }
+    .set.featured { padding-top: 28px; }
+    .ribbon {
+      position: absolute; top: 0; left: 50%;
+      transform: translateX(-50%);
+      background: #4a2c12;
+      color: #fff;
+      font-size: 11px; font-weight: 900; white-space: nowrap;
+      padding: 4px 14px;
+      border-radius: 0 0 12px 12px;
+      z-index: 2;
     }
 
     .form-head { text-align: center; font-size: 18px; font-weight: 900; margin: 18px 0 10px; }
@@ -349,7 +361,7 @@
       width: 100%;
       background: linear-gradient(180deg, #d8b08a, #a67c52);
       color: #fff; border-radius: 999px;
-      padding: 14px clamp(8px, 3vw, 12px); font-weight: 900; font-size: clamp(14px, 4.3vw, 17px);
+      padding: 16px clamp(8px, 3vw, 12px); font-weight: 900; font-size: clamp(16px, 4.6vw, 18px);
       white-space: nowrap;
       animation: ctaPulse 1.15s ease-in-out infinite;
     }
@@ -848,11 +860,11 @@
       whitelist: ["0600000000", "0700000000"]
     };
     var offers = [
-      { id: "1", qty: 1, price: 199, old: 299, title: "عبوة واحدة جرّبي اللون على بشرتك", chip: "تجربة أولى. كيتبدل مع لونك ف ثواني", img: "./offer-v5-1.jpg", label: "عبوة واحدة" },
+      { id: "1", qty: 1, price: 199, old: 299, featured: true, title: "عبوة واحدة جرّبي اللون على بشرتك", chip: "تجربة أولى. كيتبدل مع لونك ف ثواني", img: "./offer-v5-1.jpg", label: "عبوة واحدة" },
       { id: "2", qty: 2, price: 249, old: 498, title: "عرض البنات قطعتين", chip: "لكِ وهدية لختك أو صاحبتك. وفّرتي بزاف على الوحدة", img: "./offer-v5-2.jpg", label: "عرض البنات" },
       { id: "3", qty: 3, price: 299, old: 597, title: "باقة المكياج الكامل 3 عبوات", chip: "تكفيك شهور. ما ترجعيش تشري فونديشن غالي", img: "./offer-v5-3.jpg", label: "باقة المكياج" }
     ];
-    var selected = "2";
+    var selected = "1";
     var pending = null;
     var eventId = (crypto.randomUUID && crypto.randomUUID()) || ("cc-" + Date.now());
 
@@ -879,7 +891,8 @@
     }
     function renderPacks() {
       document.getElementById("packs").innerHTML = offers.map(function (o) {
-        return '<article class="set' + (o.id === selected ? " on" : "") + '" data-id="' + o.id + '" onclick="pick(this)">'
+        return '<article class="set' + (o.featured ? " featured" : "") + (o.id === selected ? " on" : "") + '" data-id="' + o.id + '" onclick="pick(this)">'
+          + (o.featured ? '<span class="ribbon">الأكثر طلباً</span>' : "")
           + '<img src="' + o.img + '" alt="' + o.title + '" />'
           + "<div><h3>" + o.title + '</h3><span class="chip">' + o.chip + "</span></div>"
           + '<div class="pr">' + o.price + "<small>درهم</small><s>" + o.old + "</s></div></article>";
