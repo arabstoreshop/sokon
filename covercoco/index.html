@@ -279,20 +279,40 @@
       color: #d21f1f; font-size: 11px; font-weight: 700;
       text-decoration: line-through;
     }
-    .set.featured { margin-top: 8px; overflow: visible; }
+    .set.featured { margin-top: 12px; overflow: visible; }
     .ribbon {
       position: absolute;
-      top: -12px;
-      left: 12px;
-      background: #4a2c12;
+      top: -13px;
+      left: 26px;
+      background: linear-gradient(180deg, #6a4422, #4a2c12);
       color: #fff;
       font-size: 11px;
       font-weight: 900;
       white-space: nowrap;
-      line-height: 1.2;
-      padding: 6px 12px 6px 16px;
-      z-index: 3;
-      clip-path: polygon(10px 0, 100% 0, 100% 100%, 10px 100%, 0 50%);
+      line-height: 1;
+      padding: 7px 13px 7px 11px;
+      border-radius: 0 8px 8px 0;
+      z-index: 4;
+      filter: drop-shadow(0 3px 6px rgba(42, 20, 6, .35));
+    }
+    .ribbon::before {
+      content: "";
+      position: absolute;
+      right: 100%;
+      top: 0;
+      bottom: 0;
+      width: 12px;
+      background: inherit;
+      clip-path: polygon(0 50%, 100% 0, 100% 100%);
+    }
+    .ribbon::after {
+      content: "";
+      position: absolute;
+      left: -10px;
+      top: 100%;
+      border: 6px solid transparent;
+      border-top-color: #2a1406;
+      border-left: 0;
     }
 
     .form-head { text-align: center; font-size: 18px; font-weight: 900; margin: 18px 0 10px; }
@@ -345,7 +365,7 @@
 
     .sticky {
       position: fixed; inset-inline: 0; bottom: 0; z-index: 60;
-      display: grid; grid-template-columns: auto minmax(0, 1.45fr);
+      display: grid; grid-template-columns: auto minmax(150px, 1.55fr);
       align-items: center; gap: 10px;
       background: rgba(247,239,230,.97);
       backdrop-filter: blur(12px);
@@ -359,13 +379,13 @@
     }
     .sticky .big { font-size: clamp(20px, 6vw, 26px); font-weight: 900; color: var(--nude-d); line-height: 1; }
     .sticky .big span { font-size: 13px; }
-    .sticky small { display: block; font-size: clamp(10px, 3vw, 12px); color: var(--mute); font-weight: 700; margin-top: 2px; }
+    .sticky small { display: block; font-size: clamp(10px, 3vw, 12px); color: var(--mute); font-weight: 700; margin-top: 2px; white-space: nowrap; }
     .sticky a {
-      display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+      display: inline-flex; align-items: center; justify-content: center; gap: 7px;
       width: 100%;
       background: linear-gradient(180deg, #d8b08a, #a67c52);
       color: #fff; border-radius: 999px;
-      padding: 16px clamp(8px, 3vw, 12px); font-weight: 900; font-size: clamp(16px, 4.6vw, 18px);
+      padding: 18px 14px; font-weight: 900; font-size: clamp(17px, 5vw, 20px);
       white-space: nowrap;
       animation: ctaPulse 1.15s ease-in-out infinite;
     }
@@ -846,10 +866,10 @@
 
   <div class="sticky" id="sticky">
     <div class="sticky-info">
-      <img id="stickyImg" src="./offer-v5-2.jpg" alt="Cover Coco" />
+      <img id="stickyImg" src="./offer-v5-1.jpg" alt="Cover Coco" />
       <div>
-        <div class="big"><span id="stickyPrice">249</span> <span>درهم</span></div>
-        <small id="stickyLabel">عرض البنات · الدفع عند الاستلام</small>
+        <div class="big"><span id="stickyPrice">199</span> <span>درهم</span></div>
+        <small id="stickyLabel">الدفع عند الاستلام</small>
       </div>
     </div>
     <a href="#order">
@@ -881,16 +901,10 @@
       return "مباشر";
     }
     function packById(id) { return offers.find(function (o) { return o.id === id; }) || offers[0]; }
-    function setPrice(pack) {
-      document.getElementById("stickyPrice").textContent = pack.price;
-      document.getElementById("stickyLabel").textContent = pack.label + " · الدفع عند الاستلام";
-      document.getElementById("stickyImg").src = pack.img;
-    }
     function pick(el) {
       document.querySelectorAll(".set").forEach(function (n) { n.classList.remove("on"); });
       el.classList.add("on");
       selected = el.dataset.id;
-      setPrice(packById(selected));
     }
     function renderPacks() {
       document.getElementById("packs").innerHTML = offers.map(function (o) {
@@ -1027,7 +1041,6 @@
     });
 
     renderPacks();
-    setPrice(packById(selected));
     captureSource();
   </script>
 </body>
