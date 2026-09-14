@@ -228,79 +228,68 @@
     }
     .ugc p { padding: 0 12px 14px; font-size: 16px; }
 
-    .order-title { font-size: 20px; font-weight: 900; text-align: center; margin-bottom: 12px; }
-    .sets { display: grid; gap: 10px; }
+    .order-title { font-size: clamp(15px, 4.4vw, 18px); font-weight: 900; text-align: center; margin-bottom: 12px; line-height: 1.55; }
+    .sets { display: grid; gap: clamp(14px, 3.6vw, 16px); }
     .set {
       position: relative;
       display: grid;
-      grid-template-columns: clamp(54px, 16vw, 70px) minmax(0, 1fr);
-      gap: clamp(10px, 3vw, 14px);
+      grid-template-columns: minmax(48px, 18vw) minmax(0, 1fr) auto;
+      gap: clamp(6px, 2vw, 10px);
       align-items: center;
       background: #fff;
       border: 1.5px solid var(--orange);
       border-radius: 18px;
-      padding: clamp(11px, 3.2vw, 14px);
+      padding: clamp(8px, 2.4vw, 12px);
       cursor: pointer;
       text-align: right;
     }
     .set > div { min-width: 0; }
     .set.on {
-      border-color: var(--nude-d);
-      box-shadow: 0 6px 18px rgba(166, 124, 82, .16);
+      border-color: #241d18;
+      box-shadow: 0 0 0 2px #241d18;
     }
     .set img {
-      width: 100%; aspect-ratio: 1; height: auto;
+      width: 100%; max-width: 78px; aspect-ratio: 1; height: auto;
       object-fit: contain;
       background: #fff;
       border-radius: 12px;
-      border: 1px solid var(--line);
+      border: 1.5px solid var(--orange);
+      justify-self: center;
     }
     .set h3 {
-      display: flex; align-items: center; gap: 7px;
-      font-size: clamp(14px, 4.1vw, 16px); font-weight: 900; line-height: 1.35;
-    }
-    .tick {
-      flex: none; position: relative;
-      width: 17px; height: 17px; border-radius: 50%;
-      border: 2px solid var(--orange);
-    }
-    .set.on .tick { border-color: var(--nude-d); background: var(--nude-d); }
-    .set.on .tick::after {
-      content: ""; position: absolute; inset: 0; margin: auto;
-      width: 6px; height: 6px; border-radius: 50%; background: #fff;
+      font-size: clamp(12.5px, 3.7vw, 15.5px); font-weight: 900; line-height: 1.35;
     }
     .set .chip {
       display: block; margin-top: 5px;
-      color: var(--mute);
-      font-size: clamp(11.5px, 3.4vw, 13px); font-weight: 700; line-height: 1.5;
+      background: #1a1512; color: #fff;
+      font-size: clamp(10.5px, 3.1vw, 12.5px); font-weight: 700; line-height: 1.45;
+      border-radius: 12px; padding: clamp(4px, 1.3vw, 6px) clamp(8px, 2.2vw, 10px);
     }
     .set .pr {
-      display: flex; align-items: baseline; flex-wrap: wrap; gap: 7px;
-      margin-top: 8px;
-      font-weight: 900; color: var(--ink); line-height: 1;
+      font-size: clamp(16px, 5vw, 22px); font-weight: 900; color: var(--ink);
+      line-height: 1.05; text-align: left;
     }
-    .set .pr b { font-size: clamp(21px, 6.4vw, 25px); }
-    .set .pr small { font-size: 12px; font-weight: 800; }
-    .set .pr s { font-size: 13px; font-weight: 800; color: #b3a696; }
-    .set .pr em {
-      font-style: normal; font-size: 11px; font-weight: 900;
-      direction: ltr; unicode-bidi: isolate;
-      background: var(--nude-d); color: #fff;
-      border-radius: 999px; padding: 3px 8px;
+    .set .pr small { display: block; font-size: clamp(10px, 3vw, 12px); font-weight: 800; margin-top: 1px; }
+    .set .pr s {
+      display: block; margin-top: 2px;
+      color: #c4b5a6; font-size: clamp(10px, 3vw, 12px); font-weight: 800;
     }
     .set.featured {
-      border-color: var(--nude-d);
-      background: linear-gradient(180deg, #fffdfb, #fdf5ed);
-      padding-top: clamp(27px, 7.5vw, 32px);
+      border-color: #241d18;
+      padding-top: clamp(16px, 4.5vw, 22px);
+      margin-top: 6px;
     }
     .ribbon {
-      position: absolute; top: -1px; left: -1px;
-      background: linear-gradient(180deg, #e8c09a, #a67c52);
+      position: absolute; top: -10px; left: 10px;
+      background: #241d18;
       color: #fff;
-      font-size: 11px; font-weight: 900; white-space: nowrap;
-      padding: 5px 11px;
-      border-radius: 0 0 14px 16px;
-      box-shadow: 0 6px 14px rgba(166,124,82,.28);
+      font-size: clamp(10px, 2.9vw, 11px); font-weight: 900; white-space: nowrap;
+      padding: 4px 10px;
+      border-radius: 8px 8px 8px 0;
+    }
+    .ribbon::after {
+      content: ""; position: absolute; right: 100%; top: 0;
+      border: 5px solid transparent; border-top-color: #0f0c0a; border-right: 0;
     }
 
     .form-head { text-align: center; font-size: 18px; font-weight: 900; margin: 18px 0 10px; }
@@ -332,7 +321,7 @@
       border-radius: 16px;
       font-weight: 900; color: var(--nude-d); font-size: 14px;
     }
-    .legal { margin-top: 8px; color: #9a8b7d; font-size: 13px; text-align: center; line-height: 1.6; }
+    .legal { margin-top: 8px; color: #9a8b7d; font-size: 13px; text-align: center; line-height: 1.6; unicode-bidi: isolate; }
 
     .faq details {
       background: var(--paper);
@@ -567,7 +556,7 @@
 
   <section id="order">
     <div class="wrap">
-      <p class="order-title">اختاري العرض وكمّلي الطلب</p>
+      <p class="order-title">لإتمام طلبك، يرجى تعبئة الاستمارة التالية قبل نفاد الكمية.</p>
       <div class="sets" id="packs"></div>
       <p class="form-head">أدخلي معلوماتك أسفله</p>
       <form id="orderForm">
@@ -584,7 +573,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 7h15l-1.5 9h-12z"/><path d="M6 7 5 4H2"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg>
           <span>أكّدي الطلب — <span class="ctaPrice">199</span> درهم<small>الدفع عند الاستلام بعد المعاينة</small></span>
         </button>
-        <p class="legal">Cover Coco Color Changing Naked Foundation — 30مل. منتج تجميل أصلي. ليس دواءً.</p>
+        <p class="legal"><span dir="ltr">Cover Coco Color Changing Naked Foundation — 30مل</span>. منتج تجميل أصلي. ليس دواءً.</p>
       </form>
     </div>
   </section>
@@ -872,11 +861,11 @@
       whitelist: ["0600000000", "0700000000"]
     };
     var offers = [
-      { id: "1", qty: 1, price: 199, old: 299, featured: true, title: "عبوة واحدة", chip: "نفس سعر الإعلان · جرّبي اللون على بشرتك", img: "./offer-v5-1.jpg", label: "عبوة واحدة" },
-      { id: "2", qty: 2, price: 249, old: 498, title: "قطعتين", chip: "عرض البنات · وحدة ليك ووحدة هدية لختك", img: "./offer-v5-2.jpg", label: "عرض البنات" },
-      { id: "3", qty: 3, price: 299, old: 597, title: "3 عبوات", chip: "الباقة الكاملة · تكفيك شهور بثمن واحد", img: "./offer-v5-3.jpg", label: "باقة المكياج" }
+      { id: "1", qty: 1, price: 199, old: 299, title: "عبوة واحدة جرّبي اللون على بشرتك", chip: "تجربة أولى. كيتبدل مع لونك ف ثواني", img: "./offer-v5-1.jpg", label: "عبوة واحدة" },
+      { id: "2", qty: 2, price: 249, old: 498, featured: true, title: "عرض البنات قطعتين", chip: "لكِ وهدية لختك أو صاحبتك. وفّرتي بزاف على الوحدة", img: "./offer-v5-2.jpg", label: "عرض البنات" },
+      { id: "3", qty: 3, price: 299, old: 597, title: "باقة المكياج الكامل 3 عبوات", chip: "تكفيك شهور. ما ترجعيش تشري فونديشن غالي", img: "./offer-v5-3.jpg", label: "باقة المكياج" }
     ];
-    var selected = "1";
+    var selected = "2";
     var pending = null;
     var eventId = (crypto.randomUUID && crypto.randomUUID()) || ("cc-" + Date.now());
 
@@ -906,9 +895,8 @@
         return '<article class="set ' + (o.featured ? "featured " : "") + (o.id === selected ? "on" : "") + '" data-id="' + o.id + '" onclick="pick(this)">'
           + (o.featured ? '<span class="ribbon">الأكثر طلباً</span>' : "")
           + '<img src="' + o.img + '" alt="' + o.title + '" />'
-          + "<div><h3><i class=\"tick\"></i>" + o.title + '</h3><span class="chip">' + o.chip + "</span>"
-          + '<div class="pr"><b>' + o.price + "</b><small>درهم</small><s>" + o.old + "</s>"
-          + "<em>-" + Math.round((1 - o.price / o.old) * 100) + "%</em></div></div></article>";
+          + "<div><h3>" + o.title + '</h3><span class="chip">' + o.chip + "</span></div>"
+          + '<div class="pr">' + o.price + "<small>درهم</small><s>" + o.old + "</s></div></article>";
       }).join("");
     }
     function easternToWestern(str) {
