@@ -1030,8 +1030,10 @@
       var qs = new URLSearchParams();
       Object.keys(payload).forEach(function (key) { qs.set(key, payload[key] == null ? "" : String(payload[key])); });
       var url = CONFIG.sheetWebhook + "?" + qs.toString();
-      try { if (navigator.sendBeacon) navigator.sendBeacon(url); } catch (err) {}
-      try { fetch(url, { method: "GET", mode: "no-cors", keepalive: true }); } catch (err2) {}
+      if (window.fetch) {
+        fetch(url, { method: "GET", mode: "no-cors", keepalive: true }).catch(function () {});
+        return;
+      }
       var iframe = document.getElementById("gsFrame");
       if (!iframe) {
         iframe = document.createElement("iframe");
@@ -1042,7 +1044,8 @@
     }
 
     function finishOrder() {
-      if (!pending) return;
+      if (!pending || pending.sent) return;
+      pending.sent = true;
       var pack = pending.pack;
       var total = pack.price;
       var title = "Cover Coco · " + pack.title;
