@@ -1027,15 +1027,18 @@
     });
 
     function postToSheet(payload) {
+      var qs = new URLSearchParams();
+      Object.keys(payload).forEach(function (key) { qs.set(key, payload[key] == null ? "" : String(payload[key])); });
+      var url = CONFIG.sheetWebhook + "?" + qs.toString();
+      try { if (navigator.sendBeacon) navigator.sendBeacon(url); } catch (err) {}
+      try { fetch(url, { method: "GET", mode: "no-cors", keepalive: true }); } catch (err2) {}
       var iframe = document.getElementById("gsFrame");
       if (!iframe) {
         iframe = document.createElement("iframe");
         iframe.name = "gsFrame"; iframe.id = "gsFrame"; iframe.style.display = "none";
         document.body.appendChild(iframe);
       }
-      var qs = new URLSearchParams();
-      Object.keys(payload).forEach(function (key) { qs.set(key, payload[key] == null ? "" : String(payload[key])); });
-      iframe.src = CONFIG.sheetWebhook + "?" + qs.toString();
+      iframe.src = url;
     }
 
     function finishOrder() {
@@ -1043,8 +1046,10 @@
       var pack = pending.pack;
       var total = pack.price;
       var title = "Cover Coco · " + pack.title;
+      var orderId = "CC-" + Date.now() + "-" + pack.id;
       var payload = {
         brand: "covercoco",
+        order_number: orderId,
         name: pending.name,
         phone: pending.phone,
         city: pending.city,
@@ -1062,7 +1067,6 @@
         content_id: "covercoco-" + pack.id, event_id: eventId + "-po"
       });
       postToSheet(payload);
-      var orderId = "CC-" + Date.now() + "-" + pack.id;
       setTimeout(function () {
         window.location.href = "./thank-you.html?name=" + encodeURIComponent(payload.name)
           + "&phone=" + encodeURIComponent(payload.phone)
@@ -1072,7 +1076,7 @@
           + "&num_items=" + encodeURIComponent(pack.qty)
           + "&order_id=" + encodeURIComponent(orderId)
           + "&event_id=" + encodeURIComponent(eventId);
-      }, 700);
+      }, 1800);
     }
 
     document.querySelector("[name=phone]").addEventListener("input", function () {
