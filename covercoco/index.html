@@ -475,33 +475,7 @@
       padding: 13px 14px; font-size: 16px; font-weight: 800;
     }
     .feat-row svg { width: 26px; height: 26px; color: var(--nude-d); }
-    .quotes {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px;
-    }
-    .quotes article {
-      background: var(--paper);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 14px 12px 16px;
-      text-align: center;
-      min-width: 0;
-      overflow: hidden;
-    }
-    .quotes img {
-      width: 78px; height: 78px; border-radius: 50%;
-      object-fit: cover; object-position: 50% 20%;
-      margin-inline: auto;
-      border: 2px solid var(--line);
-    }
-    .quotes .stars { display: block; text-align: center; margin-top: 6px; font-size: 13px; }
-    .quotes p {
-      font-size: 13.5px; line-height: 1.65; margin-top: 8px; color: var(--ink);
-      text-align: center;
-      overflow-wrap: break-word;
-      word-break: break-word;
-    }
-    .quotes b { display: block; margin-top: 8px; font-size: 14px; color: var(--nude-d); text-align: center; }
-    .shop-reviews { margin-top: 18px; }
+    .shop-reviews { margin-top: 14px; }
     .shop-reviews > h3 {
       font-size: 16px; font-weight: 900; text-align: center; margin-bottom: 10px; color: var(--ink);
     }
@@ -796,32 +770,6 @@
           ثبات من الصباح حتى الليل
         </span>
       </div>
-      <div class="quotes">
-        <article>
-          <img src="./rev-v7-1.jpg" alt="سعاد" />
-          <span class="stars">★★★★★</span>
-          <p>اللون تما معايا وكيبان طبيعي نهار كامل.</p>
-          <b>سعاد</b>
-        </article>
-        <article>
-          <img src="./rev-v7-2.jpg" alt="إيمان" />
-          <span class="stars">★★★★★</span>
-          <p>كيغطي مزيان وكيثبت. ما عادش نضيّع الوقت.</p>
-          <b>إيمان</b>
-        </article>
-        <article>
-          <img src="./rev-v7-3.jpg" alt="مريم" />
-          <span class="stars">★★★★★</span>
-          <p>تغطية طبيعية خفيفة وما كيسدّش المسام.</p>
-          <b>مريم</b>
-        </article>
-        <article>
-          <img src="./rev-v7-4.jpg" alt="فاطمة" />
-          <span class="stars">★★★★★</span>
-          <p>كيعطيني توهج زوين وكيبقا فريش نهار كامل.</p>
-          <b>فاطمة</b>
-        </article>
-      </div>
       <div class="shop-reviews" id="shopReviews">
         <h3>تعليقات الزبونات · وصلهم الطلب</h3>
         <div id="cmtList"></div>
@@ -1114,6 +1062,10 @@
     var CMT_KEY = "cc-comments-v1";
     var CMT_COLORS = ["#a67c52", "#c9a27a", "#7a4e24", "#8b6b4a", "#b08968"];
     var seededComments = [
+      { name: "سعاد التازي", city: "بني ملال", date: "22/09/2026", stars: 5, photo: "./avatars/cmt-16.jpg?v=2", text: "اللون تما معايا وكيبان طبيعي نهار كامل. ما بقيتش كنخلط ألوان." },
+      { name: "إيمان البوزيدي", city: "الحسيمة", date: "22/09/2026", stars: 5, photo: "./avatars/cmt-17.jpg?v=2", text: "كيغطي مزيان وكيثبت. ما عادش نضيّع الوقت قدام المرايا." },
+      { name: "مريم الشفشاوني", city: "شفشاون", date: "21/09/2026", stars: 5, photo: "./avatars/cmt-18.jpg?v=2", text: "تغطية طبيعية خفيفة وما كيسدّش المسام. خفيف على الوجه." },
+      { name: "فاطمة العرائشي", city: "العرائش", date: "21/09/2026", stars: 5, photo: "./avatars/cmt-19.jpg?v=2", text: "كيعطيني توهج زوين وكيبقا فريش نهار كامل. يستاهل الثمن." },
       { name: "سارة العلوي", city: "الدار البيضاء", date: "22/09/2026", stars: 5, photo: "./avatars/cmt-01.jpg?v=2", text: "وصلني ودرت التقييم من بعد ما جرّبتو. اللون تما معايا والوجه صافي بلا ما يبان ثقيل. التوصيل كان سريع والدفع عند الباب مريح." },
       { name: "إيمان بناني", city: "الرباط", date: "22/09/2026", stars: 5, photo: "./avatars/cmt-02.jpg?v=2", text: "طلعتو من تيك توك ووصل فالوقت. كيغطي الهالات مزيان وما كيقشرش. شكراً، الخدمة واضحة." },
       { name: "مريم الفاسي", city: "فاس", date: "21/09/2026", stars: 5, photo: "./avatars/cmt-03.jpg?v=2", text: "كنت خايفة من اللون، ولاكين تبدّل مع بشرتي. استعملتوه نهار كامل وما سالاش. يستاهل الثمن." },
