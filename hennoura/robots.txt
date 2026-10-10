@@ -1,0 +1,8 @@
+User-Agent: *
+Allow: /
+Disallow: /admin
+Disallow: /checkout
+Disallow: /thank-you
+Disallow: /api
+
+Sitemap: https://sokon.shop/hennoura/sitemap.xml
