@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>حنّورة | كريمة السدر والحناء المخفوقة — الدفع عند الاستلام</title>
+  <meta name="description" content="كريمة حنّورة المخفوقة: جاهزة بلا خلط. من 149 درهم. الدفع عند الاستلام لكل مدن المغرب." />
+  <meta name="theme-color" content="#F4EBDD" />
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="preload" as="image" href="./hero.jpg" fetchpriority="high" />
+  <style>
+    :root {
+      --henna: #2F4A3A;
+      --sand: #F4EBDD;
+      --paper: #fffaf4;
+      --terra: #A4532F;
+      --gold: #B08D57;
+      --mute: #6b6358;
+      --line: #e6d9c6;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Tajawal, sans-serif;
+      background: var(--sand);
+      color: var(--henna);
+      line-height: 1.7;
+      padding-bottom: 88px;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button, input { font-family: inherit; }
+    .wrap { width: min(520px, calc(100% - 24px)); margin-inline: auto; }
+    .top { background: var(--henna); color: var(--sand); text-align: center; font-size: 13.5px; font-weight: 800; padding: 9px 12px; }
+    nav {
+      position: sticky; top: 0; z-index: 50;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 10px 14px; background: rgba(244,235,221,.96);
+      border-bottom: 1px solid var(--line);
+    }
+    .logo img { height: 36px; width: auto; }
+    .nav-cta { background: var(--terra); color: #fff; padding: 9px 14px; border-radius: 999px; font-weight: 800; font-size: 14px; }
+    .hero { padding: 18px 0 8px; text-align: center; }
+    .hero img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 24px; background: #efe4d4; }
+    .badge { display: inline-block; background: #fff; border-radius: 999px; padding: 4px 10px; font-size: 12px; font-weight: 800; margin: 4px; }
+    h1 { font-size: clamp(24px, 6.4vw, 32px); font-weight: 900; line-height: 1.35; margin: 14px 0 8px; }
+    .mute { color: var(--mute); }
+    .cta {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      width: 100%; border: 0; border-radius: 999px; padding: 16px;
+      background: var(--terra); color: #fff; font-weight: 900; font-size: 17px; cursor: pointer;
+    }
+    .cta small { display: block; font-size: 12px; font-weight: 700; opacity: .9; }
+    .ghost { display: block; text-align: center; margin-top: 10px; font-weight: 800; color: var(--henna); }
+    section { padding: 28px 0; }
+    h2 { font-size: 22px; font-weight: 900; margin-bottom: 12px; }
+    .grid { display: grid; gap: 10px; }
+    .card { background: var(--paper); border: 1px solid var(--line); border-radius: 18px; padding: 14px; }
+    .card b { display: block; margin-bottom: 4px; }
+    .sets { display: grid; gap: 10px; margin: 12px 0; }
+    .set {
+      display: grid; grid-template-columns: 92px 1fr auto; gap: 10px; align-items: center;
+      background: #fff; border: 1.5px solid var(--line); border-radius: 18px; padding: 10px; cursor: pointer;
+    }
+    .set.on { border-color: var(--terra); box-shadow: 0 6px 20px rgba(164,83,47,.12); }
+    .set img { width: 92px; height: 80px; object-fit: cover; border-radius: 12px; }
+    .set h3 { font-size: 15px; font-weight: 900; }
+    .pr { font-weight: 900; font-size: 20px; white-space: nowrap; }
+    .pr small { display: block; font-size: 11px; color: var(--mute); }
+    .field {
+      width: 100%; padding: 14px 16px; border-radius: 16px; border: 1.5px solid var(--line);
+      background: #fff; margin-bottom: 8px; font-size: 16px;
+    }
+    .legal { font-size: 12px; color: var(--mute); margin-top: 8px; text-align: center; }
+    .sticky {
+      position: fixed; inset-inline: 0; bottom: 0; z-index: 40;
+      display: flex; justify-content: space-between; align-items: center; gap: 10px;
+      background: #fff; border-top: 1px solid var(--line);
+      padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+    }
+    .sticky a { background: var(--terra); color: #fff; border-radius: 999px; padding: 12px 16px; font-weight: 900; }
+    footer { padding: 24px 0 40px; color: var(--mute); font-size: 13px; text-align: center; }
+    details { background: var(--paper); border-radius: 16px; padding: 12px 14px; margin-bottom: 8px; }
+    summary { cursor: pointer; font-weight: 800; }
+  </style>
+</head>
+<body>
+  <div class="top">الدفع عند الاستلام · التوصيل لكل مدن المغرب</div>
+  <nav>
+    <a class="logo" href="#top"><img src="./logo.svg" alt="حنّورة" /></a>
+    <a class="nav-cta" href="#order">اطلبي الآن</a>
+  </nav>
+
+  <section class="hero wrap" id="top">
+    <img src="./hero.jpg" alt="كريمة حنّورة المخفوقة" />
+    <div>
+      <span class="badge">جاهزة بلا خلط</span>
+      <span class="badge">بدون لون</span>
+      <span class="badge">لا تجفّف الشعر</span>
+    </div>
+    <h1>قوّة السدر والحناء المحايدة… جاهزة، بلا خلط، بلا جفاف</h1>
+    <p class="mute">كريمة مخفوقة جاهزة في برطمان عنبري. تضعينها 20 دقيقة.</p>
+    <a class="cta" href="#order" style="margin-top:16px">اطلبي الآن – الدفع عند الاستلام</a>
+    <a class="ghost" href="#why">لماذا كريمة وليس مسحوق؟</a>
+  </section>
+
+  <section class="wrap" id="why">
+    <h2>لماذا كريمة وليس مسحوق؟</h2>
+    <div class="grid">
+      <div class="card"><b>بلا خلط</b><p class="mute">تفتحين البرطمان وتضعينها مباشرة.</p></div>
+      <div class="card"><b>بلا فوضى</b><p class="mute">لا مسحوق يتطاير ولا وعاء إضافي.</p></div>
+      <div class="card"><b>لا تجفّف الشعر</b><p class="mute">كريمة مكيّفة تُشطف بسهولة.</p></div>
+      <div class="card"><b>20 دقيقة بدل ساعات</b><p class="mute">طقس قصير بدل انتظار طويل.</p></div>
+    </div>
+  </section>
+
+  <section class="wrap" id="order">
+    <h2>اختاري عرضك</h2>
+    <div class="sets" id="packs"></div>
+    <p style="font-weight:800;margin:8px 0 10px">أدخلي معلوماتك</p>
+    <form id="orderForm">
+      <input class="field" required name="name" placeholder="الاسم الكامل" autocomplete="name" />
+      <input class="field" required name="phone" type="tel" inputmode="numeric" autocomplete="tel" maxlength="10" placeholder="رقم الهاتف" />
+      <input class="field" required name="city" list="cities" placeholder="المدينة" autocomplete="address-level2" />
+      <input class="field" required name="address" placeholder="العنوان (الحي، الشارع)" autocomplete="street-address" />
+      <datalist id="cities">
+        <option value="الدار البيضاء"></option><option value="الرباط"></option><option value="سلا"></option>
+        <option value="مراكش"></option><option value="فاس"></option><option value="طنجة"></option>
+        <option value="أكادير"></option><option value="مكناس"></option><option value="وجدة"></option>
+        <option value="تطوان"></option><option value="القنيطرة"></option><option value="الجديدة"></option>
+        <option value="بني ملال"></option><option value="مدينة أخرى"></option>
+      </datalist>
+      <button class="cta" type="submit">أكّدي الطلب — <span class="ctaPrice">249</span> درهم<small>الدفع عند الاستلام بعد التأكيد</small></button>
+      <p class="legal">كريمة حنّورة المخفوقة. منتج تجميلي. النتائج تختلف من شخص لآخر.</p>
+    </form>
+  </section>
+
+  <section class="wrap">
+    <h2>أسئلة شائعة</h2>
+    <details><summary>هل تلوّن الشعر؟</summary><p class="mute">لا، نستعمل الكاسيا (حناء محايدة).</p></details>
+    <details><summary>هل تجفّف الشعر؟</summary><p class="mute">لا، هي كريمة مكيّفة تُشطف بسهولة.</p></details>
+    <details><summary>كيف نخلص؟</summary><p class="mute">الدفع عند الاستلام نقدًا. نتصل بك قبل الشحن.</p></details>
+  </section>
+
+  <footer>
+    <p>منتج تجميلي. النتائج تختلف من شخص لآخر.</p>
+    <p>حنّورة · 2026</p>
+  </footer>
+
+  <div class="sticky">
+    <div><strong id="stickyPrice">249 درهم</strong><small class="mute">الدفع عند الاستلام</small></div>
+    <a href="#order">أطلبي الآن</a>
+  </div>
+
+  <script>
+    var CONFIG = {
+      sheetWebhook: "https://script.google.com/macros/s/AKfycbxTidbmqTr6dKV7lOEmlQBR81R_Sv-VF8AA7UerWzvJ0wWd8pT5QtyyA9NlOGU7WLE9YQ/exec",
+      whitelist: ["0600000000", "0700000000"]
+    };
+    var offers = [
+      { id: "1", qty: 1, price: 149, title: "علبة واحدة", chip: "للتجربة", img: "./pack-1.jpg" },
+      { id: "2", qty: 2, price: 249, title: "علبتان · طقس 8 أسابيع", chip: "مختار", featured: true, img: "./pack-2.jpg" },
+      { id: "3", qty: 3, price: 329, title: "ثلاث علب", chip: "أفضل قيمة", img: "./pack-3.jpg" }
+    ];
+    var selected = "2";
+
+    function packById(id) { return offers.find(function (o) { return o.id === id; }) || offers[1]; }
+    function pick(el) {
+      document.querySelectorAll(".set").forEach(function (n) { n.classList.remove("on"); });
+      el.classList.add("on");
+      selected = el.dataset.id;
+      var p = packById(selected).price;
+      document.querySelector(".ctaPrice").textContent = p;
+      document.getElementById("stickyPrice").textContent = p + " درهم";
+    }
+    function renderPacks() {
+      document.getElementById("packs").innerHTML = offers.map(function (o) {
+        return '<article class="set' + (o.id === selected ? " on" : "") + '" data-id="' + o.id + '" onclick="pick(this)">'
+          + '<img src="' + o.img + '" alt="' + o.title + '" />'
+          + "<div><h3>" + o.title + "</h3><span class='mute'>" + o.chip + "</span></div>"
+          + '<div class="pr">' + o.price + "<small>درهم</small></div></article>";
+      }).join("");
+    }
+    function easternToWestern(str) {
+      return String(str || "").replace(/[\u0660-\u0669]/g, function (d) { return String(d.charCodeAt(0) - 0x0660); })
+        .replace(/[\u06F0-\u06F9]/g, function (d) { return String(d.charCodeAt(0) - 0x06F0); });
+    }
+    function digitsOnlyPhone(raw) {
+      var s = easternToWestern(raw).replace(/[^\d]/g, "");
+      if (s.indexOf("00212") === 0) s = s.slice(5);
+      else if (s.indexOf("212") === 0) s = s.slice(3);
+      if (s.charAt(0) === "0") s = s.slice(1);
+      return s;
+    }
+    function toSheetPhone(raw) {
+      var western = easternToWestern(raw).replace(/[^\d]/g, "");
+      if (CONFIG.whitelist.indexOf(western) !== -1) return western;
+      return "0" + digitsOnlyPhone(raw);
+    }
+    function isMoroccoMobile(raw) {
+      var western = easternToWestern(raw).replace(/[^\d]/g, "");
+      if (CONFIG.whitelist.indexOf(western) !== -1) return true;
+      return /^[67]\d{8}$/.test(digitsOnlyPhone(raw));
+    }
+    function postToSheet(payload) {
+      var qs = new URLSearchParams();
+      Object.keys(payload).forEach(function (key) { qs.set(key, payload[key] == null ? "" : String(payload[key])); });
+      fetch(CONFIG.sheetWebhook + "?" + qs.toString(), { method: "GET", mode: "no-cors", keepalive: true }).catch(function () {});
+    }
+    document.getElementById("orderForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      var form = e.target;
+      var phoneEl = form.querySelector("[name=phone]");
+      phoneEl.value = easternToWestern(phoneEl.value).replace(/[^\d]/g, "");
+      if (!isMoroccoMobile(phoneEl.value)) {
+        phoneEl.setCustomValidity("كتبي رقم مغربي: 6 أو 7 و8 أرقام.");
+        phoneEl.reportValidity();
+        return;
+      }
+      phoneEl.setCustomValidity("");
+      var fd = new FormData(form);
+      var pack = packById(selected);
+      var orderId = "HN-" + Date.now() + "-" + pack.id;
+      var payload = {
+        brand: "hennoura",
+        order_number: orderId,
+        name: String(fd.get("name") || "").trim(),
+        phone: toSheetPhone(fd.get("phone")),
+        city: String(fd.get("city") || "").trim(),
+        address: String(fd.get("address") || "").trim(),
+        pack_id: pack.id,
+        pack_title: "حنّورة · " + pack.title,
+        price: pack.price,
+        source: String(fd.get("address") || "").trim() || "مباشر",
+        created_at: new Date().toISOString()
+      };
+      form.querySelector("button[type=submit]").disabled = true;
+      postToSheet(payload);
+      setTimeout(function () {
+        window.location.href = "./thank-you.html?name=" + encodeURIComponent(payload.name)
+          + "&value=" + encodeURIComponent(pack.price)
+          + "&order_id=" + encodeURIComponent(orderId);
+      }, 900);
+    });
+    renderPacks();
+  </script>
+</body>
+</html>
