@@ -811,11 +811,23 @@ Shopify.SignInWithShop.User.recognized = false;</script>
     }
   }
   document.addEventListener("DOMContentLoaded", function(){
-    document.querySelectorAll(".image-slide video").forEach(function(v){
-      var src = v.getAttribute("poster");
-      if (!src) return;
+    document.querySelectorAll("video.cosma-couple-loop, .image-slide video").forEach(function(v){
+      var srcEl = v.querySelector("source[type='video/mp4']");
+      var src = (srcEl && (srcEl.getAttribute("src") || srcEl.getAttribute("data-src"))) || v.getAttribute("src") || "";
+      if (/\.mp4(\?|$)/i.test(src)) {
+        if (srcEl && !v.getAttribute("src")) v.src = src;
+        v.muted = true;
+        v.loop = true;
+        v.setAttribute("playsinline", "");
+        v.playsInline = true;
+        var p = v.play();
+        if (p && p.catch) p.catch(function(){});
+        return;
+      }
+      var poster = v.getAttribute("poster");
+      if (!poster) return;
       var img = document.createElement("img");
-      img.src = src;
+      img.src = poster;
       img.alt = "";
       img.style.cssText = "width:100%;height:100%;object-fit:cover;position:absolute;inset:0";
       v.parentNode.replaceChild(img, v);
@@ -1099,6 +1111,8 @@ first.parentNode.insertBefore(script, first);
 <style id="cosma-hide-shopify-error">
   [data-cosma-hide-err="1"] { display: none !important; }
   #es-errors:empty { display: none !important; }
+  video.cosma-couple-loop { width:100%; height:100%; object-fit:cover; display:block; }
+  .internal-video:has(video.cosma-couple-loop) .internal-video__play { display:none !important; }
 </style>
 </head>
 
@@ -2146,6 +2160,31 @@ first.parentNode.insertBefore(script, first);
   </modal-opener></div>
 
           </li><li
+            id="Slide-template--22496695091418__main-cosma-couple"
+            class="product__media-item grid__item slider__slide"
+            data-media-id="template--22496695091418__main-cosma-couple"
+            data-alt="زوج خليجي يُحضّر Cosma Collagen"
+          >
+<div
+  class="product-media-container media-type-video media-fit-cover global-media-settings gradient constrain-height"
+  style="--ratio: 0.75; --preview-ratio: 0.75;"
+>
+  <div class="product__media media media--transparent">
+    <video
+      class="cosma-couple-loop"
+      autoplay
+      muted
+      loop
+      playsinline
+      disablepictureinpicture
+      poster="./couple.jpg"
+      style="width:100%;height:100%;object-fit:cover;display:block"
+    >
+      <source src="./couple.mp4" type="video/mp4">
+    </video>
+  </div>
+</div>
+          </li><li
             id="Slide-template--22496695091418__main-42630446874842"
             class="product__media-item grid__item slider__slide"
             data-media-id="template--22496695091418__main-42630446874842"
@@ -2389,10 +2428,29 @@ first.parentNode.insertBefore(script, first);
 ">
               </button>
             </li><li
+              id="Slide-Thumbnails-template--22496695091418__main-couple"
+              class="thumbnail-list__item slider__slide"
+              data-target="template--22496695091418__main-cosma-couple"
+              data-media-position="2"
+              data-alt="زوج خليجي يُحضّر Cosma Collagen"
+              style="--ratio: 133.33333333333334%"
+            >
+              <button
+                class="thumbnail global-media-settings global-media-settings--no-shadow"
+                aria-label="عرض فيديو التحضير"
+                aria-controls="GalleryViewer-template--22496695091418__main"
+                aria-describedby="Thumbnail-template--22496695091418__main-couple"
+              >
+                <img src="./couple.jpg" alt="زوج خليجي يُحضّر Cosma Collagen" width="416" height="555" loading="lazy" sizes="(min-width: 1400px) calc((715 - 4rem) / 4),
+          (min-width: 990px) calc((55.0vw - 4rem) / 4),
+          (min-width: 750px) calc((100vw - 15rem) / 8),
+          calc((100vw - 8rem) / 3)" id="Thumbnail-template--22496695091418__main-couple">
+              </button>
+            </li><li
               id="Slide-Thumbnails-template--22496695091418__main-2"
               class="thumbnail-list__item slider__slide"
               data-target="template--22496695091418__main-42630446874842"
-              data-media-position="2"
+              data-media-position="3"
               data-alt="Cosma Collagen"
               style="--ratio: 133.33333333333334%"
             >
@@ -4187,18 +4245,19 @@ first.parentNode.insertBefore(script, first);
     <internal-video
       class="internal-video internal-video--playing internal-video--muted"
       data-autoplay="true"
-      data-no-play-btn="false"
+      data-no-play-btn="true"
       
         data-action-on-inactive='none'
       
     >
       
       <video
+        class="cosma-couple-loop"
         width="100%"
         height="auto"
-        preload="metadata"
-        poster="./scene-woman.png"
-        
+        preload="auto"
+        poster="./couple.jpg"
+        autoplay
           loop
         
         
@@ -4209,168 +4268,7 @@ first.parentNode.insertBefore(script, first);
       >
         
           <source
-            data-src="./scene-woman.png"
-            type="application/x-mpegURL"
-          >
-        
-          <source
-            data-src="./scene-woman.png"
-            type="video/mp4"
-          >
-        
-      </video>
-      <button class="internal-video__play">
-        <div class="play-button color-accent-1"><svg
-  xmlns="http://www.w3.org/2000/svg"
-  aria-hidden="true"
-  focusable="false"
-  class="icon icon-play"
-  fill="none"
-  viewBox="0 0 10 14"
->
-  <path fill-rule="evenodd" clip-rule="evenodd" d="M1.48177 0.814643C0.81532 0.448245 0 0.930414 0 1.69094V12.2081C0 12.991 0.858787 13.4702 1.52503 13.0592L10.5398 7.49813C11.1918 7.09588 11.1679 6.13985 10.4965 5.77075L1.48177 0.814643Z" fill="currentColor"/>
-</svg>
-</div>
-      </button>
-      
-      
-    </internal-video>
-  
-</div>
-
-                        
-                      </div>
-                      
-                    
-                  </div>
-                </div>
-              </li><li class="splide__slide">
-                <div class="splide__slide__container">
-                  <div class="image-slide animate-item animate-item--child" style='--index: 1;' >
-                    
-                      
-                      <div
-                        
-                          class="image-slide__image media media--transparent ratio"
-                          
-                            style="--ratio-percent: 177.61989342806396%"
-                          
-                        
-                      >
-                        
-                          
-                          
-<div class="video-container">
-  
-    <internal-video
-      class="internal-video internal-video--playing internal-video--muted"
-      data-autoplay="true"
-      data-no-play-btn="false"
-      
-        data-action-on-inactive='none'
-      
-    >
-      
-      <video
-        width="100%"
-        height="auto"
-        preload="metadata"
-        poster="./scene-man.jpg"
-        
-          loop
-        
-        
-          muted
-        
-        playsinline
-        disablepictureinpicture
-      >
-        
-          <source
-            data-src="./scene-man.jpg"
-            type="application/x-mpegURL"
-          >
-        
-          <source
-            data-src="./scene-man.jpg"
-            type="video/mp4"
-          >
-        
-      </video>
-      <button class="internal-video__play">
-        <div class="play-button color-accent-1"><svg
-  xmlns="http://www.w3.org/2000/svg"
-  aria-hidden="true"
-  focusable="false"
-  class="icon icon-play"
-  fill="none"
-  viewBox="0 0 10 14"
->
-  <path fill-rule="evenodd" clip-rule="evenodd" d="M1.48177 0.814643C0.81532 0.448245 0 0.930414 0 1.69094V12.2081C0 12.991 0.858787 13.4702 1.52503 13.0592L10.5398 7.49813C11.1918 7.09588 11.1679 6.13985 10.4965 5.77075L1.48177 0.814643Z" fill="currentColor"/>
-</svg>
-</div>
-      </button>
-      
-      
-    </internal-video>
-  
-</div>
-
-                        
-                      </div>
-                      
-                    
-                  </div>
-                </div>
-              </li><li class="splide__slide">
-                <div class="splide__slide__container">
-                  <div class="image-slide animate-item animate-item--child" style='--index: 2;' >
-                    
-                      
-                      <div
-                        
-                          class="image-slide__image media media--transparent ratio"
-                          
-                            style="--ratio-percent: 177.61989342806396%"
-                          
-                        
-                      >
-                        
-                          
-                          
-<div class="video-container">
-  
-    <internal-video
-      class="internal-video internal-video--playing internal-video--muted"
-      data-autoplay="true"
-      data-no-play-btn="false"
-      
-        data-action-on-inactive='none'
-      
-    >
-      
-      <video
-        width="100%"
-        height="auto"
-        preload="metadata"
-        poster="./gallery-2.jpg"
-        
-          loop
-        
-        
-          muted
-        
-        playsinline
-        disablepictureinpicture
-      >
-        
-          <source
-            data-src="./gallery-2.jpg"
-            type="application/x-mpegURL"
-          >
-        
-          <source
-            data-src="./gallery-2.jpg"
+            src="./couple.mp4"
             type="video/mp4"
           >
         
