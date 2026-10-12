@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cosma Collagen | كولاجين كوري يومي — الدفع عند الاستلام</title>
+  <meta name="description" content="Cosma Collagen كولاجين السمك الكوري مع البيوتين، ليسين هيدروكلوريد، فيتامين C وحمض الهيالورونيك. 199 ريال. الدفع عند الاستلام داخل السعودية." />
+  <meta name="theme-color" content="#1F3A6E" />
+  <meta property="og:title" content="Cosma Collagen" />
+  <meta property="og:image" content="./scene-woman.png" />
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+  <link rel="canonical" href="https://sokon.shop/cosma/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="preload" as="image" href="./gallery-1.jpg" fetchpriority="high" />
+  <style>
+    :root {
+      --navy: #1F3A6E;
+      --sky: #DCEBF5;
+      --gold: #C9A24A;
+      --white: #ffffff;
+      --ink: #1F3A6E;
+      --mute: #5b6f8c;
+      --line: #c5d6e4;
+      --soft: #f4f9fc;
+      --ok: #2e7d4f;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Tajawal, sans-serif;
+      background: var(--white);
+      color: var(--ink);
+      line-height: 1.7;
+      padding-bottom: 86px;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button, input { font-family: inherit; }
+    .wrap { width: min(560px, calc(100% - 24px)); margin-inline: auto; }
+
+    .ticker {
+      background: var(--navy); color: #fff;
+      overflow: hidden; white-space: nowrap;
+      font-size: 13px; font-weight: 800; padding: 9px 0;
+    }
+    .ticker span { display: inline-block; padding-inline: 28px; animation: marquee 18s linear infinite; }
+    @keyframes marquee { from { transform: translateX(-50%); } to { transform: translateX(50%); } }
+
+    nav {
+      position: sticky; top: 0; z-index: 40;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 10px 16px;
+      background: rgba(255,255,255,.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+    .logo b { display: block; font-size: 18px; letter-spacing: .14em; font-weight: 900; color: var(--navy); }
+    .logo small { display: block; font-size: 10px; letter-spacing: .2em; color: var(--gold); font-weight: 800; }
+    .nav-cta {
+      background: var(--navy); color: #fff;
+      font-size: 13px; font-weight: 900;
+      padding: 9px 14px; border-radius: 8px;
+    }
+
+    .gallery { position: relative; background: var(--sky); }
+    .slides { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
+    .slides::-webkit-scrollbar { display: none; }
+    .slides img { min-width: 100%; height: min(78vw, 560px); object-fit: cover; scroll-snap-align: start; }
+    .thumbs { display: flex; gap: 8px; padding: 10px 12px 4px; overflow-x: auto; }
+    .thumbs img {
+      width: 64px; height: 80px; object-fit: cover; border-radius: 8px;
+      border: 2px solid transparent; flex: none; cursor: pointer;
+    }
+    .thumbs img.on { border-color: var(--navy); }
+    .dots { display: flex; justify-content: center; gap: 6px; padding: 6px 0 10px; }
+    .dots i { width: 7px; height: 7px; border-radius: 50%; background: #c5d0dc; }
+    .dots i.on { background: var(--navy); }
+
+    .hero-copy { padding: 8px 0 0; }
+    .stars { color: var(--gold); letter-spacing: 1px; font-size: 16px; }
+    .rating { display: flex; align-items: center; gap: 8px; justify-content: center; font-size: 13px; font-weight: 800; color: var(--mute); }
+    h1 { font-size: clamp(28px, 8vw, 36px); font-weight: 900; text-align: center; margin: 8px 0 12px; }
+    .benefits { display: grid; gap: 8px; margin: 0 0 14px; }
+    .benefits span {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 15px; font-weight: 800;
+    }
+    .benefits i { color: var(--gold); font-style: normal; }
+
+    .price-row { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; margin: 10px 0 16px; }
+    .price-row .now { font-size: 28px; font-weight: 900; }
+    .price-row s { color: var(--mute); font-size: 18px; }
+    .save { background: #ead9a8; color: var(--navy); border-radius: 999px; padding: 4px 10px; font-size: 12px; font-weight: 900; }
+
+    .form-intro { text-align: center; font-weight: 800; font-size: 16px; margin: 8px 0 14px; }
+
+    .set {
+      display: grid; grid-template-columns: 72px 1fr auto;
+      gap: 10px; align-items: center;
+      border: 1.5px solid var(--line); border-radius: 14px;
+      padding: 12px 12px; margin-bottom: 10px; cursor: pointer; background: #fff;
+    }
+    .set img { width: 72px; height: 72px; object-fit: cover; border-radius: 10px; }
+    .set h3 { font-size: 14.5px; font-weight: 800; line-height: 1.45; }
+    .set .chip { display: inline-block; margin-top: 4px; background: #ead9a8; color: var(--navy); border-radius: 8px; padding: 3px 8px; font-size: 11px; font-weight: 900; }
+    .set .chip.hot { background: var(--gold); color: #fff; }
+    .set .pr { text-align: left; font-weight: 900; font-size: 18px; white-space: nowrap; }
+    .set .pr small { display: block; font-size: 12px; font-weight: 800; }
+    .set .pr s { display: block; color: var(--mute); font-size: 13px; font-weight: 700; }
+    .set.on { border-color: var(--navy); box-shadow: 0 0 0 1px var(--navy); }
+    .set.featured { border-width: 2px; }
+
+    .sum {
+      background: var(--soft); border-radius: 12px; padding: 12px 14px; margin: 8px 0 16px;
+      font-size: 14.5px; font-weight: 800;
+    }
+    .sum div { display: flex; justify-content: space-between; padding: 4px 0; }
+    .sum .disc { color: #c0392b; }
+    .sum .tot { font-size: 18px; font-weight: 900; border-top: 1px solid var(--line); margin-top: 6px; padding-top: 8px; }
+
+    label { display: block; font-size: 14px; font-weight: 800; margin: 10px 0 6px; }
+    .field {
+      width: 100%; border: 1px solid var(--line); border-radius: 10px;
+      padding: 13px 14px; font-size: 16px; background: #fff; color: var(--ink);
+    }
+    .cta {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      width: 100%; margin-top: 14px;
+      background: var(--navy); color: #fff; border: 0; border-radius: 10px;
+      padding: 16px 16px; font-weight: 900; font-size: 17px; cursor: pointer;
+    }
+    .cta svg { width: 20px; height: 20px; animation: bob 1.15s ease-in-out infinite; }
+    @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+
+    .quote {
+      background: var(--soft); border-radius: 16px; padding: 16px; margin-top: 18px; text-align: center;
+    }
+    .quote p { font-size: 14.5px; font-weight: 700; }
+    .quote b { display: block; margin-top: 8px; color: var(--gold); }
+
+    details { border-bottom: 1px solid var(--line); padding: 12px 0; }
+    details summary { list-style: none; font-weight: 900; font-size: 16px; cursor: pointer; }
+    details summary::-webkit-details-marker { display: none; }
+    details p { margin-top: 8px; color: var(--mute); font-size: 14.5px; }
+
+    .banner { margin: 18px 0; border-radius: 18px; overflow: hidden; position: relative; }
+    .banner img { width: 100%; height: auto; }
+    .banner .cap {
+      position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 18px; color: #fff;
+      background: linear-gradient(180deg, transparent 30%, rgba(31,58,110,.78));
+    }
+    .banner h3 { font-size: 22px; font-weight: 900; line-height: 1.3; }
+    .banner span { font-size: 13px; font-weight: 800; color: var(--gold); }
+
+    .cards { display: grid; gap: 10px; margin-top: 12px; }
+    .cards article { background: var(--soft); border-radius: 16px; padding: 16px; }
+    .cards b { display: block; font-size: 16px; margin-bottom: 4px; }
+    .cards p { font-size: 14px; color: var(--mute); }
+
+    .split { margin: 22px 0; border-radius: 18px; overflow: hidden; background: var(--soft); }
+    .split img { width: 100%; height: 420px; object-fit: cover; object-position: 50% 20%; }
+    .split .txt { padding: 18px 16px 20px; }
+    .split h2 { font-size: 22px; font-weight: 900; margin-bottom: 8px; }
+    .split p { color: var(--mute); font-size: 15px; }
+
+    .ing-hero, .ing {
+      background: #fff; border-radius: 18px; padding: 18px; margin-top: 12px;
+      box-shadow: 0 8px 24px rgba(31,58,110,.06);
+    }
+    .pill { display: inline-block; background: var(--sky); color: var(--navy); border-radius: 999px; padding: 4px 10px; font-size: 12px; font-weight: 900; }
+    .ing-hero h3, .ing h3 { font-size: 22px; margin: 8px 0 2px; }
+    .ing-hero em, .ing em { font-style: normal; color: var(--mute); font-size: 13px; }
+    .ing-hero p, .ing p { margin-top: 8px; color: var(--ink); }
+    .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; text-align: center; }
+    .stats b { display: block; font-size: 22px; color: var(--gold); }
+    .stats span { font-size: 12px; color: var(--mute); font-weight: 800; }
+    .ing-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+    .ico { width: 42px; height: 42px; border-radius: 12px; background: var(--sky); display: grid; place-items: center; font-size: 18px; }
+
+    .kicker { font-size: 13px; font-weight: 900; color: var(--gold); margin-bottom: 6px; }
+    h2 { font-size: clamp(22px, 6vw, 28px); font-weight: 900; line-height: 1.35; }
+    section { padding: 26px 0; }
+    .cream { background: var(--soft); }
+
+    .score { display: flex; align-items: center; justify-content: center; gap: 10px; margin: 14px 0; }
+    .score strong { font-size: 40px; font-weight: 900; }
+    .cmt { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 12px; margin-top: 8px; }
+    .cmt-top { display: flex; justify-content: space-between; font-size: 13px; font-weight: 800; }
+    .cmt p { margin-top: 6px; font-size: 14px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+    .tags span { background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 6px 10px; font-size: 12px; font-weight: 800; }
+
+    .icons { display: grid; gap: 10px; }
+    .icons article { display: grid; grid-template-columns: 42px 1fr; gap: 10px; align-items: center; background: #fff; border-radius: 14px; padding: 12px; }
+    .icons b { display: block; font-size: 15px; }
+    .icons p { font-size: 13px; color: var(--mute); }
+
+    footer { text-align: center; padding: 28px 16px 40px; color: var(--mute); font-size: 12px; }
+    footer b { display: block; color: var(--navy); letter-spacing: .16em; font-size: 14px; margin-bottom: 4px; }
+
+    .sticky {
+      position: fixed; inset-inline: 0; bottom: 0; z-index: 60;
+      display: grid; grid-template-columns: 1fr 1.3fr;
+      gap: 8px; align-items: center;
+      background: #fff; border-top: 1px solid var(--line);
+      padding: 8px 12px calc(8px + env(safe-area-inset-bottom));
+    }
+    .sticky-info { display: flex; align-items: center; gap: 8px; }
+    .sticky-info img { width: 46px; height: 46px; object-fit: cover; border-radius: 10px; }
+    .sticky .big { font-size: 20px; font-weight: 900; line-height: 1; }
+    .sticky small { display: block; font-size: 11px; color: var(--mute); font-weight: 700; }
+    .sticky a {
+      background: var(--navy); color: #fff; text-align: center;
+      border-radius: 10px; padding: 12px 10px; font-weight: 900; font-size: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="ticker"><span>راحة يومية طبيعية · نكهة خفيفة ومريحة · الدفع عند الاستلام · راحة يومية طبيعية · نكهة خفيفة ومريحة · الدفع عند الاستلام · </span></div>
+  <nav>
+    <div class="logo"><b>COSMA</b><small>COLLAGEN</small></div>
+    <a class="nav-cta" href="#order">اضغط هنا للطلب</a>
+  </nav>
+
+  <div class="gallery">
+    <div class="slides" id="slides">
+      <img src="./gallery-1.jpg" alt="Cosma Collagen" />
+      <img src="./gallery-2.jpg" alt="Cosma Collagen مع المشروب" />
+      <img src="./gallery-3.jpg" alt="عبوة Cosma Collagen" />
+      <img src="./gallery-4.jpg" alt="Cosma Collagen على الطاولة" />
+    </div>
+    <div class="thumbs" id="thumbs">
+      <img class="on" src="./gallery-1.jpg" data-i="0" alt="" />
+      <img src="./gallery-2.jpg" data-i="1" alt="" />
+      <img src="./gallery-3.jpg" data-i="2" alt="" />
+      <img src="./gallery-4.jpg" data-i="3" alt="" />
+    </div>
+    <div class="dots" id="dots"><i class="on"></i><i></i><i></i><i></i></div>
+  </div>
+
+  <div class="wrap hero-copy">
+    <p class="rating"><span class="stars">★★★★★</span> (+278 تقييم)</p>
+    <h1>Cosma Collagen</h1>
+    <div class="benefits">
+      <span><i>✦</i> كولاجين كوري يومي لدعم البشرة والشعر</span>
+      <span><i>☕</i> يُمزج بسهولة مع الماء البارد أو العادي</span>
+      <span><i>⏱</i> تحضير سريع وسهل في دقائق</span>
+      <span><i>🇰🇷</i> كولاجين السمك الكوري بجودة موثوقة</span>
+    </div>
+    <div class="price-row">
+      <span class="now" id="heroPrice">199 ريال</span>
+      <s id="heroOld">249 ريال</s>
+      <span class="save" id="heroSave">وفر 20%</span>
+    </div>
+  </div>
+
+  <section id="order">
+    <div class="wrap">
+      <p class="form-intro">يرجى ملء الاستمارة لإتمام الطلب والدفع عند الاستلام</p>
+      <div id="packs"></div>
+      <div class="sum">
+        <div><span>المجموع الفرعي</span><span id="sub">199.00 ريال</span></div>
+        <div class="disc"><span>الخصم</span><span id="disc">-50.00 ريال</span></div>
+        <div><span>الشحن</span><span>مجاني</span></div>
+        <div class="tot"><span>المجموع</span><span id="tot">199.00 ريال</span></div>
+      </div>
+      <form id="orderForm">
+        <label>الاسم*</label>
+        <input class="field" required name="name" placeholder="الاسم" autocomplete="name" />
+        <label>الهاتف*</label>
+        <input class="field" required name="phone" type="tel" inputmode="numeric" autocomplete="tel" maxlength="14" placeholder="05xxxxxxxx" />
+        <label>المدينة</label>
+        <input class="field" required name="city" list="cities" placeholder="المدينة" autocomplete="address-level2" />
+        <datalist id="cities">
+          <option value="الرياض"></option><option value="جدة"></option><option value="مكة المكرمة"></option>
+          <option value="المدينة المنورة"></option><option value="الدمام"></option><option value="الخبر"></option>
+          <option value="الظهران"></option><option value="الطائف"></option><option value="أبها"></option>
+          <option value="تبوك"></option><option value="بريدة"></option><option value="حائل"></option>
+          <option value="نجران"></option><option value="جازان"></option><option value="ينبع"></option>
+          <option value="الجبيل"></option><option value="القطيف"></option><option value="خميس مشيط"></option>
+          <option value="الأحساء"></option><option value="عرعر"></option>
+        </datalist>
+        <button class="cta" type="submit">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 7h15l-1.5 9h-12z"/><path d="M6 7 5 4H2"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg>
+          اضغط هنا للطلب
+        </button>
+      </form>
+      <article class="quote">
+        <p>وصلني الطلب بسرعة والدفع كان عند الاستلام. المنتج يذوب بسهولة والطعم مقبول جدًا مقارنة بمنتجات كولاجين ثانية.</p>
+        <b>★★★★★ ريم</b>
+      </article>
+      <details open>
+        <summary>ما هو Cosma Collagen ؟</summary>
+        <p>Cosma Collagen هو مسحوق كولاجين كوري بتركيبة مختارة تجمع بين كولاجين السمك الكوري، البيوتين، ليسين هيدروكلوريد، فيتامين C، وحمض الهيالورونيك لدعم روتين العناية اليومي.</p>
+      </details>
+      <details>
+        <summary>كيف يتم استخدامه؟</summary>
+        <p>يتم مزج البودرة مع ماء بارد أو ماء بدرجة حرارة الغرفة، ثم تحريكها جيدًا حتى تذوب. لا يحتاج إلى ماء ساخن أو خطوات معقدة.</p>
+      </details>
+      <details>
+        <summary>متى يمكن استخدامه؟</summary>
+        <p>يمكن استخدامه في الصباح، خلال اليوم، بعد التمرين، أو في أي وقت يناسب روتينك الشخصي.</p>
+      </details>
+      <details>
+        <summary>الشحن والدفع</summary>
+        <p>توصيل سريع خلال 24 إلى 72 ساعة داخل السعودية، مع خدمة الدفع عند الاستلام. اطلب الآن، استلم منتجك في باب منزلك، وادفع فقط عند وصول الطلب.</p>
+      </details>
+      <div class="banner">
+        <img src="./ingredients.jpg" alt="Cosma Collagen — تركيبة كورية" />
+        <div class="cap">
+          <span>كولاجين كوري يومي</span>
+          <h3>تركيبة مدروسة للبشرة والشعر</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cream">
+    <div class="wrap">
+      <h2>جودة طبيعية تناسب الرجال والنساء</h2>
+      <div class="cards">
+        <article><b>تركيبة مدروسة بعناية</b><p>Cosma Collagen يجمع بين كولاجين السمك الكوري، حمض الهيالورونيك، البيوتين، ليسين هيدروكلوريد، وفيتامين C لدعم روتين الجمال اليومي بطريقة بسيطة.</p></article>
+        <article><b>مناسب للرجال والنساء</b><p>تركيبة خفيفة تناسب مختلف أنماط الحياة، سواء كنت تبحث عن مشروب بعد العمل أو لحظة راحة في المنزل.</p></article>
+        <article><b>نكهة طبيعية ومريحة</b><p>طعم لطيف بدون مبالغة، مناسب لمن يحبون المشروبات اليومية الخفيفة.</p></article>
+        <article><b>تجربة يومية راقية</b><p>كوب بسيط وسهل التحضير يضيف لمسة هدوء وجودة إلى روتينك اليومي.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <article class="split">
+      <img src="./scene-woman.png" alt="روتين يومي مع Cosma Collagen" />
+      <div class="txt">
+        <h2>عناية يومية بجمالك من الداخل</h2>
+        <p>مع Cosma Collagen اجعلي روتينك اليومي أسهل وأكثر انتعاشًا. بودرة كولاجين كوري تحتوي على كولاجين السمك، حمض الهيالورونيك، البيوتين، ليسين هيدروكلوريد، وفيتامين C، لتكون إضافة بسيطة لروتين العناية بالبشرة، الشعر، والأظافر.</p>
+      </div>
+    </article>
+    <article class="split">
+      <img src="./scene-man.jpg" alt="Cosma Collagen للرجال والنساء" />
+      <div class="txt">
+        <h2>دعم يومي لروتين نشيط ومتوازن</h2>
+        <p>Cosma Collagen ليس للنساء فقط، بل هو خيار عملي للرجال أيضًا. بودرة سهلة التحضير تُخلط مع الماء البارد أو العادي، ومكونات مختارة مثل الكولاجين الكوري، البيوتين، وفيتامين C لتناسب نمط حياة يومي أكثر عناية وجودة.</p>
+      </div>
+    </article>
+  </div>
+
+  <section class="cream" id="ingredients">
+    <div class="wrap">
+      <p class="kicker">ماذا داخل العبوة؟</p>
+      <h2>تركيبة جمال يومية من كوريا.</h2>
+      <p class="mute" style="color:var(--mute);margin-top:8px">توضح العبوة مكونات مختارة: كولاجين السمك الكوري، البيوتين، ليسين هيدروكلوريد، فيتامين C، وحمض الهيالورونيك.</p>
+
+      <article class="ing-hero">
+        <span class="pill">المكوّن الأساسي</span>
+        <h3>كولاجين السمك الكوري</h3>
+        <em>Korean Fish Collagen</em>
+        <p>اللبنة الأساسية لمرونة البشرة وكثافة الشعر. كولاجين بحري متحلل سهل الامتصاص، بصيغة كورية لدعم أنسجة الجسم من الداخل.</p>
+        <div class="stats">
+          <div><b>Bio</b><span>كولاجين حيوي</span></div>
+          <div><b>KR</b><span>صنع في كوريا</span></div>
+          <div><b>Type I</b><span>للبشرة والشعر</span></div>
+          <div><b>100%</b><span>مسحوق يومي</span></div>
+        </div>
+      </article>
+      <article class="ing">
+        <div class="ing-head"><div><span class="pill">نمو الشعر</span><h3>بيوتين</h3><em>Biotin (Vitamin B7)</em></div><div class="ico">✂</div></div>
+        <p>فيتامين الجمال الأشهر، يدعم نمو الشعر بشكل صحي، يقوي البصيلات، ويحدّ من التساقط الموسمي.</p>
+      </article>
+      <article class="ing">
+        <div class="ing-head"><div><span class="pill">بناء الكولاجين</span><h3>ليسين هيدروكلوريد</h3><em>Lysine Hydrochloride</em></div><div class="ico">◇</div></div>
+        <p>حمض أميني أساسي يساعد الجسم على الاستفادة من الكولاجين ودعم ترميم الأنسجة في روتين يومي بسيط.</p>
+      </article>
+      <article class="ing">
+        <div class="ing-head"><div><span class="pill">حيوية شاملة</span><h3>فيتامين C</h3><em>Vitamin C</em></div><div class="ico">✦</div></div>
+        <p>يدعم تكوين الكولاجين الطبيعي، يغذي البشرة من الداخل، ويضيف لمسة مضادة للأكسدة إلى روتينك اليومي.</p>
+      </article>
+      <article class="ing">
+        <div class="ing-head"><div><span class="pill">ترطيب عميق</span><h3>حمض الهيالورونيك</h3><em>Hyaluronic Acid</em></div><div class="ico">💧</div></div>
+        <p>يحبس الرطوبة في طبقات البشرة العميقة، يمنحها امتلاءً ونعومة، ويقلل ظهور الخطوط الدقيقة بفعالية.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="reviews">
+    <div class="wrap">
+      <p class="kicker">آراء مُوثَّقة من عملائنا</p>
+      <h2>يحكون عن تجربتهم مع Cosma</h2>
+      <p style="color:var(--mute);margin-top:8px">أكثر من ١٢٠٠ عميل وعميلة في المملكة جربوا البودرة اليومية للشعر والبشرة، تُمزج ببساطة مع كوب ماء بارد.</p>
+      <div class="score">
+        <strong>٤٫٨</strong>
+        <div><span class="stars">★★★★★</span><small style="display:block;font-weight:800;color:var(--mute)">بناءً على ١٬٢٤٧ تقييماً · ٩٦٪ يوصون بالمنتج</small></div>
+      </div>
+      <div class="tags">
+        <span>صحة الشعر ٤١٢</span><span>نضارة البشرة ٣٨٧</span><span>طعم منعش ٢٩٤</span>
+        <span>سهل التحضير ٢٤١</span><span>ذوبان سريع ١٩٨</span>
+      </div>
+      <article class="cmt"><div class="cmt-top"><b>سارة</b><span class="stars">★★★★★</span></div><p>جربت Cosma Collagen لأن التحضير سهل جدًا. أخلطه مع ماء بارد في الصباح والطعم خفيف، ما حسّيته ثقيل أبدًا.</p></article>
+      <article class="cmt"><div class="cmt-top"><b>محمد</b><span class="stars">★★★★★</span></div><p>النكهة منعشة وسهلة الشرب. أكثر شيء عجبني وجود الكولاجين والبيوتين وفيتامين C في منتج واحد.</p></article>
+      <article class="cmt"><div class="cmt-top"><b>ريم</b><span class="stars">★★★★★</span></div><p>وصلني الطلب بسرعة والدفع كان عند الاستلام. المنتج يذوب بسهولة والطعم مقبول جدًا مقارنة بمنتجات كولاجين ثانية.</p></article>
+    </div>
+  </section>
+
+  <section class="cream">
+    <div class="wrap">
+      <p class="kicker">الأسئلة الشائعة</p>
+      <h2>قبل الطلب</h2>
+      <details open>
+        <summary>ما هي نكهة المنتج؟</summary>
+        <p>المنتج يأتي بنكهة خفيفة ومنعشة، سهلة الشرب يوميًا.</p>
+      </details>
+      <details>
+        <summary>كم مرة أستخدمه في اليوم؟</summary>
+        <p>يمكنك استخدامه مرة واحدة يوميًا أو حسب تفضيلك. لا ننصح بالإفراط.</p>
+      </details>
+      <details>
+        <summary>هل يمكن شربه قبل النوم؟</summary>
+        <p>نعم، يمكن تناوله في المساء إذا كان يناسبك.</p>
+      </details>
+      <details>
+        <summary>هل الطعم قوي؟</summary>
+        <p>طعمه خفيف ومتوازن، مناسب للأشخاص الذين لا يحبون النكهات القوية جدًا.</p>
+      </details>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="icons">
+        <article><div class="ico">🚚</div><div><b>شحن سريع داخل السعودية</b><p>توصيل موثوق مع رقم تتبع.</p></div></article>
+        <article><div class="ico">💵</div><div><b>الدفع عند الاستلام</b><p>اطلب الآن واستلم منتجك في باب منزلك.</p></div></article>
+        <article><div class="ico">✓</div><div><b>جودة مضمونة</b><p>منتجات مختارة بعناية وخامات موثوقة.</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <b>COSMA COLLAGEN</b>
+    © 2026 Cosma · الدفع عند الاستلام داخل السعودية
+  </footer>
+
+  <div class="sticky" id="sticky">
+    <div class="sticky-info">
+      <img id="stickyImg" src="./gallery-1.jpg" alt="Cosma Collagen" />
+      <div>
+        <div class="big"><span id="stickyPrice">199</span> <span>ريال</span></div>
+        <small>الدفع عند الاستلام</small>
+      </div>
+    </div>
+    <a href="#order">اضغط هنا للطلب</a>
+  </div>
+
+  <script>
+    var CONFIG = {
+      sheetWebhook: "https://script.google.com/macros/s/AKfycbxTidbmqTr6dKV7lOEmlQBR81R_Sv-VF8AA7UerWzvJ0wWd8pT5QtyyA9NlOGU7WLE9YQ/exec",
+      whitelist: ["0500000000", "0555555555"]
+    };
+    var offers = [
+      { id: "1", qty: 1, price: 199, old: 249, title: "علبة واحدة (شهرين من الاستعمال اليومي مع ضمان النتيجة)", chip: "Save 20%", img: "./gallery-1.jpg" },
+      { id: "2", qty: 2, price: 299, old: 398, featured: true, title: "علبتان لشخصين", chip: "روتين 4 أشهر بدون انقطاع", img: "./gallery-2.jpg" },
+      { id: "3", qty: 3, price: 399, old: 597, title: "ثلاث علب (ضمان النتيجة 100% مع الضمان الذهبي)", chip: "استمرارية أطول وقيمة أعلى", img: "./gallery-4.jpg" }
+    ];
+    var selected = "2";
+    var pending = null;
+    var eventId = (crypto.randomUUID && crypto.randomUUID()) || ("cs-" + Date.now());
+
+    function packById(id) { return offers.find(function (o) { return o.id === id; }) || offers[0]; }
+    function pick(el) {
+      document.querySelectorAll(".set").forEach(function (n) { n.classList.remove("on"); });
+      el.classList.add("on");
+      selected = el.dataset.id;
+      syncTotals();
+    }
+    function renderPacks() {
+      document.getElementById("packs").innerHTML = offers.map(function (o) {
+        return '<article class="set' + (o.featured ? " featured" : "") + (o.id === selected ? " on" : "") + '" data-id="' + o.id + '" onclick="pick(this)">'
+          + '<img src="' + o.img + '" alt="' + o.title + '" />'
+          + "<div><h3>" + o.title + '</h3><span class="chip' + (o.featured ? " hot" : "") + '">' + o.chip + "</span></div>"
+          + '<div class="pr">' + o.price.toFixed(2) + '<small>ريال</small><s>' + o.old.toFixed(2) + ' ريال</s></div></article>';
+      }).join("");
+    }
+    function syncTotals() {
+      var p = packById(selected);
+      var disc = p.old - p.price;
+      document.getElementById("sub").textContent = p.old.toFixed(2) + " ريال";
+      document.getElementById("disc").textContent = "-" + disc.toFixed(2) + " ريال";
+      document.getElementById("tot").textContent = p.price.toFixed(2) + " ريال";
+      document.getElementById("heroPrice").textContent = p.price + " ريال";
+      document.getElementById("heroOld").textContent = p.old + " ريال";
+      document.getElementById("heroSave").textContent = "وفر " + Math.round((disc / p.old) * 100) + "%";
+      document.getElementById("stickyPrice").textContent = p.price;
+      document.getElementById("stickyImg").src = p.img;
+    }
+
+    var slides = document.getElementById("slides");
+    var thumbs = document.querySelectorAll("#thumbs img");
+    var dots = document.querySelectorAll("#dots i");
+    function go(i) {
+      var w = slides.clientWidth;
+      slides.scrollTo({ left: -i * w, behavior: "smooth" });
+      thumbs.forEach(function (t, n) { t.classList.toggle("on", n === i); });
+      dots.forEach(function (d, n) { d.classList.toggle("on", n === i); });
+    }
+    thumbs.forEach(function (t) { t.addEventListener("click", function () { go(+t.dataset.i); }); });
+    slides.addEventListener("scroll", function () {
+      var i = Math.round(Math.abs(slides.scrollLeft) / Math.max(1, slides.clientWidth));
+      thumbs.forEach(function (t, n) { t.classList.toggle("on", n === i); });
+      dots.forEach(function (d, n) { d.classList.toggle("on", n === i); });
+    });
+
+    function easternToWestern(str) {
+      return String(str || "").replace(/[\u0660-\u0669]/g, function (d) { return String(d.charCodeAt(0) - 0x0660); })
+        .replace(/[\u06F0-\u06F9]/g, function (d) { return String(d.charCodeAt(0) - 0x06F0); });
+    }
+    function saudiDigits(raw) {
+      var s = easternToWestern(raw).replace(/[^\d]/g, "");
+      if (s.indexOf("00966") === 0) s = s.slice(5);
+      else if (s.indexOf("966") === 0) s = s.slice(3);
+      if (s.charAt(0) === "0") s = s.slice(1);
+      return s;
+    }
+    function toSheetPhone(raw) {
+      var western = easternToWestern(raw).replace(/[^\d]/g, "");
+      if (CONFIG.whitelist.indexOf(western) !== -1) return western;
+      return "0" + saudiDigits(raw);
+    }
+    function isSaudiMobile(raw) {
+      var western = easternToWestern(raw).replace(/[^\d]/g, "");
+      if (CONFIG.whitelist.indexOf(western) !== -1) return true;
+      return /^5\d{8}$/.test(saudiDigits(raw));
+    }
+    function captureSource() {
+      var keys = {};
+      new URLSearchParams(location.search).forEach(function (v, k) { keys[String(k).toLowerCase()] = v || ""; });
+      if (keys.ttclid || /tiktok/.test((document.referrer || "").toLowerCase())) return "تيك توك";
+      if (keys.fbclid) return "فيسبوك";
+      if (keys.utm_source) return keys.utm_source;
+      return "مباشر";
+    }
+    function postToSheet(payload) {
+      var qs = new URLSearchParams();
+      Object.keys(payload).forEach(function (key) { qs.set(key, payload[key] == null ? "" : String(payload[key])); });
+      var url = CONFIG.sheetWebhook + "?" + qs.toString();
+      if (window.fetch) fetch(url, { method: "GET", mode: "no-cors", keepalive: true }).catch(function () {});
+    }
+    function finishOrder() {
+      if (!pending || pending.sent) return;
+      pending.sent = true;
+      var pack = pending.pack;
+      var orderId = "CS-" + Date.now() + "-" + pack.id;
+      var title = "Cosma Collagen · " + pack.title;
+      postToSheet({
+        brand: "cosma",
+        order_number: orderId,
+        name: pending.name,
+        phone: pending.phone,
+        city: pending.city,
+        address: pending.city,
+        pack_id: pack.id,
+        pack_title: title,
+        price: pack.price,
+        upsell: "",
+        source: pending.source,
+        event_id: eventId,
+        created_at: new Date().toISOString()
+      });
+      setTimeout(function () {
+        window.location.href = "./thank-you.html?name=" + encodeURIComponent(pending.name)
+          + "&phone=" + encodeURIComponent(pending.phone)
+          + "&value=" + encodeURIComponent(pack.price)
+          + "&content_name=" + encodeURIComponent(title)
+          + "&content_ids=" + encodeURIComponent("cosma-" + pack.id)
+          + "&num_items=" + encodeURIComponent(pack.qty)
+          + "&order_id=" + encodeURIComponent(orderId)
+          + "&event_id=" + encodeURIComponent(eventId);
+      }, 1800);
+    }
+    document.getElementById("orderForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      var form = e.target;
+      var phoneEl = form.querySelector("[name=phone]");
+      phoneEl.value = easternToWestern(phoneEl.value).replace(/[^\d+]/g, "");
+      if (!isSaudiMobile(phoneEl.value)) {
+        phoneEl.setCustomValidity("أدخل رقم سعودي يبدأ بـ 05 ثم 8 أرقام.");
+        phoneEl.reportValidity();
+        return;
+      }
+      phoneEl.setCustomValidity("");
+      var fd = new FormData(form);
+      pending = {
+        name: String(fd.get("name") || "").trim(),
+        phone: toSheetPhone(fd.get("phone")),
+        city: String(fd.get("city") || "").trim(),
+        pack: packById(selected),
+        source: captureSource()
+      };
+      form.querySelector("button[type=submit]").disabled = true;
+      finishOrder();
+    });
+    document.querySelector("[name=phone]").addEventListener("input", function () { this.setCustomValidity(""); });
+    renderPacks();
+    syncTotals();
+  </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>شكراً لك | Cosma Collagen</title>
+  <meta name="theme-color" content="#1F3A6E" />
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { min-height: 100vh; font-family: Tajawal, sans-serif; background: #DCEBF5; color: #1F3A6E; }
+    .wrap { width: min(520px, calc(100% - 28px)); margin: 0 auto; padding: 28px 0 56px; }
+    .mark { letter-spacing: .16em; color: #C9A24A; font-size: 13px; font-weight: 900; }
+    h1 { font-size: clamp(26px, 7vw, 36px); font-weight: 900; margin-top: 8px; line-height: 1.3; }
+    .hi { margin-top: 10px; color: #4a6088; font-size: 15px; }
+    .card { background: #fff; border: 1px solid #c9d9e6; border-radius: 18px; padding: 16px; margin-top: 14px; }
+    .card b { display: block; font-size: 12px; color: #C9A24A; margin-bottom: 6px; }
+    .card h2 { font-size: 17px; font-weight: 900; }
+    .card p { color: #4a6088; margin-top: 6px; font-size: 14px; }
+    .sum { display: flex; justify-content: space-between; margin-top: 10px; font-size: 14px; }
+    .sum strong { color: #1F3A6E; font-size: 26px; }
+    .call {
+      background: #1F3A6E; color: #fff; border: 0; border-radius: 18px; padding: 16px; margin-top: 14px;
+      animation: pulse 1.4s ease-in-out infinite;
+    }
+    .call strong { display: block; font-size: 18px; font-weight: 900; }
+    .call p { color: #DCEBF5; margin-top: 8px; font-size: 14px; line-height: 1.7; }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(31,58,110,.35); }
+      50% { transform: scale(1.015); box-shadow: 0 0 0 10px rgba(31,58,110,0); }
+    }
+    ol { list-style: none; margin-top: 8px; }
+    li { padding: 10px 0; border-top: 1px solid #c9d9e6; display: grid; grid-template-columns: 28px 1fr; gap: 8px; }
+    li em { font-style: normal; font-size: 16px; color: #C9A24A; font-weight: 900; }
+    li h3 { font-size: 14px; font-weight: 900; }
+    li p { color: #4a6088; font-size: 12px; margin-top: 2px; }
+    a.back { display: inline-block; margin-top: 18px; color: #1F3A6E; font-weight: 800; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <p class="mark">COSMA COLLAGEN</p>
+    <h1>شكراً لك! تم تسجيل طلبك بنجاح 🎉</h1>
+    <p class="hi" id="hi">فريق التأكيد سيتصل بك الآن على هاتفك لتأكيد العنوان وإخراج الطرد اليوم.</p>
+    <div class="call">
+      <strong>جاوب على الهاتف — ضروري</strong>
+      <p>نتصل بك مباشرة على رقمك. إذا لم تجب، يتوقف الطلب ولا يُشحن. أبقِ الهاتف قريباً منك.</p>
+    </div>
+    <div class="card">
+      <b>ملخص الطلب</b>
+      <h2 id="packName">Cosma Collagen</h2>
+      <div class="sum"><span>المجموع</span><strong id="total">—</strong></div>
+    </div>
+    <div class="card">
+      <b>ماذا يحدث الآن</b>
+      <ol>
+        <li><em>01</em><div><h3>جاوب على المكالمة</h3><p>نؤكد معك الاسم، الرقم، والمدينة. بدون الجواب لا يُشحن الطلب.</p></div></li>
+        <li><em>02</em><div><h3>التوصيل خلال 24–72 ساعة</h3><p>داخل السعودية. تستلم منتجك في باب منزلك وتدفع عند الاستلام.</p></div></li>
+        <li><em>03</em><div><h3>أول استعمال</h3><p>امزج المغرفة مع ماء بارد وحرّك حتى تذوب.</p></div></li>
+      </ol>
+    </div>
+    <a class="back" href="./index.html">رجوع إلى Cosma Collagen</a>
+  </div>
+  <script>
+    var params = new URLSearchParams(location.search);
+    var name = params.get("name") || "";
+    if (name) document.getElementById("hi").textContent = name + "، فريق التأكيد سيتصل بك الآن على الهاتف. جاوب حتى يخرج الطرد اليوم.";
+    var value = parseFloat(params.get("value") || "0");
+    var contentName = params.get("content_name") || "Cosma Collagen";
+    document.getElementById("packName").textContent = contentName;
+    if (value > 0) document.getElementById("total").textContent = value + " ريال";
+  </script>
+</body>
+</html>
