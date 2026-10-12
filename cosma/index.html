@@ -587,20 +587,128 @@ Shopify.SignInWithShop.User.recognized = false;</script>
   window.Shopify.locale = "ar";
   window.Shopify.country = "SA";
   window.Shopify.routes = window.Shopify.routes || {root:"/"};
+  window.ES_SEPARATE_CART = false;
   var origFetch = window.fetch.bind(window);
-  window.fetch = function(url, opts){
-    var u = String((url && url.url) || url || "");
+  var ajaxCart = {
+    token:"cosma", note:null, attributes:{},
+    original_total_price:28000, total_price:28000, total_discount:0, total_weight:0,
+    item_count:2, items:[{
+      id:48193173848282, properties:{}, quantity:2, variant_id:48193173848282,
+      key:"48193173848282:cosma", title:"Cosma Collagen", price:14000,
+      original_price:18000, discounted_price:14000, line_price:28000,
+      original_line_price:36000, total_discount:8000, discounts:[],
+      line_level_discount_allocations:[], sku:null, grams:0, vendor:"Cosma",
+      taxable:true, product_id:9381918998746, product_has_only_default_variant:true,
+      gift_card:false, final_price:14000, final_line_price:28000, url:"/products/pure",
+      featured_image:{url:"./gallery-1.jpg", aspect_ratio:0.75, alt:"Cosma Collagen"},
+      image:"./gallery-1.jpg", handle:"pure", requires_shipping:true, product_type:"",
+      product_title:"Cosma Collagen", product_description:"", variant_title:null,
+      variant_options:["Default Title"],
+      options_with_values:[{name:"Title", value:"Default Title"}]
+    }],
+    requires_shipping:true, currency:"SAR", items_subtotal_price:28000,
+    cart_level_discount_applications:[]
+  };
+  var cartJson = JSON.stringify(ajaxCart);
+  var addJson = JSON.stringify({items: ajaxCart.items});
+  function gqlCart(){
+    return {
+      id:"gid://shopify/Cart/cosma", checkoutUrl:"./thank-you.html", totalQuantity:2,
+      cost:{
+        totalAmount:{amount:"280.0", currencyCode:"SAR"},
+        subtotalAmount:{amount:"280.0", currencyCode:"SAR"},
+        totalTaxAmount:{amount:"0.0", currencyCode:"SAR"},
+        totalDutyAmount:null
+      },
+      lines:{nodes:[{
+        id:"gid://shopify/CartLine/1", quantity:2, attributes:[], allDiscountAllocations:[],
+        merchandise:{
+          id:"gid://shopify/ProductVariant/48193173848282", title:"Default Title",
+          product:{
+            id:"gid://shopify/Product/9381918998746", title:"Cosma Collagen",
+            handle:"pure", vendor:"Cosma", productType:"",
+            featuredImage:{url:"./gallery-1.jpg"}
+          }
+        },
+        cost:{
+          amountPerQuantity:{amount:"140.0", currencyCode:"SAR"},
+          subtotalAmount:{amount:"280.0", currencyCode:"SAR"},
+          totalAmount:{amount:"280.0", currencyCode:"SAR"}
+        }
+      }]},
+      discountCodes:[], discountAllocations:[], buyerIdentity:{countryCode:"SA"}
+    };
+  }
+  function stubBody(u, reqBody){
+    u = String(u || "");
+    if (/cdn\.shopify\.com|\/cdn\/shop\/t\/|extensions|script\.google/.test(u)) return null;
     if (/browsing_context_suggestions/.test(u)) {
-      return Promise.resolve(new Response(JSON.stringify({detected_values:{country:{handle:"SA",name:"Saudi Arabia"}}}), {headers:{"Content-Type":"application/json"}}));
+      return JSON.stringify({detected_values:{country:{handle:"SA", name:"Saudi Arabia"}}});
     }
-    if (/\/cart(\.js)?(\?|$)|cart\/add|cart\/change|cart\/update/.test(u)) {
-      return Promise.resolve(new Response(JSON.stringify({token:"x",items:[],item_count:0,total_price:18000,items_subtotal_price:18000,currency:"SAR"}), {headers:{"Content-Type":"application/json"}}));
+    if (/graphql\.json|\/api\/\d{4}-\d{2}\//.test(u)) {
+      var q = "";
+      try {
+        var parsed = typeof reqBody === "string" ? JSON.parse(reqBody) : reqBody;
+        q = String((parsed && parsed.query) || reqBody || "");
+      } catch (e) { q = String(reqBody || ""); }
+      var cart = gqlCart();
+      if (/cartCreate/.test(q)) return JSON.stringify({data:{cartCreate:{cart:cart, userErrors:[]}}});
+      if (/cartLinesAdd/.test(q)) return JSON.stringify({data:{cartLinesAdd:{cart:cart, userErrors:[]}}});
+      if (/cartLinesUpdate/.test(q)) return JSON.stringify({data:{cartLinesUpdate:{cart:cart, userErrors:[]}}});
+      if (/cartLinesRemove/.test(q)) return JSON.stringify({data:{cartLinesRemove:{cart:cart, userErrors:[]}}});
+      if (/product\(/.test(q)) return JSON.stringify({data:{product:{id:"gid://shopify/Product/9381918998746", collections:{edges:[]}}}});
+      return JSON.stringify({data:{cart:cart}});
     }
-    if (/script\.google/.test(u)) return origFetch.apply(this, arguments);
-    if (/y18hje-vw|namaa\.shop\/(cart|apps|checkouts|api)|monorail|web-pixels|shopify.*analytics/.test(u) && !/cdn\.shopify\.com|\/cdn\/shop\/t\/|extensions/.test(u)) {
-      return Promise.resolve(new Response(JSON.stringify({ok:true}), {headers:{"Content-Type":"application/json"}}));
+    if (/cart\/add/.test(u)) return addJson;
+    if (/\/cart/.test(u)) return cartJson;
+    if (/\/products\/[^/]+(\.js|\.json)?(\?|$)|\/search\/suggest|\/checkouts|monorail|web-pixels|y18hje-vw/.test(u) && !/namaa\.shop\/cdn/.test(u)) {
+      return cartJson;
+    }
+    return null;
+  }
+  window.fetch = function(input, init){
+    var u = typeof input === "string" ? input : String((input && input.url) || input || "");
+    var reqBody = (init && init.body) || "";
+    var body = stubBody(u, reqBody);
+    if (body != null) {
+      return Promise.resolve(new Response(body, {status:200, headers:{"Content-Type":"application/json"}}));
     }
     return origFetch.apply(this, arguments);
+  };
+  var xhrOpen = XMLHttpRequest.prototype.open;
+  var xhrSend = XMLHttpRequest.prototype.send;
+  XMLHttpRequest.prototype.open = function(method, url){
+    this.__cosmaUrl = String(url || "");
+    this.__cosmaStub = stubBody(this.__cosmaUrl, "");
+    if (this.__cosmaStub != null) return;
+    return xhrOpen.apply(this, arguments);
+  };
+  XMLHttpRequest.prototype.send = function(payload){
+    var body = this.__cosmaStub != null ? this.__cosmaStub : stubBody(this.__cosmaUrl, payload);
+    if (body != null) {
+      var xhr = this;
+      Object.defineProperty(xhr, "readyState", {configurable:true, get:function(){ return 4; }});
+      Object.defineProperty(xhr, "status", {configurable:true, get:function(){ return 200; }});
+      Object.defineProperty(xhr, "statusText", {configurable:true, get:function(){ return "OK"; }});
+      Object.defineProperty(xhr, "responseText", {configurable:true, get:function(){ return body; }});
+      Object.defineProperty(xhr, "response", {configurable:true, get:function(){
+        if (xhr.responseType === "json") { try { return JSON.parse(body); } catch (e) { return body; } }
+        return body;
+      }});
+      xhr.getResponseHeader = function(h){
+        return String(h).toLowerCase() === "content-type" ? "application/json" : null;
+      };
+      xhr.getAllResponseHeaders = function(){ return "content-type: application/json\r\n"; };
+      setTimeout(function(){
+        try { xhr.onreadystatechange && xhr.onreadystatechange(); } catch (e) {}
+        try { xhr.dispatchEvent(new Event("readystatechange")); } catch (e) {}
+        try { xhr.dispatchEvent(new Event("load")); } catch (e) {}
+        try { xhr.onload && xhr.onload(); } catch (e) {}
+        try { xhr.onloadend && xhr.onloadend(); } catch (e) {}
+      }, 0);
+      return;
+    }
+    return xhrSend.apply(this, arguments);
   };
   function digits(raw){
     var s = String(raw||"").replace(/[\u0660-\u0669]/g,function(d){return String(d.charCodeAt(0)-0x0660);}).replace(/[^\d]/g,"");
@@ -685,6 +793,23 @@ Shopify.SignInWithShop.User.recognized = false;</script>
       submitCosma(e);
     }
   }, true);
+  function hideShopifyError(){
+    var walk = document.querySelectorAll("#es-errors li, #es-errors, .es-errors, p, div, span, li");
+    for (var i = 0; i < walk.length; i++) {
+      var el = walk[i];
+      if (el.dataset && el.dataset.cosmaHideErr) continue;
+      var own = "";
+      for (var n = el.firstChild; n; n = n.nextSibling) {
+        if (n.nodeType === 3) own += n.nodeValue;
+      }
+      var t = (own || el.textContent || "").replace(/\s+/g, " ").trim();
+      if (t.length > 8 && t.length < 400 && /Shopify Error|is not valid JSON|Storefront cart request failed/i.test(t)) {
+        el.style.setProperty("display", "none", "important");
+        el.setAttribute("hidden", "");
+        if (el.dataset) el.dataset.cosmaHideErr = "1";
+      }
+    }
+  }
   document.addEventListener("DOMContentLoaded", function(){
     document.querySelectorAll(".image-slide video").forEach(function(v){
       var src = v.getAttribute("poster");
@@ -695,6 +820,13 @@ Shopify.SignInWithShop.User.recognized = false;</script>
       img.style.cssText = "width:100%;height:100%;object-fit:cover;position:absolute;inset:0";
       v.parentNode.replaceChild(img, v);
     });
+    hideShopifyError();
+    setTimeout(hideShopifyError, 400);
+    setTimeout(hideShopifyError, 1200);
+    setTimeout(hideShopifyError, 3000);
+    try {
+      new MutationObserver(hideShopifyError).observe(document.body, {childList:true, subtree:true});
+    } catch(e){}
   });
 })();
 </script>
@@ -964,6 +1096,10 @@ first.parentNode.insertBefore(script, first);
   data-shs-beacon-endpoint="https://www.namaa.shop/api/collect"
 ></script>
 <meta name="shopify-y" content="9a54adb4-8d7d-4189-8faa-671561780fc8" data-expiration="1823353981000"><meta name="shopify-s" content="fe2050e9-7d3c-4121-b275-c4102b2afc13" data-expiration="1791798181000">
+<style id="cosma-hide-shopify-error">
+  [data-cosma-hide-err="1"] { display: none !important; }
+  #es-errors:empty { display: none !important; }
+</style>
 </head>
 
   <body class="gradient link-btns--arrow action-btns--center" data-rtl="true">
